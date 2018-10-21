@@ -7,11 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="backend" />
-        <module name="parent" />
+        <module name="fapi" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend" target="1.5" />
+      <module name="fapi" target="1.5" />
       <module name="parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
