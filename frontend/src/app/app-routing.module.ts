@@ -8,7 +8,7 @@ import {TeacherinfoComponent} from "./teacherinfo/teacherinfo.component";
 import {GroupContentComponent} from "./group-content/group-content.component";
 
 const routes: Routes = [
-  {path:'',redirectTo:'/signin', pathMatch: 'full'},
+  {path:'',redirectTo:'/group', pathMatch: 'full'},
   {path:'admin', component: AdminComponent},
   {path:'signin',component: SigninComponent},
   {path:'group', component: GroupComponent},

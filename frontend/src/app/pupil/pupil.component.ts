@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {friday, monday, thursday, tuesday, wednesday} from "../model/timetable";
-import {GroupService} from "../group.service";
-import {PupilService} from "../pupil.service";
+import {GroupService} from "../service/group.service";
+import {PupilService} from "../service/pupil.service";
 
 @Component({
   selector: 'app-pupil',

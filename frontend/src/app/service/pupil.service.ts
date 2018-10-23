@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import {group} from "./model/group";
-import {GROUP} from "./mock-group";
-import {FRIDAY, MONDAY, THURSDAY, TUESDAY, WEDNESDAY} from "./mock-timetable";
-import {friday, monday, thursday, tuesday, wednesday} from "./model/timetable";
+import {group} from "../model/group";
+import {GROUP} from "../mock-group";
+import {FRIDAY, MONDAY, THURSDAY, TUESDAY, WEDNESDAY} from "../mock-timetable";
+import {friday, monday, thursday, tuesday, wednesday} from "../model/timetable";
 
 @Injectable({
   providedIn: 'root'
