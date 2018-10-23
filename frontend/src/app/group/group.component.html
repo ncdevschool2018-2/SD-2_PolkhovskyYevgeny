@@ -1,0 +1,35 @@
+
+<body>
+<ul class="nav justify-content-end  bg-light">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Teacher's name</a>
+  </li>
+  <!--<li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+  </li>
+
+  <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+  </li>-->
+  <li class="nav-item">
+    <a class="nav-link disabled" routerLink="/signin">Exit</a>
+  </li>
+</ul>
+<h1 align="center">Group Number </h1>
+<table class="table table-bordered table-striped">
+  <thead>
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let group of groups">
+    <td >
+      <a routerLink="/groupContent">{{group.number}}</a>
+    </td>
+  </tr>
+
+
+
+  </tbody>
+</table>
+</body>
+

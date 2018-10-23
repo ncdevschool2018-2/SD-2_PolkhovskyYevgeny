@@ -1,0 +1,107 @@
+
+
+
+<div class="container">
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+
+      <div class="col-10 text-center">
+        <a class="blog-header-logo text-dark" href="#">Admin</a>
+      </div>
+      <div class="col-2 d-flex justify-content-end align-items-center">
+
+        <a class="btn btn-sm btn-outline-secondary" routerLink="/signin">Exit</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Create group</button>
+      <button class="btn btn-lg btn-outline-primary" (click)="open1(content1)">Create pupil</button>
+
+      <a class="p-2 text-muted" href="#">Create Teacher</a>
+      <a class="p-2 text-muted" routerLink="/group">All Groups</a>
+      <a class="p-2 text-muted" href="#">Search Teacher</a>
+
+    </nav>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Group</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="107022" name="dp" ngbDatepicker #dp="ngbDatepicker" #group>
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>-->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="add(group)">Save</button>
+  </div>
+</ng-template>
+
+<!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
+
+<hr>
+
+<pre>{{closeResult}}</pre>
+
+<ng-template #content1 let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title1">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Group</label>
+        <div class="input-group">
+          <input id="createPupil" class="form-control" placeholder="107022" name="dp" ngbDatepicker #dp="ngbDatepicker" #group>
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>-->
+        </div>
+
+        <label for="dateOfBirth">Name</label>
+        <div class="input-group">
+          <input id="createPupil1" class="form-control" placeholder="Ivan" name="dp" ngbDatepicker #dp="ngbDatepicker" #name>
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>-->
+        </div>
+
+        <label for="dateOfBirth">Surname</label>
+        <div class="input-group">
+          <input id="createPupil2" class="form-control" placeholder="Ivanov" name="dp" ngbDatepicker #dp="ngbDatepicker" #surname>
+          <!--<div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>-->
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" >Save</button>
+  </div>
+</ng-template>
+
+<!--<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>-->
+
+<hr>
+
+<pre>{{closeResult}}</pre>

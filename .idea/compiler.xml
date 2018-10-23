@@ -11,8 +11,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="backend" target="1.5" />
-      <module name="fapi" target="1.5" />
+      <module name="backend" target="1.8" />
+      <module name="fapi" target="1.8" />
       <module name="parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
