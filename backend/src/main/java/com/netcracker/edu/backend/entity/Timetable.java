@@ -1,29 +1,29 @@
 package com.netcracker.edu.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "timetable")
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Timetable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private long group_id;
-    private long subject_id;
-    private long slot_id;
-    private long day_of_week_id;
+    private Subjects subjectsBySubjectId;
+    private Slots slotsBySlotId;
+    private DaysOfWeek daysOfWeekByDayOfWeekId;
+    private int groupId;
+    private int subjectId;
+    private int slotId;
+    private int dayOfWeekId;
+    private UniversityGroup universityGroupByGroupId;
     
-    public Timetable() {
-    }
-    
-    public Timetable(long group_id, long subject_id, long slot_id, long day_of_week_id) {
-        this.group_id = group_id;
-        this.subject_id = subject_id;
-        this.slot_id = slot_id;
-        this.day_of_week_id = day_of_week_id;
-    }
-    
+    @Id
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -32,36 +32,88 @@ public class Timetable {
         this.id = id;
     }
     
-    public long getGroup_id() {
-        return group_id;
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "subject_id", referencedColumnName = "id", nullable = false)
+    public Subjects getSubjectsBySubjectId() {
+        return subjectsBySubjectId;
     }
     
-    public void setGroup_id(long group_id) {
-        this.group_id = group_id;
+    public void setSubjectsBySubjectId(Subjects subjectsBySubjectId) {
+        this.subjectsBySubjectId = subjectsBySubjectId;
     }
     
-    public long getSubject_id() {
-        return subject_id;
+    @ManyToOne
+    @JoinColumn(name = "slot_id", referencedColumnName = "id", nullable = false)
+    public Slots getSlotsBySlotId() {
+        return slotsBySlotId;
     }
     
-    public void setSubject_id(long subject_id) {
-        this.subject_id = subject_id;
+    public void setSlotsBySlotId(Slots slotsBySlotId) {
+        this.slotsBySlotId = slotsBySlotId;
     }
     
-    public long getSlot_id() {
-        return slot_id;
+    @ManyToOne
+    @JoinColumn(name = "day_of_week_id", referencedColumnName = "id", nullable = false)
+    public DaysOfWeek getDaysOfWeekByDayOfWeekId() {
+        return daysOfWeekByDayOfWeekId;
     }
     
-    public void setSlot_id(long slot_id) {
-        this.slot_id = slot_id;
+    public void setDaysOfWeekByDayOfWeekId(DaysOfWeek daysOfWeekByDayOfWeekId) {
+        this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;
     }
     
-    public long getDay_of_week_id() {
-        return day_of_week_id;
+    @Basic
+    @Column(name = "group_id", nullable = false,insertable=false,updatable =false)
+    public int getGroupId() {
+        return groupId;
     }
     
-    public void setDay_of_week_id(long day_of_week_id) {
-        this.day_of_week_id = day_of_week_id;
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
+    }
+    
+    @Basic
+    @Column(name = "subject_id", nullable = false,insertable=false,updatable =false)
+    public int getSubjectId() {
+        return subjectId;
+    }
+    
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+    
+    @Basic
+    @Column(name = "slot_id", nullable = false,insertable=false,updatable =false)
+    public int getSlotId() {
+        return slotId;
+    }
+    
+    public void setSlotId(int slotId) {
+        this.slotId = slotId;
+    }
+    
+    @Basic
+    @Column(name = "day_of_week_id", nullable = false,insertable=false,updatable =false)
+    public int getDayOfWeekId() {
+        return dayOfWeekId;
+    }
+    
+    public void setDayOfWeekId(int dayOfWeekId) {
+        this.dayOfWeekId = dayOfWeekId;
+    }
+    
+    
+    
+    @ManyToOne
+    @JoinColumn(name = "group_id", referencedColumnName = "id", nullable = false)
+    public UniversityGroup getUniversityGroupByGroupId() {
+        return universityGroupByGroupId;
+    }
+    
+    public void setUniversityGroupByGroupId(UniversityGroup universityGroupByGroupId) {
+        this.universityGroupByGroupId = universityGroupByGroupId;
     }
     
     @Override
@@ -70,26 +122,33 @@ public class Timetable {
         if (o == null || getClass() != o.getClass()) return false;
         Timetable timetable = (Timetable) o;
         return id == timetable.id &&
-                Objects.equals(group_id , timetable.group_id) &&
-                Objects.equals(subject_id , timetable.subject_id) &&
-                Objects.equals(slot_id , timetable.slot_id) &&
-                Objects.equals(day_of_week_id , timetable.day_of_week_id);
+                groupId == timetable.groupId &&
+                subjectId == timetable.subjectId &&
+                slotId == timetable.slotId &&
+                dayOfWeekId == timetable.dayOfWeekId &&
+                Objects.equals(subjectsBySubjectId, timetable.subjectsBySubjectId) &&
+                Objects.equals(slotsBySlotId, timetable.slotsBySlotId) &&
+                Objects.equals(daysOfWeekByDayOfWeekId, timetable.daysOfWeekByDayOfWeekId) &&
+                Objects.equals(universityGroupByGroupId, timetable.universityGroupByGroupId);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, group_id, subject_id, slot_id, day_of_week_id);
+        return Objects.hash(id, subjectsBySubjectId, slotsBySlotId, daysOfWeekByDayOfWeekId, groupId, subjectId, slotId, dayOfWeekId, universityGroupByGroupId);
     }
     
     @Override
     public String toString() {
         return "Timetable{" +
                 "id=" + id +
-                ", group_id=" + group_id +
-                ", subject_id=" + subject_id +
-                ", slot_id=" + slot_id +
-                ", day_of_week_id=" + day_of_week_id +
+                ", subjectsBySubjectId=" + subjectsBySubjectId +
+                ", slotsBySlotId=" + slotsBySlotId +
+                ", daysOfWeekByDayOfWeekId=" + daysOfWeekByDayOfWeekId +
+                ", groupId=" + groupId +
+                ", subjectId=" + subjectId +
+                ", slotId=" + slotId +
+                ", dayOfWeekId=" + dayOfWeekId +
+                ", universityGroupByGroupId=" + universityGroupByGroupId +
                 '}';
     }
-    
 }

@@ -8,12 +8,12 @@ import {TeacherinfoComponent} from "./teacherinfo/teacherinfo.component";
 import {GroupContentComponent} from "./group-content/group-content.component";
 
 const routes: Routes = [
-  {path:'',redirectTo:'/group', pathMatch: 'full'},
+  {path:'',redirectTo:'/signin', pathMatch: 'full'},
   {path:'admin', component: AdminComponent},
   {path:'signin',component: SigninComponent},
   {path:'group', component: GroupComponent},
   {path:'pupil', component: PupilComponent},
-  {path:'groupContent', component: GroupContentComponent},
+  {path:'groupContent/:id', component: GroupContentComponent},
   {path:'teacherinfo', component: TeacherinfoComponent}
 ]
 @NgModule({

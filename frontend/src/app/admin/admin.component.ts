@@ -1,7 +1,8 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {Subscription} from "rxjs";
-import {group} from "../model/group";
+import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Group} from "../model/group";
+import {Subscription} from "rxjs/internal/Subscription";
+import {GroupService} from "../service/group.service";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 
 @Component({
@@ -11,39 +12,67 @@ import {group} from "../model/group";
 })
 
 export class AdminComponent implements OnInit {
-  closeResult: string;
 
-  constructor(private modalService: NgbModal,
-
-              ) { }
+  public groups: Group[];
+  public editableGroup: Group = new Group();
+  private subscriptions: Subscription[] = [];
+  public modalRef: BsModalRef;
+  constructor(
+              private groupService: GroupService,
+              private modalService: BsModalService
+  ) {
+  }
 
   ngOnInit() {
   }
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+
+  public _openModal(template: TemplateRef<any>): void {
+
+
+      this.refreshGroup();
+
+
+
+    this.modalRef = this.modalService.show(template); // and when the user clicks on the button to open the popup
+                                                      // we keep the modal reference and pass the template local name to the modalService.
   }
-  open1(content1) {
-    this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  public _closeModal(): void {
+    this.modalRef.hide();
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
+
+
+
+  public _addGroup(): void {
+
+    this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
+      this._updateGroups();
+      this.refreshGroup();
+
+
+    }));
   }
-  /*add(group: group): void {
+  private refreshGroup(): void {
+    this.editableGroup = new Group();
+  }
+
+  public _updateGroups(): void {
+    this.loadGroups();
+  }
+
+
+  private loadGroups(): void {
+
+    // Get data from BillingAccountService
+    this.subscriptions.push(this.groupService.getGroups().subscribe(groups => {
+      // Parse json response into local array
+      this.groups = groups as Group[];
+      // Check data in console
+      //console.log(this.groups);// don't use console.log in angular :)
+
+    }));
+  }
+  /*add(Group: Group): void {
 
         this.subscriptions.push();
       };*/

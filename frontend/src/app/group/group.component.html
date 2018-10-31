@@ -1,5 +1,5 @@
+<ng4-loading-spinner> </ng4-loading-spinner>
 
-<body>
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -23,7 +23,7 @@
   <tbody>
   <tr *ngFor="let group of groups">
     <td >
-      <a routerLink="/groupContent">{{group.number}}</a>
+      <a routerLink="/groupContent/{{group.id}}">{{group.name}}</a>
     </td>
   </tr>
 
@@ -31,5 +31,6 @@
 
   </tbody>
 </table>
-</body>
+
+
 

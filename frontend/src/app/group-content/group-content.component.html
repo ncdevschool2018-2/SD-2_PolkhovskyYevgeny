@@ -1,6 +1,6 @@
 <!--<ng4-loading-spinner> </ng4-loading-spinner>-->
+<ng4-loading-spinner> </ng4-loading-spinner>
 
-<body>
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -21,15 +21,52 @@
 
   </thead>
   <tbody>
-  <tr *ngFor="let groupContent of groupsContent">
-    <td>
-      {{groupContent.id}} {{groupContent.name}} {{groupContent.surname}}
-    </td>
-  </tr>
+  <tr *ngFor="let groupContent of groupContent">
+    <td scope="row">{{groupContent.id}}</td>
+    <td>{{groupContent.name}}</td>
+    <td>{{groupContent.surname}}</td>
+    <td><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button></td>
+    <td><button type="button" class="btn btn-secondary" (click)="_openModal(template, groupContent)">Edit</button></td>
 
+  </tr>
 
 
   </tbody>
 </table>
-</body>
 
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Edit"}}</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>name</label>
+      <input class="form-control" name="name" [(ngModel)]="editableGC.name" #name="ngModel" required/>
+      <!--<div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+        Pls set username &lt;!&ndash;Easy way to create client validation&ndash;&gt;
+      </div>-->
+    </div>
+    <div class="form-group">
+      <label>surname</label>
+      <input class="form-control" name="surname" [(ngModel)]="editableGC.surname" #surname="ngModel"
+             required/>
+      <!--<div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
+        surname is incorrect
+      </div>-->
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="_addGroupContent(name, surname)"
+            [disabled]="name.invalid || surname.invalid ">{{"Save"}}
+    </button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+
+  </div>
+</ng-template>

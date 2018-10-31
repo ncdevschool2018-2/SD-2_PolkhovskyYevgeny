@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
-import {group} from "../model/group";
-import {GROUP} from "../mock-group";
+import {Group} from "../model/group";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({
@@ -12,18 +11,18 @@ export class GroupService { //todo create interface
   }
 
 
-  getGroups(): Observable<group[]> {
-    return this.http.get<group[]>('/api/group');
+  getGroups(): Observable<Group[]> {
+    return this.http.get<Group[]>('/api/universitygroup');
   }
 
-  saveGroup(group: group): Observable<group> {
-    return this.http.post<group>('/api/group', group);
+  saveGroup(group: Group): Observable<Group> {
+    return this.http.post<Group>('/api/universitygroup', group);
   }
 
   deleteGroup(groupId: string): Observable<void> {
-    return this.http.delete<void>('/api/group/' + groupId);
+    return this.http.delete<void>('/api/universitygroup/' + groupId);
   }
-  /*getGroup(): Observable<group[]> {
+  /*getGroup(): Observable<Group[]> {
     // TODO: send the message _after_ fetching the heroes
     //this.messageService.add('HeroService: fetched heroes');
     return of(GROUP);

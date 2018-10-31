@@ -7,6 +7,6 @@ import java.util.Optional;
 public interface TimetableService {
     Timetable saveTimetable(Timetable timetable);
     Optional<Timetable> getTimetableById(Long id);
-    Iterable<Timetable> getAllTimetables();
+    Iterable<Timetable> getAllTimetable();
     void deleteTimetable(Long id);
 }

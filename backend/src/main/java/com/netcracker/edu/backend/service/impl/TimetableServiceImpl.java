@@ -2,6 +2,7 @@ package com.netcracker.edu.backend.service.impl;
 
 import com.netcracker.edu.backend.entity.Timetable;
 import com.netcracker.edu.backend.repository.TimetableRepository;
+import com.netcracker.edu.backend.service.TeacherService;
 import com.netcracker.edu.backend.service.TimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,10 +11,12 @@ import java.util.Optional;
 
 @Component
 public class TimetableServiceImpl implements TimetableService {
-   private TimetableRepository repository;
+    
+    private TimetableRepository repository;
+    
     @Autowired
-    public TimetableServiceImpl(TimetableRepository repository) {
-        this.repository = repository;
+    public TimetableServiceImpl(TimetableRepository repository){
+        this.repository=repository;
     }
     
     @Override
@@ -27,13 +30,12 @@ public class TimetableServiceImpl implements TimetableService {
     }
     
     @Override
-    public Iterable<Timetable> getAllTimetables() {
+    public Iterable<Timetable> getAllTimetable() {
         return repository.findAll();
     }
     
     @Override
     public void deleteTimetable(Long id) {
         repository.deleteById(id);
-        
     }
 }
