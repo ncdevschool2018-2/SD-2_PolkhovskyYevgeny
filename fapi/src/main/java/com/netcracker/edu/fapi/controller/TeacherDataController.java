@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,8 @@ public class TeacherDataController {
         return ResponseEntity.ok(teacherDataService.getAll());
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody TeacherViewModel teacher /*todo server validation*/) {
+    @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
+    public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
         if (teacher != null) {
             return ResponseEntity.ok(teacherDataService.saveTeacher(teacher));
         }

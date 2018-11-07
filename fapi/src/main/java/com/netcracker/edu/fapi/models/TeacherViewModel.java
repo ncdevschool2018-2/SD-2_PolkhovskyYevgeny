@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TeacherViewModel {
-    private long id;
+    private int id;
     private String name;
     private String surname;
     
@@ -19,18 +19,24 @@ public class TeacherViewModel {
     public TeacherViewModel() {
     }
     
-    public TeacherViewModel(long id, String name, String surname, int userId) {
+    public TeacherViewModel(int id, String name, String surname, int userId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.userId = userId;
     }
     
-    public long getId() {
+    public TeacherViewModel(String name, String surname, int userId) {
+        this.name = name;
+        this.surname = surname;
+        this.userId = userId;
+    }
+    
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

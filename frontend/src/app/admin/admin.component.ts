@@ -12,6 +12,7 @@ import {Users} from "../model/users";
 import {FormControl} from "@angular/forms";
 import {NewUser} from "../model/newUser";
 import {PupilService} from "../service/pupil.service";
+import {TeacherService} from "../service/teacher.service";
 
 
 @Component({
@@ -42,6 +43,8 @@ export class AdminComponent implements OnInit {
     private rolesService: RolesService,
     private userService: UsersService,
     private pupilService: PupilService,
+    private teacherService: TeacherService,
+
   ) {
   }
 
@@ -101,14 +104,16 @@ export class AdminComponent implements OnInit {
     }));
 
   }
-  public _openModalUser(template: TemplateRef<any>): void {
+  public _openModalTeacher(template: TemplateRef<any>): void {
     this.refreshGroup();
     this.modalRef = this.modalService.show(template); // and when the user clicks on the button to open the popup
-    // we keep the modal reference and pass the template local name to the modalService.
-    /*this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
+                                                    // we keep the modal reference and pass the template local name to the modalService.
+    this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
       this.roles = roles as Roles[];
-    }));*/
+    }));
+
   }
+
 
   public _addPupil(): void {
     this.subscriptions.push(this.groupContentService.saveGroupContent(this.editablePupil).subscribe(() => {
@@ -160,15 +165,24 @@ export class AdminComponent implements OnInit {
       this.editableNewUser.userId=user.id+1;
     }
     this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
-      this._updateNewPupil();
+      this._updateUsers();
 
 
       this._closeModal();
     }));
   }
-  public _updateNewPupil(): void {
-    this.loadUsers();
+  public _addNewTeacher(): void {
+    for (let user of this.users){
+      this.editableNewUser.userId=user.id+1;
+    }
+    this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
+      this._updateUsers();
+
+
+      this._closeModal();
+    }));
   }
+
 
 
 

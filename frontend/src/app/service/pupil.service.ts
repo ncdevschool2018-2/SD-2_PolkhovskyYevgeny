@@ -12,6 +12,6 @@ export class PupilService {
   constructor(private http: HttpClient) {
   }
   saveNewPupil(newUser: NewUser): Observable<NewUser> {
-    return this.http.post<NewUser>('/api/pupil/new-user', newUser);
+    return this.http.post<NewUser>('/api/pupil/new-pupil', newUser);
   }
 }

@@ -1,6 +1,8 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
+import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -30,9 +32,17 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     }
     
     @Override
-    public TeacherViewModel saveTeacher(TeacherViewModel teacher) {
+    public TeacherViewModel saveTeacher(NewUserViewModel newTeacherViewModel) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/teachers", teacher, TeacherViewModel.class).getBody();
+        UsersViewModel newUser = new UsersViewModel(newTeacherViewModel.getLogin(),newTeacherViewModel.getPassword(),newTeacherViewModel.getRoleId());
+        UsersViewModel user = restTemplate.postForEntity(backendServerUrl + "/api/users", newUser, UsersViewModel.class).getBody();
+        if (user==null){
+            return null;
+        }
+        TeacherViewModel newTeacher = new TeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getUserId());
+        TeacherViewModel teacher = restTemplate.postForEntity(backendServerUrl + "/api/teachers", newTeacher, TeacherViewModel.class).getBody();
+        return teacher;
+        
     }
     
     @Override

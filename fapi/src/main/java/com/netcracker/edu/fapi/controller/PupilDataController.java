@@ -25,7 +25,7 @@ public class PupilDataController {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
     
-    @RequestMapping(method = RequestMethod.POST, value = "/new-user")
+    @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/ ){
         if(pupil !=null){
             return ResponseEntity.ok(pupilDataService.savePupil(pupil));
