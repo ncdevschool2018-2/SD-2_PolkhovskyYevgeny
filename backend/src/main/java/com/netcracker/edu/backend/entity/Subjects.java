@@ -17,10 +17,18 @@ public class Subjects {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String subject;
-    private Teacher teacherByTeacherId;
     private int teacherId;
     /*@JsonIgnore
     private Set<Timetable> timetablesById;*/
+    
+    
+    public Subjects() {
+    }
+    
+    public Subjects(String subject, int teacherId) {
+        this.subject = subject;
+        this.teacherId = teacherId;
+    }
     
     @Id
     @Column(name = "id", nullable = false)
@@ -44,15 +52,7 @@ public class Subjects {
     
     
     
-    @ManyToOne
-    @JoinColumn(name = "teacher_id", referencedColumnName = "id", nullable = false)
-    public Teacher getTeacherByTeacherId() {
-        return teacherByTeacherId;
-    }
     
-    public void setTeacherByTeacherId(Teacher teacherByTeacherId) {
-        this.teacherByTeacherId = teacherByTeacherId;
-    }
     
     @Basic
     @Column(name = "teacher_id", nullable = false,insertable=false,updatable =false)
@@ -80,14 +80,13 @@ public class Subjects {
         Subjects subjects = (Subjects) o;
         return id == subjects.id &&
                 teacherId == subjects.teacherId &&
-                Objects.equals(subject, subjects.subject) &&
-                Objects.equals(teacherByTeacherId, subjects.teacherByTeacherId) /*&&
+                Objects.equals(subject, subjects.subject)  /*&&
                 Objects.equals(timetablesById, subjects.timetablesById)*/;
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, subject, teacherByTeacherId, teacherId/*, timetablesById*/);
+        return Objects.hash(id, subject,  teacherId/*, timetablesById*/);
     }
     
     @Override
@@ -95,7 +94,7 @@ public class Subjects {
         return "Subjects{" +
                 "id=" + id +
                 ", subject='" + subject + '\'' +
-                ", teacherByTeacherId=" + teacherByTeacherId +
+                
                 ", teacherId=" + teacherId +
                 /*", timetablesById=" + timetablesById +*/
                 '}';

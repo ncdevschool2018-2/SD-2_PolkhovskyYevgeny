@@ -21,6 +21,14 @@ public class Slots {
     /*@JsonIgnore
     private Set<Timetable> timetablesById;*/
     
+    public Slots() {
+    }
+    
+    public Slots(String startTime, String endTime) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+    }
+    
     @Id
     @Column(name = "id", nullable = false)
     public long getId() {

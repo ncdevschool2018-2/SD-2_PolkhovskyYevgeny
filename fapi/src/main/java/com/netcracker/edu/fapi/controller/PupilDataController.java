@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PupilViewModel;
 import com.netcracker.edu.fapi.service.PupilDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class PupilDataController {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<PupilViewModel> savePupil(@RequestBody PupilViewModel pupil /*todo server validation*/ ){
+    @RequestMapping(method = RequestMethod.POST, value = "/new-user")
+    public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/ ){
         if(pupil !=null){
             return ResponseEntity.ok(pupilDataService.savePupil(pupil));
         }

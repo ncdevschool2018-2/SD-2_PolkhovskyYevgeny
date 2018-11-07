@@ -14,7 +14,10 @@ import {FormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { FooterComponent } from './footer/footer.component';
-
+import {MatNativeDateModule} from '@angular/material';
+import {DemoMaterialModule} from './material-module';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,11 +33,15 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     FormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule.forRoot(),
     HttpClientModule,
     ModalModule.forRoot(),
     Ng4LoadingSpinnerModule.forRoot(),
+    DemoMaterialModule,
+    MatNativeDateModule,
+
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
@@ -46,3 +53,4 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppModule {
 }
+platformBrowserDynamic().bootstrapModule(AppModule);

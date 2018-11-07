@@ -10,16 +10,16 @@ public class SlotsViewModel {
     private int id;
     private String startTime;
     private String endTime;
-    private Collection<Timetable> timetablesById;
+    /*private Collection<Timetable> timetablesById;*/
     
     public SlotsViewModel() {
     }
     
-    public SlotsViewModel(int id, String startTime, String endTime, Collection<Timetable> timetablesById) {
+    public SlotsViewModel(int id, String startTime, String endTime/*, Collection<Timetable> timetablesById*/) {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.timetablesById = timetablesById;
+       /* this.timetablesById = timetablesById;*/
     }
     
     public int getId() {
@@ -46,11 +46,11 @@ public class SlotsViewModel {
         this.endTime = endTime;
     }
     
-    public Collection<Timetable> getTimetablesById() {
+   /* public Collection<Timetable> getTimetablesById() {
         return timetablesById;
     }
     
     public void setTimetablesById(Collection<Timetable> timetablesById) {
         this.timetablesById = timetablesById;
-    }
+    }*/
 }

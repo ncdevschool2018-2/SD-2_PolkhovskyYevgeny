@@ -21,6 +21,14 @@ public class Roles {
     
     //private Set<Users> usersById;
     
+    
+    public Roles() {
+    }
+    
+    public Roles(String name) {
+        this.name = name;
+    }
+    
     @Id
     @Column(name = "id", nullable = false)
     public long getId() {

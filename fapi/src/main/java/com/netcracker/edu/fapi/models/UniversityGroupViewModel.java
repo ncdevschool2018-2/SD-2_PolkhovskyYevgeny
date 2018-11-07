@@ -10,17 +10,17 @@ import java.util.Collection;
 public class UniversityGroupViewModel {
     private int id;
     private String name;
-    private Collection<Pupils> pupilsById;
-    private Collection<Timetable> timetablesById;
+    /*private Collection<Pupils> pupilsById;
+    private Collection<Timetable> timetablesById;*/
     
     public UniversityGroupViewModel() {
     }
     
-    public UniversityGroupViewModel(int id, String name, Collection<Pupils> pupilsById, Collection<Timetable> timetablesById) {
+    public UniversityGroupViewModel(int id, String name/*, Collection<Pupils> pupilsById, Collection<Timetable> timetablesById*/) {
         this.id = id;
         this.name = name;
-        this.pupilsById = pupilsById;
-        this.timetablesById = timetablesById;
+        /*this.pupilsById = pupilsById;
+        this.timetablesById = timetablesById;*/
     }
     
     public int getId() {
@@ -39,7 +39,7 @@ public class UniversityGroupViewModel {
         this.name = name;
     }
     
-    public Collection<Pupils> getPupilsById() {
+    /*public Collection<Pupils> getPupilsById() {
         return pupilsById;
     }
     
@@ -53,5 +53,5 @@ public class UniversityGroupViewModel {
     
     public void setTimetablesById(Collection<Timetable> timetablesById) {
         this.timetablesById = timetablesById;
-    }
+    }*/
 }

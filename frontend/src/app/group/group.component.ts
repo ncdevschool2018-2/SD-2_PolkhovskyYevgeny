@@ -3,7 +3,7 @@ import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
@@ -16,6 +16,7 @@ groups:Group[];
   
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
+              private location: Location,
               ) {
 
   }
@@ -37,5 +38,8 @@ groups:Group[];
      //console.log(this.groups);// don't use console.log in angular :)
       this.loadingService.hide();
     }));
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

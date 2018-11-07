@@ -23,6 +23,13 @@ public class UniversityGroup {
     @JsonIgnore
     private Set<Timetable> timetablesById;*/
     
+    public UniversityGroup() {
+    }
+    
+    public UniversityGroup(String name) {
+        this.name = name;
+    }
+    
     @Id
     @Column(name = "id", nullable = false)
     public long getId() {

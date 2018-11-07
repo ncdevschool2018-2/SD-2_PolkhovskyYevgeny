@@ -13,14 +13,11 @@ public class Timetable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    private Subjects subjectsBySubjectId;
-    private Slots slotsBySlotId;
-    private DaysOfWeek daysOfWeekByDayOfWeekId;
     private int groupId;
     private int subjectId;
     private int slotId;
     private int dayOfWeekId;
-    private UniversityGroup universityGroupByGroupId;
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -34,35 +31,6 @@ public class Timetable {
     
     
     
-    @ManyToOne
-    @JoinColumn(name = "subject_id", referencedColumnName = "id", nullable = false)
-    public Subjects getSubjectsBySubjectId() {
-        return subjectsBySubjectId;
-    }
-    
-    public void setSubjectsBySubjectId(Subjects subjectsBySubjectId) {
-        this.subjectsBySubjectId = subjectsBySubjectId;
-    }
-    
-    @ManyToOne
-    @JoinColumn(name = "slot_id", referencedColumnName = "id", nullable = false)
-    public Slots getSlotsBySlotId() {
-        return slotsBySlotId;
-    }
-    
-    public void setSlotsBySlotId(Slots slotsBySlotId) {
-        this.slotsBySlotId = slotsBySlotId;
-    }
-    
-    @ManyToOne
-    @JoinColumn(name = "day_of_week_id", referencedColumnName = "id", nullable = false)
-    public DaysOfWeek getDaysOfWeekByDayOfWeekId() {
-        return daysOfWeekByDayOfWeekId;
-    }
-    
-    public void setDaysOfWeekByDayOfWeekId(DaysOfWeek daysOfWeekByDayOfWeekId) {
-        this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;
-    }
     
     @Basic
     @Column(name = "group_id", nullable = false,insertable=false,updatable =false)
@@ -106,15 +74,6 @@ public class Timetable {
     
     
     
-    @ManyToOne
-    @JoinColumn(name = "group_id", referencedColumnName = "id", nullable = false)
-    public UniversityGroup getUniversityGroupByGroupId() {
-        return universityGroupByGroupId;
-    }
-    
-    public void setUniversityGroupByGroupId(UniversityGroup universityGroupByGroupId) {
-        this.universityGroupByGroupId = universityGroupByGroupId;
-    }
     
     @Override
     public boolean equals(Object o) {
@@ -125,30 +84,23 @@ public class Timetable {
                 groupId == timetable.groupId &&
                 subjectId == timetable.subjectId &&
                 slotId == timetable.slotId &&
-                dayOfWeekId == timetable.dayOfWeekId &&
-                Objects.equals(subjectsBySubjectId, timetable.subjectsBySubjectId) &&
-                Objects.equals(slotsBySlotId, timetable.slotsBySlotId) &&
-                Objects.equals(daysOfWeekByDayOfWeekId, timetable.daysOfWeekByDayOfWeekId) &&
-                Objects.equals(universityGroupByGroupId, timetable.universityGroupByGroupId);
+                dayOfWeekId == timetable.dayOfWeekId;
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, subjectsBySubjectId, slotsBySlotId, daysOfWeekByDayOfWeekId, groupId, subjectId, slotId, dayOfWeekId, universityGroupByGroupId);
+        return Objects.hash(id,  groupId, subjectId, slotId, dayOfWeekId);
     }
     
     @Override
     public String toString() {
         return "Timetable{" +
                 "id=" + id +
-                ", subjectsBySubjectId=" + subjectsBySubjectId +
-                ", slotsBySlotId=" + slotsBySlotId +
-                ", daysOfWeekByDayOfWeekId=" + daysOfWeekByDayOfWeekId +
                 ", groupId=" + groupId +
                 ", subjectId=" + subjectId +
                 ", slotId=" + slotId +
                 ", dayOfWeekId=" + dayOfWeekId +
-                ", universityGroupByGroupId=" + universityGroupByGroupId +
+                
                 '}';
     }
 }

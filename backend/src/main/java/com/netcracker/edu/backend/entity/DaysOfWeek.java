@@ -1,17 +1,14 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "days_of_week", schema = "control")
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DaysOfWeek {
     @Id
@@ -20,6 +17,13 @@ public class DaysOfWeek {
     private String name;
     /*@JsonIgnore
     private Set<Timetable> timetablesById;*/
+    
+    public DaysOfWeek() {
+    }
+    
+    public DaysOfWeek(String name) {
+        this.name = name;
+    }
     
     @Id
     @Column(name = "id", nullable = false)
@@ -41,7 +45,6 @@ public class DaysOfWeek {
     public void setName(String name) {
         this.name = name;
     }
-    
     
     
     /*@OneToMany(mappedBy = "daysOfWeekByDayOfWeekId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)

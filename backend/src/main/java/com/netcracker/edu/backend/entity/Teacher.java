@@ -1,16 +1,13 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Teacher {
     @Id
@@ -18,11 +15,20 @@ public class Teacher {
     private long id;
     private String name;
     private String surname;
-    private String subject;
-    private Users usersByUserId;
+    
+    
     private int userId;
     /*@JsonIgnore
     private Set<Subjects> subjectsById;*/
+    
+    public Teacher() {
+    }
+    
+    public Teacher(String name, String surname, int userId) {
+        this.name = name;
+        this.surname = surname;
+        this.userId = userId;
+    }
     
     @Id
     @Column(name = "id", nullable = false)
@@ -54,19 +60,8 @@ public class Teacher {
         this.surname = surname;
     }
     
-    @Basic
-    @Column(name = "subject", nullable = false, length = 45)
-    public String getSubject() {
-        return subject;
-    }
     
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-    
-    
-    
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     public Users getUsersByUserId() {
         return usersByUserId;
@@ -75,9 +70,9 @@ public class Teacher {
     public void setUsersByUserId(Users usersByUserId) {
         this.usersByUserId = usersByUserId;
     }
-    
+    */
     @Basic
-    @Column(name = "user_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
     public int getUserId() {
         return userId;
     }
@@ -103,15 +98,15 @@ public class Teacher {
         return id == teacher.id &&
                 userId == teacher.userId &&
                 Objects.equals(name, teacher.name) &&
-                Objects.equals(surname, teacher.surname) &&
-                Objects.equals(subject, teacher.subject) &&
-                Objects.equals(usersByUserId, teacher.usersByUserId) /*&&
+                Objects.equals(surname, teacher.surname) /*&&*/
+                
+                /*Objects.equals(usersByUserId, teacher.usersByUserId)*/ /*&&
                 Objects.equals(subjectsById, teacher.subjectsById)*/;
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, subject, usersByUserId, userId/*, subjectsById*/);
+        return Objects.hash(id, name, surname, userId/*, subjectsById*/);
     }
     
     @Override
@@ -120,8 +115,7 @@ public class Teacher {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", subject='" + subject + '\'' +
-                ", usersByUserId=" + usersByUserId +
+                /*", usersByUserId=" + usersByUserId +*/
                 ", userId=" + userId +
                 /*", subjectsById=" + subjectsById +*/
                 '}';

@@ -15,23 +15,32 @@ import java.util.Set;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String login;
     private String password;
-    private Roles rolesByRoleId;
+    //private Roles rolesByRoleId;
     private int roleId;
     /*@JsonIgnore
     private Set<Pupils> pupilsById;
     @JsonIgnore
     private Set<Teacher> teachersById;*/
     
+    public Users() {
+    }
+    
+    public Users(String login, String password, int roleId) {
+        this.login = login;
+        this.password = password;
+        this.roleId = roleId;
+    }
+    
     @Id
     @Column(name = "id", nullable = false)
-    public int getId() {
+    public long getId() {
         return id;
     }
     
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
     
@@ -56,7 +65,7 @@ public class Users {
     }
     
     
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     public Roles getRolesByRoleId() {
         return rolesByRoleId;
@@ -65,9 +74,9 @@ public class Users {
     public void setRolesByRoleId(Roles rolesByRoleId) {
         this.rolesByRoleId = rolesByRoleId;
     }
-    
+    */
     @Basic
-    @Column(name = "role_id", nullable = false, insertable = false, updatable = false)
+    @Column(name = "role_id", nullable = false)
     public int getRoleId() {
         return roleId;
     }
@@ -103,15 +112,15 @@ public class Users {
         return id == users.id &&
                 roleId == users.roleId &&
                 Objects.equals(login, users.login) &&
-                Objects.equals(password, users.password) &&
-                Objects.equals(rolesByRoleId, users.rolesByRoleId) /*&&
+                Objects.equals(password, users.password) /*&&
+                Objects.equals(rolesByRoleId, users.rolesByRoleId)*/ /*&&
                 Objects.equals(pupilsById, users.pupilsById) &&
                 Objects.equals(teachersById, users.teachersById)*/;
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, login, password, rolesByRoleId, roleId/*, pupilsById, teachersById*/);
+        return Objects.hash(id, login, password, /*rolesByRoleId,*/ roleId/*, pupilsById, teachersById*/);
     }
     
     @Override
@@ -120,7 +129,7 @@ public class Users {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", rolesByRoleId=" + rolesByRoleId +
+                /*", rolesByRoleId=" + rolesByRoleId +*/
                 ", roleId=" + roleId +
                 /*", pupilsById=" + pupilsById +
                 ", teachersById=" + teachersById +*/

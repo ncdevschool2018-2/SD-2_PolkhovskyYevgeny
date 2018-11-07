@@ -10,19 +10,19 @@ import java.util.Collection;
 public class SubjectsViewModel {
     private int id;
     private String subject;
-    private Teacher teacherByTeacherId;
+//    private Teacher teacherByTeacherId;
     private int teacherId;
-    private Collection<Timetable> timetablesById;
+//    private Collection<Timetable> timetablesById;
     
     public SubjectsViewModel() {
     }
     
-    public SubjectsViewModel(int id, String subject, Teacher teacherByTeacherId, int teacherId, Collection<Timetable> timetablesById) {
+    public SubjectsViewModel(int id, String subject, /*Teacher teacherByTeacherId,*/ int teacherId/*, Collection<Timetable> timetablesById*/) {
         this.id = id;
         this.subject = subject;
-        this.teacherByTeacherId = teacherByTeacherId;
+//        this.teacherByTeacherId = teacherByTeacherId;
         this.teacherId = teacherId;
-        this.timetablesById = timetablesById;
+        /*this.timetablesById = timetablesById;*/
     }
     
     public int getId() {
@@ -41,13 +41,13 @@ public class SubjectsViewModel {
         this.subject = subject;
     }
     
-    public Teacher getTeacherByTeacherId() {
-        return teacherByTeacherId;
-    }
-    
-    public void setTeacherByTeacherId(Teacher teacherByTeacherId) {
-        this.teacherByTeacherId = teacherByTeacherId;
-    }
+//    public Teacher getTeacherByTeacherId() {
+//        return teacherByTeacherId;
+//    }
+//
+//    public void setTeacherByTeacherId(Teacher teacherByTeacherId) {
+//        this.teacherByTeacherId = teacherByTeacherId;
+//    }
     
     public int getTeacherId() {
         return teacherId;
@@ -57,11 +57,11 @@ public class SubjectsViewModel {
         this.teacherId = teacherId;
     }
     
-    public Collection<Timetable> getTimetablesById() {
+    /*public Collection<Timetable> getTimetablesById() {
         return timetablesById;
     }
     
     public void setTimetablesById(Collection<Timetable> timetablesById) {
         this.timetablesById = timetablesById;
-    }
+    }*/
 }

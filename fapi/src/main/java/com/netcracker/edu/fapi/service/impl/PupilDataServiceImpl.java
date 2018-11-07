@@ -1,6 +1,8 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PupilViewModel;
+import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.PupilDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -32,9 +34,16 @@ public class PupilDataServiceImpl  implements PupilDataService {
     }
     
     @Override
-    public PupilViewModel savePupil(PupilViewModel pupil) {
+    public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
         RestTemplate restTemplate =new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl+"/api/pupils", pupil,PupilViewModel.class).getBody();
+        UsersViewModel newUser = new UsersViewModel(newPupilViewModel.getLogin(),newPupilViewModel.getPassword(),newPupilViewModel.getRoleId());
+        UsersViewModel user = restTemplate.postForEntity(backendServerUrl + "/api/users", newUser, UsersViewModel.class).getBody();
+        if (user==null){
+            return null;
+        }
+        PupilViewModel newPupil = new PupilViewModel(newPupilViewModel.getName(),newPupilViewModel.getSurname(),newPupilViewModel.getGroupId(),newPupilViewModel.getUserId());
+        PupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, PupilViewModel.class).getBody();
+        return pupil;
     }
     
     @Override

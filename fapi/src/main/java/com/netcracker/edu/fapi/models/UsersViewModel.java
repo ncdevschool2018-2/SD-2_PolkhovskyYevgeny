@@ -12,22 +12,26 @@ public class UsersViewModel {
     private int id;
     private String login;
     private String password;
-    private Roles rolesByRoleId;
+    
     private int roleId;
-    private Collection<Pupils> pupilsById;
-    private Collection<Teacher> teachersById;
+    
     
     public UsersViewModel() {
     }
     
-    public UsersViewModel(int id, String login, String password, Roles rolesByRoleId, int roleId, Collection<Pupils> pupilsById, Collection<Teacher> teachersById) {
+    public UsersViewModel(int id, String login, String password, int roleId) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.rolesByRoleId = rolesByRoleId;
+        
         this.roleId = roleId;
-        this.pupilsById = pupilsById;
-        this.teachersById = teachersById;
+        
+    }
+    
+    public UsersViewModel(String login, String password, int roleId) {
+        this.login = login;
+        this.password = password;
+        this.roleId = roleId;
     }
     
     public int getId() {
@@ -54,13 +58,7 @@ public class UsersViewModel {
         this.password = password;
     }
     
-    public Roles getRolesByRoleId() {
-        return rolesByRoleId;
-    }
     
-    public void setRolesByRoleId(Roles rolesByRoleId) {
-        this.rolesByRoleId = rolesByRoleId;
-    }
     
     public int getRoleId() {
         return roleId;
@@ -70,19 +68,4 @@ public class UsersViewModel {
         this.roleId = roleId;
     }
     
-    public Collection<Pupils> getPupilsById() {
-        return pupilsById;
     }
-    
-    public void setPupilsById(Collection<Pupils> pupilsById) {
-        this.pupilsById = pupilsById;
-    }
-    
-    public Collection<Teacher> getTeachersById() {
-        return teachersById;
-    }
-    
-    public void setTeachersById(Collection<Teacher> teachersById) {
-        this.teachersById = teachersById;
-    }
-}

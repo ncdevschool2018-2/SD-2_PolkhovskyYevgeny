@@ -11,22 +11,19 @@ public class TeacherViewModel {
     private long id;
     private String name;
     private String surname;
-    private String subject;
-    private Users usersByUserId;
+    
+   
     private int userId;
-    private Collection<Subjects> subjectsById;
+    /*private Collection<Subjects> subjectsById;*/
     
     public TeacherViewModel() {
     }
     
-    public TeacherViewModel(long id, String name, String surname, String subject, Users usersByUserId, int userId, Collection<Subjects> subjectsById) {
+    public TeacherViewModel(long id, String name, String surname, int userId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.subject = subject;
-        this.usersByUserId = usersByUserId;
         this.userId = userId;
-        this.subjectsById = subjectsById;
     }
     
     public long getId() {
@@ -53,22 +50,16 @@ public class TeacherViewModel {
         this.surname = surname;
     }
     
-    public String getSubject() {
-        return subject;
-    }
     
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
     
-    public Users getUsersByUserId() {
+    /*public Users getUsersByUserId() {
         return usersByUserId;
     }
     
     public void setUsersByUserId(Users usersByUserId) {
         this.usersByUserId = usersByUserId;
     }
-    
+    */
     public int getUserId() {
         return userId;
     }
@@ -77,11 +68,11 @@ public class TeacherViewModel {
         this.userId = userId;
     }
     
-    public Collection<Subjects> getSubjectsById() {
+    /*public Collection<Subjects> getSubjectsById() {
         return subjectsById;
     }
     
     public void setSubjectsById(Collection<Subjects> subjectsById) {
         this.subjectsById = subjectsById;
-    }
+    }*/
 }

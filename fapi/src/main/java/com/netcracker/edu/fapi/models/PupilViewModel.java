@@ -9,18 +9,24 @@ public class PupilViewModel {
     private int id;
     private String name;
     private String surname;
-    private Users usersByUserId;
     private int groupId;
     private int userId;
     
     public PupilViewModel() {
     }
     
-    public PupilViewModel(int id, String name, String surname, Users usersByUserId, int groupId, int userId) {
+    public PupilViewModel(int id, String name, String surname, int groupId, int userId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
-        this.usersByUserId = usersByUserId;
+        
+        this.groupId = groupId;
+        this.userId = userId;
+    }
+    
+    public PupilViewModel(String name, String surname, int groupId, int userId) {
+        this.name = name;
+        this.surname = surname;
         this.groupId = groupId;
         this.userId = userId;
     }
@@ -49,13 +55,7 @@ public class PupilViewModel {
         this.surname = surname;
     }
     
-    public Users getUsersByUserId() {
-        return usersByUserId;
-    }
     
-    public void setUsersByUserId(Users usersByUserId) {
-        this.usersByUserId = usersByUserId;
-    }
     
     public int getGroupId() {
         return groupId;

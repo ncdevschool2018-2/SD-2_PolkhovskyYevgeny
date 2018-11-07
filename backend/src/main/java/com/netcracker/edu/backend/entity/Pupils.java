@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Pupils {
     @Id
@@ -15,7 +15,7 @@ public class Pupils {
     private long id;
     private String name;
     private String surname;
-    private Users usersByUserId;
+    //private Users usersByUserId;
     private int groupId;
     private int userId;
     /*private UniversityGroup universityGroupByGroupId;*/
@@ -23,12 +23,18 @@ public class Pupils {
     public Pupils(String name, String surname, Users usersByUserId) {
         this.name = name;
         this.surname = surname;
-        this.usersByUserId = usersByUserId;
+        //this.usersByUserId = usersByUserId;
+    }
+    
+    public Pupils(String name, String surname, int groupId, int userId) {
+        this.name = name;
+        this.surname = surname;
+        this.groupId = groupId;
+        this.userId = userId;
     }
     
     public Pupils() {
     }
-    
     
     
     @Id
@@ -63,8 +69,7 @@ public class Pupils {
     }
     
     
-    
-    @ManyToOne
+    /*@ManyToOne
     
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     public Users getUsersByUserId() {
@@ -73,11 +78,11 @@ public class Pupils {
     
     public void setUsersByUserId(Users usersByUserId) {
         this.usersByUserId = usersByUserId;
-    }
+    }*/
     
     @Basic
     
-    @Column(name = "group_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "group_id", nullable = false)
     public int getGroupId() {
         return groupId;
     }
@@ -88,7 +93,7 @@ public class Pupils {
     
     @Basic
     
-    @Column(name = "user_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "user_id", nullable = false)
     public int getUserId() {
         return userId;
     }
@@ -117,14 +122,14 @@ public class Pupils {
                 groupId == pupils.groupId &&
                 userId == pupils.userId &&
                 Objects.equals(name, pupils.name) &&
-                Objects.equals(surname, pupils.surname) &&
-                Objects.equals(usersByUserId, pupils.usersByUserId) /*&&
+                Objects.equals(surname, pupils.surname) /*&&
+                Objects.equals(usersByUserId, pupils.usersByUserId)*/ /*&&
                 Objects.equals(universityGroupByGroupId, pupils.universityGroupByGroupId)*/;
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, usersByUserId, groupId, userId/*, universityGroupByGroupId*/);
+        return Objects.hash(id, name, surname, /*usersByUserId,*/ groupId, userId/*, universityGroupByGroupId*/);
     }
     
     @Override
@@ -133,7 +138,7 @@ public class Pupils {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", usersByUserId=" + usersByUserId +
+               /* ", usersByUserId=" + usersByUserId +*/
                 ", groupId=" + groupId +
                 ", userId=" + userId +
                 /*", universityGroupByGroupId=" + universityGroupByGroupId +*/

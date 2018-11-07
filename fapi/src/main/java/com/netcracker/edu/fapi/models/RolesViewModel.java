@@ -9,15 +9,15 @@ import java.util.Collection;
 public class RolesViewModel {
     private int id;
     private String name;
-    private Collection<Users> usersById;
+    /*private Collection<Users> usersById;*/
     
     public RolesViewModel() {
     }
     
-    public RolesViewModel(int id, String name, Collection<Users> usersById) {
+    public RolesViewModel(int id, String name/*, Collection<Users> usersById*/) {
         this.id = id;
         this.name = name;
-        this.usersById = usersById;
+        /*this.usersById = usersById;*/
     }
     
     public int getId() {
@@ -36,11 +36,11 @@ public class RolesViewModel {
         this.name = name;
     }
     
-    public Collection<Users> getUsersById() {
+   /* public Collection<Users> getUsersById() {
         return usersById;
     }
     
     public void setUsersById(Collection<Users> usersById) {
         this.usersById = usersById;
-    }
+    }*/
 }

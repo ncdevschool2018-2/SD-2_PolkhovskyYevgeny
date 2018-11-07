@@ -9,28 +9,28 @@ import com.netcracker.edu.backend.entity.UniversityGroup;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimetableViewModel {
     private long id;
-    private Subjects subjectsBySubjectId;
-    private Slots slotsBySlotId;
-    private DaysOfWeek daysOfWeekByDayOfWeekId;
+//    private Subjects subjectsBySubjectId;
+//    private Slots slotsBySlotId;
+//    private DaysOfWeek daysOfWeekByDayOfWeekId;
     private int groupId;
     private int subjectId;
     private int slotId;
     private int dayOfWeekId;
-    private UniversityGroup universityGroupByGroupId;
+    /*private UniversityGroup universityGroupByGroupId;*/
     
     public TimetableViewModel() {
     }
     
-    public TimetableViewModel(long id, Subjects subjectsBySubjectId, Slots slotsBySlotId, DaysOfWeek daysOfWeekByDayOfWeekId, int groupId, int subjectId, int slotId, int dayOfWeekId, UniversityGroup universityGroupByGroupId) {
+    public TimetableViewModel(long id, /*Subjects subjectsBySubjectId, Slots slotsBySlotId, DaysOfWeek daysOfWeekByDayOfWeekId,*/ int groupId, int subjectId, int slotId, int dayOfWeekId/*, UniversityGroup universityGroupByGroupId*/) {
         this.id = id;
-        this.subjectsBySubjectId = subjectsBySubjectId;
+        /*this.subjectsBySubjectId = subjectsBySubjectId;
         this.slotsBySlotId = slotsBySlotId;
-        this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;
+        this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;*/
         this.groupId = groupId;
         this.subjectId = subjectId;
         this.slotId = slotId;
         this.dayOfWeekId = dayOfWeekId;
-        this.universityGroupByGroupId = universityGroupByGroupId;
+        /*this.universityGroupByGroupId = universityGroupByGroupId;*/
     }
     
     public long getId() {
@@ -41,7 +41,7 @@ public class TimetableViewModel {
         this.id = id;
     }
     
-    public Subjects getSubjectsBySubjectId() {
+    /*public Subjects getSubjectsBySubjectId() {
         return subjectsBySubjectId;
     }
     
@@ -63,7 +63,7 @@ public class TimetableViewModel {
     
     public void setDaysOfWeekByDayOfWeekId(DaysOfWeek daysOfWeekByDayOfWeekId) {
         this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;
-    }
+    }*/
     
     public int getGroupId() {
         return groupId;
@@ -97,11 +97,11 @@ public class TimetableViewModel {
         this.dayOfWeekId = dayOfWeekId;
     }
     
-    public UniversityGroup getUniversityGroupByGroupId() {
+    /*public UniversityGroup getUniversityGroupByGroupId() {
         return universityGroupByGroupId;
     }
     
     public void setUniversityGroupByGroupId(UniversityGroup universityGroupByGroupId) {
         this.universityGroupByGroupId = universityGroupByGroupId;
-    }
+    }*/
 }

@@ -9,15 +9,15 @@ import java.util.Collection;
 public class DaysOfWeekViewModel {
     private int id;
     private String name;
-    private Collection<Timetable> timetablesById;
+    /*private Collection<Timetable> timetablesById;*/
     
     public DaysOfWeekViewModel() {
     }
     
-    public DaysOfWeekViewModel(int id, String name, Collection<Timetable> timetablesById) {
+    public DaysOfWeekViewModel(int id, String name/*, Collection<Timetable> timetablesById*/) {
         this.id = id;
         this.name = name;
-        this.timetablesById = timetablesById;
+        /*this.timetablesById = timetablesById;*/
     }
     
     public int getId() {
@@ -36,11 +36,11 @@ public class DaysOfWeekViewModel {
         this.name = name;
     }
     
-    public Collection<Timetable> getTimetablesById() {
+   /* public Collection<Timetable> getTimetablesById() {
         return timetablesById;
     }
     
     public void setTimetablesById(Collection<Timetable> timetablesById) {
         this.timetablesById = timetablesById;
-    }
+    }*/
 }
