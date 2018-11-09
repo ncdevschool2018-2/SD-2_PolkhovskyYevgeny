@@ -1,6 +1,7 @@
 package com.netcracker.edu.fapi.service.impl;
 
 import com.netcracker.edu.fapi.models.NewUserViewModel;
+import com.netcracker.edu.fapi.models.SubjectsViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
 import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
@@ -39,8 +40,21 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         if (user==null){
             return null;
         }
-        TeacherViewModel newTeacher = new TeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getUserId());
+        UsersViewModel userLogin = restTemplate.getForObject(backendServerUrl + "/api/users/login/" + user.getLogin(), UsersViewModel.class);
+        if (userLogin == null) {
+            return null;
+        }
+        TeacherViewModel newTeacher = new TeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),userLogin.getId());
         TeacherViewModel teacher = restTemplate.postForEntity(backendServerUrl + "/api/teachers", newTeacher, TeacherViewModel.class).getBody();
+        if (teacher == null) {
+            return null;
+        }
+        TeacherViewModel teacherUserId =restTemplate.getForObject(backendServerUrl+"api/teachers/login/"+teacher.getUserId(),TeacherViewModel.class);
+        if (teacherUserId == null) {
+            return null;
+        }
+        SubjectsViewModel newSubject = new SubjectsViewModel(newTeacherViewModel.getSubject(),teacherUserId.getId());
+        SubjectsViewModel subject=restTemplate.postForEntity(backendServerUrl+"/api/subjects",newSubject,SubjectsViewModel.class).getBody();
         return teacher;
         
     }

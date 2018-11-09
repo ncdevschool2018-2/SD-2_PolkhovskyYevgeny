@@ -14,8 +14,8 @@ public class UsersServiceImpl implements UsersService {
     private UsersRepository repository;
     
     @Autowired
-    public UsersServiceImpl(UsersRepository repository){
-        this.repository=repository;
+    public UsersServiceImpl(UsersRepository repository) {
+        this.repository = repository;
     }
     
     @Override
@@ -36,6 +36,13 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public void deleteUsers(Long id) {
         repository.deleteById(id);
+    }
+    
+    @Override
+    public Users findUserByLogin(String login) {
+        
+        
+        return repository.findUserByLogin(login);
     }
     
 }

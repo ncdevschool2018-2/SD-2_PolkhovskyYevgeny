@@ -33,9 +33,17 @@ public class UsersController {
         return usersService.getAllUsers();
     }
     
+    @RequestMapping(value = "/login/{userLogin}", method = RequestMethod.GET)
+    public Users findUserByLogin(@PathVariable(name = "userLogin") String login) {
+        return usersService.findUserByLogin(login);
+    }
+    
     @RequestMapping(method = RequestMethod.POST)
     public Users saveUsers(@RequestBody Users users) {
-        return usersService.saveUsers(users);
+        Users createdUser = usersService.saveUsers(users);
+        
+        System.out.println(createdUser);
+        return createdUser;
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -43,4 +51,6 @@ public class UsersController {
         usersService.deleteUsers(id);
         return ResponseEntity.noContent().build();
     }
+    
+    
 }

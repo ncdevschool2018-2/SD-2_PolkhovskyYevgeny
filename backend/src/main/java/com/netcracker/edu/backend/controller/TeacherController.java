@@ -33,6 +33,11 @@ public class TeacherController {
         return teacherService.getAllTeacher();
     }
     
+    @RequestMapping(value = "/login/{user-id}", method = RequestMethod.GET)
+    public Teacher findTeacherByUserId(@PathVariable(name = "user-id") int userId) {
+        return teacherService.findTeacherByUserId(userId);
+    }
+    
     @RequestMapping(method = RequestMethod.POST)
     public Teacher saveTeacher(@RequestBody Teacher teacher) {
         return teacherService.saveTeacher(teacher);

@@ -9,4 +9,5 @@ public interface TeacherService {
     Optional<Teacher> getTeacherById(Long id);
     Iterable<Teacher> getAllTeacher();
     void deleteTeacher(Long id);
+    Teacher findTeacherByUserId(int userId);
 }

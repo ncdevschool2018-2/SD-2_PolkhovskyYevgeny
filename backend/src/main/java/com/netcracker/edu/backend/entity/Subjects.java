@@ -55,7 +55,7 @@ public class Subjects {
     
     
     @Basic
-    @Column(name = "teacher_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "teacher_id", nullable = false)
     public int getTeacherId() {
         return teacherId;
     }

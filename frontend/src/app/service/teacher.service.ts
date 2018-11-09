@@ -10,6 +10,6 @@ export class TeacherService {
 
   constructor(private http: HttpClient) { }
   saveNewTeacher(newUser: NewUser): Observable<NewUser> {
-    return this.http.post<NewUser>('/api/pupil/new-teacher', newUser);
+    return this.http.post<NewUser>('/api/teacher/new-teacher', newUser);
   }
 }

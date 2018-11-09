@@ -8,8 +8,6 @@ import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {ActivatedRoute} from "@angular/router";
 import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
-import {Users} from "../model/users";
-import {UsersService} from "../service/users.service";
 
 @Component({
   selector: 'app-group-content',
@@ -19,23 +17,23 @@ import {UsersService} from "../service/users.service";
 export class GroupContentComponent implements OnInit {
   public groupContent: GroupContent[];
   public editableGC: GroupContent = new GroupContent();
-  public editableUser: Users = new Users();
+
   public modalRef: BsModalRef;
   private subscriptions: Subscription[] = [];
   public groups: Group[];
-  public users: Users[];
-public  delId:number;
+
+
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
               private route: ActivatedRoute,
               private groupService: GroupService,
-              private userService: UsersService) {
+  ) {
   }
 
   ngOnInit() {
     this.loadGroupContent();
-    this.loadUsers();
+
   }
 
   private loadGroupContent(): void {
@@ -68,19 +66,8 @@ public  delId:number;
 
 
   public _deletePupil(groupContentId: string): void {
-  debugger;
-  for (let gc of this.groupContent) {
-      if (gc.id == parseInt(groupContentId, 10)){
-        this.delId=gc.userId;
-        break;
-      }
-    }debugger;
-    for (let user of this.users) {
-      if (user.id == this.delId){
-        this._deleteUser(user.id.toString());
-        break;
-      }
-    }
+
+
     this.subscriptions.push(this.groupContentService.deleteGroupContent(groupContentId).subscribe(() => {
       this._updateGroupContent();
     }));
@@ -98,8 +85,7 @@ public  delId:number;
     this.editableGC = GroupContent.cloneBase(groupContent);
 
 
-    this.modalRef = this.modalService.show(template); // and when the user clicks on the button to open the popup
-                                                      // we keep the modal reference and pass the template local name to the modalService.
+    this.modalRef = this.modalService.show(template);
   }
 
   public _addGroupContent(): void {
@@ -118,28 +104,10 @@ public  delId:number;
   }
 
   private loadGroups(): void {
-    // Get data from BillingAccountService
+
     this.subscriptions.push(this.groupService.getGroups().subscribe(groups => {
-      // Parse json response into local array
+
       this.groups = groups as Group[];
-      // Check data in console
-      //console.log(this.groups);// don't use console.log in angular :)
-    }));
-  }
-
-  private loadUsers(): void {
-    // Get data from BillingAccountService
-    this.subscriptions.push(this.userService.getUsers().subscribe(users => {
-      // Parse json response into local array
-      this.users = users as Users[];
-      // Check data in console
-      //console.log(this.groups);// don't use console.log in angular :)
-    }));
-  }
-
-  public _deleteUser(userId: string): void {
-
-    this.subscriptions.push(this.userService.deleteUsers(userId).subscribe(() => {
 
     }));
   }

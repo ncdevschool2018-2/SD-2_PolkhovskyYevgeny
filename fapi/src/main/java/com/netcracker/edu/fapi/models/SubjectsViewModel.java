@@ -25,6 +25,11 @@ public class SubjectsViewModel {
         /*this.timetablesById = timetablesById;*/
     }
     
+    public SubjectsViewModel(String subject, int teacherId) {
+        this.subject = subject;
+        this.teacherId = teacherId;
+    }
+    
     public int getId() {
         return id;
     }

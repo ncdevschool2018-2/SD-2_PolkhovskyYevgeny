@@ -9,5 +9,6 @@ public interface UsersService {
     Optional<Users> getUsersById(Long id);
     Iterable<Users> getAllUsers();
     void deleteUsers(Long id);
+    Users findUserByLogin(String login);
     
 }

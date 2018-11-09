@@ -12,7 +12,7 @@ import java.util.Objects;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String name;
     private String surname;
     
@@ -32,11 +32,11 @@ public class Teacher {
     
     @Id
     @Column(name = "id", nullable = false)
-    public long getId() {
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     
@@ -72,7 +72,7 @@ public class Teacher {
     }
     */
     @Basic
-    @Column(name = "user_id", nullable = false, insertable = false, updatable = false)
+    @Column(name = "user_id", nullable = false)
     public int getUserId() {
         return userId;
     }
