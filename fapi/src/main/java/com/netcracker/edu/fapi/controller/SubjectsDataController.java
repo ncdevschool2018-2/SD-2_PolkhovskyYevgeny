@@ -18,6 +18,14 @@ public class SubjectsDataController {
     public ResponseEntity<List<SubjectsViewModel>> getAllSubjects() {
         return ResponseEntity.ok(subjectsDataService.getAll());
     }
+    @RequestMapping(value = "/dist", method = RequestMethod.GET)
+    public ResponseEntity<List<SubjectsViewModel>> getDistinctSubject() {
+        return ResponseEntity.ok(subjectsDataService.getDistinctSubject());
+    }
+    @RequestMapping(value = "/chooseIdfapi/{sub}", method = RequestMethod.GET)
+    public ResponseEntity<List<Integer>> getIdChoosenSubject(@PathVariable String sub) {
+        return ResponseEntity.ok(subjectsDataService.getIdChoosenSubject(sub));
+    }
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectsViewModel> saveSubjects(@RequestBody SubjectsViewModel subjects /*todo server validation*/) {

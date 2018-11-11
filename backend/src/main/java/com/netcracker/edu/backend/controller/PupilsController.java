@@ -34,6 +34,7 @@ public class PupilsController {
     public Iterable<Pupils> getAllPupils() {
         return pupilsService.getAllPupils();
     }
+    
     @RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Pupils>> getAllPupils(@PathVariable(name = "id") int id) {
         List<Pupils> pupils = pupilsService.getByGroupId(id);

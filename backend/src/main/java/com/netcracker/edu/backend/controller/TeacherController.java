@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -36,6 +37,19 @@ public class TeacherController {
     @RequestMapping(value = "/login/{user-id}", method = RequestMethod.GET)
     public Teacher findTeacherByUserId(@PathVariable(name = "user-id") int userId) {
         return teacherService.findTeacherByUserId(userId);
+    }
+    
+    @RequestMapping(value = "/chooseTeacher/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Teacher>> getAllByIdIsIn(@PathVariable(name = "id") Integer[] id) {
+        List<Teacher> teachers = teacherService.getAllByIdIsIn(id);
+        
+        
+        if(teachers!=null && !teachers.isEmpty()){
+            return ResponseEntity.ok(teachers);
+        }else {
+            return ResponseEntity.notFound().build();
+            
+        }
     }
     
     @RequestMapping(method = RequestMethod.POST)

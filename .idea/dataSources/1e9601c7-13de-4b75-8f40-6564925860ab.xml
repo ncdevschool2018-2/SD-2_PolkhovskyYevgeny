@@ -1171,13 +1171,12 @@
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="297" parent="281" name="user_id_UNIQUE">
-      <ColNames>user_id</ColNames>
-      <Unique>1</Unique>
+    <index id="297" parent="281" name="group_id_idx">
+      <ColNames>group_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="298" parent="281" name="group_id_idx">
-      <ColNames>group_id</ColNames>
+    <index id="298" parent="281" name="pupil_fk_idx">
+      <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="299" parent="281" name="PRIMARY">
@@ -1185,19 +1184,7 @@
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="300" parent="281" name="user_id_UNIQUE">
-      <ColNames>user_id</ColNames>
-      <UnderlyingIndexName>user_id_UNIQUE</UnderlyingIndexName>
-    </key>
-    <foreign-key id="301" parent="281" name="group_id">
-      <ColNames>group_id</ColNames>
-      <RefSchemaName>control</RefSchemaName>
-      <RefTableName>university_group</RefTableName>
-      <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-      <OnDelete>cascade</OnDelete>
-    </foreign-key>
-    <foreign-key id="302" parent="281" name="user_id_fk1">
+    <foreign-key id="300" parent="281" name="pupil_fk">
       <ColNames>user_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1205,77 +1192,77 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="303" parent="282" name="id">
+    <column id="301" parent="282" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="304" parent="282" name="name">
+    <column id="302" parent="282" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="305" parent="282" name="PRIMARY">
+    <key id="303" parent="282" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="306" parent="283" name="id">
+    <column id="304" parent="283" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="307" parent="283" name="start_time">
+    <column id="305" parent="283" name="start_time">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="308" parent="283" name="end_time">
+    <column id="306" parent="283" name="end_time">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="309" parent="283" name="PRIMARY">
+    <key id="307" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="310" parent="284" name="id">
+    <column id="308" parent="284" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="311" parent="284" name="subject">
+    <column id="309" parent="284" name="subject">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="312" parent="284" name="teacher_id">
+    <column id="310" parent="284" name="teacher_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="313" parent="284" name="subject_id_fk_idx">
+    <index id="311" parent="284" name="teacher_id_fk_idx">
       <ColNames>teacher_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="314" parent="284" name="PRIMARY">
+    <key id="312" parent="284" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="315" parent="284" name="teacher_id_fk">
+    <foreign-key id="313" parent="284" name="teacher_id_fk">
       <ColNames>teacher_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>teacher</RefTableName>
@@ -1283,51 +1270,41 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="316" parent="285" name="id">
+    <column id="314" parent="285" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="317" parent="285" name="name">
+    <column id="315" parent="285" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="318" parent="285" name="surname">
+    <column id="316" parent="285" name="surname">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="319" parent="285" name="subject">
+    <column id="317" parent="285" name="user_id">
       <Position>4</Position>
-      <DataType>varchar(45)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="320" parent="285" name="user_id">
-      <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="321" parent="285" name="subject_id_fk_idx">
-      <ColNames>subject</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="322" parent="285" name="teacher_id_idx">
+    <index id="318" parent="285" name="teacher_id_idx">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="323" parent="285" name="PRIMARY">
+    <key id="319" parent="285" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="324" parent="285" name="teacher_id">
+    <foreign-key id="320" parent="285" name="teacher_id">
       <ColNames>user_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>users</RefTableName>
@@ -1335,59 +1312,59 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="325" parent="286" name="id">
+    <column id="321" parent="286" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="326" parent="286" name="group_id">
+    <column id="322" parent="286" name="group_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="327" parent="286" name="subject_id">
+    <column id="323" parent="286" name="subject_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="328" parent="286" name="slot_id">
+    <column id="324" parent="286" name="slot_id">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="329" parent="286" name="day_of_week_id">
+    <column id="325" parent="286" name="day_of_week_id">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="330" parent="286" name="group_id_fk_idx">
+    <index id="326" parent="286" name="group_id_fk_idx">
       <ColNames>group_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="331" parent="286" name="subject_id_fk_idx">
+    <index id="327" parent="286" name="subject_id_fk_idx">
       <ColNames>subject_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="332" parent="286" name="time_id_fk_idx">
+    <index id="328" parent="286" name="time_id_fk_idx">
       <ColNames>slot_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="333" parent="286" name="day_id_fk_idx">
+    <index id="329" parent="286" name="day_id_fk_idx">
       <ColNames>day_of_week_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="334" parent="286" name="PRIMARY">
+    <key id="330" parent="286" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="335" parent="286" name="group_id_fk">
+    <foreign-key id="331" parent="286" name="group_id_fk">
       <ColNames>group_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>university_group</RefTableName>
@@ -1395,7 +1372,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="336" parent="286" name="subject_id_fk">
+    <foreign-key id="332" parent="286" name="subject_id_fk">
       <ColNames>subject_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>subjects</RefTableName>
@@ -1403,7 +1380,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="337" parent="286" name="time_id_fk">
+    <foreign-key id="333" parent="286" name="time_id_fk">
       <ColNames>slot_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>slots</RefTableName>
@@ -1411,7 +1388,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="338" parent="286" name="day_id_fk">
+    <foreign-key id="334" parent="286" name="day_id_fk">
       <ColNames>day_of_week_id</ColNames>
       <RefSchemaName>control</RefSchemaName>
       <RefTableName>days_of_week</RefTableName>
@@ -1419,56 +1396,74 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="339" parent="287" name="id">
+    <column id="335" parent="287" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="287" name="name">
+    <column id="336" parent="287" name="name">
       <Position>2</Position>
       <DataType>varchar(45)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="341" parent="287" name="PRIMARY">
+    <key id="337" parent="287" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="342" parent="288" name="id">
+    <column id="338" parent="288" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="343" parent="288" name="role_id">
+    <column id="339" parent="288" name="role_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="344" parent="288" name="login">
+    <column id="340" parent="288" name="login">
       <Position>3</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="345" parent="288" name="password">
+    <column id="341" parent="288" name="password">
       <Position>4</Position>
       <DataType>varchar(45)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="346" parent="288" name="role_id_fk_idx">
+    <index id="342" parent="288" name="id_UNIQUE">
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="343" parent="288" name="login_UNIQUE">
+      <ColNames>login</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="344" parent="288" name="role_id_fk_idx">
       <ColNames>role_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="347" parent="288" name="PRIMARY">
+    <key id="345" parent="288" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
+    </key>
+    <key id="346" parent="288" name="id_UNIQUE">
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>id_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="347" parent="288" name="login_UNIQUE">
+      <ColNames>login</ColNames>
+      <UnderlyingIndexName>login_UNIQUE</UnderlyingIndexName>
     </key>
     <foreign-key id="348" parent="288" name="role_id_fk">
       <ColNames>role_id</ColNames>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/api/subjects")
@@ -31,6 +32,42 @@ public class SubjectsController {
     public Iterable<Subjects> getAllSubjects() {
         return subjectsService.getAllSubjects();
     }
+    
+    @RequestMapping(value = "/dist", method = RequestMethod.GET)
+    public ResponseEntity<List<Subjects>> getDistinctSubject() {
+        List<Subjects> subjects = subjectsService.getDistinctSubject();
+        if(subjects!=null && !subjects.isEmpty()){
+            return ResponseEntity.ok(subjects);
+        }else {
+            return ResponseEntity.notFound().build();
+    
+        }
+    }
+    @RequestMapping(value = "/choose/{sub}", method = RequestMethod.GET)
+    public ResponseEntity<List<Subjects>> getAllBySubject(@PathVariable(name = "sub") String sub) {
+        List<Subjects> subjects = subjectsService.getAllBySubject(sub);
+    
+    
+        if(subjects!=null && !subjects.isEmpty()){
+            return ResponseEntity.ok(subjects);
+        }else {
+            return ResponseEntity.notFound().build();
+        
+        }
+    }
+    @RequestMapping(value = "/chooseId/{sub}", method = RequestMethod.GET)
+    public ResponseEntity<Integer[]> getIdChoosenSubject(@PathVariable(name = "sub") String sub) {
+        Integer[] subjects = subjectsService.getIdChoosenSubject(sub);
+    
+    
+        if(subjects!=null ){
+            return ResponseEntity.ok(subjects);
+        }else {
+            return ResponseEntity.notFound().build();
+        
+        }
+    }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public Subjects saveSubjects(@RequestBody Subjects subjects) {

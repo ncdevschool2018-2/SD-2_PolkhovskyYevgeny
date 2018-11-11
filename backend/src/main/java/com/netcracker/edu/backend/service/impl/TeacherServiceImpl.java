@@ -6,6 +6,7 @@ import com.netcracker.edu.backend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -30,6 +31,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public Iterable<Teacher> getAllTeacher() {
         return repository.findAll();
+    }
+    
+    @Override
+    public List<Teacher> getAllByIdIsIn(Integer[] id) {
+        return repository.findAllByIdIsIn(id);
     }
     
     @Override

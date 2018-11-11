@@ -13,6 +13,14 @@ import {NewUser} from "../model/newUser";
 import {PupilService} from "../service/pupil.service";
 import {TeacherService} from "../service/teacher.service";
 import {Timetable} from "../model/timetable";
+import {SlotService} from "../service/slot.service";
+import {Slots} from "../model/slots";
+import {Subjects} from "../model/subjects";
+import {DaysOfWeek} from "../model/daysOfWeek";
+import {SubjectService} from "../service/subject.service";
+import {DaysOfWeekService} from "../service/days-of-week.service";
+import {TimetableService} from "../service/timetable.service";
+import {Teacher} from "../model/teacher";
 
 
 @Component({
@@ -25,6 +33,9 @@ export class AdminComponent implements OnInit {
 
   public groups: Group[];
   public users: Users[];
+  public slots: Slots[];
+  public subjects: Subjects[];
+  public daysOfWeek: DaysOfWeek[];
   public editableGroup: Group = new Group();
   public timetable: Timetable[];
   public editableNewUser: NewUser = new NewUser();
@@ -32,9 +43,12 @@ export class AdminComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public modalRef: BsModalRef;
   public roles: Roles[];
+  public  chooseSubject:string;
+  public  chooseTeachers:number;
+  public  chooseTeachersName:Teacher[];
 
 
-  readonly radio = new FormControl('1');
+
 
   constructor(
     private groupService: GroupService,
@@ -44,6 +58,10 @@ export class AdminComponent implements OnInit {
     private userService: UsersService,
     private pupilService: PupilService,
     private teacherService: TeacherService,
+    private slotService:SlotService,
+    private subjectService:SubjectService,
+    private daysOfWeekService:DaysOfWeekService,
+    private timeTableService:TimetableService
   ) {
   }
 
@@ -51,6 +69,8 @@ export class AdminComponent implements OnInit {
     this.editableNewUser.roleId = 1;
     this.loadGroups();
     this.loadUsers();
+    this.loadSubject();
+
   }
 
   public _openModal(template: TemplateRef<any>): void {
@@ -109,6 +129,8 @@ export class AdminComponent implements OnInit {
   }
   public _openModalTimetable(template: TemplateRef<any>): void {
     this.refreshGroup();
+    this.loadSlot();
+    this.loadDaysOfWeek();
     this.modalRef = this.modalService.show(template);
     this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
       this.roles = roles as Roles[];
@@ -128,12 +150,36 @@ export class AdminComponent implements OnInit {
       this.users = users as Users[];
     }));
   }
-  private loadSlotId(): void {
+  private loadSlot(): void {
 
 
-    this.subscriptions.push(this.userService.getUsers().subscribe(users => {
+    this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
 
-      this.users = users as Users[];
+      this.slots = slots as Slots[];
+    }));
+  }
+  private loadSubject(): void {
+
+
+    this.subscriptions.push(this.subjectService.getSubject().subscribe(subject => {
+
+      this.subjects = subject as Subjects[];
+    }));
+  }
+  private loadDaysOfWeek(): void {
+
+
+    this.subscriptions.push(this.daysOfWeekService.getDaysOfWeek().subscribe(daysOfWeek => {
+
+      this.daysOfWeek = daysOfWeek as DaysOfWeek[];
+    }));
+  }
+  private loadTimetable(): void {
+
+
+    this.subscriptions.push(this.timeTableService.getTimetable().subscribe(timetable => {
+
+      this.timetable = timetable as Timetable[];
     }));
   }
 
@@ -156,6 +202,37 @@ export class AdminComponent implements OnInit {
       this._closeModal();
     }));
   }
+  public _addTimeTable(): void {
+    for (let subj of this.subjects) {
+      if(subj.teacherId==this.chooseTeachers){
+        this.editableTimetable.subjectId=subj.id;
+      }
+    }
 
+    this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
+      this._updateTimetable();
+      this.refreshTimetable();
+      this.modalRef.hide();
+    }));
+  }
+  public _updateTimetable(): void {
+    this.loadTimetable();
+  }
+  private refreshTimetable(): void {
+    this.editableTimetable = new Timetable();
+  }
 
+  public _checkForTeachers(chooseSubject){
+    this.loadChooseTeachers(chooseSubject);
+
+  }
+
+  private loadChooseTeachers(choose:String): void {
+      //this.chooseId=new Number();
+    this.subscriptions.push(this.teacherService.getTeacherName(choose).subscribe(chooseTeachersName => {
+
+      this.chooseTeachersName = chooseTeachersName as Teacher[];
+    }));
+
+  }
 }

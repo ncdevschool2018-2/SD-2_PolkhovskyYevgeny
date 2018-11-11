@@ -33,7 +33,7 @@ public class Timetable {
     
     
     @Basic
-    @Column(name = "group_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "group_id", nullable = false)
     public int getGroupId() {
         return groupId;
     }
@@ -43,7 +43,7 @@ public class Timetable {
     }
     
     @Basic
-    @Column(name = "subject_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "subject_id", nullable = false)
     public int getSubjectId() {
         return subjectId;
     }
@@ -53,7 +53,7 @@ public class Timetable {
     }
     
     @Basic
-    @Column(name = "slot_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "slot_id", nullable = false)
     public int getSlotId() {
         return slotId;
     }
@@ -63,7 +63,7 @@ public class Timetable {
     }
     
     @Basic
-    @Column(name = "day_of_week_id", nullable = false,insertable=false,updatable =false)
+    @Column(name = "day_of_week_id", nullable = false)
     public int getDayOfWeekId() {
         return dayOfWeekId;
     }

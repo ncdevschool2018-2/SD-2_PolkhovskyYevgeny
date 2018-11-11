@@ -30,6 +30,23 @@ public class SubjectsDataServiceImpl  implements SubjectsDataService {
     }
     
     @Override
+    public List<SubjectsViewModel> getDistinctSubject() {
+        RestTemplate restTemplate = new RestTemplate();
+        SubjectsViewModel[] subjectsViewModelsResponse=
+                restTemplate.getForObject(backendServerUrl+"/api/subjects/dist",SubjectsViewModel[].class);
+        return subjectsViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelsResponse);
+    }
+    
+    @Override
+    public List<Integer> getIdChoosenSubject(String subject) {
+        RestTemplate restTemplate = new RestTemplate();
+        Integer[] chooseSbjId=
+                restTemplate.getForObject(backendServerUrl+"/api/subjects/chooseId/"+subject,Integer[].class);
+        return chooseSbjId == null ? Collections.emptyList() : Arrays.asList(chooseSbjId);
+    
+    }
+    
+    @Override
     public SubjectsViewModel saveSubjects(SubjectsViewModel subject) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/subjects", subject, SubjectsViewModel.class).getBody();

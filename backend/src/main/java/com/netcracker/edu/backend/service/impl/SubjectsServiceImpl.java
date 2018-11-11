@@ -6,6 +6,7 @@ import com.netcracker.edu.backend.service.SubjectsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -32,6 +33,22 @@ public class SubjectsServiceImpl implements SubjectsService {
     public Iterable<Subjects> getAllSubjects() {
         return repository.findAll();
     }
+    
+    @Override
+    public List<Subjects> getDistinctSubject() {
+        return repository.findDistinctSubject();
+    }
+    
+    @Override
+    public List<Subjects> getAllBySubject(String subject) {
+        return repository.findAllBySubject(subject);
+    }
+    
+    @Override
+    public Integer[] getIdChoosenSubject(String subject) {
+        return repository.findIdChoosenSubject(subject);
+    }
+    
     
     @Override
     public void deleteSubjects(Long id) {

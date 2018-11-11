@@ -26,10 +26,31 @@ public class TeacherDataServiceImpl implements TeacherDataService {
                 restTemplate.getForObject(backendServerUrl + "/api/teachers/all", TeacherViewModel[].class);
         return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
     }
+    @Override
+    public List<TeacherViewModel> getTeachersSbj(String sbj) {
+        RestTemplate restTemplate = new RestTemplate();
+        Integer[] chooseSbjId=
+                restTemplate.getForObject(backendServerUrl+"/api/subjects/chooseId/"+sbj,Integer[].class);
+        if (chooseSbjId==null){
+            return null;
+        }
+        Arrays.asList(chooseSbjId);
+        String s="";
+        for (int i = 0; i <chooseSbjId.length ; i++) {
+            s+=chooseSbjId[i]+",";
+        }
+        System.out.println(s);
+        TeacherViewModel[] teacherViewModelResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/teachers/chooseTeacher/"+ s, TeacherViewModel[].class);
+        return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
+    }
     
     @Override
-    public TeacherViewModel getTeacherById(Long id) {
-        return null;
+    public TeacherViewModel getTeacherById(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+        TeacherViewModel teacherViewModelResp=
+                restTemplate.getForObject(backendServerUrl + "/api/teachers/"+id, TeacherViewModel.class);
+        return teacherViewModelResp;
     }
     
     @Override
