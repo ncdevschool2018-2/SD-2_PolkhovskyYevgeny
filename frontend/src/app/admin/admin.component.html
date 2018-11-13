@@ -31,6 +31,7 @@
         All Groups
       </button>
 
+
       <a class="p-2 text-muted" href="#">Search Teacher</a>
 
     </nav>
@@ -42,7 +43,10 @@
               (click)="_openModalTimetable(templateTimeTable)">
         Add point in timetable
       </button>
-
+      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+              routerLink="/timetable">
+        Show TimeTable
+      </button>
 
     </nav>
 
@@ -294,11 +298,11 @@
       <label>SUBJECT</label>
       <div>
         <mat-radio-group class="example-radio-group" [(ngModel)]="chooseSubject">
-          <mat-radio-button class="example-radio-button" onclick="_checkForTeachers(chooseSubject)" name="subjectId" *ngFor="let subject of subjects"
+          <mat-radio-button class="example-radio-button"  name="subjectId" *ngFor="let subject of subjects"
                             [value]="subject.subject">
             {{subject.subject}}{{" "}}
           </mat-radio-button>
-
+          {{chooseSubject}}
         </mat-radio-group>
 
       </div>
@@ -313,7 +317,7 @@
                             [value]="chooseTeach.id">
             {{chooseTeach.name }}{{" "}}{{  chooseTeach.surname}}
           </mat-radio-button>
-
+          {{chooseTeachers}}
         </mat-radio-group>
       </div>
     </div>

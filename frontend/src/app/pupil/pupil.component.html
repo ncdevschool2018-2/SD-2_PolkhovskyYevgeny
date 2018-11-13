@@ -1,5 +1,3 @@
-
-
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" routerLink="/pupil">Pupil's name</a>
@@ -23,21 +21,26 @@
   </thead>
 
   <tr *ngFor="let monday of mondays">
-    <td width="10%">{{monday.number}}</td><td> <span routerLink="/teacherinfo" >{{monday.subject}}</span></td><td> {{monday.time}}</td><td> {{monday.adres}}</td>
+    <td width="10%">{{monday.number}}</td>
+    <td><span routerLink="/teacherinfo">{{monday.subject}}</span></td>
+    <td> {{monday.time}}</td>
+    <td> {{monday.adres}}</td>
 
   </tr>
 
 
-
   <thead class="thead-dark">
-  <tr >
-    <th colspan="4"  scope="col">Tuesday</th>
+  <tr>
+    <th colspan="4" scope="col">Tuesday</th>
 
   </tr>
   </thead>
   <tr *ngFor="let tuesday of tuesdays">
 
-  <td width="10%">{{tuesday.number}}</td><td> <span routerLink="/teacherinfo" >{{tuesday.subject}}</span></td><td> {{tuesday.time}}</td><td> {{tuesday.adres}}</td>
+    <td width="10%">{{tuesday.number}}</td>
+    <td><span routerLink="/teacherinfo">{{tuesday.subject}}</span></td>
+    <td> {{tuesday.time}}</td>
+    <td> {{tuesday.adres}}</td>
 
   </tr>
 
@@ -48,7 +51,10 @@
   </tr>
   </thead>
   <tr *ngFor="let wednesday of wednesdays">
-    <td width="10%">{{wednesday.number}}</td><td> <span routerLink="/teacherinfo" >{{wednesday.subject}}</span></td><td> {{wednesday.time}}</td><td> {{wednesday.adres}}</td>
+    <td width="10%">{{wednesday.number}}</td>
+    <td><span routerLink="/teacherinfo">{{wednesday.subject}}</span></td>
+    <td> {{wednesday.time}}</td>
+    <td> {{wednesday.adres}}</td>
 
   </tr>
   <thead class="thead-dark">
@@ -58,7 +64,10 @@
   </tr>
   </thead>
   <tr *ngFor="let thursday of thursdays">
-    <td width="10%">{{thursday.number}}</td><td> <span routerLink="/teacherinfo" >{{thursday.subject}}</span></td><td> {{thursday.time}}</td><td> {{thursday.adres}}</td>
+    <td width="10%">{{thursday.number}}</td>
+    <td><span routerLink="/teacherinfo">{{thursday.subject}}</span></td>
+    <td> {{thursday.time}}</td>
+    <td> {{thursday.adres}}</td>
 
   </tr>
   <thead class="thead-dark">
@@ -68,7 +77,10 @@
   </tr>
   </thead>
   <tr *ngFor="let friday of fridays">
-    <td width="10%">{{friday.number}}</td><td> <span routerLink="/teacherinfo" >{{friday.subject}}</span></td><td> {{friday.time}}</td><td> {{friday.adres}}</td>
+    <td width="10%">{{friday.number}}</td>
+    <td><span routerLink="/teacherinfo">{{friday.subject}}</span></td>
+    <td> {{friday.time}}</td>
+    <td> {{friday.adres}}</td>
 
   </tr>
 

@@ -63,27 +63,12 @@
         surname is incorrect
       </div>-->
     </div>
-    <div class="form-group">
-      <label>group</label>
-      <input class="form-control" name="groupId" [(ngModel)]="editableGC.groupId" #groupId="ngModel"
-             required/>
-      <!--<div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
-        surname is incorrect
-      </div>-->
-    </div>
-    <div>
-      <mat-form-field>
-        <mat-select placeholder="Group">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let group of groups" [value]="group.id">{{group.name}}</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+
 
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="_addGroupContent(name, surname,groupId)"
+    <button type="button" class="btn btn-default" (click)="_addGroupContent(name, surname)"
             [disabled]="name.invalid || surname.invalid ">{{"Save"}}
     </button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>

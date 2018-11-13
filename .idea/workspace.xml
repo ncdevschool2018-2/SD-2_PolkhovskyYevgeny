@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34caa61a-a4c3-4808-a396-12033d779558" name="Default" comment="adding new user and pupil">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1e9601c7-13de-4b75-8f40-6564925860ab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1e9601c7-13de-4b75-8f40-6564925860ab.xml" afterDir="false" />
+    <list default="true" id="34caa61a-a4c3-4808-a396-12033d779558" name="Default" comment="adding timetable">
+      <change afterPath="$PROJECT_DIR$/frontend/src/app/model/timetableExample.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/PupilsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/PupilsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/SubjectsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/SubjectsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TeacherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TeacherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Subjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Subjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TimetableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TimetableController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Timetable.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Timetable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/SubjectsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/SubjectsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TeacherRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TeacherRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/SubjectsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/SubjectsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TeacherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TeacherService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TeacherServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TeacherServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/PupilsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/PupilsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/SubjectsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/SubjectsController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/entity/Subjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/entity/Subjects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/repository/SubjectsRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/repository/SubjectsRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/SubjectsService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/SubjectsService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/SubjectsDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/SubjectsDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TeacherDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TeacherDataController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/SubjectsDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/SubjectsDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TeacherDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TeacherDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TimetableRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TimetableRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TimetableService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TimetableService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TimetableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TimetableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/TeacherController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/controller/TeacherController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/entity/Timetable.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/entity/Timetable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/repository/TeacherRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/repository/TeacherRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/TeacherService.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/TeacherService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/impl/TeacherServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/netcracker/edu/backend/service/impl/TeacherServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TimetableDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TimetableDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/controller/SubjectsDataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/controller/SubjectsDataController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/controller/TeacherDataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/controller/TeacherDataController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/SubjectsDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/SubjectsDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/TeacherDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/TeacherDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/fapi/target/classes/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/admin/admin.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/days-of-week.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/days-of-week.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/slot.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/slot.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/group/group.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/group/group.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/group/group.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/group/group.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/pupil/pupil.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/pupil/pupil.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/app/service/subject.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/subject.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/teacher.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/teacher.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -79,6 +84,25 @@
     </expand>
     <select />
   </component>
+  <component name="DockManager">
+    <window id="6">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="680">
+                    <caret line="56" column="110" selection-start-line="56" selection-start-column="110" selection-end-line="56" selection-end-column="110" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="1344983577">
       <usages-collector id="statistics.lifecycle.project">
@@ -99,41 +123,41 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="35" />
+          <entry key="class" value="43" />
           <entry key="css" value="39" />
           <entry key="group" value="2" />
           <entry key="groups" value="2" />
-          <entry key="html" value="122" />
+          <entry key="html" value="136" />
           <entry key="ico" value="1" />
-          <entry key="java" value="906" />
+          <entry key="java" value="960" />
           <entry key="js" value="6" />
-          <entry key="json" value="35" />
+          <entry key="json" value="36" />
           <entry key="license" value="2" />
           <entry key="otdel" value="2" />
           <entry key="properties" value="9" />
           <entry key="pupils" value="1" />
           <entry key="sql" value="6" />
           <entry key="test" value="1" />
-          <entry key="ts" value="440" />
+          <entry key="ts" value="475" />
           <entry key="users" value="1" />
           <entry key="xml" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="35" />
+          <entry key="CLASS" value="43" />
           <entry key="CSS" value="39" />
           <entry key="Database Element" value="9" />
-          <entry key="HTML" value="122" />
+          <entry key="HTML" value="136" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="906" />
-          <entry key="JSON" value="30" />
+          <entry key="JAVA" value="960" />
+          <entry key="JSON" value="31" />
           <entry key="JavaScript" value="6" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="9" />
           <entry key="SQL" value="1" />
           <entry key="Scratch" value="5" />
-          <entry key="TypeScript" value="440" />
+          <entry key="TypeScript" value="475" />
           <entry key="XML" value="7" />
           <entry key="tsconfig" value="5" />
         </counts>
@@ -142,26 +166,26 @@
         <counts>
           <entry key="css" value="73" />
           <entry key="dummy" value="18" />
-          <entry key="html" value="2100" />
-          <entry key="java" value="6776" />
+          <entry key="html" value="2292" />
+          <entry key="java" value="7552" />
           <entry key="properties" value="8" />
           <entry key="sql" value="52" />
-          <entry key="ts" value="4897" />
-          <entry key="txt" value="281" />
+          <entry key="ts" value="5270" />
+          <entry key="txt" value="291" />
           <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="73" />
-          <entry key="HTML" value="2099" />
-          <entry key="JAVA" value="6776" />
+          <entry key="HTML" value="2291" />
+          <entry key="JAVA" value="7552" />
           <entry key="JavaScript" value="1" />
-          <entry key="PLAIN_TEXT" value="299" />
+          <entry key="PLAIN_TEXT" value="309" />
           <entry key="Properties" value="8" />
           <entry key="SQL" value="26" />
           <entry key="Scratch" value="26" />
-          <entry key="TypeScript" value="4897" />
+          <entry key="TypeScript" value="5270" />
           <entry key="XML" value="5" />
         </counts>
       </usages-collector>
@@ -175,10 +199,62 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts">
+        <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="207" column="49" selection-start-line="207" selection-start-column="49" selection-end-line="207" selection-end-column="49" />
+            <state relative-caret-position="228">
+              <caret line="38" selection-start-line="38" selection-end-line="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TimetableServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+              <folding>
+                <element signature="e#1734#1735#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="45" />
               <folding>
                 <element signature="e#0#61#0" expanded="true" />
               </folding>
@@ -186,31 +262,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Timetable.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+              <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/app/admin/admin.component.html">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="315" selection-start-line="315" selection-end-line="315" />
+            <state relative-caret-position="289">
+              <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
               <folding>
-                <element signature="n#div#0;n#ng-template#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#ng-template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#ng-template#0;n#!!top" />
-                <element signature="n#div#2;n#ng-template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#ng-template#1;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#div#1;n#ng-template#1;n#!!top" />
-                <element signature="n#button#0;n#div#2;n#ng-template#1;n#!!top" />
+                <element signature="e#0#43#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/src/app/model/timetableExample.ts">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -220,9 +307,9 @@
       <list>
         <option value="JavaScript File" />
         <option value="Interface" />
-        <option value="TypeScript File" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -232,28 +319,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/UniversityGroup.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/DaysOfWeekViewModel.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/RolesViewModel.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/SlotsViewModel.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/TimetableViewModel.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/UniversityGroupViewModel.java" />
-        <option value="$PROJECT_DIR$/frontend/src/app/model/subjects.ts" />
-        <option value="$PROJECT_DIR$/frontend/src/app/model/timetable.ts" />
-        <option value="$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/TeacherViewModel.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java" />
-        <option value="$PROJECT_DIR$/frontend/src/app/service/pupil.service.ts" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Users.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/UsersRepository.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/UsersService.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/UsersServiceImpl.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/UsersController.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java" />
-        <option value="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/UsersDataServiceImpl.java" />
-        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/UsersDataService.java" />
         <option value="$PROJECT_DIR$/frontend/src/app/model/teacher.ts" />
         <option value="$PROJECT_DIR$/frontend/src/app/model/newUser.ts" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/NewUserViewModel.java" />
@@ -265,8 +330,6 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Subjects.java" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/SubjectsDataService.java" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/SubjectsDataController.java" />
-        <option value="$PROJECT_DIR$/frontend/src/app/service/subject.service.ts" />
-        <option value="$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TeacherDataService.java" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TeacherDataController.java" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.java" />
@@ -280,9 +343,33 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TeacherController.java" />
         <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java" />
         <option value="$PROJECT_DIR$/frontend/src/app/service/teacher.service.ts" />
-        <option value="$PROJECT_DIR$/frontend/src/app/admin/admin.component.html" />
-        <option value="$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.html" />
+        <option value="$PROJECT_DIR$/frontend/src/app/pupil/pupil.component.html" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Timetable.java" />
+        <option value="$PROJECT_DIR$/frontend/src/app/service/subject.service.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/admin/admin.component.html" />
+        <option value="$PROJECT_DIR$/frontend/src/app/timetable/timetable.component.html" />
+        <option value="$PROJECT_DIR$/frontend/src/app/group/group.component.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/app-routing.module.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/group/group.component.html" />
+        <option value="$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java" />
+        <option value="$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/timetable/timetable.component.ts" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TimetableDataService.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TimetableRepository.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TimetableService.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TimetableController.java" />
+        <option value="$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TimetableServiceImpl.java" />
+        <option value="$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.ts" />
+        <option value="$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.html" />
+        <option value="$PROJECT_DIR$/frontend/src/app/model/timetableExample.ts" />
       </list>
     </option>
   </component>
@@ -318,7 +405,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1060" />
+    <option name="width" value="1107" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -682,7 +769,31 @@
               <item name="frontend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pupil" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="parent" type="b2602c69:ProjectViewProjectNode" />
+              <item name="parent" type="462c0819:PsiDirectoryNode" />
+              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="timetable-info" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="parent" type="b2602c69:ProjectViewProjectNode" />
@@ -717,10 +828,10 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541960375309" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542100835199" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ethalon-master (1)/angular-tour-of-heroes" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Miapr/Miapr" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="E:\Downloads\UserManager-master\parent\frontend\node_modules\tslint" />
@@ -760,7 +871,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.BackendApplication">
+  <component name="RunManager" selected="Spring Boot.FapiApplication">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -894,8 +1005,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.BackendApplication" />
         <item itemvalue="Spring Boot.FapiApplication" />
+        <item itemvalue="Spring Boot.BackendApplication" />
       </list>
     </recent_temporary>
   </component>
@@ -930,7 +1041,7 @@
       <workItem from="1541079337778" duration="41153000" />
       <workItem from="1541452219489" duration="3643000" />
       <workItem from="1541458908937" duration="38981000" />
-      <workItem from="1541696936970" duration="47486000" />
+      <workItem from="1541696936970" duration="67375000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <created>1539761727170</created>
@@ -967,11 +1078,18 @@
       <option name="project" value="LOCAL" />
       <updated>1541010102215</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adding timetable">
+      <created>1541960481800</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541960481800</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319529000" />
+    <option name="totallyTimeSpent" value="339418000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -983,17 +1101,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1060" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1107" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.92834395" visible="true" weight="0.318" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9335303" visible="true" weight="0.25787964" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
-      <window_info id="Persistence" order="7" sideWeight="0.07165605" side_tool="true" visible="true" weight="0.318" />
+      <window_info id="Persistence" order="7" sideWeight="0.06646972" side_tool="true" visible="true" weight="0.25787964" />
       <window_info id="Web" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32925472" />
       <window_info anchor="bottom" id="Spring" order="1" sideWeight="0.49902153" weight="0.33258426" />
@@ -1004,11 +1122,11 @@
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" sideWeight="0.49944383" weight="0.3280899" />
       <window_info anchor="bottom" id="TODO" order="8" sideWeight="0.49902153" weight="0.32921347" />
-      <window_info active="true" anchor="bottom" id="Run" order="9" sideWeight="0.49744573" visible="true" weight="0.29438204" />
+      <window_info anchor="bottom" id="Run" order="9" sideWeight="0.49744573" weight="0.29438204" />
       <window_info anchor="bottom" id="Debug" order="10" sideWeight="0.49804306" weight="0.347191" />
       <window_info anchor="bottom" id="Cvs" order="11" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="12" weight="0.4" />
-      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.646771" weight="0.23932584" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.646771" visible="true" weight="0.23932584" />
       <window_info anchor="bottom" id="Event Log" order="14" sideWeight="0.5025543" side_tool="true" weight="0.3539326" />
       <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.61621964" weight="0.20898877" />
       <window_info anchor="bottom" id="TypeScript" order="16" sideWeight="0.4975562" weight="0.32921347" />
@@ -1072,7 +1190,8 @@
     <MESSAGE value="Adding new user and pupil" />
     <MESSAGE value="Adding new User and Pupil" />
     <MESSAGE value="adding new user and pupil" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding new user and pupil" />
+    <MESSAGE value="adding timetable" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding timetable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1155,6 +1274,102 @@
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TimetableController.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>35</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>36</line>
+          <properties />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>37</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>38</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>40</line>
+          <properties />
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>55</line>
+          <properties />
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>58</line>
+          <properties />
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java</url>
+          <line>65</line>
+          <properties />
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -1163,344 +1378,54 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/UniversityGroupRepository.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable/timetable.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        <state>
+          <caret column="7" selection-start-column="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TimetableRepository.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/UsersRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/PupilsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/UniversityGroupController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/TeacherSubject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/UniversityGroupServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="306">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
-            <element signature="e#1234#1235#0" expanded="true" />
-            <element signature="e#1275#1276#0" expanded="true" />
+            <element signature="e#0#53#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/RolesController.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/PupilServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#678#679#0" expanded="true" />
-            <element signature="e#723#724#0" expanded="true" />
-            <element signature="e#1013#1014#0" expanded="true" />
-            <element signature="e#1064#1065#0" expanded="true" />
-            <element signature="e#1122#1123#0" expanded="true" />
-            <element signature="e#1163#1164#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/PupilsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/RolesDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/SlotsDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/SubjectsViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="61" selection-start-line="27" selection-start-column="61" selection-end-line="27" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/model/subjects.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="8">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/PupilsRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Subjects.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="17" column="4" lean-forward="true" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/UsersController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="35" column="4" lean-forward="true" selection-start-line="35" selection-start-column="4" selection-end-line="38" selection-end-column="5" />
-          <folding>
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1129#1130#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/SubjectsDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="26" column="79" lean-forward="true" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/subject.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/days-of-week.service.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/days-of-week.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="50" lean-forward="true" selection-start-line="13" selection-start-column="50" selection-end-line="13" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/users.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/SubjectsDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/UsersDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#1080#1081#0" expanded="true" />
-            <element signature="e#1142#1143#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/UniversityGroupDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="7" selection-start-line="22" selection-start-column="4" selection-end-line="24" selection-end-column="68" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/TeacherViewModel.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts">
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/PupilsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="2" lean-forward="true" selection-start-line="23" selection-start-column="2" selection-end-line="25" selection-end-column="3" />
+        <state relative-caret-position="291">
+          <caret line="38" column="47" selection-start-line="38" selection-start-column="47" selection-end-line="38" selection-end-column="47" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1754#1755#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/pupil.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+        <state>
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TeacherDataService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="35" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
-          <folding>
-            <element signature="e#1328#1329#0" expanded="true" />
-            <element signature="e#1391#1392#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/SubjectsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/SubjectsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="62" column="28" lean-forward="true" selection-start-line="62" selection-start-column="28" selection-end-line="62" selection-end-column="28" />
-          <folding>
-            <element signature="e#1165#1166#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/SubjectsRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="4" selection-start-line="19" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TeacherRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TeacherService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TeacherController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="42" column="83" lean-forward="true" selection-start-line="42" selection-start-column="83" selection-end-line="42" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
@@ -1514,83 +1439,337 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/teacher.service.ts">
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/PupilDataService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="52" lean-forward="true" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="52" />
+        <state relative-caret-position="136">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/PupilDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="37" column="76" lean-forward="true" selection-start-line="37" selection-start-column="76" selection-end-line="37" selection-end-column="76" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/pupil/pupil.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="10" lean-forward="true" selection-end-line="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/pupil/pupil.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/model/subjects.ts">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/app/model/timetable.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/subject.service.ts">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/group/group.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="442">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TeacherDataController.java">
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/group/group.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="22" column="45" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="46" />
-          <folding>
-            <element signature="e#1419#1420#0" expanded="true" />
-            <element signature="e#1485#1486#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TeacherServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="36" column="49" selection-start-line="36" selection-start-column="49" selection-end-line="36" selection-end-column="49" />
-          <folding>
-            <element signature="e#1044#1045#0" expanded="true" />
-            <element signature="e#1097#1098#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/app/admin/admin.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="315" selection-start-line="315" selection-end-line="315" />
-          <folding>
-            <element signature="n#div#0;n#ng-template#0;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#ng-template#0;n#!!top" />
-            <element signature="n#div#2;n#ng-template#0;n#!!top" />
-            <element signature="n#button#0;n#div#0;n#ng-template#1;n#!!top" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#ng-template#1;n#!!top" />
-            <element signature="n#button#0;n#div#2;n#ng-template#1;n#!!top" />
-          </folding>
+        <state relative-caret-position="19">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/app/admin/admin.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="207" column="49" selection-start-line="207" selection-start-column="49" selection-end-line="207" selection-end-column="49" />
+        <state relative-caret-position="3074">
+          <caret line="215" selection-start-line="215" selection-end-line="215" />
           <folding>
             <element signature="e#0#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable/timetable.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/UniversityGroupController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/entity/Timetable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/models/TimetableViewModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/UniversityGroupDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/UsersDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/UniversityGroupDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SubjectsDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/SlotsDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/RolesDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/repository/TimetableRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="80" selection-start-line="10" selection-start-column="80" selection-end-line="10" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/controller/TimetableController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="37" column="5" lean-forward="true" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/PupilDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="56" column="110" selection-start-line="56" selection-start-column="110" selection-end-line="56" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/TimetableService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="80" selection-start-line="11" selection-start-column="80" selection-end-line="11" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/TimetableDataService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/DaysOfWeekServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/PupilServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#678#679#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#1013#1014#0" expanded="true" />
+            <element signature="e#1064#1065#0" expanded="true" />
+            <element signature="e#1122#1123#0" expanded="true" />
+            <element signature="e#1163#1164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/RolesServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/SlotsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/SubjectsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/netcracker/edu/backend/service/impl/TimetableServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="42" column="43" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+          <folding>
+            <element signature="e#1734#1735#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.5.34/tomcat-embed-core-8.5.34.jar!/org/apache/catalina/core/ApplicationFilterChain.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="128" selection-start-line="128" selection-end-line="128" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="502" selection-start-line="502" selection-end-line="502" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="425" selection-start-line="425" selection-end-line="425" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.9.RELEASE/spring-webmvc-5.0.9.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="571" selection-start-line="571" selection-end-line="571" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.9.RELEASE/spring-web-5.0.9.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TimetableDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/service/impl/TeacherDataServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="41" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fapi/src/main/java/com/netcracker/edu/fapi/controller/TimetableDataController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/group-content.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="52" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/service/timetable.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/group-content/group-content.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" column="45" lean-forward="true" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#61#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="26" column="35" selection-start-line="26" selection-start-column="35" selection-end-line="26" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/timetable-info/timetable-info.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/app/model/timetableExample.ts">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

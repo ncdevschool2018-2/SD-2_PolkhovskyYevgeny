@@ -7,6 +7,7 @@ import java.util.List;
 public interface TimetableDataService {
     List<TimetableViewModel> getAll();
     TimetableViewModel getTimetableById(Long id);
+    List<TimetableViewModel> getTimetableByGroupId(int id);
     TimetableViewModel saveTimetable(TimetableViewModel timetable);
     void deleteTimetable(Long id);
 }

@@ -23,7 +23,8 @@
   <tbody>
   <tr *ngFor="let group of groups">
     <td >
-      <a routerLink="/groupContent/{{group.id}}">{{group.name}}</a>
+      <a *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</a>
+      <a *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</a>
     </td>
   </tr>
 

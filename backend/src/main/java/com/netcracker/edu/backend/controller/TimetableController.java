@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
 @RequestMapping("/api/timetables")
@@ -22,6 +23,24 @@ public class TimetableController {
         Optional<Timetable> timetable = timetableService.getTimetableById(id);
         if (timetable.isPresent()) {
             return ResponseEntity.ok(timetable.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @RequestMapping(value = "/pupil/{day}/{group}", method = RequestMethod.GET)
+    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "group") int group) {
+        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndGroupIdOrderBySlotId(day,group);
+        if (timetable!=null && !timetable.isEmpty()) {
+            return ResponseEntity.ok(timetable);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    @RequestMapping(value = "/pupil/{group}", method = RequestMethod.GET)
+    public ResponseEntity<List<Timetable>> getAllByGroupIdOrderByDayOfWeekId(@PathVariable(name = "group") int group) {
+        List<Timetable> timetable = timetableService.getAllByGroupIdOrderByDayOfWeekId(group);
+        if (timetable!=null && !timetable.isEmpty()) {
+            return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();
         }

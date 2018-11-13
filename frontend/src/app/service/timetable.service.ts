@@ -18,5 +18,8 @@ export class TimetableService {
   saveTimetable(timetable: Timetable): Observable<Timetable> {
     return this.http.post<Timetable>('/api/timetable', timetable);
   }
+  getTimetableByGroupId(id:number):Observable<Timetable[]>{
+    return this.http.get<Timetable[]>('api/timetable/group/'+id);
+  }
 
 }

@@ -32,6 +32,13 @@ public class PupilDataController {
         }
         return null;
     }
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/ ){
+        if(pupil !=null){
+            return ResponseEntity.ok(pupilDataService.saveEditPupil(pupil));
+        }
+        return null;
+    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deletePupil(@PathVariable String id){

@@ -49,15 +49,7 @@ export class GroupContentComponent implements OnInit {
 
       }));
     });
-    /*this.route.params
-      .switchMap((params: Params) => this.groupContentService.getGroupContentByGroup(+params['id']))
-      .subscribe(accounts => {
-        // Parse json response into local array
-        this.groupContent = accounts as GroupContent[];
-        // Check data in console
-        this.loadingService.hide();
 
-      });*/
   }
 
   public _closeModal(): void {
@@ -80,11 +72,7 @@ export class GroupContentComponent implements OnInit {
 
   public _openModal(template: TemplateRef<any>, groupContent: GroupContent): void {
     this.loadGroups();
-
-
     this.editableGC = GroupContent.cloneBase(groupContent);
-
-
     this.modalRef = this.modalService.show(template);
   }
 

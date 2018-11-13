@@ -15,7 +15,7 @@ export class GroupContentService {
   }
 
   saveGroupContent(groupContent: GroupContent): Observable<GroupContent> {
-    return this.http.post<GroupContent>('/api/pupil', groupContent);
+    return this.http.post<GroupContent>('/api/pupil/', groupContent);
   }
 
   deleteGroupContent(groupContentId: string): Observable<void> {

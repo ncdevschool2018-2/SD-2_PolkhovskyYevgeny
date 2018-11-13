@@ -6,6 +6,8 @@ import {GroupComponent} from "./group/group.component";
 import {PupilComponent} from "./pupil/pupil.component";
 import {TeacherinfoComponent} from "./teacherinfo/teacherinfo.component";
 import {GroupContentComponent} from "./group-content/group-content.component";
+import {TimetableComponent} from "./timetable/timetable.component";
+import {TimetableInfoComponent} from "./timetable-info/timetable-info.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin', pathMatch: 'full'},
@@ -14,7 +16,10 @@ const routes: Routes = [
   {path:'group', component: GroupComponent},
   {path:'pupil', component: PupilComponent},
   {path:'groupContent/:id', component: GroupContentComponent},
-  {path:'teacherinfo', component: TeacherinfoComponent}
+  {path:'timetableinfo/:id', component: TimetableInfoComponent},
+  {path:'timetable', component: TimetableComponent},
+  {path:'teacherinfo', component: TeacherinfoComponent},
+
 ]
 @NgModule({
   exports: [ RouterModule ],

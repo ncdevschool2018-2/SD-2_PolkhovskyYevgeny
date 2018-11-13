@@ -11,6 +11,7 @@ public interface PupilDataService {
     List<PupilViewModel> getAll();
     PupilViewModel getPupilById(Long id);
     PupilViewModel savePupil(NewUserViewModel pupil);
+    PupilViewModel saveEditPupil(PupilViewModel pupil);
     List<PupilViewModel> getByGroupId(int id);
     void deletePupil(Long id);
 }

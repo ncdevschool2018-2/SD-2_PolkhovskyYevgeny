@@ -35,6 +35,7 @@ export class AdminComponent implements OnInit {
   public users: Users[];
   public slots: Slots[];
   public subjects: Subjects[];
+  public subjectsAll: Subjects[];
   public daysOfWeek: DaysOfWeek[];
   public editableGroup: Group = new Group();
   public timetable: Timetable[];
@@ -70,6 +71,7 @@ export class AdminComponent implements OnInit {
     this.loadGroups();
     this.loadUsers();
     this.loadSubject();
+    this.loadAllSubjects();
 
   }
 
@@ -166,6 +168,14 @@ export class AdminComponent implements OnInit {
       this.subjects = subject as Subjects[];
     }));
   }
+  private loadAllSubjects(): void {
+
+
+    this.subscriptions.push(this.subjectService.getSubjectsAll().subscribe(subjectsAll => {
+
+      this.subjectsAll = subjectsAll as Subjects[];
+    }));
+  }
   private loadDaysOfWeek(): void {
 
 
@@ -203,7 +213,8 @@ export class AdminComponent implements OnInit {
     }));
   }
   public _addTimeTable(): void {
-    for (let subj of this.subjects) {
+
+    for (let subj of this.subjectsAll) {
       if(subj.teacherId==this.chooseTeachers){
         this.editableTimetable.subjectId=subj.id;
       }

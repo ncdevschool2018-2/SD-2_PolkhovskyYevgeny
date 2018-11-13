@@ -52,6 +52,12 @@ public class PupilDataServiceImpl  implements PupilDataService {
     }
     
     @Override
+    public PupilViewModel saveEditPupil(PupilViewModel pupil) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(backendServerUrl+"/api/pupils",pupil,PupilViewModel.class).getBody();
+    }
+    
+    @Override
     public List<PupilViewModel> getByGroupId(int id) {
     
         RestTemplate restTemplate =new RestTemplate();

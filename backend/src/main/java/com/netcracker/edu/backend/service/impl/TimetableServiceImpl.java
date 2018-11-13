@@ -7,6 +7,9 @@ import com.netcracker.edu.backend.service.TimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -32,6 +35,21 @@ public class TimetableServiceImpl implements TimetableService {
     @Override
     public Iterable<Timetable> getAllTimetable() {
         return repository.findAll();
+    }
+    
+    @Override
+    public List<Timetable> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(int dayOfWeekId,int groupId) {
+        if(repository.findAllByDayOfWeekIdAndGroupIdOrderBySlotId(dayOfWeekId,groupId)==null) {
+            return Collections.emptyList();
+            
+        }else {
+            return repository.findAllByDayOfWeekIdAndGroupIdOrderBySlotId(dayOfWeekId, groupId);
+        }
+        }
+    
+    @Override
+    public List<Timetable> getAllByGroupIdOrderByDayOfWeekId(int groupId) {
+        return repository.findAllByGroupIdOrderByDayOfWeekId(groupId);
     }
     
     @Override

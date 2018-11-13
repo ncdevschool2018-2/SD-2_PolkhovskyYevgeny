@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
@@ -10,6 +10,10 @@ import { Location } from '@angular/common';
   styleUrls: ['./group.component.css']
 })
 export class GroupComponent implements OnInit {
+
+  @Input()
+  public timetable: boolean;
+
 groups:Group[];
   private subscriptions: Subscription[] = [];
 

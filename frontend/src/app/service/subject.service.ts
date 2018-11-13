@@ -17,4 +17,7 @@ export class SubjectService {
   getTeacherId(sub:String):Observable<Number[]>{
     return this.http.get<Number[]>("/chooseId/"+sub);
   }
+  getSubjectsAll(): Observable<Subjects[]> {
+    return this.http.get<Subjects[]>('/api/subject');
+  }
 }

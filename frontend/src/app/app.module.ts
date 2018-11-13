@@ -18,6 +18,8 @@ import {MatNativeDateModule} from '@angular/material';
 import {DemoMaterialModule} from './material-module';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { TimetableComponent } from './timetable/timetable.component';
+import { TimetableInfoComponent } from './timetable-info/timetable-info.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     PupilComponent,
     TeacherinfoComponent,
     GroupContentComponent,
-    FooterComponent
+    FooterComponent,
+    TimetableComponent,
+    TimetableInfoComponent
   ],
   imports: [
     FormsModule,
