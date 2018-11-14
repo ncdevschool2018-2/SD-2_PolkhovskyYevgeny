@@ -8,7 +8,7 @@ import com.netcracker.edu.backend.entity.UniversityGroup;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimetableViewModel {
-    private long id;
+    private int id;
 //    private Subjects subjectsBySubjectId;
 //    private Slots slotsBySlotId;
 //    private DaysOfWeek daysOfWeekByDayOfWeekId;
@@ -21,7 +21,7 @@ public class TimetableViewModel {
     public TimetableViewModel() {
     }
     
-    public TimetableViewModel(long id, /*Subjects subjectsBySubjectId, Slots slotsBySlotId, DaysOfWeek daysOfWeekByDayOfWeekId,*/ int groupId, int subjectId, int slotId, int dayOfWeekId/*, UniversityGroup universityGroupByGroupId*/) {
+    public TimetableViewModel(int id, /*Subjects subjectsBySubjectId, Slots slotsBySlotId, DaysOfWeek daysOfWeekByDayOfWeekId,*/ int groupId, int subjectId, int slotId, int dayOfWeekId/*, UniversityGroup universityGroupByGroupId*/) {
         this.id = id;
         /*this.subjectsBySubjectId = subjectsBySubjectId;
         this.slotsBySlotId = slotsBySlotId;
@@ -33,11 +33,11 @@ public class TimetableViewModel {
         /*this.universityGroupByGroupId = universityGroupByGroupId;*/
     }
     
-    public long getId() {
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

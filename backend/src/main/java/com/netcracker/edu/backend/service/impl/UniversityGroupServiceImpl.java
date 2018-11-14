@@ -27,7 +27,7 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     }
     
     @Override
-    public Optional<UniversityGroup> getUniversityGroupById(Long id) {
+    public Optional<UniversityGroup> getUniversityGroupById(int id) {
         return repository.findById(id);
     }
     
@@ -37,7 +37,7 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     }
     
     @Override
-    public void deleteUniversityGroup(Long id) {
+    public void deleteUniversityGroup(int id) {
         repository.deleteById(id);
     }
     

@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface SubjectsDataService {
     List<SubjectsViewModel> getAll();
-    SubjectsViewModel getSubjectsById(Long id);
+    SubjectsViewModel getSubjectsById(int id);
     List<SubjectsViewModel> getDistinctSubject();
     List<Integer> getIdChoosenSubject(String subject);
     SubjectsViewModel saveSubjects(SubjectsViewModel subject);
-    void deleteSubjects(Long id);
+    void deleteSubjects(int id);
 }

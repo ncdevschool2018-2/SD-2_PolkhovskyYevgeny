@@ -25,7 +25,7 @@ public class PupilServiceImpl implements PupilsService {
     }
     
     @Override
-    public Optional<Pupils> getPupilById(Long id) {
+    public Optional<Pupils> getPupilById(int id) {
         return repository.findById(id);
     }
     
@@ -40,7 +40,7 @@ public class PupilServiceImpl implements PupilsService {
     }
     
     @Override
-    public void deletePupil(Long id) {
+    public void deletePupil(int id) {
         repository.deleteById(id);
     }
 }

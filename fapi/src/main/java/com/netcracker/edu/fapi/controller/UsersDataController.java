@@ -30,6 +30,6 @@ public class UsersDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUsers(@PathVariable String id) {
-        usersDataService.deleteUsers(Long.valueOf(id));
+        usersDataService.deleteUsers(Integer.valueOf(id));
     }
 }

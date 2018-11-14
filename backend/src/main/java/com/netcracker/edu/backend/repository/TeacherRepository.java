@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface TeacherRepository extends CrudRepository<Teacher,Long> {
+public interface TeacherRepository extends CrudRepository<Teacher,Integer> {
     Teacher findTeacherByUserId(int userId);
     @Modifying
     @Query(value = "select * from teacher where id in (?1)",nativeQuery = true)

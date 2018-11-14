@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SlotsDataService {
     List<SlotsViewModel> getAll();
-    SlotsViewModel getSlotsById(Long id);
+    SlotsViewModel getSlotsById(int id);
     SlotsViewModel saveSlots(SlotsViewModel slot);
-    void deleteSlots(Long id);
+    void deleteSlots(int id);
 }

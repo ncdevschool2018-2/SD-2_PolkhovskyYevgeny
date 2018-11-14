@@ -20,7 +20,7 @@ public class TeacherController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Teacher> getTeacherById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Teacher> getTeacherById(@PathVariable(name = "id") int id) {
         Optional<Teacher> teacher = teacherService.getTeacherById(id);
         if (teacher.isPresent()) {
             return ResponseEntity.ok(teacher.get());
@@ -58,7 +58,7 @@ public class TeacherController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteTeacher(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteTeacher(@PathVariable(name = "id") int id) {
         teacherService.deleteTeacher(id);
         return ResponseEntity.noContent().build();
     }

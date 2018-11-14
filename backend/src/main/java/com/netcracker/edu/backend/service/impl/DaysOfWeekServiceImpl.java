@@ -22,7 +22,7 @@ public class DaysOfWeekServiceImpl implements DaysOfWeekService {
     }
     
     @Override
-    public Optional<DaysOfWeek> getDaysOfWeekById(Long id) {
+    public Optional<DaysOfWeek> getDaysOfWeekById(int id) {
         return repository.findById(id);
     }
     
@@ -32,7 +32,7 @@ public class DaysOfWeekServiceImpl implements DaysOfWeekService {
     }
     
     @Override
-    public void deleteDaysOfWeek(Long id) {
+    public void deleteDaysOfWeek(int id) {
         repository.deleteById(id);
     }
 }

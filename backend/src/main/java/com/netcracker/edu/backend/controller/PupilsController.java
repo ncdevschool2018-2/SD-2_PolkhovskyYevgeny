@@ -21,7 +21,7 @@ public class PupilsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Pupils> getPupilId(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Pupils> getPupilId(@PathVariable(name = "id") int id) {
         Optional<Pupils> pupils = pupilsService.getPupilById(id);
         if (pupils.isPresent()) {
             return ResponseEntity.ok(pupils.get());
@@ -51,7 +51,7 @@ public class PupilsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deletePupil(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deletePupil(@PathVariable(name = "id") int id) {
         pupilsService.deletePupil(id);
         return ResponseEntity.noContent().build();
     }

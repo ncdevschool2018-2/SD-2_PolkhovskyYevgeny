@@ -11,7 +11,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface SubjectsRepository extends CrudRepository<Subjects,Long> {
+public interface SubjectsRepository extends CrudRepository<Subjects,Integer> {
     @Modifying
     @Query(value = "select distinct id,subject,teacher_id from subjects group by subject",nativeQuery = true)
     List<Subjects> findDistinctSubject();

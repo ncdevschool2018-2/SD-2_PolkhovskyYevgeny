@@ -42,6 +42,6 @@ public class PupilDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deletePupil(@PathVariable String id){
-        pupilDataService.deletePupil(Long.valueOf(id));
+        pupilDataService.deletePupil(Integer.valueOf(id));
     }
 }

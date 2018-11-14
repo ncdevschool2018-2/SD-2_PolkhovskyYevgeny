@@ -24,7 +24,7 @@ public class RolesServiceImpl implements RolesService {
     }
     
     @Override
-    public Optional<Roles> getRolesById(Long id) {
+    public Optional<Roles> getRolesById(int id) {
         return repository.findById(id);
     }
     
@@ -34,7 +34,7 @@ public class RolesServiceImpl implements RolesService {
     }
     
     @Override
-    public void deleteRoles(Long id) {
+    public void deleteRoles(int id) {
         repository.deleteById(id);
     }
 }

@@ -25,7 +25,7 @@ public class SubjectsServiceImpl implements SubjectsService {
     }
     
     @Override
-    public Optional<Subjects> getSubjectsById(Long id) {
+    public Optional<Subjects> getSubjectsById(int id) {
         return repository.findById(id);
     }
     
@@ -51,7 +51,7 @@ public class SubjectsServiceImpl implements SubjectsService {
     
     
     @Override
-    public void deleteSubjects(Long id) {
+    public void deleteSubjects(int id) {
         repository.deleteById(id);
     }
 }

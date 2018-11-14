@@ -13,7 +13,7 @@ import java.util.Objects;
 public class DaysOfWeek {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String name;
     /*@JsonIgnore
     private Set<Timetable> timetablesById;*/
@@ -28,11 +28,11 @@ public class DaysOfWeek {
     @Id
     @Column(name = "id", nullable = false)
     
-    public long getId() {
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

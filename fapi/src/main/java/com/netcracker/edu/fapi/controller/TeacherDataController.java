@@ -39,6 +39,6 @@ public class TeacherDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteTeacher(@PathVariable String id) {
-        teacherDataService.deleteTeacher(Long.valueOf(id));
+        teacherDataService.deleteTeacher(Integer.valueOf(id));
     }
 }

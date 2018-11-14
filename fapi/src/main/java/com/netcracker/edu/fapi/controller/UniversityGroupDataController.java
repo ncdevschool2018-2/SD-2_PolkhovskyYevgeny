@@ -29,6 +29,6 @@ public class UniversityGroupDataController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUniversityGroup(@PathVariable String id) {
-        universityGroupDataService.deleteUniversityGroup(Long.valueOf(id));
+        universityGroupDataService.deleteUniversityGroup(Integer.valueOf(id));
     }
 }

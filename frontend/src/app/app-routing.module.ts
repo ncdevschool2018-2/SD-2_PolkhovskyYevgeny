@@ -19,6 +19,7 @@ const routes: Routes = [
   {path:'timetableinfo/:id', component: TimetableInfoComponent},
   {path:'timetable', component: TimetableComponent},
   {path:'teacherinfo', component: TeacherinfoComponent},
+  {path:'teacherinfo/:id', component: TeacherinfoComponent},
 
 ]
 @NgModule({

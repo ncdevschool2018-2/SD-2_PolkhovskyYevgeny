@@ -25,7 +25,7 @@ public class RolesDataServiceImpl implements RolesDataService {
     }
     
     @Override
-    public RolesViewModel getRolesById(Long id) {
+    public RolesViewModel getRolesById(int id) {
         return null;
     }
     
@@ -37,7 +37,7 @@ public class RolesDataServiceImpl implements RolesDataService {
     }
     
     @Override
-    public void deleteRoles(Long id) {
+    public void deleteRoles(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/roles/" + id);
     }

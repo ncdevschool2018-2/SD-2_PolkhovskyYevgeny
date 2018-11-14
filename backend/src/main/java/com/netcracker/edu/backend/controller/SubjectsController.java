@@ -19,7 +19,7 @@ public class SubjectsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Subjects> getSubjectsById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Subjects> getSubjectsById(@PathVariable(name = "id") int id) {
         Optional<Subjects> subjects = subjectsService.getSubjectsById(id);
         if (subjects.isPresent()) {
             return ResponseEntity.ok(subjects.get());
@@ -75,7 +75,7 @@ public class SubjectsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteSubjects(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteSubjects(@PathVariable(name = "id") int id) {
         subjectsService.deleteSubjects(id);
         return ResponseEntity.noContent().build();
     }

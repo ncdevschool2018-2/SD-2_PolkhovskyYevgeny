@@ -25,7 +25,7 @@ public class SubjectsDataServiceImpl  implements SubjectsDataService {
     }
     
     @Override
-    public SubjectsViewModel getSubjectsById(Long id) {
+    public SubjectsViewModel getSubjectsById(int id) {
         return null;
     }
     
@@ -53,7 +53,7 @@ public class SubjectsDataServiceImpl  implements SubjectsDataService {
     }
     
     @Override
-    public void deleteSubjects(Long id) {
+    public void deleteSubjects(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/subjects/" + id);
     }

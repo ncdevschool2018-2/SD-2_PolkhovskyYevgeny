@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 @RestController
@@ -19,7 +20,7 @@ public class TimetableController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Timetable> getTimetableById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Timetable> getTimetableById(@PathVariable(name = "id") int id) {
         Optional<Timetable> timetable = timetableService.getTimetableById(id);
         if (timetable.isPresent()) {
             return ResponseEntity.ok(timetable.get());
@@ -30,7 +31,7 @@ public class TimetableController {
     @RequestMapping(value = "/pupil/{day}/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndGroupIdOrderBySlotId(day,group);
-        if (timetable!=null && !timetable.isEmpty()) {
+        if (timetable!=null ) {
             return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();
@@ -57,7 +58,7 @@ public class TimetableController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteTimetable(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteTimetable(@PathVariable(name = "id") int id) {
         timetableService.deleteTimetable(id);
         return ResponseEntity.noContent().build();
     }

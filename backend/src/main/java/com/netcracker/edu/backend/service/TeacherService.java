@@ -7,9 +7,9 @@ import java.util.Optional;
 
 public interface TeacherService {
     Teacher saveTeacher(Teacher teacher);
-    Optional<Teacher> getTeacherById(Long id);
+    Optional<Teacher> getTeacherById(int id);
     Iterable<Teacher> getAllTeacher();
     List<Teacher> getAllByIdIsIn(Integer[] id);
-    void deleteTeacher(Long id);
+    void deleteTeacher(int id);
     Teacher findTeacherByUserId(int userId);
 }

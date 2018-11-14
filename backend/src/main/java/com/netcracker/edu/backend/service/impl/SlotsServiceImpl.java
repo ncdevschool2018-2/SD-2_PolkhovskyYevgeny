@@ -24,7 +24,7 @@ public class SlotsServiceImpl implements SlotsService {
     }
     
     @Override
-    public Optional<Slots> getSlotsById(Long id) {
+    public Optional<Slots> getSlotsById(int id) {
         return repository.findById(id);
     }
     
@@ -34,7 +34,7 @@ public class SlotsServiceImpl implements SlotsService {
     }
     
     @Override
-    public void deleteSlots(Long id) {
+    public void deleteSlots(int id) {
         repository.deleteById(id);
     }
 }

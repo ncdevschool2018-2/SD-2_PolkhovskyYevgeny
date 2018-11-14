@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface TimetableRepository extends CrudRepository<Timetable,Long> {
+public interface TimetableRepository extends CrudRepository<Timetable,Integer> {
     List<Timetable> findAllByDayOfWeekIdAndGroupIdOrderBySlotId(int dayOfWeekId, int groupId);
     List<Timetable> findAllByGroupIdOrderByDayOfWeekId(int groupId);
 }

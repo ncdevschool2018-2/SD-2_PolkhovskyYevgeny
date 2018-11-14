@@ -18,7 +18,7 @@ public class UniversityGroupController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<UniversityGroup> getUniversityGroupById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<UniversityGroup> getUniversityGroupById(@PathVariable(name = "id") int id) {
         Optional<UniversityGroup> universityGroup = universityGroupService.getUniversityGroupById(id);
         if (universityGroup.isPresent()) {
             return ResponseEntity.ok(universityGroup.get());
@@ -38,7 +38,7 @@ public class UniversityGroupController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteUniversityGroup(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteUniversityGroup(@PathVariable(name = "id") int id) {
         universityGroupService.deleteUniversityGroup(id);
         return ResponseEntity.noContent().build();
     }

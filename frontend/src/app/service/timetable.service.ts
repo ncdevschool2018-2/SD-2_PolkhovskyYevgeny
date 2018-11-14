@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Timetable} from "../model/timetable";
+import {TimetableExample} from "../model/timetableExample";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class TimetableService {
   }
   getTimetableByGroupId(id:number):Observable<Timetable[]>{
     return this.http.get<Timetable[]>('api/timetable/group/'+id);
+  }
+  getTimetableNamedByGroupId(id:number):Observable<TimetableExample[]>{
+    return this.http.get<TimetableExample[]>('api/timetable/group/named/'+id);
   }
 
 }

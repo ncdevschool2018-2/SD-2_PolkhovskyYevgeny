@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RolesDataService {
     List<RolesViewModel> getAll();
-    RolesViewModel getRolesById(Long id);
+    RolesViewModel getRolesById(int id);
     RolesViewModel saveRoles(RolesViewModel role);
-    void deleteRoles(Long id);
+    void deleteRoles(int id);
 }

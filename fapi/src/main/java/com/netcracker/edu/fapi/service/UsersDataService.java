@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface UsersDataService {
     List<UsersViewModel> getAll();
-    UsersViewModel getUsersById(Long id);
+    UsersViewModel getUsersById(int id);
     
     UsersViewModel saveUsers(UsersViewModel user);
-    void deleteUsers(Long id);
+    void deleteUsers(int id);
 }

@@ -24,7 +24,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
     
     @Override
-    public Optional<Teacher> getTeacherById(Long id) {
+    public Optional<Teacher> getTeacherById(int id) {
         return repository.findById(id);
     }
     
@@ -39,7 +39,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
     
     @Override
-    public void deleteTeacher(Long id) {
+    public void deleteTeacher(int id) {
         repository.deleteById(id);
     }
     

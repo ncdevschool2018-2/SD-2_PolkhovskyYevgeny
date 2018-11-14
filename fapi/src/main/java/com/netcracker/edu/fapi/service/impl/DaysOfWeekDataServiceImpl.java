@@ -25,7 +25,7 @@ public class DaysOfWeekDataServiceImpl implements DaysOfWeekDataService {
     }
     
     @Override
-    public DaysOfWeekViewModel getDaysOfWeekById(Long id) {
+    public DaysOfWeekViewModel getDaysOfWeekById(int id) {
         return null;
     }
     
@@ -36,7 +36,7 @@ public class DaysOfWeekDataServiceImpl implements DaysOfWeekDataService {
     }
     
     @Override
-    public void deleteDaysOfWeek(Long id) {
+    public void deleteDaysOfWeek(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/days-of-week/" + id);
     

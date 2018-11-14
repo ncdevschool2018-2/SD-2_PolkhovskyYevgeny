@@ -18,7 +18,7 @@ public class DaysOfWeekController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<DaysOfWeek> getDaysOfWeekById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<DaysOfWeek> getDaysOfWeekById(@PathVariable(name = "id") int id) {
         Optional<DaysOfWeek> daysOfWeek = daysOfWeekService.getDaysOfWeekById(id);
         if (daysOfWeek.isPresent()) {
             return ResponseEntity.ok(daysOfWeek.get());
@@ -38,7 +38,7 @@ public class DaysOfWeekController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteDaysOfWeek(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteDaysOfWeek(@PathVariable(name = "id") int id) {
         daysOfWeekService.deleteDaysOfWeek(id);
         return ResponseEntity.noContent().build();
     }

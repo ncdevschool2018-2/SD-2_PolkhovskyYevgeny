@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface RolesService {
     Roles saveRoles(Roles role);
-    Optional<Roles> getRolesById(Long id);
+    Optional<Roles> getRolesById(int id);
     Iterable<Roles> getAllRoles();
-    void deleteRoles(Long id);
+    void deleteRoles(int id);
 }

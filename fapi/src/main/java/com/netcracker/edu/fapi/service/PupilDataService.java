@@ -9,9 +9,9 @@ import java.util.Optional;
 
 public interface PupilDataService {
     List<PupilViewModel> getAll();
-    PupilViewModel getPupilById(Long id);
+    PupilViewModel getPupilById(int id);
     PupilViewModel savePupil(NewUserViewModel pupil);
     PupilViewModel saveEditPupil(PupilViewModel pupil);
     List<PupilViewModel> getByGroupId(int id);
-    void deletePupil(Long id);
+    void deletePupil(int id);
 }

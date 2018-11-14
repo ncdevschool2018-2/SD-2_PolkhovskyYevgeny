@@ -10,5 +10,5 @@ public interface TeacherDataService {
     TeacherViewModel getTeacherById(int id);
     List<TeacherViewModel> getTeachersSbj(String subject);
     TeacherViewModel saveTeacher(NewUserViewModel teacher);
-    void deleteTeacher(Long id);
+    void deleteTeacher(int id);
 }

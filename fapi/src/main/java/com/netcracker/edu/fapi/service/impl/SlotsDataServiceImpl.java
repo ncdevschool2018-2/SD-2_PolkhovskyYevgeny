@@ -26,7 +26,7 @@ public class SlotsDataServiceImpl implements SlotsDataService {
     }
     
     @Override
-    public SlotsViewModel getSlotsById(Long id) {
+    public SlotsViewModel getSlotsById(int id) {
         return null;
     }
     
@@ -37,7 +37,7 @@ public class SlotsDataServiceImpl implements SlotsDataService {
     }
     
     @Override
-    public void deleteSlots(Long id) {
+    public void deleteSlots(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/slots/" + id);
     }

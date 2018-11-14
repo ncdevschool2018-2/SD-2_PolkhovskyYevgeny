@@ -19,7 +19,7 @@ public class RolesController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Roles> getRolesById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Roles> getRolesById(@PathVariable(name = "id") int id) {
         Optional<Roles> roles = rolesService.getRolesById(id);
         if (roles.isPresent()) {
             return ResponseEntity.ok(roles.get());
@@ -39,7 +39,7 @@ public class RolesController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteRoles(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteRoles(@PathVariable(name = "id") int id) {
         rolesService.deleteRoles(id);
         return ResponseEntity.noContent().build();
     }

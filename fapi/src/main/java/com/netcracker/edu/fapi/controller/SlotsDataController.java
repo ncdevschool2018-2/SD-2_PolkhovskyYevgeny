@@ -30,6 +30,6 @@ public class SlotsDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSlots(@PathVariable String id) {
-        slotsDataService.deleteSlots(Long.valueOf(id));
+        slotsDataService.deleteSlots(Integer.valueOf(id));
     }
 }

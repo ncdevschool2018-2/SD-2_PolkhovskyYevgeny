@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface SlotsService {
     Slots saveSlots(Slots slot);
-    Optional<Slots> getSlotsById(Long id);
+    Optional<Slots> getSlotsById(int id);
     Iterable<Slots> getAllSlots();
-    void deleteSlots(Long id);
+    void deleteSlots(int id);
 }

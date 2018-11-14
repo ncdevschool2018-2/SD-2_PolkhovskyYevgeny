@@ -19,7 +19,7 @@ public class SlotsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Slots> getSlotsById(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Slots> getSlotsById(@PathVariable(name = "id") int id) {
         Optional<Slots> slots = slotsService.getSlotsById(id);
         if (slots.isPresent()) {
             return ResponseEntity.ok(slots.get());
@@ -39,7 +39,7 @@ public class SlotsController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity deleteSlots(@PathVariable(name = "id") Long id) {
+    public ResponseEntity deleteSlots(@PathVariable(name = "id") int id) {
         slotsService.deleteSlots(id);
         return ResponseEntity.noContent().build();
     }

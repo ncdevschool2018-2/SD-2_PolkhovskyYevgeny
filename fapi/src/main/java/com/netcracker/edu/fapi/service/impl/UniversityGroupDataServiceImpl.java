@@ -28,7 +28,7 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
     }
     
     @Override
-    public UniversityGroupViewModel getUniversityGroupById(Long id) {
+    public UniversityGroupViewModel getUniversityGroupById(int id) {
         return null;
     }
     
@@ -40,7 +40,7 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
     }
     
     @Override
-    public void deleteUniversityGroup(Long id) {
+    public void deleteUniversityGroup(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/universitygroups/" + id);
     

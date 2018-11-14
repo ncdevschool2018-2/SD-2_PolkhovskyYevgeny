@@ -24,7 +24,7 @@ public class UsersServiceImpl implements UsersService {
     }
     
     @Override
-    public Optional<Users> getUsersById(Long id) {
+    public Optional<Users> getUsersById(int id) {
         return repository.findById(id);
     }
     
@@ -34,7 +34,7 @@ public class UsersServiceImpl implements UsersService {
     }
     
     @Override
-    public void deleteUsers(Long id) {
+    public void deleteUsers(int id) {
         repository.deleteById(id);
     }
     

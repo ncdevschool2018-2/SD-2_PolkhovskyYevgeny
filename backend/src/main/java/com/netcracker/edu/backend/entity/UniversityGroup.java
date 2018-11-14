@@ -16,7 +16,7 @@ import java.util.Set;
 public class UniversityGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String name;
     /*@JsonIgnore
     private Set<Pupils> pupilsById;
@@ -32,11 +32,11 @@ public class UniversityGroup {
     
     @Id
     @Column(name = "id", nullable = false)
-    public long getId() {
+    public int getId() {
         return id;
     }
     
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
     

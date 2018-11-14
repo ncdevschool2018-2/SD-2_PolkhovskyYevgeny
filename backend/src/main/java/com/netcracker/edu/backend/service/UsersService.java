@@ -6,9 +6,9 @@ import java.util.Optional;
 
 public interface UsersService {
     Users saveUsers(Users users);
-    Optional<Users> getUsersById(Long id);
+    Optional<Users> getUsersById(int id);
     Iterable<Users> getAllUsers();
-    void deleteUsers(Long id);
+    void deleteUsers(int id);
     Users findUserByLogin(String login);
     
 }

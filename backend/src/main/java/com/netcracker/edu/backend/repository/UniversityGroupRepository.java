@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface UniversityGroupRepository extends CrudRepository<UniversityGroup,Long> {
+public interface UniversityGroupRepository extends CrudRepository<UniversityGroup,Integer> {
 
 }

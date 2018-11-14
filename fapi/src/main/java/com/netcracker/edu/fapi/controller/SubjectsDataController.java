@@ -37,6 +37,6 @@ public class SubjectsDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubjects(@PathVariable String id) {
-        subjectsDataService.deleteSubjects(Long.valueOf(id));
+        subjectsDataService.deleteSubjects(Integer.valueOf(id));
     }
 }

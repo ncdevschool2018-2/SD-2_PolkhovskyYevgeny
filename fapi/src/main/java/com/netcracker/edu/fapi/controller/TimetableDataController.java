@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.TimetableExampleViewModel;
 import com.netcracker.edu.fapi.models.TimetableViewModel;
 import com.netcracker.edu.fapi.service.TimetableDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class TimetableDataController {
         return ResponseEntity.ok(timetableDataService.getTimetableByGroupId(id));
     }
     
+    @RequestMapping(value = "group/named/{id}",method = RequestMethod.GET)
+    public ResponseEntity<List<TimetableExampleViewModel>>getTimetableNamedByGroupId(@PathVariable int id){
+        return ResponseEntity.ok(timetableDataService.getTimetableNamedByGroupId(id));
+    }
+    
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<TimetableViewModel> saveTimetable(@RequestBody TimetableViewModel timetable /*todo server validation*/) {
         if (timetable != null) {
@@ -36,6 +42,6 @@ public class TimetableDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteTimetable(@PathVariable String id) {
-        timetableDataService.deleteTimetable(Long.valueOf(id));
+        timetableDataService.deleteTimetable(Integer.valueOf(id));
     }
 }

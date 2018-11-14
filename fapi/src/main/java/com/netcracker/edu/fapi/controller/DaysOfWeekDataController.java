@@ -30,6 +30,6 @@ public class DaysOfWeekDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteDaysOfWeek(@PathVariable String id) {
-        daysOfWeekDataService.deleteDaysOfWeek(Long.valueOf(id));
+        daysOfWeekDataService.deleteDaysOfWeek(Integer.valueOf(id));
     }
 }

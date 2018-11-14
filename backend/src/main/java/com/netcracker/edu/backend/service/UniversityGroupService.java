@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface UniversityGroupService {
     UniversityGroup saveUniversityGroup(UniversityGroup universityGroup);
-    Optional<UniversityGroup> getUniversityGroupById(Long id);
+    Optional<UniversityGroup> getUniversityGroupById(int id);
     Iterable<UniversityGroup> getAllUniversityGroup();
-    void deleteUniversityGroup(Long id);
+    void deleteUniversityGroup(int id);
     
 }

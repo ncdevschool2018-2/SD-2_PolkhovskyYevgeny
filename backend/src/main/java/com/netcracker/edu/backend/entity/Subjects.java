@@ -1,16 +1,13 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Subjects {
     @Id
@@ -19,17 +16,13 @@ public class Subjects {
     private int id;
     private String subject;
     
-    private int teacherId;
-    /*@JsonIgnore
-    private Set<Timetable> timetablesById;*/
-    
     
     public Subjects() {
     }
     
-    public Subjects(String subject, int teacherId) {
+    public Subjects(String subject) {
         this.subject = subject;
-        this.teacherId = teacherId;
+        
     }
     
     @Id
@@ -53,42 +46,19 @@ public class Subjects {
     }
     
     
-    
-    
-    
-    @Basic
-    @Column(name = "teacher_id", nullable = false)
-    public int getTeacherId() {
-        return teacherId;
-    }
-    
-    public void setTeacherId(int teacherId) {
-        this.teacherId = teacherId;
-    }
-    
-//    @OneToMany(mappedBy = "subjectsBySubjectId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    public Set<Timetable> getTimetablesById() {
-//        return timetablesById;
-//    }
-//
-//    public void setTimetablesById(Set<Timetable> timetablesById) {
-//        this.timetablesById = timetablesById;
-//    }
-//
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Subjects subjects = (Subjects) o;
         return id == subjects.id &&
-                teacherId == subjects.teacherId &&
-                Objects.equals(subject, subjects.subject)  /*&&
-                Objects.equals(timetablesById, subjects.timetablesById)*/;
+                
+                Objects.equals(subject, subjects.subject);
     }
     
     @Override
     public int hashCode() {
-        return Objects.hash(id, subject,  teacherId/*, timetablesById*/);
+        return Objects.hash(id, subject);
     }
     
     @Override
@@ -97,8 +67,8 @@ public class Subjects {
                 "id=" + id +
                 ", subject='" + subject + '\'' +
                 
-                ", teacherId=" + teacherId +
-                /*", timetablesById=" + timetablesById +*/
+                ", teacherId=" +
+                
                 '}';
     }
 }

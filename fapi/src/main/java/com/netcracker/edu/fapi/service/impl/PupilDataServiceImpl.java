@@ -28,7 +28,7 @@ public class PupilDataServiceImpl  implements PupilDataService {
     }
     
     @Override
-    public PupilViewModel getPupilById(Long id) {
+    public PupilViewModel getPupilById(int id) {
        
         return null;
     }
@@ -67,7 +67,7 @@ public class PupilDataServiceImpl  implements PupilDataService {
     }
     
     @Override
-    public void deletePupil(Long id) {
+    public void deletePupil(int id) {
         RestTemplate restTemplate =new RestTemplate();
         restTemplate.delete(backendServerUrl+"/api/pupils/"+id);
         

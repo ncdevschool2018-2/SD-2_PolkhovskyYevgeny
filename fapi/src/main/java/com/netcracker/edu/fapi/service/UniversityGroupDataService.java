@@ -9,8 +9,8 @@ import java.util.List;
 
 public interface UniversityGroupDataService {
     List<UniversityGroupViewModel> getAll();
-    UniversityGroupViewModel getUniversityGroupById(Long id);
+    UniversityGroupViewModel getUniversityGroupById(int id);
     UniversityGroupViewModel saveUniversityGroup(UniversityGroupViewModel group);
-    void deleteUniversityGroup(Long id);
+    void deleteUniversityGroup(int id);
     
 }

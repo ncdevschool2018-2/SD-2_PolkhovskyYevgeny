@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PupilsRepository extends CrudRepository<Pupils, Long> {
+public interface PupilsRepository extends CrudRepository<Pupils, Integer> {
     
     List<Pupils> findByGroupId(int id);
 

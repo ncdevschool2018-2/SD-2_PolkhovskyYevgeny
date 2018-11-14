@@ -81,7 +81,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     }
     
     @Override
-    public void deleteTeacher(Long id) {
+    public void deleteTeacher(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/teachers/" + id);
     }

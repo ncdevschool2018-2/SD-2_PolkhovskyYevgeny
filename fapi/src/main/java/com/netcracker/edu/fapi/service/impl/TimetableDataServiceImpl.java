@@ -1,11 +1,12 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.TimetableViewModel;
+import com.netcracker.edu.fapi.models.*;
 import com.netcracker.edu.fapi.service.TimetableDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,7 +27,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     }
     
     @Override
-    public TimetableViewModel getTimetableById(Long id) {
+    public TimetableViewModel getTimetableById(int id) {
         return null;
     }
     
@@ -67,13 +68,39 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     }
     
     @Override
+    public List<TimetableExampleViewModel> getTimetableNamedByGroupId(int id) {
+        RestTemplate restTemplate= new RestTemplate();
+        List<TimetableExampleViewModel> timetableExampleResponse= new ArrayList<TimetableExampleViewModel>();
+        
+        List<TimetableViewModel> startTimetable=getTimetableByGroupId(id);
+        for (TimetableViewModel timetable: startTimetable) {
+            TimetableExampleViewModel timetableExample = new TimetableExampleViewModel();
+            UniversityGroupViewModel newGroup=restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+Long.valueOf(timetable.getGroupId()),UniversityGroupViewModel.class);
+            SlotsViewModel newSlots=restTemplate.getForObject(backendServerUrl+"/api/slots/"+timetable.getSlotId(),SlotsViewModel.class);
+            DaysOfWeekViewModel newDaysOfWeek=restTemplate.getForObject(backendServerUrl+"/api/days-of-week/"+timetable.getDayOfWeekId(),DaysOfWeekViewModel.class);
+            SubjectsViewModel newSubjects=restTemplate.getForObject(backendServerUrl+"/api/subjects/"+timetable.getSubjectId(),SubjectsViewModel.class);
+            TeacherViewModel newTeacher = restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjects.getTeacherId(),TeacherViewModel.class);
+            timetableExample.setTeacherName(newTeacher.getName());
+            timetableExample.setTeacherId(newTeacher.getId());
+            timetableExample.setTeacherSurname(newTeacher.getSurname());
+            timetableExample.setSubject(newSubjects.getSubject());
+            timetableExample.setDay(newDaysOfWeek.getName());
+            timetableExample.setTime(newSlots.getStartTime()+" - "+newSlots.getEndTime());
+            timetableExample.setGroup(newGroup.getName());
+            timetableExampleResponse.add(timetableExample);
+        }
+        
+        return timetableExampleResponse;
+    }
+    
+    @Override
     public TimetableViewModel saveTimetable(TimetableViewModel timetable) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/timetables", timetable, TimetableViewModel.class).getBody();
     }
     
     @Override
-    public void deleteTimetable(Long id) {
+    public void deleteTimetable(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/timetables/" + id);
     }

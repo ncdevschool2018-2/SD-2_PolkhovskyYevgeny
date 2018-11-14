@@ -15,11 +15,8 @@ public class Teacher {
     private int id;
     private String name;
     private String surname;
-    
-    
     private int userId;
-    /*@JsonIgnore
-    private Set<Subjects> subjectsById;*/
+    
     
     public Teacher() {
     }
@@ -61,16 +58,6 @@ public class Teacher {
     }
     
     
-    /*@ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
-    public Users getUsersByUserId() {
-        return usersByUserId;
-    }
-    
-    public void setUsersByUserId(Users usersByUserId) {
-        this.usersByUserId = usersByUserId;
-    }
-    */
     @Basic
     @Column(name = "user_id", nullable = false)
     public int getUserId() {
@@ -81,15 +68,7 @@ public class Teacher {
         this.userId = userId;
     }
     
-    /*@OneToMany(mappedBy = "teacherByTeacherId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Subjects> getSubjectsById() {
-        return subjectsById;
-    }
     
-    public void setSubjectsById(Set<Subjects> subjectsById) {
-        this.subjectsById = subjectsById;
-    }
-    */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -98,10 +77,7 @@ public class Teacher {
         return id == teacher.id &&
                 userId == teacher.userId &&
                 Objects.equals(name, teacher.name) &&
-                Objects.equals(surname, teacher.surname) /*&&*/
-                
-                /*Objects.equals(usersByUserId, teacher.usersByUserId)*/ /*&&
-                Objects.equals(subjectsById, teacher.subjectsById)*/;
+                Objects.equals(surname, teacher.surname);
     }
     
     @Override
@@ -115,9 +91,9 @@ public class Teacher {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                /*", usersByUserId=" + usersByUserId +*/
+                
                 ", userId=" + userId +
-                /*", subjectsById=" + subjectsById +*/
+                
                 '}';
     }
 }

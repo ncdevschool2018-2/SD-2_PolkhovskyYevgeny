@@ -28,7 +28,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
     
     @Override
-    public Optional<Timetable> getTimetableById(Long id) {
+    public Optional<Timetable> getTimetableById(int id) {
         return repository.findById(id);
     }
     
@@ -53,7 +53,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
     
     @Override
-    public void deleteTimetable(Long id) {
+    public void deleteTimetable(int id) {
         repository.deleteById(id);
     }
 }

@@ -29,6 +29,6 @@ public class RolesDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteRoles(@PathVariable String id) {
-        rolesDataService.deleteRoles(Long.valueOf(id));
+        rolesDataService.deleteRoles(Integer.valueOf(id));
     }
 }
