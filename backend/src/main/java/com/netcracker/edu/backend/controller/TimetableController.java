@@ -28,7 +28,7 @@ public class TimetableController {
             return ResponseEntity.notFound().build();
         }
     }
-    @RequestMapping(value = "/pupil/{day}/{group}", method = RequestMethod.GET)
+    @RequestMapping(value = "/day/{day}/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndGroupIdOrderBySlotId(day,group);
         if (timetable!=null ) {

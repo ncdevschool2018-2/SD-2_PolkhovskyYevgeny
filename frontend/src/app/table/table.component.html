@@ -1,0 +1,15 @@
+<table class="table">
+  <thead class="thead-dark">
+  <tr >
+    <th colspan="4" scope="col">{{day}}</th>
+
+  </tr>
+  </thead>
+
+  <tr *ngFor="let mon of timetable">
+    <!--<td width="10%">{{mon.number}}</td>-->
+    <td *ngIf="mon.day.includes(day)" >{{mon.subject}}</td>
+    <td *ngIf="mon.day.includes(day)"><span routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}</span></td>
+    <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>
+  </tr>
+</table>

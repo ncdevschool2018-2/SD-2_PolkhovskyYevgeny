@@ -13,7 +13,15 @@
   </li>
 </ul>
 <table class="table">
-  <thead class="thead-dark">
+  <app-table [day]="Monday"></app-table>
+  <app-table [day]="Tuesday"></app-table>
+  <app-table [day]="Wednesday"></app-table>
+  <app-table [day]="Thursday"></app-table>
+  <app-table [day]="Friday"></app-table>
+  <app-table [day]="Saturday"></app-table>
+  <app-table [day]="Sunday"></app-table>
+
+  <!--<thead class="thead-dark">
   <tr >
     <th colspan="4" scope="col">Monday</th>
 
@@ -21,7 +29,7 @@
   </thead>
 
   <tr *ngFor="let mon of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="mon.day.includes('Monday')" >{{mon.subject}}</td>
     <td *ngIf="mon.day.includes('Monday')"><span routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}</span></td>
     <td *ngIf="mon.day.includes('Monday')"> {{mon.time}}</td>
@@ -36,7 +44,7 @@
   </thead>
 
   <tr *ngFor="let tue of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="tue.day.includes('Tuesday')" ><span routerLink="/teacherinfo">{{tue.subject}}</span></td>
     <td *ngIf="tue.day.includes('Tuesday')"><span routerLink="/teacherinfo">{{tue.teacherName}} {{tue.teacherSurname}}</span></td>
     <td *ngIf="tue.day.includes('Tuesday')"> {{tue.time}}</td>
@@ -50,7 +58,7 @@
   </thead>
 
   <tr *ngFor="let wed of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="wed.day.includes('Wednesday')" ><span routerLink="/teacherinfo">{{wed.subject}}</span></td>
     <td *ngIf="wed.day.includes('Wednesday')"><span routerLink="/teacherinfo">{{wed.teacherName}} {{wed.teacherSurname}}</span></td>
     <td *ngIf="wed.day.includes('Wednesday')"> {{wed.time}}</td>
@@ -64,7 +72,7 @@
   </thead>
 
   <tr *ngFor="let thu of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="thu.day.includes('Thursday')" ><span routerLink="/teacherinfo">{{thu.subject}}</span></td>
     <td *ngIf="thu.day.includes('Thursday')"><span routerLink="/teacherinfo">{{thu.teacherName}} {{thu.teacherSurname}}</span></td>
     <td *ngIf="thu.day.includes('Thursday')"> {{thu.time}}</td>
@@ -78,7 +86,7 @@
   </thead>
 
   <tr *ngFor="let fri of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="fri.day.includes('Friday')" ><span routerLink="/teacherinfo">{{fri.subject}}</span></td>
     <td *ngIf="fri.day.includes('Friday')"><span routerLink="/teacherinfo">{{fri.teacherName}} {{fri.teacherSurname}}</span></td>
     <td *ngIf="fri.day.includes('Friday')"> {{fri.time}}</td>
@@ -92,7 +100,7 @@
   </thead>
 
   <tr *ngFor="let sat of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="sat.day.includes('Saturday')" ><span routerLink="/teacherinfo">{{sat.subject}}</span></td>
     <td *ngIf="sat.day.includes('Saturday')"><span routerLink="/teacherinfo">{{sat.teacherName}} {{sat.teacherSurname}}</span></td>
     <td *ngIf="sat.day.includes('Saturday')"> {{sat.time}}</td>
@@ -106,12 +114,12 @@
   </thead>
 
   <tr *ngFor="let sun of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    &lt;!&ndash;<td width="10%">{{mon.number}}</td>&ndash;&gt;
     <td *ngIf="sun.day.includes('Sunday')" ><span routerLink="/teacherinfo">{{sun.subject}}</span></td>
     <td *ngIf="sun.day.includes('Sunday')"><span routerLink="/teacherinfo">{{sun.teacherName}} {{sun.teacherSurname}}</span></td>
     <td *ngIf="sun.day.includes('Sunday')"> {{sun.time}}</td>
   </tr>
-
+-->
 
 </table>
 

@@ -20,6 +20,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TimetableInfoComponent } from './timetable-info/timetable-info.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TimetableInfoComponent } from './timetable-info/timetable-info.componen
     GroupContentComponent,
     FooterComponent,
     TimetableComponent,
-    TimetableInfoComponent
+    TimetableInfoComponent,
+    TableComponent
   ],
   imports: [
     FormsModule,

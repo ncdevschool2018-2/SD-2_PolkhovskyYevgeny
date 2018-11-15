@@ -6,9 +6,9 @@ public class TimetableExampleViewModel {
     private String teacherName;
     private String teacherSurname;
     private int teacherId;
-    private String time;
-    private String day;
-    private String group;
+     private String time;
+     private String day;
+     private String group;
     
     public TimetableExampleViewModel() {
     }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Timetable} from "../model/timetable";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {ActivatedRoute} from "@angular/router";
@@ -12,14 +12,16 @@ import {TimetableExample} from "../model/timetableExample";
   styleUrls: ['./timetable-info.component.css']
 })
 export class TimetableInfoComponent implements OnInit {
+
+
+public Monday:string="Monday";
+public Tuesday:string="Tuesday";
+public Wednesday:string="Wednesday";
+public Thursday:string="Thursday";
+public Friday:string="Friday";
+public Saturday:string="Saturday";
+public Sunday:string="Sunday";
   private subscriptions: Subscription[] = [];
-  public monday:TimetableExample[];
-  public tuesday:TimetableExample[];
-  public wednesday:Timetable[];
-  public thursday:Timetable[];
-  public friday:Timetable[];
-  public saturday:Timetable[];
-  public sunday:Timetable[];
   public timetable:TimetableExample[];
   constructor(private loadingService: Ng4LoadingSpinnerService,
               private route: ActivatedRoute,

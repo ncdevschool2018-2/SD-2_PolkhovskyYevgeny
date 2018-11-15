@@ -35,13 +35,13 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     public List<TimetableViewModel> getTimetableByGroupId(int id) {
         RestTemplate restTemplate = new RestTemplate();
         TimetableViewModel[] timetable = new TimetableViewModel[]{};
-        TimetableViewModel[] timetable1 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/1/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable2 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/2/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable3 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/3/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable4 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/4/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable5 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/5/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable6 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/6/" + id, TimetableViewModel[].class);
-        TimetableViewModel[] timetable7 = restTemplate.getForObject(backendServerUrl + "/api/timetables/pupil/7/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable1 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/1/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable2 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/2/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable3 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/3/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable4 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/4/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable5 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/5/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable6 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/6/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable7 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/7/" + id, TimetableViewModel[].class);
         if (timetable1 != null) {
             timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable1)).toArray(TimetableViewModel[]::new);
         }
@@ -75,15 +75,16 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         List<TimetableViewModel> startTimetable=getTimetableByGroupId(id);
         for (TimetableViewModel timetable: startTimetable) {
             TimetableExampleViewModel timetableExample = new TimetableExampleViewModel();
-            UniversityGroupViewModel newGroup=restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+Long.valueOf(timetable.getGroupId()),UniversityGroupViewModel.class);
+            UniversityGroupViewModel newGroup=restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+timetable.getGroupId(),UniversityGroupViewModel.class);
             SlotsViewModel newSlots=restTemplate.getForObject(backendServerUrl+"/api/slots/"+timetable.getSlotId(),SlotsViewModel.class);
             DaysOfWeekViewModel newDaysOfWeek=restTemplate.getForObject(backendServerUrl+"/api/days-of-week/"+timetable.getDayOfWeekId(),DaysOfWeekViewModel.class);
-            SubjectsViewModel newSubjects=restTemplate.getForObject(backendServerUrl+"/api/subjects/"+timetable.getSubjectId(),SubjectsViewModel.class);
-            //TeacherViewModel newTeacher = restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjects.getTeacherId(),TeacherViewModel.class);
-            //timetableExample.setTeacherName(newTeacher.getName());
-            //timetableExample.setTeacherId(newTeacher.getId());
-            //timetableExample.setTeacherSurname(newTeacher.getSurname());
-            timetableExample.setSubject(newSubjects.getSubject());
+            SubjectTeacherViewModel newSubjectTeacher=restTemplate.getForObject(backendServerUrl+"/api/teacher-subject/"+timetable.getSubjectId(),SubjectTeacherViewModel.class);
+            SubjectsViewModel newSubject=restTemplate.getForObject(backendServerUrl+"/api/subjects/"+newSubjectTeacher.getSubjectId(),SubjectsViewModel.class);
+            TeacherViewModel newTeacher=restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjectTeacher.getTeacherId(),TeacherViewModel.class);
+            timetableExample.setTeacherName(newTeacher.getName());
+            timetableExample.setTeacherId(newTeacher.getId());
+            timetableExample.setTeacherSurname(newTeacher.getSurname());
+            timetableExample.setSubject(newSubject.getSubject());
             timetableExample.setDay(newDaysOfWeek.getName());
             timetableExample.setTime(newSlots.getStartTime()+" - "+newSlots.getEndTime());
             timetableExample.setGroup(newGroup.getName());
