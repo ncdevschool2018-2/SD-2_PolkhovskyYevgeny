@@ -8,7 +8,7 @@ import java.util.List;
 public interface TeacherDataService {
     List<TeacherViewModel> getAll();
     TeacherViewModel getTeacherById(int id);
-    List<TeacherViewModel> getTeachersSbj(String subject);
+    List<TeacherViewModel> getTeachersSbj(int subject);
     TeacherViewModel saveTeacher(NewUserViewModel teacher);
     void deleteTeacher(int id);
 }

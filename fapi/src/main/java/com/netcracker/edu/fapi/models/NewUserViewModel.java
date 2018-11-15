@@ -7,7 +7,7 @@ public class NewUserViewModel {
     
     private String name;
     private String surname;
-    private String subject;
+    private int subjectId;
     private int groupId;
     private int userId;
     private String login;
@@ -17,10 +17,10 @@ public class NewUserViewModel {
     public NewUserViewModel() {
     }
     
-    public NewUserViewModel(String name, String surname, String subject, int groupId, int userId, String login, String password, int roleId) {
+    public NewUserViewModel(String name, String surname, int subjectId, int groupId, int userId, String login, String password, int roleId) {
         this.name = name;
         this.surname = surname;
-        this.subject = subject;
+        this.subjectId = subjectId;
         this.groupId = groupId;
         this.userId = userId;
         this.login = login;
@@ -28,12 +28,12 @@ public class NewUserViewModel {
         this.roleId = roleId;
     }
     
-    public String getSubject() {
-        return subject;
+    public int getSubjectId() {
+        return subjectId;
     }
     
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
     
     public String getName() {

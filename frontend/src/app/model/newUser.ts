@@ -3,7 +3,7 @@ export class NewUser{
     surname:string;
     groupId:number;
     userId:number;
-  subject:string;
+  subjectId:number;
     login:string;
     password:string;
     roleId:number;

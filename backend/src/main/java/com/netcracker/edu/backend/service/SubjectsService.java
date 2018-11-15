@@ -11,6 +11,6 @@ public interface SubjectsService {
     Iterable<Subjects> getAllSubjects();
     List<Subjects> getDistinctSubject();
     List<Subjects> getAllBySubject(String subject);
-    Integer[] getIdChoosenSubject(String subject);
+    //Integer[] getIdChoosenSubject(String subject);
     void deleteSubjects(int id);
 }

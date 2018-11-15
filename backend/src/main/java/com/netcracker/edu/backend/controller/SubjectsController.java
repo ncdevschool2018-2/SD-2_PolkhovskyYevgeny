@@ -55,7 +55,7 @@ public class SubjectsController {
         
         }
     }
-    @RequestMapping(value = "/chooseId/{sub}", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/chooseId/{sub}", method = RequestMethod.GET)
     public ResponseEntity<Integer[]> getIdChoosenSubject(@PathVariable(name = "sub") String sub) {
         Integer[] subjects = subjectsService.getIdChoosenSubject(sub);
     
@@ -66,7 +66,7 @@ public class SubjectsController {
             return ResponseEntity.notFound().build();
         
         }
-    }
+    }*/
     
     
     @RequestMapping(method = RequestMethod.POST)

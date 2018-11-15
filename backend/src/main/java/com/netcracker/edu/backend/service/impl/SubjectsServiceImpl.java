@@ -44,10 +44,10 @@ public class SubjectsServiceImpl implements SubjectsService {
         return repository.findAllBySubject(subject);
     }
     
-    @Override
+   /* @Override
     public Integer[] getIdChoosenSubject(String subject) {
         return repository.findIdChoosenSubject(subject);
-    }
+    }*/
     
     
     @Override

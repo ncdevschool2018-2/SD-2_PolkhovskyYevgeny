@@ -18,7 +18,7 @@ export class TeacherService {
   getTeacher(id :Number): Observable<Teacher>{
     return this.http.get<Teacher>('/api/teacher' + id);
   }
-  getTeacherName(sbj:String): Observable<Teacher[]>{
+  getTeacherName(sbj:number): Observable<Teacher[]>{
     return this.http.get<Teacher[]>('/api/teacher/chooseTchr/' + sbj);
   }
 }

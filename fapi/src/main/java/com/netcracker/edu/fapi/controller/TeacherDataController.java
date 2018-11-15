@@ -21,7 +21,7 @@ public class TeacherDataController {
     }
     
     @RequestMapping(value = "/chooseTchr/{sbj}",method = RequestMethod.GET)
-    public ResponseEntity<List<TeacherViewModel>> getTeachersSbj(@PathVariable String sbj) {
+    public ResponseEntity<List<TeacherViewModel>> getTeachersSbj(@PathVariable int sbj) {
         return ResponseEntity.ok(teacherDataService.getTeachersSbj(sbj));
     }
     

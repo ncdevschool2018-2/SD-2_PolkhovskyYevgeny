@@ -79,10 +79,10 @@ public class TimetableDataServiceImpl implements TimetableDataService {
             SlotsViewModel newSlots=restTemplate.getForObject(backendServerUrl+"/api/slots/"+timetable.getSlotId(),SlotsViewModel.class);
             DaysOfWeekViewModel newDaysOfWeek=restTemplate.getForObject(backendServerUrl+"/api/days-of-week/"+timetable.getDayOfWeekId(),DaysOfWeekViewModel.class);
             SubjectsViewModel newSubjects=restTemplate.getForObject(backendServerUrl+"/api/subjects/"+timetable.getSubjectId(),SubjectsViewModel.class);
-            TeacherViewModel newTeacher = restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjects.getTeacherId(),TeacherViewModel.class);
-            timetableExample.setTeacherName(newTeacher.getName());
-            timetableExample.setTeacherId(newTeacher.getId());
-            timetableExample.setTeacherSurname(newTeacher.getSurname());
+            //TeacherViewModel newTeacher = restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjects.getTeacherId(),TeacherViewModel.class);
+            //timetableExample.setTeacherName(newTeacher.getName());
+            //timetableExample.setTeacherId(newTeacher.getId());
+            //timetableExample.setTeacherSurname(newTeacher.getSurname());
             timetableExample.setSubject(newSubjects.getSubject());
             timetableExample.setDay(newDaysOfWeek.getName());
             timetableExample.setTime(newSlots.getStartTime()+" - "+newSlots.getEndTime());

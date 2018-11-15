@@ -21,6 +21,8 @@ import {SubjectService} from "../service/subject.service";
 import {DaysOfWeekService} from "../service/days-of-week.service";
 import {TimetableService} from "../service/timetable.service";
 import {Teacher} from "../model/teacher";
+import {SubjectTeacher} from "../model/subjectTeacher";
+import {SubjectTeacherService} from "../service/subject-teacher.service";
 
 
 @Component({
@@ -34,7 +36,7 @@ export class AdminComponent implements OnInit {
   public groups: Group[];
   public users: Users[];
   public slots: Slots[];
-  public subjects: Subjects[];
+  public subjects: SubjectTeacher[];
   public subjectsAll: Subjects[];
   public daysOfWeek: DaysOfWeek[];
   public editableGroup: Group = new Group();
@@ -44,7 +46,7 @@ export class AdminComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public modalRef: BsModalRef;
   public roles: Roles[];
-  public  chooseSubject:string;
+  public  chooseSubject:number;
   public  chooseTeachers:number;
   public  chooseTeachersName:Teacher[];
 
@@ -61,8 +63,9 @@ export class AdminComponent implements OnInit {
     private teacherService: TeacherService,
     private slotService:SlotService,
     private subjectService:SubjectService,
+    private subjectTeacherService:SubjectTeacherService,
     private daysOfWeekService:DaysOfWeekService,
-    private timeTableService:TimetableService
+    private timeTableService:TimetableService,
   ) {
   }
 
@@ -70,7 +73,7 @@ export class AdminComponent implements OnInit {
     this.editableNewUser.roleId = 1;
     this.loadGroups();
     this.loadUsers();
-    this.loadSubject();
+    this.loadSubjectTeacher();
     this.loadAllSubjects();
 
   }
@@ -160,12 +163,15 @@ export class AdminComponent implements OnInit {
       this.slots = slots as Slots[];
     }));
   }
-  private loadSubject(): void {
 
 
-    this.subscriptions.push(this.subjectService.getSubject().subscribe(subject => {
 
-      this.subjects = subject as Subjects[];
+  private loadSubjectTeacher(): void {
+
+
+    this.subscriptions.push(this.subjectTeacherService.getAllSubjectTeacher().subscribe(subject => {
+
+      this.subjects = subject as SubjectTeacher[];
     }));
   }
   private loadAllSubjects(): void {
@@ -214,7 +220,7 @@ export class AdminComponent implements OnInit {
   }
   public _addTimeTable(): void {
 
-    for (let subj of this.subjectsAll) {
+    for (let subj of this.subjects) {
       if(subj.teacherId==this.chooseTeachers){
         this.editableTimetable.subjectId=subj.id;
       }
@@ -238,7 +244,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  private loadChooseTeachers(choose:String): void {
+  private loadChooseTeachers(choose:number): void {
       //this.chooseId=new Number();
     this.subscriptions.push(this.teacherService.getTeacherName(choose).subscribe(chooseTeachersName => {
 

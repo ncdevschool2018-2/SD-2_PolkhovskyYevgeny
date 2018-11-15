@@ -1,9 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.NewUserViewModel;
-import com.netcracker.edu.fapi.models.SubjectsViewModel;
-import com.netcracker.edu.fapi.models.TeacherViewModel;
-import com.netcracker.edu.fapi.models.UsersViewModel;
+import com.netcracker.edu.fapi.models.*;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -27,10 +24,10 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
     }
     @Override
-    public List<TeacherViewModel> getTeachersSbj(String sbj) {
+    public List<TeacherViewModel> getTeachersSbj(int sbj) {
         RestTemplate restTemplate = new RestTemplate();
         Integer[] chooseSbjId=
-                restTemplate.getForObject(backendServerUrl+"/api/subjects/chooseId/"+sbj,Integer[].class);
+                restTemplate.getForObject(backendServerUrl+"/api/teacher-subject/chooseId/"+sbj,Integer[].class);
         if (chooseSbjId==null){
             return null;
         }
@@ -74,8 +71,8 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         if (teacherUserId == null) {
             return null;
         }
-        SubjectsViewModel newSubject = new SubjectsViewModel(newTeacherViewModel.getSubject(),teacherUserId.getId());
-        SubjectsViewModel subject=restTemplate.postForEntity(backendServerUrl+"/api/subjects",newSubject,SubjectsViewModel.class).getBody();
+        SubjectTeacherViewModel newSubjectTeacher = new SubjectTeacherViewModel(newTeacherViewModel.getSubjectId(),teacherUserId.getId());
+        SubjectTeacherViewModel subjectTeacher=restTemplate.postForEntity(backendServerUrl+"/api/teacher-subject",newSubjectTeacher,SubjectTeacherViewModel.class).getBody();
         return teacher;
         
     }
