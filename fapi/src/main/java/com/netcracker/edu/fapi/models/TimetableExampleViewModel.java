@@ -9,11 +9,12 @@ public class TimetableExampleViewModel {
      private String time;
      private String day;
      private String group;
+     private int timetableId;
     
     public TimetableExampleViewModel() {
     }
     
-    public TimetableExampleViewModel(String subject, String teacherName, String teacherSurname, int teacherId, String time, String day, String group) {
+    public TimetableExampleViewModel(String subject, String teacherName, String teacherSurname, int teacherId, String time, String day, String group, int timetableId) {
         this.subject = subject;
         this.teacherName = teacherName;
         this.teacherSurname = teacherSurname;
@@ -21,6 +22,15 @@ public class TimetableExampleViewModel {
         this.time = time;
         this.day = day;
         this.group = group;
+        this.timetableId = timetableId;
+    }
+    
+    public int getTimetableId() {
+        return timetableId;
+    }
+    
+    public void setTimetableId(int timetableId) {
+        this.timetableId = timetableId;
     }
     
     public int getTeacherId() {

@@ -44,6 +44,10 @@
         Add point in timetable
       </button>
       <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="_openModalSubject(templateSubject)">
+        Add subject
+      </button>
+      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
               routerLink="/timetable">
         Show TimeTable
       </button>
@@ -75,6 +79,33 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-default" (click)="_addGroup(name)"
+    >{{"Create"}}
+    </button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+
+  </div>
+</ng-template>
+
+<ng-template #templateSubject>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create"}} new Subject</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Group</label>
+      <input class="form-control" name="name" [(ngModel)]="editableSubject.subject" #name="ngModel" required/>
+      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+        Pls set subject <!--Easy way to create client validation-->
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="_addSubject(name)"
     >{{"Create"}}
     </button>
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>

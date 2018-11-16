@@ -42,6 +42,7 @@ export class AdminComponent implements OnInit {
   public editableGroup: Group = new Group();
   public timetable: Timetable[];
   public editableNewUser: NewUser = new NewUser();
+  public editableSubject: Subjects = new Subjects();
   public editableTimetable: Timetable = new Timetable();
   private subscriptions: Subscription[] = [];
   public modalRef: BsModalRef;
@@ -91,6 +92,12 @@ export class AdminComponent implements OnInit {
 
   public _addGroup(): void {
     this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
+      this._updateGroups();
+      this.refreshGroup();
+      this.modalRef.hide();
+    }));
+  }public _addSubject(): void {
+    this.subscriptions.push(this.subjectService.(this.editableGroup).subscribe(() => {
       this._updateGroups();
       this.refreshGroup();
       this.modalRef.hide();

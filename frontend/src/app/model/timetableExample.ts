@@ -5,7 +5,8 @@ export class TimetableExample {
   teacherId;number;
 time:string;
 day:string;
-group:string
+group:string;
+  timetableId:number;
 
   static cloneBase(timetableExample:TimetableExample):TimetableExample{
   let clonedTimetableExample: TimetableExample=new TimetableExample();
@@ -16,6 +17,7 @@ group:string
   clonedTimetableExample.time=timetableExample.time;
   clonedTimetableExample.day=timetableExample.day;
   clonedTimetableExample.group=timetableExample.group;
+  clonedTimetableExample.timetableId=timetableExample.timetableId;
   return clonedTimetableExample;
   }
 }

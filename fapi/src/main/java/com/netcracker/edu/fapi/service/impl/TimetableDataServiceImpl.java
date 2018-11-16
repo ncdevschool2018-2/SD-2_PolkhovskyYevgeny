@@ -88,6 +88,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
             timetableExample.setDay(newDaysOfWeek.getName());
             timetableExample.setTime(newSlots.getStartTime()+" - "+newSlots.getEndTime());
             timetableExample.setGroup(newGroup.getName());
+            timetableExample.setTimetableId(timetable.getId());
             timetableExampleResponse.add(timetableExample);
         }
         

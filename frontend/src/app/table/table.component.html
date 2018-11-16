@@ -1,15 +1,88 @@
 <table class="table">
   <thead class="thead-dark">
-  <tr >
-    <th colspan="4" scope="col">{{day}}</th>
+  <tr>
+    <th scope="col">{{day}}</th>
+    <th></th>
+    <th></th>
+    <th scope="col"><span><button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal"
+                      data-target="#exampleModal"
+                      (click)="_openModalTimetable(templateTimeTable)">
+      Add
+    </button></span></th>
+
 
   </tr>
   </thead>
-
+  <tbody>
   <tr *ngFor="let mon of timetable">
     <!--<td width="10%">{{mon.number}}</td>-->
-    <td *ngIf="mon.day.includes(day)" >{{mon.subject}}</td>
-    <td *ngIf="mon.day.includes(day)"><span routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}</span></td>
+    <td  *ngIf="mon.day.includes(day)">{{mon.subject}}</td>
+    <td *ngIf="mon.day.includes(day)"><span routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}</span>
+    </td>
     <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>
+    <td *ngIf="mon.day.includes(day)">
+      <span><button type="button" class="btn btn-danger" (click)="_deleteTimetable(mon.timetableId)">Delete</button></span>
+    </td>
   </tr>
+  </tbody>
 </table>
+
+
+<ng-template #templateTimeTable>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add new lesson</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+
+      <label>TIME</label>
+      <div>
+        <mat-radio-group class="example-radio-group" [(ngModel)]="editableTimetable.slotId">
+          <mat-radio-button class="example-radio-button" name="slotId" *ngFor="let slot of slots"
+                            [value]="slot.id">
+            {{slot.startTime}} - {{slot.endTime }}
+          </mat-radio-button>
+
+        </mat-radio-group>
+      </div>
+
+      <label>SUBJECT</label>
+      <div>
+        <mat-radio-group class="example-radio-group" [(ngModel)]="chooseSubject">
+          <mat-radio-button class="example-radio-button" name="roleId" *ngFor="let subj of subjectsAll"
+                            [value]="subj.id">
+            {{subj.subject}}
+          </mat-radio-button>
+
+        </mat-radio-group>
+
+      </div>
+      <div>
+        <button type="button" class="btn btn-default" (click)="_checkForTeachers(chooseSubject)"
+        >{{"check for teachers"}}
+        </button>
+      </div>
+      <div>
+        <mat-radio-group class="example-radio-group" [(ngModel)]="chooseTeachers">
+          <mat-radio-button class="example-radio-button" name="groupId" *ngFor="let chooseTeach of chooseTeachersName"
+                            [value]="chooseTeach.id">
+            {{chooseTeach.name }}{{" "}}{{ chooseTeach.surname}}
+          </mat-radio-button>
+          {{chooseTeachers}}
+        </mat-radio-group>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="_addTimeTable()"
+    >{{"Create"}}
+    </button>
+
+
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+  </div>
+</ng-template>
