@@ -96,7 +96,7 @@
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label>Group</label>
+      <label>Subject</label>
       <input class="form-control" name="name" [(ngModel)]="editableSubject.subject" #name="ngModel" required/>
       <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
         Pls set subject <!--Easy way to create client validation-->

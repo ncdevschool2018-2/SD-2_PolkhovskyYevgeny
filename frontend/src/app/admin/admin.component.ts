@@ -84,6 +84,11 @@ export class AdminComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     this.loadGroups();
   }
+  public _openModalSubject(template: TemplateRef<any>): void {
+    //this.refreshSubject();
+    this.modalRef = this.modalService.show(template);
+    //this.loadGroups();
+  }
 
   public _closeModal(): void {
     this.modalRef.hide();
@@ -97,9 +102,8 @@ export class AdminComponent implements OnInit {
       this.modalRef.hide();
     }));
   }public _addSubject(): void {
-    this.subscriptions.push(this.subjectService.(this.editableGroup).subscribe(() => {
-      this._updateGroups();
-      this.refreshGroup();
+    this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(() => {
+      this.loadAllSubjects();
       this.modalRef.hide();
     }));
   }
@@ -133,6 +137,7 @@ export class AdminComponent implements OnInit {
 
   public _openModalTeacher(template: TemplateRef<any>): void {
     this.refreshGroup();
+    this.loadAllSubjects();
     this.modalRef = this.modalService.show(template);
     this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
       this.roles = roles as Roles[];
