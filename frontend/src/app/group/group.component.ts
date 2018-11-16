@@ -20,7 +20,7 @@ groups:Group[];
   
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
-              private location: Location,
+
               ) {
 
   }
@@ -43,7 +43,5 @@ groups:Group[];
       this.loadingService.hide();
     }));
   }
-  goBack(): void {
-    this.location.back();
-  }
+
 }

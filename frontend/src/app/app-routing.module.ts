@@ -8,6 +8,7 @@ import {TeacherinfoComponent} from "./teacherinfo/teacherinfo.component";
 import {GroupContentComponent} from "./group-content/group-content.component";
 import {TimetableComponent} from "./timetable/timetable.component";
 import {TimetableInfoComponent} from "./timetable-info/timetable-info.component";
+import {SubjectsComponent} from "./subjects/subjects.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'timetableinfo/:id', component: TimetableInfoComponent},
   {path:'timetable', component: TimetableComponent},
   {path:'teacherinfo', component: TeacherinfoComponent},
+  {path:'subject', component: SubjectsComponent},
   {path:'teacherinfo/:id', component: TeacherinfoComponent},
 
 ]

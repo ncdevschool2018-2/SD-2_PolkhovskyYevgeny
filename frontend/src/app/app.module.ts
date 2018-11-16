@@ -21,6 +21,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { TimetableComponent } from './timetable/timetable.component';
 import { TimetableInfoComponent } from './timetable-info/timetable-info.component';
 import { TableComponent } from './table/table.component';
+import { SubjectsComponent } from './subjects/subjects.component';
+import { GoBackComponent } from './go-back/go-back.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { TableComponent } from './table/table.component';
     FooterComponent,
     TimetableComponent,
     TimetableInfoComponent,
-    TableComponent
+    TableComponent,
+    SubjectsComponent,
+    GoBackComponent
   ],
   imports: [
     FormsModule,

@@ -24,4 +24,7 @@ export class SubjectService {
   saveSubject(subject: Subjects): Observable<Subjects> {
     return this.http.post<Subjects>('/api/subject', subject);
   }
+  deleteSubject(subjectId: string): Observable<void> {
+    return this.http.delete<void>('/api/subject/' + subjectId);
+  }
 }
