@@ -9,6 +9,8 @@ import {GroupContentComponent} from "./group-content/group-content.component";
 import {TimetableComponent} from "./timetable/timetable.component";
 import {TimetableInfoComponent} from "./timetable-info/timetable-info.component";
 import {SubjectsComponent} from "./subjects/subjects.component";
+import {TeachersComponent} from "./teachers/teachers.component";
+import {TimetableInfoTeacherComponent} from "./timetable-info-teacher/timetable-info-teacher.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin', pathMatch: 'full'},
@@ -18,9 +20,11 @@ const routes: Routes = [
   {path:'pupil', component: PupilComponent},
   {path:'groupContent/:id', component: GroupContentComponent},
   {path:'timetableinfo/:id', component: TimetableInfoComponent},
+  {path:'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},
   {path:'timetable', component: TimetableComponent},
   {path:'teacherinfo', component: TeacherinfoComponent},
   {path:'subject', component: SubjectsComponent},
+  {path:'teachers', component: TeachersComponent},
   {path:'teacherinfo/:id', component: TeacherinfoComponent},
 
 ]

@@ -32,7 +32,10 @@
       </button>
 
 
-      <a class="p-2 text-muted" href="#">Search Teacher</a>
+      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+              routerLink="/teachers">
+        All Teachers
+      </button>
 
     </nav>
 
@@ -55,6 +58,22 @@
               routerLink="/timetable">
         Show TimeTable
       </button>
+
+    </nav>
+
+  </div>
+  <div class="nav-scroller py-1 mb-2">
+    <nav class="nav d-flex justify-content-between">
+      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+              (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
+        Add subject to teacher
+      </button>
+
+      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+              routerLink="/subject">
+        All Subjects
+      </button>
+
 
     </nav>
 
@@ -356,7 +375,7 @@
                             [value]="chooseTeach.id">
             {{chooseTeach.name }}{{" "}}{{ chooseTeach.surname}}
           </mat-radio-button>
-          {{chooseTeachers}}
+
         </mat-radio-group>
       </div>
     </div>
@@ -368,5 +387,46 @@
 
 
     <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+  </div>
+</ng-template>
+
+<ng-template #templateSubjectTeacher>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create"}} new Group</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>Teacher</label>
+    <div>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="editableSubjectTeacher.teacherId">
+        <mat-radio-button class="example-radio-button" name="groupId" *ngFor="let Teach of teachersAll"
+                          [value]="Teach.id">
+          {{Teach.name }}{{" "}}{{ Teach.surname}}
+        </mat-radio-button>
+
+      </mat-radio-group>
+    </div>
+    <label>Subject</label>
+    <div>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="editableSubjectTeacher.subjectId">
+        <mat-radio-button class="example-radio-button" name="groupId" *ngFor="let sub of subjectsAll"
+                          [value]="sub.id">
+          {{sub.subject}}
+        </mat-radio-button>
+
+      </mat-radio-group>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="_addSubjectTeacher()"
+    >{{"Add"}}
+    </button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+
   </div>
 </ng-template>

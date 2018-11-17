@@ -20,4 +20,8 @@ public interface SubjectsRepository extends CrudRepository<Subjects,Integer> {
     @Modifying
     @Query(value = "select distinct teacher_id from subjects where subject=?1",nativeQuery = true)
     Integer[] findIdChoosenSubject(String subject);
+    
+    @Modifying
+    @Query(value = "select * from subjects inner join subject_teacher on subjects.id=subject_teacher.subject_id where subject_teacher.teacher_id=?1",nativeQuery = true)
+    List<Subjects> findSubjectsForTeacher(int teacherId);
 }

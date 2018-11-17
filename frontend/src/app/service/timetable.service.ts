@@ -25,6 +25,9 @@ export class TimetableService {
   getTimetableNamedByGroupId(id:number):Observable<TimetableExample[]>{
     return this.http.get<TimetableExample[]>('api/timetable/group/named/'+id);
   }
+  getTimetableNamedByTeacherId(id:number):Observable<TimetableExample[]>{
+    return this.http.get<TimetableExample[]>('api/timetable/teacher/named/'+id);
+  }
   deleteTimetable(timetableId: string): Observable<void> {
     return this.http.delete<void>('/api/timetable/' + timetableId);
   }

@@ -68,11 +68,63 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     }
     
     @Override
+    public List<TimetableViewModel> getTimetableByTeacherId(int id) {
+        RestTemplate restTemplate = new RestTemplate();
+        TimetableViewModel[] timetable = new TimetableViewModel[]{};
+        TimetableViewModel[] timetable1 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/1/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable2 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/2/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable3 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/3/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable4 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/4/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable5 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/5/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable6 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/6/teacher/" + id, TimetableViewModel[].class);
+        TimetableViewModel[] timetable7 = restTemplate.getForObject(backendServerUrl + "/api/timetables/day/7/teacher/" + id, TimetableViewModel[].class);
+        if (timetable1 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable1)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable2 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable2)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable3 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable3)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable4 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable4)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable5 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable5)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable6 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable6)).toArray(TimetableViewModel[]::new);
+        }
+        if (timetable7 != null) {
+            timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable7)).toArray(TimetableViewModel[]::new);
+        }
+    
+        return timetable == null ? Collections.emptyList() : Arrays.asList(timetable);
+    }
+    
+    @Override
     public List<TimetableExampleViewModel> getTimetableNamedByGroupId(int id) {
         RestTemplate restTemplate= new RestTemplate();
         List<TimetableExampleViewModel> timetableExampleResponse= new ArrayList<TimetableExampleViewModel>();
         
         List<TimetableViewModel> startTimetable=getTimetableByGroupId(id);
+        helpGetTimetable(restTemplate, timetableExampleResponse, startTimetable);
+    
+        return timetableExampleResponse;
+    }
+    
+    @Override
+    public List<TimetableExampleViewModel> getTimetableNamedByTeacherId(int id) {
+        RestTemplate restTemplate= new RestTemplate();
+        List<TimetableExampleViewModel> timetableExampleResponse= new ArrayList<TimetableExampleViewModel>();
+        List<TimetableViewModel> startTimetable=getTimetableByTeacherId(id);
+        helpGetTimetable(restTemplate, timetableExampleResponse, startTimetable);
+    
+        return timetableExampleResponse;
+    }
+    
+    private void helpGetTimetable(RestTemplate restTemplate, List<TimetableExampleViewModel> timetableExampleResponse, List<TimetableViewModel> startTimetable) {
         for (TimetableViewModel timetable: startTimetable) {
             TimetableExampleViewModel timetableExample = new TimetableExampleViewModel();
             UniversityGroupViewModel newGroup=restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+timetable.getGroupId(),UniversityGroupViewModel.class);
@@ -91,8 +143,6 @@ public class TimetableDataServiceImpl implements TimetableDataService {
             timetableExample.setTimetableId(timetable.getId());
             timetableExampleResponse.add(timetableExample);
         }
-        
-        return timetableExampleResponse;
     }
     
     @Override

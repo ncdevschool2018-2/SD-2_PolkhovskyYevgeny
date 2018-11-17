@@ -43,6 +43,16 @@ public class SubjectsController {
     
         }
     }
+    @RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Subjects>> getSubjectsForTeacher(@PathVariable(name = "id") int id) {
+        List<Subjects> subjects = subjectsService.getSubjectsForTeacher(id);
+        if(subjects!=null ){
+            return ResponseEntity.ok(subjects);
+        }else {
+            return ResponseEntity.notFound().build();
+    
+        }
+    }
     @RequestMapping(value = "/choose/{sub}", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getAllBySubject(@PathVariable(name = "sub") String sub) {
         List<Subjects> subjects = subjectsService.getAllBySubject(sub);

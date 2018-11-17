@@ -15,10 +15,17 @@ export class TeacherService {
     return this.http.post<NewUser>('/api/teacher/new-teacher', newUser);
   }
 
+  getTeachers(): Observable<Teacher[]>{
+    return this.http.get<Teacher[]>('/api/teacher');
+  }
   getTeacher(id :Number): Observable<Teacher>{
     return this.http.get<Teacher>('/api/teacher' + id);
   }
   getTeacherName(sbj:number): Observable<Teacher[]>{
     return this.http.get<Teacher[]>('/api/teacher/chooseTchr/' + sbj);
+  }
+
+  deleteTeacher(teacherId: string): Observable<void> {
+    return this.http.delete<void>('/api/teacher/' + teacherId);
   }
 }

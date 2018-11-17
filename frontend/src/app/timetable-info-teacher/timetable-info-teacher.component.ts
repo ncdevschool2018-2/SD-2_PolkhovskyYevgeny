@@ -2,13 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
 
 @Component({
-  selector: 'app-timetable-info',
-  templateUrl: './timetable-info.component.html',
-  styleUrls: ['./timetable-info.component.css']
+  selector: 'app-timetable-info-teacher',
+  templateUrl: './timetable-info-teacher.component.html',
+  styleUrls: ['./timetable-info-teacher.component.css']
 })
-export class TimetableInfoComponent implements OnInit {
-
-
+export class TimetableInfoTeacherComponent implements OnInit {
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
   public Wednesday: string = "Wednesday";
@@ -23,7 +21,7 @@ export class TimetableInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
 
+  }
 
 }

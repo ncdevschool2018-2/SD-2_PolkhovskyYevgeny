@@ -4,6 +4,7 @@ import {Observable, Subject} from "rxjs";
 import {Timetable} from "../model/timetable";
 import {Subjects} from "../model/subjects";
 import {Group} from "../model/group";
+import {Teacher} from "../model/teacher";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,8 @@ export class SubjectService {
   }
   deleteSubject(subjectId: string): Observable<void> {
     return this.http.delete<void>('/api/subject/' + subjectId);
+  }
+  getTeacherSubjects(teacherId:number):Observable<Subjects[]>{
+    return this.http.get<Subjects[]>('/api/fsubject-teacher/'+teacherId);
   }
 }

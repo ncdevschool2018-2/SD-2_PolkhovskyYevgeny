@@ -35,6 +35,11 @@ public class SubjectsServiceImpl implements SubjectsService {
     }
     
     @Override
+    public List<Subjects> getSubjectsForTeacher(int teacherId) {
+        return repository.findSubjectsForTeacher(teacherId);
+    }
+    
+    @Override
     public List<Subjects> getDistinctSubject() {
         return repository.findDistinctSubject();
     }

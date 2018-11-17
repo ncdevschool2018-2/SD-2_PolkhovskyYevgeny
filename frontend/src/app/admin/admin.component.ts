@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
   public users: Users[];
   public slots: Slots[];
   public subjects: SubjectTeacher[];
+  public subjectTeacher: SubjectTeacher[];
   public subjectsAll: Subjects[];
   public daysOfWeek: DaysOfWeek[];
   public editableGroup: Group = new Group();
@@ -44,12 +45,14 @@ export class AdminComponent implements OnInit {
   public editableNewUser: NewUser = new NewUser();
   public editableSubject: Subjects = new Subjects();
   public editableTimetable: Timetable = new Timetable();
+  public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
   private subscriptions: Subscription[] = [];
   public modalRef: BsModalRef;
   public roles: Roles[];
   public  chooseSubject:number;
   public  chooseTeachers:number;
   public  chooseTeachersName:Teacher[];
+  public  teachersAll:Teacher[];
 
 
 
@@ -89,6 +92,12 @@ export class AdminComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     //this.loadGroups();
   }
+  public _openModalSubjectTeacher(template: TemplateRef<any>): void {
+    this.loadAllTeachers();
+    this.loadAllSubjects();
+    this.modalRef = this.modalService.show(template);
+
+  }
 
   public _closeModal(): void {
     this.modalRef.hide();
@@ -101,8 +110,15 @@ export class AdminComponent implements OnInit {
       this.refreshGroup();
       this.modalRef.hide();
     }));
-  }public _addSubject(): void {
+  }
+  public _addSubject(): void {
     this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(() => {
+      this.loadAllSubjects();
+      this.modalRef.hide();
+    }));
+  }
+  public _addSubjectTeacher(): void {
+    this.subscriptions.push(this.subjectTeacherService.saveSubjectTeacher(this.editableSubjectTeacher).subscribe(() => {
       this.loadAllSubjects();
       this.modalRef.hide();
     }));
@@ -149,9 +165,7 @@ export class AdminComponent implements OnInit {
     this.loadSlot();
     this.loadDaysOfWeek();
     this.modalRef = this.modalService.show(template);
-    this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
-      this.roles = roles as Roles[];
-    }));
+
   }
 
   public _updateUsers(): void {
@@ -262,6 +276,13 @@ export class AdminComponent implements OnInit {
 
       this.chooseTeachersName = chooseTeachersName as Teacher[];
     }));
+  }
+  private loadAllTeachers(): void {
 
+    this.subscriptions.push(this.teacherService.getTeachers().subscribe(teachersAll => {
+
+      this.teachersAll = teachersAll as Teacher[];
+    }));
+    this.loadSubjectTeacher();
   }
 }

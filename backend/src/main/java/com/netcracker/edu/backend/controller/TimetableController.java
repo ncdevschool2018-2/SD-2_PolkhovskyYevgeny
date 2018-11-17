@@ -37,6 +37,15 @@ public class TimetableController {
             return ResponseEntity.notFound().build();
         }
     }
+    @RequestMapping(value = "/day/{day}/teacher/{teacher}", method = RequestMethod.GET)
+    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "teacher") int teacher) {
+        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(day,teacher);
+        if (timetable!=null ) {
+            return ResponseEntity.ok(timetable);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
     @RequestMapping(value = "/pupil/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByGroupIdOrderByDayOfWeekId(@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByGroupIdOrderByDayOfWeekId(group);

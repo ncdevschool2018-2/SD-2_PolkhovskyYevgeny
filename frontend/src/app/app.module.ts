@@ -23,6 +23,9 @@ import { TimetableInfoComponent } from './timetable-info/timetable-info.componen
 import { TableComponent } from './table/table.component';
 import { SubjectsComponent } from './subjects/subjects.component';
 import { GoBackComponent } from './go-back/go-back.component';
+import { TeachersComponent } from './teachers/teachers.component';
+import { TimetableInfoTeacherComponent } from './timetable-info-teacher/timetable-info-teacher.component';
+import { TableTeacherComponent } from './table-teacher/table-teacher.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { GoBackComponent } from './go-back/go-back.component';
     TimetableInfoComponent,
     TableComponent,
     SubjectsComponent,
-    GoBackComponent
+    GoBackComponent,
+    TeachersComponent,
+    TimetableInfoTeacherComponent,
+    TableTeacherComponent
   ],
   imports: [
     FormsModule,
