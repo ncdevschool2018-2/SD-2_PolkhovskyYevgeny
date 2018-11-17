@@ -31,4 +31,7 @@ export class SubjectService {
   getTeacherSubjects(teacherId:number):Observable<Subjects[]>{
     return this.http.get<Subjects[]>('/api/fsubject-teacher/'+teacherId);
   }
+  getSubjectsForTeacher(teacherId:number):Observable<Subjects[]>{
+    return this.http.get<Subjects[]>('/api/subject/teacher/'+teacherId);
+  }
 }

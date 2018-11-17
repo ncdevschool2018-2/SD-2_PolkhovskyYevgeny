@@ -12,20 +12,23 @@
     </div>
   </header>
 
-  <div class="nav-scroller py-1 mb-2">
+  <div class="nav-scroller ">
     <nav class="nav d-flex justify-content-between">
-      <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
               (click)="_openModal(template)">
         Create group
       </button>
+
       <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
               (click)="_openModalPupil(templatePupil)">
         Create pupil
       </button>
+
       <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
               (click)="_openModalTeacher(templateTeacher)">
         Create Teacher
       </button>
+
       <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
               routerLink="/group">
         All Groups
@@ -40,6 +43,7 @@
     </nav>
 
   </div>
+
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
       <button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal" data-target="#exampleModal"
@@ -77,6 +81,11 @@
 
     </nav>
 
+  </div>
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-secondary">Left</button>
+    <button type="button" class="btn btn-secondary">Middle</button>
+    <button type="button" class="btn btn-secondary">Right</button>
   </div>
 
 </div>

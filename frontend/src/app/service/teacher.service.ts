@@ -19,7 +19,7 @@ export class TeacherService {
     return this.http.get<Teacher[]>('/api/teacher');
   }
   getTeacher(id :Number): Observable<Teacher>{
-    return this.http.get<Teacher>('/api/teacher' + id);
+    return this.http.get<Teacher>('/api/teacher/' + id);
   }
   getTeacherName(sbj:number): Observable<Teacher[]>{
     return this.http.get<Teacher[]>('/api/teacher/chooseTchr/' + sbj);

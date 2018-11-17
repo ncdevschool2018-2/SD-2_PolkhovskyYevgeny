@@ -9,6 +9,7 @@ public interface SubjectsDataService {
     List<SubjectsViewModel> getAll();
     SubjectsViewModel getSubjectsById(int id);
     List<SubjectsViewModel> getDistinctSubject();
+    List<SubjectsViewModel> getSubjectsForTeacher(int id);
     List<Integer> getIdChoosenSubject(String subject);
     SubjectsViewModel saveSubjects(SubjectsViewModel subject);
     void deleteSubjects(int id);

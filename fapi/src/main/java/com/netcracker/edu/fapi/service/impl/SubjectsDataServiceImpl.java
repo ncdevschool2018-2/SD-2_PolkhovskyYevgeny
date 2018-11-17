@@ -38,6 +38,14 @@ public class SubjectsDataServiceImpl  implements SubjectsDataService {
     }
     
     @Override
+    public List<SubjectsViewModel> getSubjectsForTeacher(int id) {
+        RestTemplate restTemplate= new RestTemplate();
+        SubjectsViewModel[] subjectsViewModelsResponse=
+                restTemplate.getForObject(backendServerUrl+"/api/subjects/teacher/"+id,SubjectsViewModel[].class);
+        return subjectsViewModelsResponse==null ?Collections.emptyList():Arrays.asList(subjectsViewModelsResponse);
+    }
+    
+    @Override
     public List<Integer> getIdChoosenSubject(String subject) {
         RestTemplate restTemplate = new RestTemplate();
         Integer[] chooseSbjId=

@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
+import {ActivatedRoute} from "@angular/router";
+import {Subscription} from "rxjs";
+import {TeacherService} from "../service/teacher.service";
+import {Teacher} from "../model/teacher";
 
 @Component({
   selector: 'app-timetable-info-teacher',
@@ -14,13 +18,30 @@ export class TimetableInfoTeacherComponent implements OnInit {
   public Friday: string = "Friday";
   public Saturday: string = "Saturday";
   public Sunday: string = "Sunday";
-
+  private subscriptions: Subscription[] = [];
   public timetable: TimetableExample[];
-
-  constructor() {
+ public teacher:Teacher;
+  constructor(private route: ActivatedRoute,
+              private teacherService: TeacherService,
+              ) {
   }
 
   ngOnInit() {
+this.loadTeacher();
+  }
+
+  private loadTeacher(): void {
+debugger;
+
+
+    this.route.params.subscribe(params => {
+      let id: number = +params['id'];
+      this.subscriptions.push(this.teacherService.getTeacher(id).subscribe(teacher => {
+
+        this.teacher = teacher as Teacher;
+
+      }));
+    });
 
   }
 
