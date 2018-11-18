@@ -21,7 +21,8 @@ export class GroupContentComponent implements OnInit {
   public modalRef: BsModalRef;
   private subscriptions: Subscription[] = [];
   public groups: Group[];
-
+  public groupId: number;
+  public group: string;
 
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
@@ -32,7 +33,11 @@ export class GroupContentComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.loadGroups();
+
     this.loadGroupContent();
+    this.getGroup(this.groupId);
 
   }
 
@@ -41,6 +46,10 @@ export class GroupContentComponent implements OnInit {
     // Get data from BillingAccountService
     this.route.params.subscribe(params => {
       let id: number = +params['id'];
+
+      this.groupId = id;
+
+
       this.subscriptions.push(this.groupContentService.getGroupContentByGroup(id).subscribe(accounts => {
         // Parse json response into local array
         this.groupContent = accounts as GroupContent[];
@@ -98,5 +107,15 @@ export class GroupContentComponent implements OnInit {
       this.groups = groups as Group[];
 
     }));
+  }
+
+  private getGroup(id: number): void {
+    for (let group of this.groups) {
+
+      if (group.id == id) {
+        this.group = group.name;
+
+      }
+    }
   }
 }

@@ -1,4 +1,7 @@
 /* stylelint-disable selector-list-comma-newline-after */
+span{
+  float: right;
+}
 mat-select{
   z-index: 999;
 }

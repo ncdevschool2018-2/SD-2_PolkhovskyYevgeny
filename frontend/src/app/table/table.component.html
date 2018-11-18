@@ -2,8 +2,9 @@
   <thead class="thead-dark">
   <tr>
     <th scope="col">{{day}}</th>
-    <th></th>
-    <th></th>
+    <th scope="col"> Subject</th>
+    <th scope="col"> Teacher</th>
+    <th scope="col">Time</th>
     <th scope="col"><span><button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal"
                                   data-target="#exampleModal"
                                   (click)="_openModalTimetable(templateTimeTable)">
@@ -15,9 +16,9 @@
   </thead>
   <tbody>
   <tr *ngFor="let mon of timetable">
-    <!--<td width="10%">{{mon.number}}</td>-->
+    <th *ngIf="mon.day.includes(day)" scope="row"></th>
     <td *ngIf="mon.day.includes(day)">{{mon.subject}}</td>
-    <td *ngIf="mon.day.includes(day)"><span routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}</span>
+    <td *ngIf="mon.day.includes(day)" routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}
     </td>
     <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>
     <td *ngIf="mon.day.includes(day)">
