@@ -22,21 +22,23 @@ public class TimetableDataController {
         return ResponseEntity.ok(timetableDataService.getAll());
     }
     
-    @RequestMapping(value = "group/{id}",method = RequestMethod.GET)
-    public ResponseEntity<List<TimetableViewModel>>getTimetableByGroupId(@PathVariable int id){
+    @RequestMapping(value = "group/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<TimetableViewModel>> getTimetableByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(timetableDataService.getTimetableByGroupId(id));
     }
-    @RequestMapping(value = "teacher/{id}",method = RequestMethod.GET)
-    public ResponseEntity<List<TimetableViewModel>>getTimetableByTeacherId(@PathVariable int id){
+    
+    @RequestMapping(value = "teacher/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<TimetableViewModel>> getTimetableByTeacherId(@PathVariable int id) {
         return ResponseEntity.ok(timetableDataService.getTimetableByTeacherId(id));
     }
     
-    @RequestMapping(value = "group/named/{id}",method = RequestMethod.GET)
-    public ResponseEntity<List<TimetableExampleViewModel>>getTimetableNamedByGroupId(@PathVariable int id){
+    @RequestMapping(value = "group/named/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<TimetableExampleViewModel>> getTimetableNamedByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(timetableDataService.getTimetableNamedByGroupId(id));
     }
-    @RequestMapping(value = "teacher/named/{id}",method = RequestMethod.GET)
-    public ResponseEntity<List<TimetableExampleViewModel>>getTimetableNamedByTeacherId(@PathVariable int id){
+    
+    @RequestMapping(value = "teacher/named/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<TimetableExampleViewModel>> getTimetableNamedByTeacherId(@PathVariable int id) {
         return ResponseEntity.ok(timetableDataService.getTimetableNamedByTeacherId(id));
     }
     

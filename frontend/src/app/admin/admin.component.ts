@@ -8,7 +8,6 @@ import {Roles} from "../model/role";
 import {RolesService} from "../service/roles.service";
 import {UsersService} from "../service/users.service";
 import {Users} from "../model/users";
-import {FormControl} from "@angular/forms";
 import {NewUser} from "../model/newUser";
 import {PupilService} from "../service/pupil.service";
 import {TeacherService} from "../service/teacher.service";
@@ -49,12 +48,10 @@ export class AdminComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public modalRef: BsModalRef;
   public roles: Roles[];
-  public  chooseSubject:number;
-  public  chooseTeachers:number;
-  public  chooseTeachersName:Teacher[];
-  public  teachersAll:Teacher[];
-
-
+  public chooseSubject: number;
+  public chooseTeachers: number;
+  public chooseTeachersName: Teacher[];
+  public teachersAll: Teacher[];
 
 
   constructor(
@@ -65,11 +62,11 @@ export class AdminComponent implements OnInit {
     private userService: UsersService,
     private pupilService: PupilService,
     private teacherService: TeacherService,
-    private slotService:SlotService,
-    private subjectService:SubjectService,
-    private subjectTeacherService:SubjectTeacherService,
-    private daysOfWeekService:DaysOfWeekService,
-    private timeTableService:TimetableService,
+    private slotService: SlotService,
+    private subjectService: SubjectService,
+    private subjectTeacherService: SubjectTeacherService,
+    private daysOfWeekService: DaysOfWeekService,
+    private timeTableService: TimetableService,
   ) {
   }
 
@@ -87,11 +84,13 @@ export class AdminComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
     this.loadGroups();
   }
+
   public _openModalSubject(template: TemplateRef<any>): void {
     //this.refreshSubject();
     this.modalRef = this.modalService.show(template);
     //this.loadGroups();
   }
+
   public _openModalSubjectTeacher(template: TemplateRef<any>): void {
     this.loadAllTeachers();
     this.loadAllSubjects();
@@ -111,12 +110,14 @@ export class AdminComponent implements OnInit {
       this.modalRef.hide();
     }));
   }
+
   public _addSubject(): void {
     this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(() => {
       this.loadAllSubjects();
       this.modalRef.hide();
     }));
   }
+
   public _addSubjectTeacher(): void {
     this.subscriptions.push(this.subjectTeacherService.saveSubjectTeacher(this.editableSubjectTeacher).subscribe(() => {
       this.loadAllSubjects();
@@ -160,6 +161,7 @@ export class AdminComponent implements OnInit {
     }));
 
   }
+
   public _openModalTimetable(template: TemplateRef<any>): void {
     this.refreshGroup();
     this.loadSlot();
@@ -181,6 +183,7 @@ export class AdminComponent implements OnInit {
       this.users = users as Users[];
     }));
   }
+
   private loadSlot(): void {
 
 
@@ -191,7 +194,6 @@ export class AdminComponent implements OnInit {
   }
 
 
-
   private loadSubjectTeacher(): void {
 
 
@@ -200,6 +202,7 @@ export class AdminComponent implements OnInit {
       this.subjects = subject as SubjectTeacher[];
     }));
   }
+
   private loadAllSubjects(): void {
 
 
@@ -208,6 +211,7 @@ export class AdminComponent implements OnInit {
       this.subjectsAll = subjectsAll as Subjects[];
     }));
   }
+
   private loadDaysOfWeek(): void {
 
 
@@ -216,6 +220,7 @@ export class AdminComponent implements OnInit {
       this.daysOfWeek = daysOfWeek as DaysOfWeek[];
     }));
   }
+
   private loadTimetable(): void {
 
 
@@ -244,11 +249,12 @@ export class AdminComponent implements OnInit {
       this._closeModal();
     }));
   }
+
   public _addTimeTable(): void {
 
     for (let subj of this.subjects) {
-      if(subj.teacherId==this.chooseTeachers){
-        this.editableTimetable.subjectId=subj.id;
+      if (subj.teacherId == this.chooseTeachers) {
+        this.editableTimetable.subjectId = subj.id;
       }
     }
 
@@ -258,25 +264,28 @@ export class AdminComponent implements OnInit {
       this.modalRef.hide();
     }));
   }
+
   public _updateTimetable(): void {
     this.loadTimetable();
   }
+
   private refreshTimetable(): void {
     this.editableTimetable = new Timetable();
   }
 
-  public _checkForTeachers(chooseSubject){
+  public _checkForTeachers(chooseSubject) {
     this.loadChooseTeachers(chooseSubject);
 
   }
 
-  private loadChooseTeachers(choose:number): void {
-      //this.chooseId=new Number();
+  private loadChooseTeachers(choose: number): void {
+    //this.chooseId=new Number();
     this.subscriptions.push(this.teacherService.getTeacherName(choose).subscribe(chooseTeachersName => {
 
       this.chooseTeachersName = chooseTeachersName as Teacher[];
     }));
   }
+
   private loadAllTeachers(): void {
 
     this.subscriptions.push(this.teacherService.getTeachers().subscribe(teachersAll => {

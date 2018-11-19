@@ -1,10 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Teacher;
-import com.netcracker.edu.backend.entity.Timetable;
-
-import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SubjectsViewModel {
@@ -20,7 +16,7 @@ public class SubjectsViewModel {
     public SubjectsViewModel(int id, String subject) {
         this.id = id;
         this.subject = subject;
-
+        
     }
     
     public SubjectsViewModel(String subject) {
@@ -43,8 +39,6 @@ public class SubjectsViewModel {
     public void setSubject(String subject) {
         this.subject = subject;
     }
-    
-
     
     
 }

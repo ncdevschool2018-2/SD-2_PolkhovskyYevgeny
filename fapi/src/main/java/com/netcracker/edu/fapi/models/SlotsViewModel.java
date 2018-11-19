@@ -1,9 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Timetable;
-
-import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SlotsViewModel {
@@ -19,7 +16,7 @@ public class SlotsViewModel {
         this.id = id;
         this.startTime = startTime;
         this.endTime = endTime;
-       /* this.timetablesById = timetablesById;*/
+        /* this.timetablesById = timetablesById;*/
     }
     
     public int getId() {

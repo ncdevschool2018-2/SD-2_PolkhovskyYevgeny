@@ -1,15 +1,15 @@
 package com.netcracker.edu.fapi.models;
 
 public class TimetableExampleViewModel {
-
+    
     private String subject;
     private String teacherName;
     private String teacherSurname;
     private int teacherId;
-     private String time;
-     private String day;
-     private String group;
-     private int timetableId;
+    private String time;
+    private String day;
+    private String group;
+    private int timetableId;
     
     public TimetableExampleViewModel() {
     }

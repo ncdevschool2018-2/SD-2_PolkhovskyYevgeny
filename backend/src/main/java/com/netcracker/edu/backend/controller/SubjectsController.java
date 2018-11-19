@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/subjects")
 public class SubjectsController {
@@ -36,33 +37,35 @@ public class SubjectsController {
     @RequestMapping(value = "/dist", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getDistinctSubject() {
         List<Subjects> subjects = subjectsService.getDistinctSubject();
-        if(subjects!=null && !subjects.isEmpty()){
+        if (subjects != null && !subjects.isEmpty()) {
             return ResponseEntity.ok(subjects);
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
-    
+            
         }
     }
+    
     @RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getSubjectsForTeacher(@PathVariable(name = "id") int id) {
         List<Subjects> subjects = subjectsService.getSubjectsForTeacher(id);
-        if(subjects!=null ){
+        if (subjects != null) {
             return ResponseEntity.ok(subjects);
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
-    
+            
         }
     }
+    
     @RequestMapping(value = "/choose/{sub}", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getAllBySubject(@PathVariable(name = "sub") String sub) {
         List<Subjects> subjects = subjectsService.getAllBySubject(sub);
-    
-    
-        if(subjects!=null && !subjects.isEmpty()){
-            return ResponseEntity.ok(subjects);
-        }else {
-            return ResponseEntity.notFound().build();
         
+        
+        if (subjects != null && !subjects.isEmpty()) {
+            return ResponseEntity.ok(subjects);
+        } else {
+            return ResponseEntity.notFound().build();
+            
         }
     }
    /* @RequestMapping(value = "/chooseId/{sub}", method = RequestMethod.GET)

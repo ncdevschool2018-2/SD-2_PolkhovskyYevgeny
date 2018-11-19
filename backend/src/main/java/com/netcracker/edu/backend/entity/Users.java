@@ -42,7 +42,7 @@ public class Users {
     }
     
     @Basic
-    @Column(name = "login", nullable = false, length = 45,unique = true)
+    @Column(name = "login", nullable = false, length = 45, unique = true)
     public String getLogin() {
         return login;
     }

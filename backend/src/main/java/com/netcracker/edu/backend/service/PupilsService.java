@@ -7,9 +7,13 @@ import java.util.Optional;
 
 public interface PupilsService {
     Pupils savePupil(Pupils pupil);
+    
     Optional<Pupils> getPupilById(int id);
+    
     Iterable<Pupils> getAllPupils();
+    
     List<Pupils> getByGroupId(int id);
+    
     void deletePupil(int id);
     
 }

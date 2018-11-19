@@ -30,7 +30,6 @@ public class UsersDataServiceImpl implements UsersDataService {
     }
     
     
-    
     @Override
     public UsersViewModel saveUsers(UsersViewModel user) {
         RestTemplate restTemplate = new RestTemplate();
@@ -41,6 +40,6 @@ public class UsersDataServiceImpl implements UsersDataService {
     public void deleteUsers(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/users/" + id);
-    
+        
     }
 }

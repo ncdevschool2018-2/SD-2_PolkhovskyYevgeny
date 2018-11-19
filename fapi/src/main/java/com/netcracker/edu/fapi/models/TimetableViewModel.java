@@ -1,15 +1,11 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.DaysOfWeek;
-import com.netcracker.edu.backend.entity.Slots;
-import com.netcracker.edu.backend.entity.Subjects;
-import com.netcracker.edu.backend.entity.UniversityGroup;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimetableViewModel {
     private int id;
-//    private Subjects subjectsBySubjectId;
+    //    private Subjects subjectsBySubjectId;
 //    private Slots slotsBySlotId;
 //    private DaysOfWeek daysOfWeekByDayOfWeekId;
     private int groupId;

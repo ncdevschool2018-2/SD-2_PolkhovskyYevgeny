@@ -39,6 +39,6 @@ public class DaysOfWeekDataServiceImpl implements DaysOfWeekDataService {
     public void deleteDaysOfWeek(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/days-of-week/" + id);
-    
+        
     }
 }

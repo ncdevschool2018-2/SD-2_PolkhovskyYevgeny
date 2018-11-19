@@ -7,10 +7,16 @@ import java.util.Optional;
 
 public interface TimetableService {
     Timetable saveTimetable(Timetable timetable);
+    
     Optional<Timetable> getTimetableById(int id);
+    
     Iterable<Timetable> getAllTimetable();
+    
     List<Timetable> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(int dayOfWeekId, int groupId);
+    
     List<Timetable> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(int dayOfWeekId, int teacherId);
+    
     List<Timetable> getAllByGroupIdOrderByDayOfWeekId(int groupId);
+    
     void deleteTimetable(int id);
 }

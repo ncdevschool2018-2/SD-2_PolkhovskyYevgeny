@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Timetable {
     @Id
@@ -28,8 +28,6 @@ public class Timetable {
     public void setId(int id) {
         this.id = id;
     }
-    
-    
     
     
     @Basic
@@ -73,8 +71,6 @@ public class Timetable {
     }
     
     
-    
-    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,7 +85,7 @@ public class Timetable {
     
     @Override
     public int hashCode() {
-        return Objects.hash(id,  groupId, subjectId, slotId, dayOfWeekId);
+        return Objects.hash(id, groupId, subjectId, slotId, dayOfWeekId);
     }
     
     @Override

@@ -49,7 +49,7 @@ public class TimetableServiceImpl implements TimetableService {
     public List<Timetable> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(int dayOfWeekId, int teacherId) {
         if (repository.findAllByDayOfWeekIdAndTeacherIdOrderBySlotId(dayOfWeekId, teacherId) == null) {
             return Collections.emptyList();
-        
+            
         } else {
             return repository.findAllByDayOfWeekIdAndTeacherIdOrderBySlotId(dayOfWeekId, teacherId);
         }

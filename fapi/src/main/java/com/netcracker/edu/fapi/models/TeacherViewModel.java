@@ -1,10 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Subjects;
-import com.netcracker.edu.backend.entity.Users;
-
-import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TeacherViewModel {
@@ -12,7 +8,7 @@ public class TeacherViewModel {
     private String name;
     private String surname;
     
-   
+    
     private int userId;
     /*private Collection<Subjects> subjectsById;*/
     
@@ -55,7 +51,6 @@ public class TeacherViewModel {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
     
     
     /*public Users getUsersByUserId() {

@@ -1,16 +1,13 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Slots {
     @Id
@@ -58,7 +55,6 @@ public class Slots {
     public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
-    
     
     
     /*@OneToMany(mappedBy = "slotsBySlotId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)

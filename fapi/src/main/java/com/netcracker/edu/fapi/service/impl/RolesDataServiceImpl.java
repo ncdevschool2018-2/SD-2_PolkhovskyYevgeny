@@ -33,7 +33,7 @@ public class RolesDataServiceImpl implements RolesDataService {
     public RolesViewModel saveRoles(RolesViewModel role) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/roles", role, RolesViewModel.class).getBody();
-    
+        
     }
     
     @Override

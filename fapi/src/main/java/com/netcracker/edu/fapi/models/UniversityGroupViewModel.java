@@ -1,10 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Pupils;
-import com.netcracker.edu.backend.entity.Timetable;
-
-import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UniversityGroupViewModel {

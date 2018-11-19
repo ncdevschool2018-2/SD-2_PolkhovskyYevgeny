@@ -1,4 +1,4 @@
-<ng4-loading-spinner> </ng4-loading-spinner>
+<ng4-loading-spinner></ng4-loading-spinner>
 
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
@@ -22,12 +22,11 @@
   </thead>
   <tbody>
   <tr *ngFor="let group of groups">
-    <td >
+    <td>
       <a *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</a>
       <a *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</a>
     </td>
   </tr>
-
 
 
   </tbody>

@@ -15,8 +15,8 @@ public class PupilServiceImpl implements PupilsService {
     private PupilsRepository repository;
     
     @Autowired
-    public PupilServiceImpl(PupilsRepository repository){
-        this.repository=repository;
+    public PupilServiceImpl(PupilsRepository repository) {
+        this.repository = repository;
     }
     
     @Override

@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Service
-public class SubjectsDataServiceImpl  implements SubjectsDataService {
+public class SubjectsDataServiceImpl implements SubjectsDataService {
     
     @Value("${backend.server.url}")
     private String backendServerUrl;
@@ -32,26 +32,26 @@ public class SubjectsDataServiceImpl  implements SubjectsDataService {
     @Override
     public List<SubjectsViewModel> getDistinctSubject() {
         RestTemplate restTemplate = new RestTemplate();
-        SubjectsViewModel[] subjectsViewModelsResponse=
-                restTemplate.getForObject(backendServerUrl+"/api/subjects/dist",SubjectsViewModel[].class);
+        SubjectsViewModel[] subjectsViewModelsResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/subjects/dist", SubjectsViewModel[].class);
         return subjectsViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelsResponse);
     }
     
     @Override
     public List<SubjectsViewModel> getSubjectsForTeacher(int id) {
-        RestTemplate restTemplate= new RestTemplate();
-        SubjectsViewModel[] subjectsViewModelsResponse=
-                restTemplate.getForObject(backendServerUrl+"/api/subjects/teacher/"+id,SubjectsViewModel[].class);
-        return subjectsViewModelsResponse==null ?Collections.emptyList():Arrays.asList(subjectsViewModelsResponse);
+        RestTemplate restTemplate = new RestTemplate();
+        SubjectsViewModel[] subjectsViewModelsResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/subjects/teacher/" + id, SubjectsViewModel[].class);
+        return subjectsViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelsResponse);
     }
     
     @Override
     public List<Integer> getIdChoosenSubject(String subject) {
         RestTemplate restTemplate = new RestTemplate();
-        Integer[] chooseSbjId=
-                restTemplate.getForObject(backendServerUrl+"/api/subjects/chooseId/"+subject,Integer[].class);
+        Integer[] chooseSbjId =
+                restTemplate.getForObject(backendServerUrl + "/api/subjects/chooseId/" + subject, Integer[].class);
         return chooseSbjId == null ? Collections.emptyList() : Arrays.asList(chooseSbjId);
-    
+        
     }
     
     @Override

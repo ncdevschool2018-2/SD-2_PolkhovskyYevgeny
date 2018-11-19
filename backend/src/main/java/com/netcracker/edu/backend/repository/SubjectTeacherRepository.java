@@ -7,8 +7,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SubjectTeacherRepository extends CrudRepository<SubjectTeacher,Integer> {
+public interface SubjectTeacherRepository extends CrudRepository<SubjectTeacher, Integer> {
     @Modifying
-    @Query(value = "select teacher_id from subject_teacher where subject_id=?1",nativeQuery = true)
+    @Query(value = "select teacher_id from subject_teacher where subject_id=?1", nativeQuery = true)
     Integer[] findIdChoosenSubject(int subject);
 }

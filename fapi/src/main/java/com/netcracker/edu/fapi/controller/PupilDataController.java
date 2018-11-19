@@ -17,31 +17,33 @@ public class PupilDataController {
     private PupilDataService pupilDataService;
     
     @RequestMapping
-    public ResponseEntity<List<PupilViewModel>> getAllPupils(){
+    public ResponseEntity<List<PupilViewModel>> getAllPupils() {
         return ResponseEntity.ok(pupilDataService.getAll());
     }
+    
     @RequestMapping(value = "/group/{id}")
-    public ResponseEntity<List<PupilViewModel>> getByGroupId(@PathVariable int id){
+    public ResponseEntity<List<PupilViewModel>> getByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
-    public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/ ){
-        if(pupil !=null){
+    public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
+        if (pupil != null) {
             return ResponseEntity.ok(pupilDataService.savePupil(pupil));
         }
         return null;
     }
+    
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/ ){
-        if(pupil !=null){
+    public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/) {
+        if (pupil != null) {
             return ResponseEntity.ok(pupilDataService.saveEditPupil(pupil));
         }
         return null;
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deletePupil(@PathVariable String id){
+    public void deletePupil(@PathVariable String id) {
         pupilDataService.deletePupil(Integer.valueOf(id));
     }
 }

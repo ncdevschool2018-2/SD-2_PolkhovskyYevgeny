@@ -1,7 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Users;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PupilViewModel {
@@ -54,7 +53,6 @@ public class PupilViewModel {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
     
     
     public int getGroupId() {

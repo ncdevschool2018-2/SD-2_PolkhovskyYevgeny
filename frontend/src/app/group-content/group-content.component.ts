@@ -24,6 +24,7 @@ export class GroupContentComponent implements OnInit {
   public groupId: number;
   public group: string;
 
+
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,

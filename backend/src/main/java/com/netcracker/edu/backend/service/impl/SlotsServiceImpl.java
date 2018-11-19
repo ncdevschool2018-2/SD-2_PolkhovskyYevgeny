@@ -14,8 +14,8 @@ public class SlotsServiceImpl implements SlotsService {
     private SlotsRepository repository;
     
     @Autowired
-    public SlotsServiceImpl(SlotsRepository repository){
-        this.repository=repository;
+    public SlotsServiceImpl(SlotsRepository repository) {
+        this.repository = repository;
     }
     
     @Override

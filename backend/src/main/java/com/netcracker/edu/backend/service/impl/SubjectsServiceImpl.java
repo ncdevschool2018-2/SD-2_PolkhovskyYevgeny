@@ -15,8 +15,8 @@ public class SubjectsServiceImpl implements SubjectsService {
     private SubjectsRepository repository;
     
     @Autowired
-    public SubjectsServiceImpl(SubjectsRepository repository){
-        this.repository=repository;
+    public SubjectsServiceImpl(SubjectsRepository repository) {
+        this.repository = repository;
     }
     
     @Override

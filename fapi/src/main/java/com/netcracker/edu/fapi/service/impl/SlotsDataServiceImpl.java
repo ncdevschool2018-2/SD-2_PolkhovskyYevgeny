@@ -16,7 +16,6 @@ public class SlotsDataServiceImpl implements SlotsDataService {
     private String backendServerUrl;
     
     
-    
     @Override
     public List<SlotsViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();

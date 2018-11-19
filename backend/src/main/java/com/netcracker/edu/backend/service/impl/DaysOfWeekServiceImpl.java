@@ -7,15 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+
 @Component
 public class DaysOfWeekServiceImpl implements DaysOfWeekService {
     
     private DaysOfWeekRepository repository;
     
     @Autowired
-    public DaysOfWeekServiceImpl(DaysOfWeekRepository repository){
-        this.repository=repository;
+    public DaysOfWeekServiceImpl(DaysOfWeekRepository repository) {
+        this.repository = repository;
     }
+    
     @Override
     public DaysOfWeek saveDaysOfWeek(DaysOfWeek day) {
         return repository.save(day);

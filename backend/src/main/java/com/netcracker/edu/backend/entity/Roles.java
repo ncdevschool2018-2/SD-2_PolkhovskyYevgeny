@@ -1,16 +1,13 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Roles {
     @Id
@@ -50,7 +47,6 @@ public class Roles {
     }
     
     
-    
     //@OneToMany(mappedBy = "rolesByRoleId" ,fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     //public Set<Users> getUsersById() {
     //    return usersById;
@@ -69,7 +65,7 @@ public class Roles {
                 Objects.equals(name, roles.name)
                 //&&
                 //Objects.equals(usersById, roles.usersById)
-        ;
+                ;
     }
     
     @Override

@@ -6,7 +6,10 @@ import java.util.List;
 
 public interface DaysOfWeekDataService {
     List<DaysOfWeekViewModel> getAll();
+    
     DaysOfWeekViewModel getDaysOfWeekById(int id);
+    
     DaysOfWeekViewModel saveDaysOfWeek(DaysOfWeekViewModel day);
+    
     void deleteDaysOfWeek(int id);
 }

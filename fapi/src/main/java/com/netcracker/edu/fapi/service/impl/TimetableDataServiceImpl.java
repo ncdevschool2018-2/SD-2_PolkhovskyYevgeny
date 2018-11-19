@@ -99,46 +99,46 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         if (timetable7 != null) {
             timetable = Stream.concat(Arrays.stream(timetable), Arrays.stream(timetable7)).toArray(TimetableViewModel[]::new);
         }
-    
+        
         return timetable == null ? Collections.emptyList() : Arrays.asList(timetable);
     }
     
     @Override
     public List<TimetableExampleViewModel> getTimetableNamedByGroupId(int id) {
-        RestTemplate restTemplate= new RestTemplate();
-        List<TimetableExampleViewModel> timetableExampleResponse= new ArrayList<TimetableExampleViewModel>();
+        RestTemplate restTemplate = new RestTemplate();
+        List<TimetableExampleViewModel> timetableExampleResponse = new ArrayList<TimetableExampleViewModel>();
         
-        List<TimetableViewModel> startTimetable=getTimetableByGroupId(id);
+        List<TimetableViewModel> startTimetable = getTimetableByGroupId(id);
         helpGetTimetable(restTemplate, timetableExampleResponse, startTimetable);
-    
+        
         return timetableExampleResponse;
     }
     
     @Override
     public List<TimetableExampleViewModel> getTimetableNamedByTeacherId(int id) {
-        RestTemplate restTemplate= new RestTemplate();
-        List<TimetableExampleViewModel> timetableExampleResponse= new ArrayList<TimetableExampleViewModel>();
-        List<TimetableViewModel> startTimetable=getTimetableByTeacherId(id);
+        RestTemplate restTemplate = new RestTemplate();
+        List<TimetableExampleViewModel> timetableExampleResponse = new ArrayList<TimetableExampleViewModel>();
+        List<TimetableViewModel> startTimetable = getTimetableByTeacherId(id);
         helpGetTimetable(restTemplate, timetableExampleResponse, startTimetable);
-    
+        
         return timetableExampleResponse;
     }
     
     private void helpGetTimetable(RestTemplate restTemplate, List<TimetableExampleViewModel> timetableExampleResponse, List<TimetableViewModel> startTimetable) {
-        for (TimetableViewModel timetable: startTimetable) {
+        for (TimetableViewModel timetable : startTimetable) {
             TimetableExampleViewModel timetableExample = new TimetableExampleViewModel();
-            UniversityGroupViewModel newGroup=restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+timetable.getGroupId(),UniversityGroupViewModel.class);
-            SlotsViewModel newSlots=restTemplate.getForObject(backendServerUrl+"/api/slots/"+timetable.getSlotId(),SlotsViewModel.class);
-            DaysOfWeekViewModel newDaysOfWeek=restTemplate.getForObject(backendServerUrl+"/api/days-of-week/"+timetable.getDayOfWeekId(),DaysOfWeekViewModel.class);
-            SubjectTeacherViewModel newSubjectTeacher=restTemplate.getForObject(backendServerUrl+"/api/teacher-subject/"+timetable.getSubjectId(),SubjectTeacherViewModel.class);
-            SubjectsViewModel newSubject=restTemplate.getForObject(backendServerUrl+"/api/subjects/"+newSubjectTeacher.getSubjectId(),SubjectsViewModel.class);
-            TeacherViewModel newTeacher=restTemplate.getForObject(backendServerUrl+"/api/teachers/"+newSubjectTeacher.getTeacherId(),TeacherViewModel.class);
+            UniversityGroupViewModel newGroup = restTemplate.getForObject(backendServerUrl + "/api/universitygroups/" + timetable.getGroupId(), UniversityGroupViewModel.class);
+            SlotsViewModel newSlots = restTemplate.getForObject(backendServerUrl + "/api/slots/" + timetable.getSlotId(), SlotsViewModel.class);
+            DaysOfWeekViewModel newDaysOfWeek = restTemplate.getForObject(backendServerUrl + "/api/days-of-week/" + timetable.getDayOfWeekId(), DaysOfWeekViewModel.class);
+            SubjectTeacherViewModel newSubjectTeacher = restTemplate.getForObject(backendServerUrl + "/api/teacher-subject/" + timetable.getSubjectId(), SubjectTeacherViewModel.class);
+            SubjectsViewModel newSubject = restTemplate.getForObject(backendServerUrl + "/api/subjects/" + newSubjectTeacher.getSubjectId(), SubjectsViewModel.class);
+            TeacherViewModel newTeacher = restTemplate.getForObject(backendServerUrl + "/api/teachers/" + newSubjectTeacher.getTeacherId(), TeacherViewModel.class);
             timetableExample.setTeacherName(newTeacher.getName());
             timetableExample.setTeacherId(newTeacher.getId());
             timetableExample.setTeacherSurname(newTeacher.getSurname());
             timetableExample.setSubject(newSubject.getSubject());
             timetableExample.setDay(newDaysOfWeek.getName());
-            timetableExample.setTime(newSlots.getStartTime()+" - "+newSlots.getEndTime());
+            timetableExample.setTime(newSlots.getStartTime() + " - " + newSlots.getEndTime());
             timetableExample.setGroup(newGroup.getName());
             timetableExample.setTimetableId(timetable.getId());
             timetableExampleResponse.add(timetableExample);

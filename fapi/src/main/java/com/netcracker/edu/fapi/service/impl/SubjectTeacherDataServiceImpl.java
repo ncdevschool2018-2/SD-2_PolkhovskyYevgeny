@@ -21,7 +21,7 @@ public class SubjectTeacherDataServiceImpl implements SubjectTeacherDataService 
         SubjectTeacherViewModel[] subjectTeacherViewModelResponse =
                 restTemplate.getForObject(backendServerUrl + "/api/teacher-subject/all", SubjectTeacherViewModel[].class);
         return subjectTeacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(subjectTeacherViewModelResponse);
-    
+        
     }
     
     @Override
@@ -33,7 +33,7 @@ public class SubjectTeacherDataServiceImpl implements SubjectTeacherDataService 
     public SubjectTeacherViewModel saveSubjectTeacher(SubjectTeacherViewModel subjectTeacherViewModel) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/teacher-subject", subjectTeacherViewModel, SubjectTeacherViewModel.class).getBody();
-    
+        
     }
     
     @Override

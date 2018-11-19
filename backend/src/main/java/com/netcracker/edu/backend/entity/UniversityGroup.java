@@ -1,17 +1,14 @@
 package com.netcracker.edu.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Table(name = "university_group", schema = "control")
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UniversityGroup {
     @Id
@@ -51,26 +48,25 @@ public class UniversityGroup {
     }
     
     
+    /* @OneToMany(mappedBy = "universityGroupByGroupId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     
-   /* @OneToMany(mappedBy = "universityGroupByGroupId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-   
-    public Set<Pupils> getPupilsById() {
-        return pupilsById;
-    }
-    
-    public void setPupilsById(Set<Pupils> pupilsById) {
-        this.pupilsById = pupilsById;
-    }
-    
-    @OneToMany(mappedBy = "universityGroupByGroupId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    public Set<Timetable> getTimetablesById() {
-        return timetablesById;
-    }
-    
-    public void setTimetablesById(Set<Timetable> timetablesById) {
-        this.timetablesById = timetablesById;
-    }
-    */
+     public Set<Pupils> getPupilsById() {
+         return pupilsById;
+     }
+     
+     public void setPupilsById(Set<Pupils> pupilsById) {
+         this.pupilsById = pupilsById;
+     }
+     
+     @OneToMany(mappedBy = "universityGroupByGroupId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+     public Set<Timetable> getTimetablesById() {
+         return timetablesById;
+     }
+     
+     public void setTimetablesById(Set<Timetable> timetablesById) {
+         this.timetablesById = timetablesById;
+     }
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

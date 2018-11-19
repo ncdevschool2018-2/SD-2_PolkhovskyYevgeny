@@ -44,9 +44,9 @@ public class TeacherController {
         List<Teacher> teachers = teacherService.getAllByIdIsIn(id);
         
         
-        if(teachers!=null){
+        if (teachers != null) {
             return ResponseEntity.ok(teachers);
-        }else {
+        } else {
             return ResponseEntity.notFound().build();
             
         }

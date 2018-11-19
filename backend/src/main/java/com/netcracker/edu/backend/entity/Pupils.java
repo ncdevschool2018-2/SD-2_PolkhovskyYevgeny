@@ -138,7 +138,7 @@ public class Pupils {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-               /* ", usersByUserId=" + usersByUserId +*/
+                /* ", usersByUserId=" + usersByUserId +*/
                 ", groupId=" + groupId +
                 ", userId=" + userId +
                 /*", universityGroupByGroupId=" + universityGroupByGroupId +*/

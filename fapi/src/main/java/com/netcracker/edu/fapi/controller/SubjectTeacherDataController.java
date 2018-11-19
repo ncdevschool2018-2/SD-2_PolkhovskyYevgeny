@@ -16,9 +16,10 @@ public class SubjectTeacherDataController {
     private SubjectTeacherDataService subjectTeacherDataService;
     
     @RequestMapping
-    public ResponseEntity<List<SubjectTeacherViewModel>> getAllSubjectTeacher(){
+    public ResponseEntity<List<SubjectTeacherViewModel>> getAllSubjectTeacher() {
         return ResponseEntity.ok(subjectTeacherDataService.getAll());
     }
+    
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectTeacherViewModel> saveSubjectTeacher(@RequestBody SubjectTeacherViewModel subjectTeacherViewModel /*todo server validation*/) {
         if (subjectTeacherViewModel != null) {

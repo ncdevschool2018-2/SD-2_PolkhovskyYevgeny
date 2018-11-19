@@ -14,8 +14,8 @@ public class RolesServiceImpl implements RolesService {
     private RolesRepository repository;
     
     @Autowired
-    public RolesServiceImpl(RolesRepository repository){
-        this.repository=repository;
+    public RolesServiceImpl(RolesRepository repository) {
+        this.repository = repository;
     }
     
     @Override

@@ -7,11 +7,17 @@ import java.util.Optional;
 
 public interface SubjectsService {
     Subjects saveSubjects(Subjects subject);
+    
     Optional<Subjects> getSubjectsById(int id);
+    
     Iterable<Subjects> getAllSubjects();
+    
     List<Subjects> getSubjectsForTeacher(int teacherId);
+    
     List<Subjects> getDistinctSubject();
+    
     List<Subjects> getAllBySubject(String subject);
+    
     //Integer[] getIdChoosenSubject(String subject);
     void deleteSubjects(int id);
 }

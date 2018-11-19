@@ -16,17 +16,18 @@ public class UniversityGroupDataController {
     private UniversityGroupDataService universityGroupDataService;
     
     @RequestMapping
-    public ResponseEntity<List<UniversityGroupViewModel>> getAllUniversityGroup(){
+    public ResponseEntity<List<UniversityGroupViewModel>> getAllUniversityGroup() {
         return ResponseEntity.ok(universityGroupDataService.getAll());
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<UniversityGroupViewModel> saveUniversityGroup(@RequestBody UniversityGroupViewModel group /*todo server validation*/){
-        if(group !=null){
+    public ResponseEntity<UniversityGroupViewModel> saveUniversityGroup(@RequestBody UniversityGroupViewModel group /*todo server validation*/) {
+        if (group != null) {
             return ResponseEntity.ok(universityGroupDataService.saveUniversityGroup(group));
         }
         return null;
     }
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUniversityGroup(@PathVariable String id) {
         universityGroupDataService.deleteUniversityGroup(Integer.valueOf(id));

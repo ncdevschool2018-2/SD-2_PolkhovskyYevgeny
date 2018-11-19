@@ -14,8 +14,8 @@ public class TeacherServiceImpl implements TeacherService {
     private TeacherRepository repository;
     
     @Autowired
-    public TeacherServiceImpl(TeacherRepository repository){
-        this.repository=repository;
+    public TeacherServiceImpl(TeacherRepository repository) {
+        this.repository = repository;
     }
     
     @Override

@@ -3,7 +3,7 @@ import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
-import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
@@ -14,20 +14,20 @@ export class GroupComponent implements OnInit {
   @Input()
   public timetable: boolean;
 
-groups:Group[];
+  groups: Group[];
   private subscriptions: Subscription[] = [];
 
-  
+
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
-
-              ) {
+  ) {
 
   }
 
   ngOnInit() {
     this.loadGroups();
   }
+
   /*getGroup():void{
     this.groupService.getGroup()
       .subscribe(Group =>this.groups = Group);
@@ -39,7 +39,7 @@ groups:Group[];
       // Parse json response into local array
       this.groups = groups as Group[];
       // Check data in console
-     //console.log(this.groups);// don't use console.log in angular :)
+      //console.log(this.groups);// don't use console.log in angular :)
       this.loadingService.hide();
     }));
   }

@@ -20,7 +20,7 @@ public class TeacherDataController {
         return ResponseEntity.ok(teacherDataService.getAll());
     }
     
-    @RequestMapping(value = "/chooseTchr/{sbj}",method = RequestMethod.GET)
+    @RequestMapping(value = "/chooseTchr/{sbj}", method = RequestMethod.GET)
     public ResponseEntity<List<TeacherViewModel>> getTeachersSbj(@PathVariable int sbj) {
         return ResponseEntity.ok(teacherDataService.getTeachersSbj(sbj));
     }
@@ -29,6 +29,7 @@ public class TeacherDataController {
     public ResponseEntity<TeacherViewModel> getTeacherById(@PathVariable int id) {
         return ResponseEntity.ok(teacherDataService.getTeacherById(id));
     }
+    
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
     public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
         if (teacher != null) {

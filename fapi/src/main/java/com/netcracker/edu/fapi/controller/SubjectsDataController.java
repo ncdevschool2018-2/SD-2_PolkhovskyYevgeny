@@ -18,15 +18,17 @@ public class SubjectsDataController {
     public ResponseEntity<List<SubjectsViewModel>> getAllSubjects() {
         return ResponseEntity.ok(subjectsDataService.getAll());
     }
+    
     @RequestMapping(value = "/dist", method = RequestMethod.GET)
     public ResponseEntity<List<SubjectsViewModel>> getDistinctSubject() {
         return ResponseEntity.ok(subjectsDataService.getDistinctSubject());
     }
     
-    @RequestMapping(value = "/teacher/{id}",method = RequestMethod.GET)
-    public ResponseEntity<List<SubjectsViewModel>> getSubjectsForTeacher(@PathVariable int id){
+    @RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
+    public ResponseEntity<List<SubjectsViewModel>> getSubjectsForTeacher(@PathVariable int id) {
         return ResponseEntity.ok(subjectsDataService.getSubjectsForTeacher(id));
     }
+    
     @RequestMapping(value = "/chooseIdfapi/{sub}", method = RequestMethod.GET)
     public ResponseEntity<List<Integer>> getIdChoosenSubject(@PathVariable String sub) {
         return ResponseEntity.ok(subjectsDataService.getIdChoosenSubject(sub));

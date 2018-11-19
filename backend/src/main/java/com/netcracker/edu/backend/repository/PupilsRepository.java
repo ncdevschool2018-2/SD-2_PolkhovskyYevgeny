@@ -10,5 +10,5 @@ import java.util.List;
 public interface PupilsRepository extends CrudRepository<Pupils, Integer> {
     
     List<Pupils> findByGroupId(int id);
-
+    
 }

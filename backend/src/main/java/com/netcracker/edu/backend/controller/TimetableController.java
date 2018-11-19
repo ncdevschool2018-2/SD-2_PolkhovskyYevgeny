@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/timetables")
 public class TimetableController {
@@ -28,28 +28,31 @@ public class TimetableController {
             return ResponseEntity.notFound().build();
         }
     }
+    
     @RequestMapping(value = "/day/{day}/{group}", method = RequestMethod.GET)
-    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "group") int group) {
-        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndGroupIdOrderBySlotId(day,group);
-        if (timetable!=null ) {
+    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(@PathVariable(name = "day") int day, @PathVariable(name = "group") int group) {
+        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndGroupIdOrderBySlotId(day, group);
+        if (timetable != null) {
             return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+    
     @RequestMapping(value = "/day/{day}/teacher/{teacher}", method = RequestMethod.GET)
-    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(@PathVariable(name = "day") int day,@PathVariable(name = "teacher") int teacher) {
-        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(day,teacher);
-        if (timetable!=null ) {
+    public ResponseEntity<List<Timetable>> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(@PathVariable(name = "day") int day, @PathVariable(name = "teacher") int teacher) {
+        List<Timetable> timetable = timetableService.getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(day, teacher);
+        if (timetable != null) {
             return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+    
     @RequestMapping(value = "/pupil/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByGroupIdOrderByDayOfWeekId(@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByGroupIdOrderByDayOfWeekId(group);
-        if (timetable!=null && !timetable.isEmpty()) {
+        if (timetable != null && !timetable.isEmpty()) {
             return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();

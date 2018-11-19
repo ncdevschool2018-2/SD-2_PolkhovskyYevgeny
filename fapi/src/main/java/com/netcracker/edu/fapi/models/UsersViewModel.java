@@ -1,11 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.netcracker.edu.backend.entity.Pupils;
-import com.netcracker.edu.backend.entity.Roles;
-import com.netcracker.edu.backend.entity.Teacher;
-
-import java.util.Collection;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UsersViewModel {
@@ -59,7 +54,6 @@ public class UsersViewModel {
     }
     
     
-    
     public int getRoleId() {
         return roleId;
     }
@@ -68,4 +62,4 @@ public class UsersViewModel {
         this.roleId = roleId;
     }
     
-    }
+}
