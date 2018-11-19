@@ -36,6 +36,17 @@ public class PupilDataServiceImpl implements PupilDataService {
     @Override
     public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
         RestTemplate restTemplate = new RestTemplate();
+        
+    
+        PupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupilViewModel, PupilViewModel.class).getBody();
+        
+        
+        
+        return pupil;
+    }
+    /*@Override
+    public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
+        RestTemplate restTemplate = new RestTemplate();
         UsersViewModel newUser = new UsersViewModel(newPupilViewModel.getLogin(), newPupilViewModel.getPassword(), newPupilViewModel.getRoleId());
         UsersViewModel user = restTemplate.postForEntity(backendServerUrl + "/api/users", newUser, UsersViewModel.class).getBody();
         
@@ -49,7 +60,7 @@ public class PupilDataServiceImpl implements PupilDataService {
         PupilViewModel newPupil = new PupilViewModel(newPupilViewModel.getName(), newPupilViewModel.getSurname(), newPupilViewModel.getGroupId(), userLogin.getId());
         PupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, PupilViewModel.class).getBody();
         return pupil;
-    }
+    }*/
     
     @Override
     public PupilViewModel saveEditPupil(PupilViewModel pupil) {

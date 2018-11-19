@@ -1,5 +1,5 @@
 <ng4-loading-spinner></ng4-loading-spinner>
-
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -15,23 +15,34 @@
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
 </ul>
-<h1 align="center">Group Number </h1>
-<table class="table table-bordered table-striped">
-  <thead>
+<div>
+  <h1 align="center">Group Number </h1>
+</div>
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
 
-  </thead>
-  <tbody>
-  <tr *ngFor="let group of groups">
-    <td>
-      <a *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</a>
-      <a *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</a>
-    </td>
-  </tr>
+    <table class="table table-bordered table-striped">
+      <thead>
+
+      </thead>
+      <tbody>
+      <tr *ngFor="let group of groups">
+        <td>
+          <p class="lead text-center"   *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</p>
+          <p class="lead text-center" *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</p>
+        </td>
+      </tr>
 
 
-  </tbody>
-</table>
-<app-go-back></app-go-back>
+      </tbody>
+    </table>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+
+</body>
+
+
 
 
 

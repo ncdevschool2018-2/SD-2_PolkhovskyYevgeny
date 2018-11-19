@@ -231,7 +231,7 @@ export class AdminComponent implements OnInit {
   }
 
   public _addNewPupil(): void {
-
+    this.editableNewUser.roleId=3;
     this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
       this._updateUsers();
 
@@ -241,7 +241,7 @@ export class AdminComponent implements OnInit {
   }
 
   public _addNewTeacher(): void {
-
+    this.editableNewUser.roleId=2;
     this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
       this._updateUsers();
 

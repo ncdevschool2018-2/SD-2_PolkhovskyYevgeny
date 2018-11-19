@@ -1,6 +1,6 @@
 <!--<ng4-loading-spinner> </ng4-loading-spinner>-->
 <ng4-loading-spinner></ng4-loading-spinner>
-
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -15,30 +15,37 @@
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
 </ul>
-<h1 align="center">Group number : {{group}} </h1>
-<table class="table table-bordered table-striped">
-  <thead>
+<div>
+  <h1 align="center">Group number : {{group}} </h1>
+</div>
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <table class="table table-bordered table-striped">
+      <thead>
 
-  </thead>
-  <tbody>
-  <tr *ngFor="let groupContent of groupContent">
-    <td scope="row">{{groupContent.id}}</td>
-    <td>{{groupContent.name}}</td>
-    <td>{{groupContent.surname}}</td>
-    <td>
-      <button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
-    </td>
-    <td>
-      <button type="button" class="btn btn-secondary" (click)="_openModal(template, groupContent)">Edit</button>
-    </td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let groupContent of groupContent">
+        <td scope="row">{{groupContent.id}}</td>
+        <td>{{groupContent.name}}</td>
+        <td>{{groupContent.surname}}</td>
+        <td>
+          <span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
+         </span></td>
+        <td>
+          <span><button type="button" class="btn btn-secondary"
+                        (click)="_openModal(template, groupContent)">Edit</button>
+        </span></td>
 
-  </tr>
+      </tr>
 
 
-  </tbody>
-</table>
-<app-go-back></app-go-back>
-
+      </tbody>
+    </table>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+</body>
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{"Edit"}}</h4>
@@ -67,10 +74,10 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="_addGroupContent(name, surname)"
+    <button type="button" class="btn btn-success" (click)="_addGroupContent(name, surname)"
             [disabled]="name.invalid || surname.invalid ">{{"Save"}}
     </button>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="_closeModal()">Close</button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
 
   </div>
 </ng-template>

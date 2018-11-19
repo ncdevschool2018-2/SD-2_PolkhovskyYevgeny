@@ -1,6 +1,6 @@
 <!--<ng4-loading-spinner> </ng4-loading-spinner>-->
 <ng4-loading-spinner></ng4-loading-spinner>
-
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -15,14 +15,21 @@
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
 </ul>
+<div>
 <h1 align="center">Teachers </h1>
+</div>
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+
 <table class="table table-bordered table-striped">
   <thead>
 
   </thead>
   <tbody>
   <tr *ngFor="let teacher of teachers">
-    <td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">{{teacher.name}} {{teacher.surname}}</td>
+    <td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
+      <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
+    </td>
     <td>
       <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(teacher.id)">Delete</button>
       </span></td>
@@ -33,6 +40,10 @@
 
   </tbody>
 </table>
-<app-go-back></app-go-back>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+
+</body>
 
 

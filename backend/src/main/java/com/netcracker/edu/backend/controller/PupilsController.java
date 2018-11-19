@@ -1,7 +1,10 @@
 package com.netcracker.edu.backend.controller;
 
+import com.netcracker.edu.backend.dto.PupilDto;
 import com.netcracker.edu.backend.entity.Pupils;
+import com.netcracker.edu.backend.entity.Users;
 import com.netcracker.edu.backend.service.PupilsService;
+import com.netcracker.edu.backend.service.businesService.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,10 +17,12 @@ import java.util.Optional;
 public class PupilsController {
     
     private PupilsService pupilsService;
+    private RegistrationService registrationService;
     
     @Autowired
-    public PupilsController(PupilsService pupilsService) {
+    public PupilsController(PupilsService pupilsService,RegistrationService registrationService) {
         this.pupilsService = pupilsService;
+        this.registrationService=registrationService;
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -46,8 +51,9 @@ public class PupilsController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public Pupils savePupil(@RequestBody Pupils pupils) {
-        return pupilsService.savePupil(pupils);
+    public Pupils registratePupil(@RequestBody PupilDto pupilDto) {
+        return registrationService.registratePupil(pupilDto);
+        //return pupilsService.savePupil(pupils);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

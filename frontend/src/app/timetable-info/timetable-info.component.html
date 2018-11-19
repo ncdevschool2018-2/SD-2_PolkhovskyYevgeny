@@ -1,3 +1,4 @@
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" routerLink="/pupil">Pupil's name</a>
@@ -6,7 +7,10 @@
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
 </ul>
-<table class="table">
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+
+    <table class="table table-sm">
   <app-table [day]="Monday"></app-table>
   <app-table [day]="Tuesday"></app-table>
   <app-table [day]="Wednesday"></app-table>
@@ -15,8 +19,32 @@
   <app-table [day]="Saturday"></app-table>
   <app-table [day]="Sunday"></app-table>
 
+      <div class="row">
+        <div class="col-6"><app-table [day]="Monday"></app-table></div>
+        <div class="col-6"><app-table [day]="Tuesday"></app-table></div>
+
+      </div>
+      <div class="row">
+        <div class="col-6"><app-table [day]="Wednesday"></app-table></div>
+        <div class="col-6"> <app-table [day]="Thursday"></app-table></div>
+
+      </div>
+      <div class="row">
+
+        <div class="col-6"><app-table [day]="Friday"></app-table></div>
+        <div class="col-6"><app-table [day]="Saturday"></app-table></div>
+      </div>
+
+      <div class="row">
+
+        <div class="col-6"><app-table [day]="Sunday"></app-table></div>
+      </div>
 </table>
-<app-go-back></app-go-back>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+
+</body>
 
 
 

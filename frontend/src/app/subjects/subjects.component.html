@@ -1,6 +1,6 @@
 <!--<ng4-loading-spinner> </ng4-loading-spinner>-->
 <ng4-loading-spinner></ng4-loading-spinner>
-
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
@@ -15,7 +15,11 @@
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
 </ul>
-<h1 align="center">Group Number </h1>
+<div>
+<h1 align="center">Subjects </h1>
+</div>
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
 <table class="table table-bordered table-striped">
   <thead>
 
@@ -33,5 +37,9 @@
 
   </tbody>
 </table>
-<app-go-back></app-go-back>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+
+</body>
 

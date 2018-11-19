@@ -1,3 +1,4 @@
+<body class="bg-light">
 <ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" routerLink="/pupil">Pupil's name</a>
@@ -13,9 +14,16 @@
   </li>
 </ul>
 <div>
-  <h1>{{teacher.name}}  {{teacher.surname}}</h1>
+  <p class="lead text-center" >{{teacher.name}}  {{teacher.surname}}</p>
 </div>
-<table class="table">
+<main class="container">
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+
+    <table class="table table-sm">
+
+
+
+
   <app-table-teacher [day]="Monday"></app-table-teacher>
   <app-table-teacher [day]="Tuesday"></app-table-teacher>
   <app-table-teacher [day]="Wednesday"></app-table-teacher>
@@ -24,9 +32,27 @@
   <app-table-teacher [day]="Saturday"></app-table-teacher>
   <app-table-teacher [day]="Sunday"></app-table-teacher>
 
+      <div class="row">
+        <div class="col-4"><app-table-teacher [day]="Monday"></app-table-teacher></div>
+        <div class="col-4"><app-table-teacher [day]="Tuesday"></app-table-teacher></div>
+        <div class="col-4"><app-table-teacher [day]="Wednesday"></app-table-teacher></div>
+      </div>
+      <div class="row">
+        <div class="col-4"> <app-table-teacher [day]="Thursday"></app-table-teacher></div>
+        <div class="col-4"><app-table-teacher [day]="Friday"></app-table-teacher></div>
+        <div class="col-4"><app-table-teacher [day]="Saturday"></app-table-teacher></div>
+      </div>
+      <div class="row">
+
+        <div class="col-4"><app-table-teacher [day]="Sunday"></app-table-teacher></div>
+      </div>
 
 </table>
-<app-go-back></app-go-back>
+  </div>
+  <app-go-back></app-go-back>
+</main>
+
+</body>
 
 
 
