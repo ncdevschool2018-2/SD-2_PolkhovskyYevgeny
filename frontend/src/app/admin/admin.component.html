@@ -104,7 +104,7 @@
   <div class="modal-body">
     <div class="form-group">
       <label>Group</label>
-      <input type="text" class="form-control" id="extra7" maxlength="10" placeholder="8 character only" onkeypress="return isNumber(event)" name="extra7" [(ngModel)]="editableGroup.name" #name="ngModel" required/>
+      <input type="number" class="form-control" id="extra7" maxlength="10" min="0" max="9999999" placeholder="8 character only" onkeypress="return isNumber(event)" name="extra7" [(ngModel)]="editableGroup.name" #name="ngModel" required/>
       <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
         Pls set group <!--Easy way to create client validation-->
       </div>

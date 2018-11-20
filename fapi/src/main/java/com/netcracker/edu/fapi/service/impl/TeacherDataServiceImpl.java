@@ -1,9 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.NewUserViewModel;
-import com.netcracker.edu.fapi.models.SubjectTeacherViewModel;
-import com.netcracker.edu.fapi.models.TeacherViewModel;
-import com.netcracker.edu.fapi.models.UsersViewModel;
+import com.netcracker.edu.fapi.models.*;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -57,6 +54,16 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     @Override
     public TeacherViewModel saveTeacher(NewUserViewModel newTeacherViewModel) {
         RestTemplate restTemplate = new RestTemplate();
+        NewTeacherViewModel newTeacher=new NewTeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getSubjectId(),newTeacherViewModel.getUserId(),newTeacherViewModel.getLogin(),newTeacherViewModel.getPassword(),newTeacherViewModel.getRoleId());
+        
+        NewTeacherViewModel  teacher = restTemplate.postForEntity(backendServerUrl+"/api/teachers",newTeacher,NewTeacherViewModel.class).getBody();
+         return null;
+        
+    }
+    
+    /*@Override
+    public TeacherViewModel saveTeacher(NewUserViewModel newTeacherViewModel) {
+        RestTemplate restTemplate = new RestTemplate();
         UsersViewModel newUser = new UsersViewModel(newTeacherViewModel.getLogin(), newTeacherViewModel.getPassword(), newTeacherViewModel.getRoleId());
         UsersViewModel user = restTemplate.postForEntity(backendServerUrl + "/api/users", newUser, UsersViewModel.class).getBody();
         if (user == null) {
@@ -79,7 +86,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         SubjectTeacherViewModel subjectTeacher = restTemplate.postForEntity(backendServerUrl + "/api/teacher-subject", newSubjectTeacher, SubjectTeacherViewModel.class).getBody();
         return teacher;
         
-    }
+    }*/
     
     @Override
     public void deleteTeacher(int id) {

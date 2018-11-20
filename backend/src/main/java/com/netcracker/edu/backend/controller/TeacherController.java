@@ -1,7 +1,9 @@
 package com.netcracker.edu.backend.controller;
 
+import com.netcracker.edu.backend.dto.TeacherDto;
 import com.netcracker.edu.backend.entity.Teacher;
 import com.netcracker.edu.backend.service.TeacherService;
+import com.netcracker.edu.backend.service.businesService.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +15,11 @@ import java.util.Optional;
 @RequestMapping("/api/teachers")
 public class TeacherController {
     private TeacherService teacherService;
-    
+    private RegistrationService registrationService;
     @Autowired
-    public TeacherController(TeacherService teacherService) {
+    public TeacherController(TeacherService teacherService,RegistrationService registrationService) {
         this.teacherService = teacherService;
+        this.registrationService=registrationService;
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -34,7 +37,7 @@ public class TeacherController {
         return teacherService.getAllTeacher();
     }
     
-    @RequestMapping(value = "/login/{user-id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/user-id/{user-id}", method = RequestMethod.GET)
     public Teacher findTeacherByUserId(@PathVariable(name = "user-id") int userId) {
         return teacherService.findTeacherByUserId(userId);
     }
@@ -53,8 +56,8 @@ public class TeacherController {
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public Teacher saveTeacher(@RequestBody Teacher teacher) {
-        return teacherService.saveTeacher(teacher);
+    public Teacher registrateTeacher(@RequestBody TeacherDto teacherDto) {
+        return registrationService.registrateTeacher(teacherDto);
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

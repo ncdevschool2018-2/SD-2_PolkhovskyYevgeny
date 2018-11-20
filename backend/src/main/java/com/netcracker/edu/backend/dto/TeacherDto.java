@@ -1,23 +1,23 @@
 package com.netcracker.edu.backend.dto;
 
-public class PupilDto {
+public class TeacherDto {
+    
     private String name;
     private String surname;
-     // private int subjectId;
-    private int groupId;
+    private int subjectId;
+    
     private int userId;
     private String login;
     private String password;
     private int roleId;
     
-    public PupilDto() {
+    public TeacherDto() {
     }
     
-    public PupilDto(String name, String surname,  int groupId, int userId, String login, String password, int roleId) {
+    public TeacherDto(String name, String surname, int subjectId, int userId, String login, String password, int roleId) {
         this.name = name;
         this.surname = surname;
-        
-        this.groupId = groupId;
+        this.subjectId = subjectId;
         this.userId = userId;
         this.login = login;
         this.password = password;
@@ -40,14 +40,12 @@ public class PupilDto {
         this.surname = surname;
     }
     
-    
-    
-    public int getGroupId() {
-        return groupId;
+    public int getSubjectId() {
+        return subjectId;
     }
     
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
     
     public int getUserId() {

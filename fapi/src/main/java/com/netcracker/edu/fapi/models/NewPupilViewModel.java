@@ -1,22 +1,21 @@
-package com.netcracker.edu.backend.dto;
+package com.netcracker.edu.fapi.models;
 
-public class PupilDto {
+public class NewPupilViewModel {
     private String name;
     private String surname;
-     // private int subjectId;
+    
     private int groupId;
     private int userId;
     private String login;
     private String password;
     private int roleId;
     
-    public PupilDto() {
+    public NewPupilViewModel() {
     }
     
-    public PupilDto(String name, String surname,  int groupId, int userId, String login, String password, int roleId) {
+    public NewPupilViewModel(String name, String surname, int groupId, int userId, String login, String password, int roleId) {
         this.name = name;
         this.surname = surname;
-        
         this.groupId = groupId;
         this.userId = userId;
         this.login = login;
@@ -39,8 +38,6 @@ public class PupilDto {
     public void setSurname(String surname) {
         this.surname = surname;
     }
-    
-    
     
     public int getGroupId() {
         return groupId;

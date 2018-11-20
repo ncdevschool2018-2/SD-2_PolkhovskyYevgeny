@@ -55,6 +55,10 @@ public class PupilsController {
         return registrationService.registratePupil(pupilDto);
         //return pupilsService.savePupil(pupils);
     }
+    @RequestMapping(value = "/edit-pupil",method = RequestMethod.POST)
+    public Pupils editPupil(@RequestBody Pupils pupils){
+        return registrationService.editPupil(pupils);
+    }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deletePupil(@PathVariable(name = "id") int id) {

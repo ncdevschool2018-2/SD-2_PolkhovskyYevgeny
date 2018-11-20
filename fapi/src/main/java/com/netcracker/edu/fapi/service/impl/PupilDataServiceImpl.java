@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.NewPupilViewModel;
 import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PupilViewModel;
 import com.netcracker.edu.fapi.models.UsersViewModel;
@@ -36,13 +37,13 @@ public class PupilDataServiceImpl implements PupilDataService {
     @Override
     public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
         RestTemplate restTemplate = new RestTemplate();
-        
+        NewPupilViewModel newPupil = new NewPupilViewModel(newPupilViewModel.getName(),newPupilViewModel.getSurname(),newPupilViewModel.getGroupId(),newPupilViewModel.getUserId(),newPupilViewModel.getLogin(),newPupilViewModel.getPassword(),newPupilViewModel.getRoleId());
     
-        PupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupilViewModel, PupilViewModel.class).getBody();
+        NewPupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, NewPupilViewModel.class).getBody();
         
         
         
-        return pupil;
+        return null;
     }
     /*@Override
     public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
@@ -65,7 +66,7 @@ public class PupilDataServiceImpl implements PupilDataService {
     @Override
     public PupilViewModel saveEditPupil(PupilViewModel pupil) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.postForEntity(backendServerUrl + "/api/pupils", pupil, PupilViewModel.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/pupils/edit-pupil", pupil, PupilViewModel.class).getBody();
     }
     
     @Override
