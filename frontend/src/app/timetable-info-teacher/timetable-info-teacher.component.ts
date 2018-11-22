@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
@@ -11,6 +11,8 @@ import {Teacher} from "../model/teacher";
   styleUrls: ['./timetable-info-teacher.component.css']
 })
 export class TimetableInfoTeacherComponent implements OnInit {
+  @Input()
+  public teacherNumber:number;
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
   public Wednesday: string = "Wednesday";
@@ -30,8 +32,8 @@ export class TimetableInfoTeacherComponent implements OnInit {
 this.loadTeacher();
   }
 
-  private loadTeacher(): void {
-debugger;
+  /*private loadTeacher(): void {
+
 
 
     this.route.params.subscribe(params => {
@@ -42,6 +44,19 @@ debugger;
 
       }));
     });
+
+  }*/
+  private loadTeacher(): void {
+
+
+
+
+      this.subscriptions.push(this.teacherService.getTeacher(this.teacherNumber).subscribe(teacher => {
+
+        this.teacher = teacher as Teacher;
+
+      }));
+
 
   }
 

@@ -27,7 +27,8 @@ import {SubjectTeacherService} from "../service/subject-teacher.service";
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
-
+  @Input()
+  public groupNumber:number;
   @Input()
   public day: string;
 
@@ -47,7 +48,7 @@ export class TableComponent implements OnInit {
   public  chooseSubject:number;
   public  chooseTeachers:number;
   public  chooseTeachersName:Teacher[];
-  public chooseGroup:number;
+  public chooseGroup :number =this.groupNumber;
   constructor(private loadingService: Ng4LoadingSpinnerService,
               private route: ActivatedRoute,
               private modalService: BsModalService,
@@ -74,7 +75,9 @@ export class TableComponent implements OnInit {
       this.timetable = timetable as Timetable[];
     }));
   }*/
-  private loadTimetableNamed(): void {
+
+
+  /*private loadTimetableNamed(): void {
     this.loadingService.show();
 
     // Get data from BillingAccountService
@@ -89,7 +92,17 @@ this.chooseGroup=id;
       }));
     });
 
+  }*/
+
+  private loadTimetableNamed(): void {
+
+
+    this.subscriptions.push(this.timetableService.getTimetableNamedByGroupId(this.groupNumber).subscribe(timetable => {
+
+      this.timetable = timetable as TimetableExample[];
+    }));
   }
+
   public _openModalTimetable(template: TemplateRef<any>): void {
     this.refreshGroup();
     this.loadGroups();

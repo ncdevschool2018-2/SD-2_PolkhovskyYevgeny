@@ -26,7 +26,8 @@ import { GoBackComponent } from './go-back/go-back.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { TimetableInfoTeacherComponent } from './timetable-info-teacher/timetable-info-teacher.component';
 import { TableTeacherComponent } from './table-teacher/table-teacher.component';
-
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { TableTeacherComponent } from './table-teacher/table-teacher.component';
     Ng4LoadingSpinnerModule.forRoot(),
     DemoMaterialModule,
     MatNativeDateModule,
-
+    AccordionModule.forRoot(),
+    CollapseModule.forRoot(),
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.

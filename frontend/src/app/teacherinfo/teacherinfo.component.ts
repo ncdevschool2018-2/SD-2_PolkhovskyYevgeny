@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./teacherinfo.component.css']
 })
 export class TeacherinfoComponent implements OnInit {
-
+  oneAtATime: boolean = true;
+  isCollapsed = false;
+  isCollapsed1 = false;
+  isCollapsed2 = false;
   constructor() { }
 
   ngOnInit() {

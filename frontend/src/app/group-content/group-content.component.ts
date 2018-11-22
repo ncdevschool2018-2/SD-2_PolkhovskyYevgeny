@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {GroupContent} from "../model/GroupContent";
 
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
@@ -15,6 +15,9 @@ import {GroupService} from "../service/group.service";
   styleUrls: ['./group-content.component.css']
 })
 export class GroupContentComponent implements OnInit {
+  @Input()
+  public groupNumber:number;
+
   public groupContent: GroupContent[];
   public editableGC: GroupContent = new GroupContent();
 
@@ -37,12 +40,13 @@ export class GroupContentComponent implements OnInit {
 
     this.loadGroups();
 
-    this.loadGroupContent();
-    this.getGroup(this.groupId);
+    /*this.loadGroupContent();*/
+    this.loadGroupsContent();
+
 
   }
 
-  private loadGroupContent(): void {
+  /*private loadGroupContent(): void {
     this.loadingService.show();
     // Get data from BillingAccountService
     this.route.params.subscribe(params => {
@@ -60,6 +64,14 @@ export class GroupContentComponent implements OnInit {
       }));
     });
 
+  }*/
+  private loadGroupsContent(): void {
+
+    this.subscriptions.push(this.groupContentService.getGroupContentByGroup(this.groupNumber).subscribe(accounts => {
+
+      this.groupContent = accounts as GroupContent[];
+
+    }));
   }
 
   public _closeModal(): void {
@@ -77,7 +89,7 @@ export class GroupContentComponent implements OnInit {
   }
 
   public _updateGroupContent(): void {
-    this.loadGroupContent();
+    this.loadGroupsContent();
   }
 
   public _openModal(template: TemplateRef<any>, groupContent: GroupContent): void {

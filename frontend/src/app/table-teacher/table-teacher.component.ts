@@ -26,6 +26,8 @@ import {SubjectTeacher} from "../model/subjectTeacher";
 export class TableTeacherComponent implements OnInit {
   @Input()
   public day: string;
+  @Input()
+  public teacherNumber:number;
   public groups: Group[];
   public slots: Slots[];
   public subjects: Subjects[];
@@ -36,7 +38,7 @@ export class TableTeacherComponent implements OnInit {
   public timetable1: Timetable[];
   public editableTimetable: Timetable = new Timetable();
   public editableTimetableExample: TimetableExample = new TimetableExample();
-  public chooseTeacher: number;
+  public chooseTeacher: number =this.teacherNumber;
   public chooseSubject: number;
   public modalRef: BsModalRef;
 
@@ -54,11 +56,12 @@ export class TableTeacherComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.chooseTeacher=this.teacherNumber;
     this.loadTimetableNamed();
 
   }
 
-  private loadTimetableNamed(): void {
+  /*private loadTimetableNamed(): void {
     this.loadingService.show();
 
 
@@ -72,6 +75,21 @@ export class TableTeacherComponent implements OnInit {
         this.chooseTeacher = id;
       }));
     });
+
+  }*/
+  private loadTimetableNamed(): void {
+
+
+
+
+      this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
+        // Parse json response into local array
+        this.timetable = timetable as TimetableExample[];
+        // Check data in console
+
+
+      }));
+
 
   }
 

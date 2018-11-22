@@ -5,13 +5,13 @@ import com.netcracker.edu.backend.repository.UsersRepository;
 import com.netcracker.edu.backend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.Optional;
 
 @Component
 public class UsersServiceImpl implements UsersService {
     
     private UsersRepository repository;
+    
     
     @Autowired
     public UsersServiceImpl(UsersRepository repository) {
@@ -20,6 +20,7 @@ public class UsersServiceImpl implements UsersService {
     
     @Override
     public Users saveUsers(Users users) {
+        
         return repository.save(users);
     }
     

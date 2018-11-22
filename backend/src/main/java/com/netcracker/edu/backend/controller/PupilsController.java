@@ -43,7 +43,7 @@ public class PupilsController {
     @RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Pupils>> getAllPupils(@PathVariable(name = "id") int id) {
         List<Pupils> pupils = pupilsService.getByGroupId(id);
-        if (pupils != null && !pupils.isEmpty()) {
+        if (pupils != null ) {
             return ResponseEntity.ok(pupils);
         } else {
             return ResponseEntity.notFound().build();

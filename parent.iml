@@ -16,5 +16,6 @@
     <orderEntry type="library" name="jquery" level="application" />
     <orderEntry type="library" name="mdb" level="application" />
     <orderEntry type="library" name="jquery-1.11.3" level="application" />
+    <orderEntry type="library" name="angular" level="application" />
   </component>
 </module>

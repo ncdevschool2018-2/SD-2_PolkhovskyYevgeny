@@ -52,7 +52,7 @@ public class TimetableController {
     @RequestMapping(value = "/pupil/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByGroupIdOrderByDayOfWeekId(@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByGroupIdOrderByDayOfWeekId(group);
-        if (timetable != null && !timetable.isEmpty()) {
+        if (timetable != null ) {
             return ResponseEntity.ok(timetable);
         } else {
             return ResponseEntity.notFound().build();

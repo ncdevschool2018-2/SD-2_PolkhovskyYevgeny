@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DaysOfWeekRepository extends CrudRepository<DaysOfWeek, Integer> {
+
 }

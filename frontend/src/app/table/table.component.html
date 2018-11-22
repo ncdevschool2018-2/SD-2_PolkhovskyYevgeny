@@ -1,7 +1,9 @@
 <table class="table">
   <thead class="thead-dark">
   <tr>
-    <th scope="col"> <div><p class="text-warning">{{day}}</p></div></th>
+    <th colspan="4" scope="col"> <div><p class="text-warning text-center" >{{day}}</p></div></th>
+  </tr>
+  <tr>
     <th scope="col"> Subject</th>
     <th scope="col"> Teacher</th>
     <th scope="col">Time</th>
@@ -16,8 +18,8 @@
   </thead>
   <tbody>
   <tr *ngFor="let mon of timetable">
-    <th *ngIf="mon.day.includes(day)" scope="row"></th>
-    <td *ngIf="mon.day.includes(day)">{{mon.subject}}</td>
+    <!--<th *ngIf="mon.day.includes(day)" scope="row"></th>-->
+    <td *ngIf="mon.day.includes(day)" scope="row">{{mon.subject}}</td>
     <td *ngIf="mon.day.includes(day)" routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}
     </td>
     <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>

@@ -11,4 +11,5 @@ public interface PupilsRepository extends CrudRepository<Pupils, Integer> {
     
     List<Pupils> findByGroupId(int id);
     
+    List<Pupils> findByNameAndSurname(String name, String surname);
 }

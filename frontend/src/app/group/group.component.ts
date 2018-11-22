@@ -3,11 +3,15 @@ import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
-
+import { AccordionConfig } from 'ngx-bootstrap/accordion';
+export function getAccordionConfig(): AccordionConfig {
+  return Object.assign(new AccordionConfig(), { closeOthers: true });
+}
 @Component({
   selector: 'app-group',
   templateUrl: './group.component.html',
-  styleUrls: ['./group.component.css']
+  styleUrls: ['./group.component.css'],
+  providers: [{ provide: AccordionConfig, useFactory: getAccordionConfig }]
 })
 export class GroupComponent implements OnInit {
 

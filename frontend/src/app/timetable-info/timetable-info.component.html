@@ -11,37 +11,37 @@
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
     <table class="table table-sm">
-  <app-table [day]="Monday"></app-table>
-  <app-table [day]="Tuesday"></app-table>
-  <app-table [day]="Wednesday"></app-table>
-  <app-table [day]="Thursday"></app-table>
-  <app-table [day]="Friday"></app-table>
-  <app-table [day]="Saturday"></app-table>
-  <app-table [day]="Sunday"></app-table>
+  <app-table [day]="Monday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Friday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>
 
       <div class="row">
-        <div class="col-6"><app-table [day]="Monday"></app-table></div>
-        <div class="col-6"><app-table [day]="Tuesday"></app-table></div>
+        <div class="col-6"><app-table [day]="Monday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table></div>
 
       </div>
       <div class="row">
-        <div class="col-6"><app-table [day]="Wednesday"></app-table></div>
-        <div class="col-6"> <app-table [day]="Thursday"></app-table></div>
+        <div class="col-6"><app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"> <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table></div>
 
       </div>
       <div class="row">
 
-        <div class="col-6"><app-table [day]="Friday"></app-table></div>
-        <div class="col-6"><app-table [day]="Saturday"></app-table></div>
+        <div class="col-6"><app-table [day]="Friday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table></div>
       </div>
 
       <div class="row">
 
-        <div class="col-6"><app-table [day]="Sunday"></app-table></div>
+        <div class="col-6"><app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table></div>
       </div>
 </table>
   </div>
-  <app-go-back></app-go-back>
+ <!-- <app-go-back></app-go-back>-->
 </main>
 
 </body>

@@ -52,7 +52,10 @@ export class AdminComponent implements OnInit {
   public chooseTeachers: number;
   public chooseTeachersName: Teacher[];
   public teachersAll: Teacher[];
-
+  isCollapsed = false;
+  isCollapsed1 = true;
+  isCollapsed2 = true;
+  isCollapsed3 = true;
 
   constructor(
     private groupService: GroupService,

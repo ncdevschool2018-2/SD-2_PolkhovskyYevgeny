@@ -1,20 +1,20 @@
 <!--<ng4-loading-spinner> </ng4-loading-spinner>-->
 <ng4-loading-spinner></ng4-loading-spinner>
 <body class="bg-light">
-<ul class="nav justify-content-end  bg-light">
+<!--<ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" href="#">Teacher's name</a>
   </li>
-  <!--<li class="nav-item">
+  &lt;!&ndash;<li class="nav-item">
       <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
-  </li>-->
+  </li>&ndash;&gt;
   <li class="nav-item">
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
-</ul>
+</ul>-->
 <div>
 <h1 align="center">Teachers </h1>
 </div>
@@ -27,9 +27,15 @@
   </thead>
   <tbody>
   <tr *ngFor="let teacher of teachers">
-    <td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
+    <accordion >
+      <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
+        <app-timetable-info-teacher [teacherNumber]="teacher.id"></app-timetable-info-teacher>
+      </accordion-group>
+
+    </accordion>
+    <!--<td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
       <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
-    </td>
+    </td>-->
     <td>
       <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(teacher.id)">Delete</button>
       </span></td>
@@ -41,7 +47,7 @@
   </tbody>
 </table>
   </div>
-  <app-go-back></app-go-back>
+  <!--<app-go-back></app-go-back>-->
 </main>
 
 </body>

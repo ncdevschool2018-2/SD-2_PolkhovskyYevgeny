@@ -1,22 +1,8 @@
 <ng4-loading-spinner></ng4-loading-spinner>
 <body class="bg-light">
-<ul class="nav justify-content-end  bg-light">
-  <li class="nav-item">
-    <a class="nav-link active" href="#">Teacher's name</a>
-  </li>
-  <!--<li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-  </li>
 
-  <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-  </li>-->
-  <li class="nav-item">
-    <a class="nav-link disabled" routerLink="/signin">Exit</a>
-  </li>
-</ul>
 <div>
-  <h1 align="center">Group Number </h1>
+  <h1 align="center">Groups </h1>
 </div>
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
@@ -28,8 +14,23 @@
       <tbody>
       <tr *ngFor="let group of groups">
         <td>
-          <p class="lead text-center"   *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</p>
-          <p class="lead text-center" *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</p>
+          <accordion *ngIf="!timetable">
+            <accordion-group heading="{{group.name}}">
+              <app-group-content [groupNumber]="group.id"></app-group-content>
+            </accordion-group>
+
+          </accordion>
+
+
+
+          <accordion *ngIf="timetable">
+            <accordion-group heading="{{group.name}}">
+              <app-timetable-info [groupNumber]="group.id"></app-timetable-info>
+            </accordion-group>
+
+          </accordion>
+          <!--<p class="lead text-center"   *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</p>-->
+          <!--<p class="lead text-center" *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</p>-->
         </td>
       </tr>
 
@@ -37,7 +38,7 @@
       </tbody>
     </table>
   </div>
-  <app-go-back></app-go-back>
+  <!--<app-go-back></app-go-back>-->
 </main>
 
 </body>

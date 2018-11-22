@@ -1,21 +1,21 @@
 <body class="bg-light">
-<ul class="nav justify-content-end  bg-light">
+<!--<ul class="nav justify-content-end  bg-light">
   <li class="nav-item">
     <a class="nav-link active" routerLink="/pupil">Pupil's name</a>
   </li>
-  <!--<li class="nav-item">
+  &lt;!&ndash;<li class="nav-item">
       <a class="nav-link" href="#">Link</a>
   </li>
   <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
-  </li>-->
+  </li>&ndash;&gt;
   <li class="nav-item">
     <a class="nav-link disabled" routerLink="/signin">Exit</a>
   </li>
-</ul>
-<div>
+</ul>-->
+<!--<div>
   <p class="lead text-center" >{{teacher.name}}  {{teacher.surname}}</p>
-</div>
+</div>-->
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
@@ -24,32 +24,37 @@
 
 
 
-  <app-table-teacher [day]="Monday"></app-table-teacher>
-  <app-table-teacher [day]="Tuesday"></app-table-teacher>
-  <app-table-teacher [day]="Wednesday"></app-table-teacher>
-  <app-table-teacher [day]="Thursday"></app-table-teacher>
-  <app-table-teacher [day]="Friday"></app-table-teacher>
-  <app-table-teacher [day]="Saturday"></app-table-teacher>
-  <app-table-teacher [day]="Sunday"></app-table-teacher>
+  <app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher>
 
       <div class="row">
-        <div class="col-4"><app-table-teacher [day]="Monday"></app-table-teacher></div>
-        <div class="col-4"><app-table-teacher [day]="Tuesday"></app-table-teacher></div>
-        <div class="col-4"><app-table-teacher [day]="Wednesday"></app-table-teacher></div>
+        <div class="col-6"><app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+        <div class="col-6"><app-table-teacher [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+
       </div>
       <div class="row">
-        <div class="col-4"> <app-table-teacher [day]="Thursday"></app-table-teacher></div>
-        <div class="col-4"><app-table-teacher [day]="Friday"></app-table-teacher></div>
-        <div class="col-4"><app-table-teacher [day]="Saturday"></app-table-teacher></div>
+        <div class="col-6"><app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+        <div class="col-6"> <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+
       </div>
       <div class="row">
 
-        <div class="col-4"><app-table-teacher [day]="Sunday"></app-table-teacher></div>
+        <div class="col-6"><app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+        <div class="col-6"><app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+      </div>
+      <div class="row">
+
+        <div class="col-6"><app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
       </div>
 
 </table>
   </div>
-  <app-go-back></app-go-back>
+  <!--<app-go-back></app-go-back>-->
 </main>
 
 </body>

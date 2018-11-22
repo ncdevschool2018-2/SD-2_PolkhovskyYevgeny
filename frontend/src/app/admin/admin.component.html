@@ -1,3 +1,56 @@
+
+<button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Groups
+</button>
+<button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1"
+        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Teachers
+</button>
+<button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2"
+        [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1">Groups Timetable
+</button>
+<button type="button" class="btn btn-primary" (click)="isCollapsed3 = !isCollapsed3"
+        [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic1">Subjects
+</button>
+
+
+<div id="collapseBasic" [collapse]="isCollapsed" class="card card-block card-header">
+  <div class="well well-lg">
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+            (click)="_openModal(template)">
+      Create group
+    </button>
+    <app-group ></app-group>
+  </div>
+</div>
+<div id="collapseBasic1" [collapse]="isCollapsed1" class="card card-block card-header">
+  <div class="well well-lg">
+    <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+            data-target="#exampleModal"
+            (click)="_openModalTeacher(templateTeacher)">
+      Create Teacher
+    </button>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+            (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
+      Add subject to teacher
+    </button>
+    <app-teachers></app-teachers>
+  </div>
+
+
+</div>
+<div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
+  <div class="well well-lg">
+    <app-group [timetable]="true"></app-group>
+  </div>
+</div>
+<div id="collapseBasic3" [collapse]="isCollapsed3" class="card card-block card-header">
+  <div class="well well-lg">
+    <app-subjects></app-subjects>
+  </div>
+</div>
+
+
+
 <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
@@ -17,6 +70,7 @@
               (click)="_openModal(template)">
         Create group
       </button>
+
     </div>
     <div class="col-6">
     <span><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
@@ -45,7 +99,9 @@
               (click)="_openModalTeacher(templateTeacher)">
         Create Teacher
       </button>
+
     </div>
+
     <div class="col-4">
       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
               (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
@@ -93,6 +149,7 @@
 </div>
 
 
+
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{"Create"}} new Group</h4>
@@ -104,9 +161,10 @@
   <div class="modal-body">
     <div class="form-group">
       <label>Group</label>
-      <input type="number" class="form-control" id="extra7" maxlength="10" min="0" max="9999999" placeholder="8 character only" onkeypress="return isNumber(event)" name="extra7" [(ngModel)]="editableGroup.name" #name="ngModel" required/>
+      <input type="number" class="form-control" id="extra7" placeholder="8 character only" [(ngModel)]="editableGroup.name" #name="ngModel"
+             required pattern="\d [0-9]{2,8}"/>
       <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
-        Pls set group <!--Easy way to create client validation-->
+        8 numbers pls <!--Easy way to create client validation-->
       </div>
     </div>
 
@@ -403,13 +461,4 @@
 </ng-template>
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 
-<script type="text/javascript">
-  function isNumber(evt) {
-    evt = (evt) ? evt : window.event;
-    var charCode = (evt.which) ? evt.which : evt.keyCode;
-    if ( charCode < 48 && charCode > 57) {
-      return false;
-    }
-    return true;
-  }
-</script>
+

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
 
 @Component({
@@ -7,7 +7,8 @@ import {TimetableExample} from "../model/timetableExample";
   styleUrls: ['./timetable-info.component.css']
 })
 export class TimetableInfoComponent implements OnInit {
-
+  @Input()
+  public groupNumber:number;
 
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
