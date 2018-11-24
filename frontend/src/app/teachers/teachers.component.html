@@ -27,11 +27,11 @@
 
   </thead>
   <tbody>
-  <tr *ngFor="let teacher of teachers">
+  <tr *ngFor="let content of returnedArray">
     <td width="95%">
     <accordion >
-      <accordion-group  heading="{{teacher.name}} {{teacher.surname}}">
-        <app-timetable-info-teacher [teacherNumber]="teacher.id"></app-timetable-info-teacher>
+      <accordion-group  heading="{{content.name}} {{content.surname}}">
+        <app-timetable-info-teacher [teacherNumber]="content.id"></app-timetable-info-teacher>
       </accordion-group>
 
     </accordion></td>
@@ -39,7 +39,7 @@
       <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
     </td>-->
     <td>
-      <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(teacher.id)">Delete</button>
+      <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(content.id)">Delete</button>
       </span>
     </td>
 
@@ -49,6 +49,8 @@
 
   </tbody>
 </table>
+    <pagination [totalItems]="teachers.length" (pageChanged)="pageChanged($event)"></pagination>
+
   </div>
   <!--<app-go-back></app-go-back>-->
 </main>
