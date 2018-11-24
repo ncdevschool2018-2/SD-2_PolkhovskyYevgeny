@@ -52,10 +52,10 @@ export class AdminComponent implements OnInit {
   public chooseTeachers: number;
   public chooseTeachersName: Teacher[];
   public teachersAll: Teacher[];
-  isCollapsed = false;
-  isCollapsed1 = true;
-  isCollapsed2 = true;
-  isCollapsed3 = true;
+  public isCollapsed = false;
+  public isCollapsed1 = true;
+  public isCollapsed2 = true;
+  public isCollapsed3 = true;
 
   constructor(
     private groupService: GroupService,
@@ -137,7 +137,7 @@ export class AdminComponent implements OnInit {
   }
 
 
-  private loadGroups(): void {
+  public loadGroups(): void {
 
     this.subscriptions.push(this.groupService.getGroups().subscribe(groups => {
 
@@ -234,7 +234,7 @@ export class AdminComponent implements OnInit {
   }
 
   public _addNewPupil(): void {
-    this.editableNewUser.roleId=3;
+    this.editableNewUser.roleId = 3;
     this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
       this._updateUsers();
 
@@ -244,7 +244,7 @@ export class AdminComponent implements OnInit {
   }
 
   public _addNewTeacher(): void {
-    this.editableNewUser.roleId=2;
+    this.editableNewUser.roleId = 2;
     this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
       this._updateUsers();
 
@@ -296,5 +296,33 @@ export class AdminComponent implements OnInit {
       this.teachersAll = teachersAll as Teacher[];
     }));
     this.loadSubjectTeacher();
+  }
+
+  public first(): void {
+    this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed1 = true;
+    this.isCollapsed2 = true;
+    this.isCollapsed3 = true;
+  }
+
+  public second(): void {
+    this.isCollapsed = true;
+    this.isCollapsed1 = !this.isCollapsed1;
+    this.isCollapsed2 = true;
+    this.isCollapsed3 = true;
+  }
+
+  public third(): void {
+    this.isCollapsed = true;
+    this.isCollapsed1 = true;
+    this.isCollapsed2 = !this.isCollapsed2;
+    this.isCollapsed3 = true;
+  }
+
+  public fourth(): void {
+    this.isCollapsed = true;
+    this.isCollapsed1 = true;
+    this.isCollapsed2 = true;
+    this.isCollapsed3 = !this.isCollapsed3;
   }
 }

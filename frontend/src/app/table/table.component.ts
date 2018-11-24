@@ -111,9 +111,7 @@ this.chooseGroup=id;
     this.loadDaysOfWeek();
     this.loadSubjectTeacher();
     this.modalRef = this.modalService.show(template);
-    this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
-      this.roles = roles as Roles[];
-    }));
+
   }
   private refreshGroup(): void {
     this.editableGroup = new Group();
@@ -181,12 +179,13 @@ this.chooseGroup=id;
         this.editableTimetable.subjectId=subj.id;
       }
     }
-this.editableTimetable.groupId=this.chooseGroup;
+this.editableTimetable.groupId=this.groupNumber;
     for( let days of this.daysOfWeek){
       if(days.name.includes(this.day)){
         this.editableTimetable.dayOfWeekId=days.id;
       }
     }
+    debugger;
     this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
       this._updateTimetable();
       this.refreshTimetable();

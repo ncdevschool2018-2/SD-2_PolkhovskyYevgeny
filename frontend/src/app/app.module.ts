@@ -28,6 +28,7 @@ import { TimetableInfoTeacherComponent } from './timetable-info-teacher/timetabl
 import { TableTeacherComponent } from './table-teacher/table-teacher.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     MatNativeDateModule,
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
+    PaginationModule.forRoot(),
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.

@@ -1,16 +1,33 @@
+<nav class="site-header sticky-top py-1">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+    </a>
 
-<button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
+    <a class=" py-2 d-none d-md-inline-block" (click)="first()"
+       [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Groups</a>
+    <a class="py-2 d-none d-md-inline-block" (click)="second()"
+       [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Teachers</a>
+    <a class="py-2 d-none d-md-inline-block" (click)="third()"
+       [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1">Groups Timetable</a>
+    <a class="py-2 d-none d-md-inline-block" (click)="fourth()"
+       [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic1">Subjects</a>
+    <!--<a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>-->
+  </div>
+</nav>
+<!--<button type="button" class="btn btn-primary py-2 d-none d-md-inline-block" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Groups
 </button>
-<button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1"
+<button type="button" class="btn btn-primary py-2 d-none d-md-inline-block" (click)="isCollapsed1 = !isCollapsed1"
         [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Teachers
 </button>
-<button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2"
+<button type="button" class="btn btn-primary py-2 d-none d-md-inline-block" (click)="isCollapsed2 = !isCollapsed2"
         [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1">Groups Timetable
 </button>
-<button type="button" class="btn btn-primary" (click)="isCollapsed3 = !isCollapsed3"
+<button type="button" class="btn btn-primary py-2 d-none d-md-inline-block" (click)="isCollapsed3 = !isCollapsed3"
         [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic1">Subjects
-</button>
+</button>-->
 
 
 <div id="collapseBasic" [collapse]="isCollapsed" class="card card-block card-header">
@@ -33,6 +50,7 @@
             (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
       Add subject to teacher
     </button>
+
     <app-teachers></app-teachers>
   </div>
 

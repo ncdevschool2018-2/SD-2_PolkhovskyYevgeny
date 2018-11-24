@@ -18,27 +18,30 @@
 <div>
 <h1 align="center">Teachers </h1>
 </div>
-<main class="container">
-  <div class="my-3 p-3 bg-white rounded shadow-sm">
+<main class="container-fluid">
 
-<table class="table table-bordered table-striped">
+  <div class="my-1 p-1 bg-white rounded shadow-sm">
+
+<table class="table table-bordered table-striped" >
   <thead>
 
   </thead>
   <tbody>
   <tr *ngFor="let teacher of teachers">
+    <td width="95%">
     <accordion >
-      <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
+      <accordion-group  heading="{{teacher.name}} {{teacher.surname}}">
         <app-timetable-info-teacher [teacherNumber]="teacher.id"></app-timetable-info-teacher>
       </accordion-group>
 
-    </accordion>
+    </accordion></td>
     <!--<td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
       <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
     </td>-->
     <td>
       <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(teacher.id)">Delete</button>
-      </span></td>
+      </span>
+    </td>
 
 
   </tr>

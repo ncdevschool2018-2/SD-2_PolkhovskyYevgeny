@@ -4,11 +4,15 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {TeacherService} from "../service/teacher.service";
 import {Teacher} from "../model/teacher";
-
+import { AccordionConfig } from 'ngx-bootstrap/accordion';
+export function getAccordionConfig(): AccordionConfig {
+  return Object.assign(new AccordionConfig(), { closeOthers: true });
+}
 @Component({
   selector: 'app-timetable-info-teacher',
   templateUrl: './timetable-info-teacher.component.html',
-  styleUrls: ['./timetable-info-teacher.component.css']
+  styleUrls: ['./timetable-info-teacher.component.css'],
+  providers: [{ provide: AccordionConfig, useFactory: getAccordionConfig }]
 })
 export class TimetableInfoTeacherComponent implements OnInit {
   @Input()

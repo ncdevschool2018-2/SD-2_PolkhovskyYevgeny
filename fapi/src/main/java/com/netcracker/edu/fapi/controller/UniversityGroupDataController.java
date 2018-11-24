@@ -3,6 +3,8 @@ package com.netcracker.edu.fapi.controller;
 import com.netcracker.edu.fapi.models.UniversityGroupViewModel;
 import com.netcracker.edu.fapi.service.UniversityGroupDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

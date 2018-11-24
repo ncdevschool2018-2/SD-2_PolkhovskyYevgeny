@@ -16,15 +16,47 @@
 <!--<div>
   <p class="lead text-center" >{{teacher.name}}  {{teacher.surname}}</p>
 </div>-->
-<main class="container">
+<main class="container-fluid">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
     <table class="table table-sm">
 
+      <accordion>
+        <accordion-group heading="Line View" >
+          <app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher>
+        </accordion-group>
+        <accordion-group heading="Table View">
+          <div class="row">
+            <div class="col-6"><app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+
+          </div>
+          <div class="row">
+            <div class="col-6"><app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"> <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-6"><app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+          </div>
+          <div class="row">
+
+            <div class="col-6"><app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+          </div>
+        </accordion-group>
+
+      </accordion>
 
 
-
-  <app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher>
+  <!--<app-table-teacher [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher>
   <app-table-teacher [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher>
   <app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher>
   <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher>
@@ -50,7 +82,7 @@
       <div class="row">
 
         <div class="col-6"><app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
-      </div>
+      </div>-->
 
 </table>
   </div>

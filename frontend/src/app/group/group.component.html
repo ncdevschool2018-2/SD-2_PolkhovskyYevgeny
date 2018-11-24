@@ -12,11 +12,13 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let group of groups">
+      <tr *ngFor="let content of returnedArray">
+        <td width="5%">{{content.id}}</td>
         <td>
+
           <accordion *ngIf="!timetable">
-            <accordion-group heading="{{group.name}}">
-              <app-group-content [groupNumber]="group.id"></app-group-content>
+            <accordion-group heading="{{content.name}}">
+              <app-group-content [groupNumber]="content.id"></app-group-content>
             </accordion-group>
 
           </accordion>
@@ -24,8 +26,8 @@
 
 
           <accordion *ngIf="timetable">
-            <accordion-group heading="{{group.name}}">
-              <app-timetable-info [groupNumber]="group.id"></app-timetable-info>
+            <accordion-group heading="{{content.name}}">
+              <app-timetable-info [groupNumber]="content.id"></app-timetable-info>
             </accordion-group>
 
           </accordion>
@@ -35,13 +37,23 @@
       </tr>
 
 
+
       </tbody>
     </table>
+    <pagination [totalItems]="groups.length" (pageChanged)="pageChanged($event)"></pagination>
   </div>
   <!--<app-go-back></app-go-back>-->
 </main>
 
 </body>
+<!--<div class="row">
+  <div class="col-xs-12 col-12">
+    <div class="content-wrapper">
+      <p class="content-item" *ngFor="let content of returnedArray">{{content.name}}</p>
+    </div>
+    <pagination [totalItems]="groups.length" (pageChanged)="pageChanged($event)"></pagination>
+  </div>
+</div>-->
 
 
 

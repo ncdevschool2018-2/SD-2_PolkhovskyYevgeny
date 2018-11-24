@@ -6,6 +6,7 @@ import com.netcracker.edu.backend.service.UniversityGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -33,6 +34,12 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     public Iterable<UniversityGroup> getAllUniversityGroup() {
         return repository.findAll();
     }
+    
+    @Override
+    public List<UniversityGroup> getAllOrderUniversityGroup() {
+        return repository.findAllOrderByName();
+    }
+    
     
     @Override
     public void deleteUniversityGroup(int id) {

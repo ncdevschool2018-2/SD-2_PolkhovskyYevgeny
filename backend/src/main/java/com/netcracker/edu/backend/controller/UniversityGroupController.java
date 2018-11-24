@@ -3,6 +3,8 @@ package com.netcracker.edu.backend.controller;
 import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.service.UniversityGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,10 +29,9 @@ public class UniversityGroupController {
             return ResponseEntity.notFound().build();
         }
     }
-    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
-    public Iterable<UniversityGroup> getAllUniversityGroup() {
-        return universityGroupService.getAllUniversityGroup();
+    public Iterable<UniversityGroup> getAllOrderUniversityGroup() {
+        return universityGroupService.getAllOrderUniversityGroup();
     }
     
     @RequestMapping(method = RequestMethod.POST)

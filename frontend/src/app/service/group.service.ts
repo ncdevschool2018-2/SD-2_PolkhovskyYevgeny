@@ -9,8 +9,6 @@ import {HttpClient} from "@angular/common/http";
 export class GroupService { //todo create interface
   constructor(private http: HttpClient) {
   }
-
-
   getGroups(): Observable<Group[]> {
     return this.http.get<Group[]>('/api/universitygroup');
   }
