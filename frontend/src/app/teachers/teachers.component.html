@@ -16,39 +16,50 @@
   </li>
 </ul>-->
 <div>
-<h1 align="center">Teachers </h1>
+  <h1 align="center">Teachers </h1>
 </div>
+<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+        data-target="#exampleModal"
+        (click)="_openModalTeacher(templateTeacher)">
+  Create Teacher
+</button>
+<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+        (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
+  Add subject to teacher
+</button>
+
 <main class="container-fluid">
 
   <div class="my-1 p-1 bg-white rounded shadow-sm">
 
-<table class="table table-bordered table-striped" >
-  <thead>
+    <table class="table table-bordered table-striped">
+      <thead>
 
-  </thead>
-  <tbody>
-  <tr *ngFor="let content of returnedArray">
-    <td width="95%">
-    <accordion >
-      <accordion-group  heading="{{content.name}} {{content.surname}}">
-        <app-timetable-info-teacher [teacherNumber]="content.id"></app-timetable-info-teacher>
-      </accordion-group>
+      </thead>
+      <tbody>
+      <tr *ngFor="let content of returnedArray">
+        <td  width="95%">
+          <accordion>
+            <accordion-group heading="{{content.name}} {{content.surname}}">
+              <app-timetable-info-teacher [teacherNumber]="content.id"></app-timetable-info-teacher>
+            </accordion-group>
 
-    </accordion></td>
-    <!--<td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
-      <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
-    </td>-->
-    <td>
-      <span><button type="button" class="btn btn-danger" (click)="_deleteTeacher(content.id)">Delete</button>
+          </accordion>
+        </td>
+        <!--<td scope="row" routerLink="/timetable-info-teacher/{{teacher.id}}">
+          <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
+        </td>-->
+        <td>
+      <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,content)">Delete</button>
       </span>
-    </td>
+        </td>
 
 
-  </tr>
+      </tr>
 
 
-  </tbody>
-</table>
+      </tbody>
+    </table>
     <pagination [totalItems]="teachers.length" (pageChanged)="pageChanged($event)"></pagination>
 
   </div>
@@ -57,4 +68,131 @@
 
 </body>
 
+<ng-template #templateTeacher>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create "}} new Teacher</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" name="name" [(ngModel)]="editableNewUser.name" #name="ngModel" required/>
+      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+        Pls set username <!--Easy way to create client validation-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Surname</label>
+      <input class="form-control" name="surname" [(ngModel)]="editableNewUser.surname" #surname="ngModel" required/>
+      <div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
+        Pls set surname <!--Easy way to create client validation-->
+      </div>
+    </div>
 
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Subject</label>
+      <select class="form-control" id="exampleFormControlSelect11" [(ngModel)]="editableNewUser.subjectId">
+        <option *ngFor="let subj of subjectsAll" [value]="subj.id">{{subj.subject}}</option>
+
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label>login</label>
+      <input class="form-control" name="login" [(ngModel)]="editableNewUser.login" #login="ngModel" required/>
+      <div [hidden]="login.valid || login.untouched" class="alert alert-danger">
+        Pls set login <!--Easy way to create client validation-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>password</label>
+      <input class="form-control" name="password" [(ngModel)]="editableNewUser.password" #password="ngModel" required/>
+      <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
+        Pls set password <!--Easy way to create client validation-->
+      </div>
+    </div>
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_addNewTeacher(name,surname)"
+    >{{"Create"}}
+    </button>
+
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
+  </div>
+</ng-template>
+<ng-template #templateSubjectTeacher>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create"}} new Group</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <label>Teacher</label>
+
+    <div class="form-group">
+
+      <select class="form-control" id="exampleFormControlSelect12" [(ngModel)]="editableSubjectTeacher.teacherId">
+        <option *ngFor="let Teach of teachersAll" [value]="Teach.id">{{Teach.name }}{{" "}}{{ Teach.surname}}</option>
+
+      </select>
+    </div>
+
+
+
+    <label>Subject</label>
+
+
+    <div class="form-group">
+
+      <select class="form-control" id="exampleFormControlSelect13" [(ngModel)]="editableSubjectTeacher.subjectId">
+        <option *ngFor="let sub of subjectsAll" [value]="sub.id">{{sub.subject}}</option>
+
+      </select>
+    </div>
+
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_addSubjectTeacher()"
+    >{{"Add"}}
+    </button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
+
+  </div>
+</ng-template>
+<ng-template #templateConfirm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirm</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Do you really want to delete student </label><div>
+      <label>{{teacherConfirmName}}{{"  "}}{{teacherConfirmSurname}}</label>
+    </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_deleteTeacher(teacherConfirmId)"
+            [disabled]="name.invalid || surname.invalid ">Yes
+    </button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">No</button>
+
+  </div>
+</ng-template>

@@ -17,7 +17,7 @@ import {Subjects} from "../model/subjects";
 import {SubjectService} from "../service/subject.service";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
-
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-table-teacher',
   templateUrl: './table-teacher.component.html',
@@ -27,9 +27,10 @@ export class TableTeacherComponent implements OnInit {
   @Input()
   public day: string;
   @Input()
-  public teacherNumber:number;
+  public teacherNumber: number;
   public groups: Group[];
   public slots: Slots[];
+  public slotsDist: Slots[];
   public subjects: Subjects[];
   public subjectsTeacher: SubjectTeacher[];
   public daysOfWeek: DaysOfWeek[];
@@ -38,9 +39,69 @@ export class TableTeacherComponent implements OnInit {
   public timetable1: Timetable[];
   public editableTimetable: Timetable = new Timetable();
   public editableTimetableExample: TimetableExample = new TimetableExample();
-  public chooseTeacher: number =this.teacherNumber;
+  public chooseTeacher: number = this.teacherNumber;
   public chooseSubject: number;
   public modalRef: BsModalRef;
+
+  stateCtrl = new FormControl();
+
+  myForm = new FormGroup({
+    state: this.stateCtrl
+  });
+
+  states = [
+    'Alabama',
+    'Alaska',
+    'Arizona',
+    'Arkansas',
+    'California',
+    'Colorado',
+    'Connecticut',
+    'Delaware',
+    'Florida',
+    'Georgia',
+    'Hawaii',
+    'Idaho',
+    'Illinois',
+    'Indiana',
+    'Iowa',
+    'Kansas',
+    'Kentucky',
+    'Louisiana',
+    'Maine',
+    'Maryland',
+    'Massachusetts',
+    'Michigan',
+    'Minnesota',
+    'Mississippi',
+    'Missouri',
+    'Montana',
+    'Nebraska',
+    'Nevada',
+    'New Hampshire',
+    'New Jersey',
+    'New Mexico',
+    'New York',
+    'North Dakota',
+    'North Carolina',
+    'Ohio',
+    'Oklahoma',
+    'Oregon',
+    'Pennsylvania',
+    'Rhode Island',
+    'South Carolina',
+    'South Dakota',
+    'Tennessee',
+    'Texas',
+    'Utah',
+    'Vermont',
+    'Virginia',
+    'Washington',
+    'West Virginia',
+    'Wisconsin',
+    'Wyoming'
+  ];
+
 
   constructor(private loadingService: Ng4LoadingSpinnerService,
               private route: ActivatedRoute,
@@ -52,12 +113,13 @@ export class TableTeacherComponent implements OnInit {
               private daysOfWeekService: DaysOfWeekService,
               private modalService: BsModalService,
               private timeTableService: TimetableService,
-              private subjectTeacherService:SubjectTeacherService) {
+              private subjectTeacherService: SubjectTeacherService) {
   }
 
   ngOnInit() {
-    this.chooseTeacher=this.teacherNumber;
+    this.chooseTeacher = this.teacherNumber;
     this.loadTimetableNamed();
+    /*this.getEmptySlots();*/
 
   }
 
@@ -80,15 +142,13 @@ export class TableTeacherComponent implements OnInit {
   private loadTimetableNamed(): void {
 
 
+    this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
+      // Parse json response into local array
+      this.timetable = timetable as TimetableExample[];
+      // Check data in console
 
 
-      this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
-        // Parse json response into local array
-        this.timetable = timetable as TimetableExample[];
-        // Check data in console
-
-
-      }));
+    }));
 
 
   }
@@ -129,6 +189,27 @@ export class TableTeacherComponent implements OnInit {
     }));
   }
 
+  /*private getEmptySlots(){
+    this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
+      // Parse json response into local array
+      this.timetable = timetable as TimetableExample[];
+      // Check data in console
+
+
+    }));
+
+    for (let named of this.timetable){
+      for (let slot of this.slots){
+
+        if(named.time.includes(slot.startTime+" - "+slot.endTime)){
+          break;
+
+        }
+        this.slotsDist.push(slot);
+
+      }
+    }
+  }*/
   private loadSlot(): void {
 
 
@@ -155,7 +236,8 @@ export class TableTeacherComponent implements OnInit {
       this.subjects = subjects as Subjects[];
     }));
   }
-  private loadSubjectTeacherToGetId():void{
+
+  private loadSubjectTeacherToGetId(): void {
     this.subscriptions.push(this.subjectTeacherService.getAllSubjectTeacher().subscribe(subjectsTeacher => {
 
       this.subjectsTeacher = subjectsTeacher as SubjectTeacher[];
@@ -164,9 +246,9 @@ export class TableTeacherComponent implements OnInit {
 
   public _addTimeTable(): void {
 
-    for (let subjTeach of this.subjectsTeacher){
-      if(subjTeach.teacherId==this.chooseTeacher && subjTeach.subjectId==this.chooseSubject){
-        this.editableTimetable.subjectId=subjTeach.id;
+    for (let subjTeach of this.subjectsTeacher) {
+      if (subjTeach.teacherId == this.chooseTeacher && subjTeach.subjectId == this.chooseSubject) {
+        this.editableTimetable.subjectId = subjTeach.id;
       }
     }
     for (let days of this.daysOfWeek) {
@@ -203,4 +285,12 @@ export class TableTeacherComponent implements OnInit {
   private refreshTimetable(): void {
     this.editableTimetable = new Timetable();
   }
+
+
+
+
+
+
+
+
 }

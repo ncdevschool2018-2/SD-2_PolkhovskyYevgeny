@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {AccordionConfig} from 'ngx-bootstrap/accordion';
 import {PageChangedEvent} from 'ngx-bootstrap/pagination';
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
@@ -21,13 +22,15 @@ export class GroupComponent implements OnInit {
   returnedArray: Group[];
   @Input()
   public timetable: boolean;
-
+  public modalRef: BsModalRef;
   groups: Group[];
+  public editableGroup: Group = new Group();
   private subscriptions: Subscription[] = [];
 
 
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
+              private modalService: BsModalService,
   ) {
 
   }
@@ -67,5 +70,26 @@ export class GroupComponent implements OnInit {
     /*this.contentArray = this.groups;*/
 
   }
+  public _closeModal(): void {
+    this.modalRef.hide();
+  }
+  public _addGroup(): void {
+    this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
+      this._updateGroups();
+      this.refreshGroup();
+      this.modalRef.hide();
+    }));
+  }
+  public _updateGroups(): void {
+    this.loadGroups();
+  }
+  private refreshGroup(): void {
+    this.editableGroup = new Group();
+  }
 
+  public _openModal(template: TemplateRef<any>): void {
+    this.refreshGroup();
+    this.modalRef = this.modalService.show(template);
+    this.loadGroups();
+  }
 }

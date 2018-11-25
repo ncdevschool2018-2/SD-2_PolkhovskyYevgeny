@@ -18,6 +18,11 @@
 <!--<div>
   <h1 align="center">Group number : {{group}} </h1>
 </div>-->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+        (click)="_openModalPupil(templatePupil)">
+  Create pupil
+</button>
+
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
     <table class="table table-bordered table-striped">
@@ -25,12 +30,14 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let groupContent of groupContent">
+      <tr *ngFor="let groupContent of GroupContent">
         <td scope="row">{{groupContent.id}}</td>
         <td>{{groupContent.name}}</td>
         <td>{{groupContent.surname}}</td>
         <td>
-          <span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
+          <!--<span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
+         </span>-->
+          <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,groupContent)">Delete</button>
          </span></td>
         <td>
           <span><button type="button" class="btn btn-secondary"
@@ -87,5 +94,86 @@
     </button>
     <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
 
+  </div>
+</ng-template>
+<ng-template #templateConfirm>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Confirm</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Do you really want to delete student </label><div>
+<label>{{studentConfirmName}}{{"  "}}{{studentConfirmSurname}}</label>
+    </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_deletePupil(studentConfirmId)"
+            [disabled]="name.invalid || surname.invalid ">Yes
+    </button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">No</button>
+
+  </div>
+</ng-template>
+<ng-template #templatePupil>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create "}} new Pupil</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" name="name" [(ngModel)]="editableNewUser.name" #name="ngModel" required/>
+      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+        Pls set username <!--Easy way to create client validation-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Surname</label>
+      <input class="form-control" name="surname" [(ngModel)]="editableNewUser.surname" #surname="ngModel" required/>
+      <div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
+        Pls set surname <!--Easy way to create client validation-->
+      </div>
+    </div>
+
+
+
+
+
+
+    <div class="form-group">
+      <label>login</label>
+      <input class="form-control" name="login" [(ngModel)]="editableNewUser.login" #login="ngModel" required/>
+      <div [hidden]="login.valid || login.untouched" class="alert alert-danger">
+        Pls set login <!--Easy way to create client validation-->
+      </div>
+    </div>
+    <div class="form-group">
+      <label>password</label>
+      <input class="form-control" name="password" [(ngModel)]="editableNewUser.password" #password="ngModel" required/>
+      <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
+        Pls set password <!--Easy way to create client validation-->
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_addNewPupil(name,surname)"
+    >{{"Create"}}
+    </button>
+
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
   </div>
 </ng-template>

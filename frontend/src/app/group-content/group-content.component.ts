@@ -8,6 +8,12 @@ import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {ActivatedRoute} from "@angular/router";
 import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
+import {Roles} from "../model/role";
+import {RolesService} from "../service/roles.service";
+import {NewUser} from "../model/newUser";
+import {PupilService} from "../service/pupil.service";
+import {Users} from "../model/users";
+import {UsersService} from "../service/users.service";
 
 @Component({
   selector: 'app-group-content',
@@ -16,23 +22,31 @@ import {GroupService} from "../service/group.service";
 })
 export class GroupContentComponent implements OnInit {
   @Input()
-  public groupNumber:number;
+  public groupNumber: number;
 
-  public groupContent: GroupContent[];
+  public GroupContent: GroupContent[];
   public editableGC: GroupContent = new GroupContent();
-
+  public studentConfirmId: number;
+  public studentConfirmName: string;
+  public studentConfirmSurname: string;
   public modalRef: BsModalRef;
+  public editableGroup: Group = new Group();
+  public editableNewUser: NewUser = new NewUser();
   private subscriptions: Subscription[] = [];
   public groups: Group[];
   public groupId: number;
   public group: string;
-
+  public roles: Roles[];
+  public users: Users[];
 
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
               private route: ActivatedRoute,
               private groupService: GroupService,
+              private rolesService: RolesService,
+              private pupilService: PupilService,
+              private userService: UsersService,
   ) {
   }
 
@@ -69,7 +83,7 @@ export class GroupContentComponent implements OnInit {
 
     this.subscriptions.push(this.groupContentService.getGroupContentByGroup(this.groupNumber).subscribe(accounts => {
 
-      this.groupContent = accounts as GroupContent[];
+      this.GroupContent = accounts as GroupContent[];
 
     }));
   }
@@ -84,6 +98,7 @@ export class GroupContentComponent implements OnInit {
 
     this.subscriptions.push(this.groupContentService.deleteGroupContent(groupContentId).subscribe(() => {
       this._updateGroupContent();
+      this._closeModal();
     }));
 
   }
@@ -95,6 +110,14 @@ export class GroupContentComponent implements OnInit {
   public _openModal(template: TemplateRef<any>, groupContent: GroupContent): void {
     this.loadGroups();
     this.editableGC = GroupContent.cloneBase(groupContent);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  public _openModalConfirm(template: TemplateRef<any>, groupContent: GroupContent): void {
+    this.studentConfirmId = groupContent.id;
+    this.studentConfirmName = groupContent.name;
+    this.studentConfirmSurname = groupContent.surname;
+
     this.modalRef = this.modalService.show(template);
   }
 
@@ -130,5 +153,39 @@ export class GroupContentComponent implements OnInit {
 
       }
     }
+  }
+
+  public _openModalPupil(template: TemplateRef<any>): void {
+    this.refreshGroup();
+    this.modalRef = this.modalService.show(template);
+    this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
+      this.roles = roles as Roles[];
+    }));
+
+  }
+  private refreshGroup(): void {
+    this.editableGroup = new Group();
+  }
+  public _addNewPupil(): void {
+    this.editableNewUser.groupId=this.groupNumber;
+    this.editableNewUser.roleId = 3;
+    this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+      this._updateUsers();
+      this.loadGroupsContent();
+
+
+      this._closeModal();
+    }));
+  }
+  public _updateUsers(): void {
+    this.loadUsers();
+  }
+  private loadUsers(): void {
+
+
+    this.subscriptions.push(this.userService.getUsers().subscribe(users => {
+
+      this.users = users as Users[];
+    }));
   }
 }

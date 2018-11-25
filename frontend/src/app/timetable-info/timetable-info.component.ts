@@ -1,10 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
-
-@Component({
+import { AccordionConfig } from 'ngx-bootstrap/accordion';
+export function getAccordionConfig(): AccordionConfig {
+  return Object.assign(new AccordionConfig(), {closeOthers: true});
+}
+  @Component({
   selector: 'app-timetable-info',
   templateUrl: './timetable-info.component.html',
-  styleUrls: ['./timetable-info.component.css']
+  styleUrls: ['./timetable-info.component.css'],
+    providers: [{ provide: AccordionConfig, useFactory: getAccordionConfig }]
 })
 export class TimetableInfoComponent implements OnInit {
   @Input()
@@ -25,6 +29,8 @@ export class TimetableInfoComponent implements OnInit {
 
   ngOnInit() {
   }
+    log(event: boolean) {
+      console.log(`Accordion has been ${event ? 'opened' : 'closed'}`);
+    }
 
-
-}
+    }

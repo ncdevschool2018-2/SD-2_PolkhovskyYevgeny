@@ -20,6 +20,7 @@ import {Teacher} from "../model/teacher";
 import {TeacherService} from "../service/teacher.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
+import {GroupContent} from "../model/GroupContent";
 
 @Component({
   selector: 'app-table',
@@ -49,6 +50,7 @@ export class TableComponent implements OnInit {
   public  chooseTeachers:number;
   public  chooseTeachersName:Teacher[];
   public chooseGroup :number =this.groupNumber;
+  public monConfirmId:number;
   constructor(private loadingService: Ng4LoadingSpinnerService,
               private route: ActivatedRoute,
               private modalService: BsModalService,
@@ -185,12 +187,13 @@ this.editableTimetable.groupId=this.groupNumber;
         this.editableTimetable.dayOfWeekId=days.id;
       }
     }
-    debugger;
+
     this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
       this._updateTimetable();
       this.refreshTimetable();
       this.refreshTimetableExample();
       this._updateTimetableExample();
+      this.loadTimetableNamed();
       this.modalRef.hide();
     }));
   }
@@ -224,7 +227,16 @@ this.editableTimetable.groupId=this.groupNumber;
 
     this.subscriptions.push(this.timetableService.deleteTimetable(timetableId).subscribe(() => {
       this._updateTimetableExample();
+      this.loadTimetableNamed();
+      this._closeModal();
     }));
 
   }
+  public _openModalConfirm(template: TemplateRef<any>, mon: TimetableExample): void {
+    this.monConfirmId = mon.timetableId;
+
+
+    this.modalRef = this.modalService.show(template);
+  }
+
 }

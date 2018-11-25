@@ -10,7 +10,7 @@ import {PupilComponent} from './pupil/pupil.component';
 import {TeacherinfoComponent} from './teacherinfo/teacherinfo.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GroupContentComponent} from './group-content/group-content.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
 import { FooterComponent } from './footer/footer.component';
@@ -29,6 +29,9 @@ import { TableTeacherComponent } from './table-teacher/table-teacher.component';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +65,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     PaginationModule.forRoot(),
-
+    TypeaheadModule.forRoot(),
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.
 // Remove it when a real server is ready to receive requests.

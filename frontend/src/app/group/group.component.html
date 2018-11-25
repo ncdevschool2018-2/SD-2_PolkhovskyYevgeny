@@ -4,6 +4,10 @@
 <div>
   <h1 align="center">Groups </h1>
 </div>
+<button *ngIf="!timetable" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+        (click)="_openModal(template)">
+  Create group
+</button>
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
@@ -54,7 +58,33 @@
     <pagination [totalItems]="groups.length" (pageChanged)="pageChanged($event)"></pagination>
   </div>
 </div>-->
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{"Create"}} new Group</h4>
+    <button type="button" class="close pull-right"
+            aria-label="Close" (click)="_closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label>Group</label>
+      <input type="number" class="form-control" id="extra7" placeholder="8 character only" [(ngModel)]="editableGroup.name" #name="ngModel"
+             required pattern="\d [0-9]{2,8}"/>
+      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+        8 numbers pls <!--Easy way to create client validation-->
+      </div>
+    </div>
 
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="_addGroup(name)"
+    >{{"Create"}}
+    </button>
+    <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">Close</button>
+
+  </div>
+</ng-template>
 
 
 

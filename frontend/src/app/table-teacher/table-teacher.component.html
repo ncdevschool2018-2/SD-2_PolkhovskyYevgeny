@@ -1,7 +1,9 @@
 <table class="table">
   <thead class="thead-dark">
   <tr>
-    <th ><div><p class="text-warning">{{day}}</p></div></th>
+    <th>
+      <div><p class="text-warning">{{day}}</p></div>
+    </th>
     <th scope="col"> Subject</th>
     <th scope="col">Group</th>
     <th scope="col">Time</th>
@@ -15,11 +17,12 @@
   </tr>
   </thead>
   <tbody>
-  <tr  *ngFor="let mon of timetable">
+  <tr *ngFor="let mon of timetable">
 
     <th *ngIf="mon.day.includes(day)" scope="row"></th>
     <td *ngIf="mon.day.includes(day)">
-      {{mon.subject}}</td>
+      {{mon.subject}}
+    </td>
 
     <td *ngIf="mon.day.includes(day)">{{mon.group}}</td>
 
@@ -49,38 +52,44 @@
 
       <div class="form-group">
 
-        <select class="form-control"  [(ngModel)]="editableTimetable.slotId">
+        <select class="form-control" [(ngModel)]="editableTimetable.slotId">
           <option *ngFor="let slot of slots" [value]="slot.id">{{slot.startTime}} - {{slot.endTime }}</option>
 
         </select>
       </div>
 
 
-
-
       <label>Group</label>
 
       <div class="form-group">
 
-        <select class="form-control"  [(ngModel)]="editableTimetable.groupId">
+        <select class="form-control" [(ngModel)]="editableTimetable.groupId">
           <option *ngFor="let group of groups" [value]="group.id"> {{group.name}}</option>
 
         </select>
       </div>
 
+      <pre class="card card-block card-header">Model: {{myForm.value.state | json}}</pre>
+
+      <form [formGroup]="myForm">
+        <input formControlName="state"
+               [typeahead]="states"
+               [typeaheadOptionsLimit]="7"
+               [typeaheadMinLength]="0"
+               placeholder="Typeahead inside a form"
+               class="form-control">
+      </form>
 
 
       <label>SUBJECT</label>
 
       <div class="form-group">
 
-        <select class="form-control"  [(ngModel)]="chooseSubject">
+        <select class="form-control" [(ngModel)]="chooseSubject">
           <option *ngFor="let subj of subjects" [value]="subj.id">{{subj.subject}}</option>
 
         </select>
       </div>
-
-
 
 
     </div>
