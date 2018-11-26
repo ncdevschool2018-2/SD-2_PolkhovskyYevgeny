@@ -34,6 +34,7 @@ export class TableComponent implements OnInit {
   public day: string;
 
   private subscriptions: Subscription[] = [];
+  @Input()
   public timetable:TimetableExample[];
   public timetable1: Timetable[];
   public slots: Slots[];
@@ -66,7 +67,7 @@ export class TableComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.loadTimetableNamed();
+
     /*this.loadTimetable()*/
   }
   /*private loadTimetable(): void {
@@ -96,14 +97,14 @@ this.chooseGroup=id;
 
   }*/
 
-  private loadTimetableNamed(): void {
+  /*private loadTimetableNamed(): void {
 
 
     this.subscriptions.push(this.timetableService.getTimetableNamedByGroupId(this.groupNumber).subscribe(timetable => {
 
       this.timetable = timetable as TimetableExample[];
     }));
-  }
+  }*/
 
   public _openModalTimetable(template: TemplateRef<any>): void {
     this.refreshGroup();
@@ -193,7 +194,7 @@ this.editableTimetable.groupId=this.groupNumber;
       this.refreshTimetable();
       this.refreshTimetableExample();
       this._updateTimetableExample();
-      this.loadTimetableNamed();
+
       this.modalRef.hide();
     }));
   }
@@ -209,7 +210,7 @@ this.editableTimetable.groupId=this.groupNumber;
     this.loadTimetable();
   }
   public _updateTimetableExample(): void {
-    this.loadTimetableNamed();
+
   }
   private refreshTimetable(): void {
     this.editableTimetable = new Timetable();
@@ -227,7 +228,7 @@ this.editableTimetable.groupId=this.groupNumber;
 
     this.subscriptions.push(this.timetableService.deleteTimetable(timetableId).subscribe(() => {
       this._updateTimetableExample();
-      this.loadTimetableNamed();
+
       this._closeModal();
     }));
 

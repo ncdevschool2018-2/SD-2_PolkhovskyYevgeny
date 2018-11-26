@@ -7,35 +7,35 @@
     <table class="table table-sm">
 
       <accordion>
-        <accordion-group heading="Line View" (isOpenChange)="log($event)" >
-  <app-table [day]="Monday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
+        <accordion-group heading="Line View"  >
+  <app-table *ngFor="let day of days" [day]="day" [timetable]="timetable" [groupNumber]="groupNumber"></app-table>
+  <!--<app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
   <app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table>
   <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table>
   <app-table [day]="Friday" [groupNumber]="groupNumber"></app-table>
   <app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>
+  <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>-->
         </accordion-group>
-        <accordion-group heading="Table View" (isOpenChange)="log($event)">
+        <accordion-group heading="Table View" >
       <div class="row">
-        <div class="col-6"><app-table [day]="Monday" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"><app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Monday" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Tuesday" [timetable]="timetable"></app-table></div>
 
       </div>
       <div class="row">
-        <div class="col-6"><app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"> <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Wednesday" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"> <app-table [day]="Thursday" [timetable]="timetable"></app-table></div>
 
       </div>
       <div class="row">
 
-        <div class="col-6"><app-table [day]="Friday" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"><app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Friday" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Saturday" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
       </div>
 
       <div class="row">
 
-        <div class="col-6"><app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table></div>
+        <div class="col-6"><app-table [day]="Sunday" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
       </div>
         </accordion-group>
 

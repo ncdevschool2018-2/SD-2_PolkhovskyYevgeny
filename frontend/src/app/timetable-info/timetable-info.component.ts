@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
 import { AccordionConfig } from 'ngx-bootstrap/accordion';
+import {Subscription} from "rxjs";
+import {TimetableService} from "../service/timetable.service";
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
 }
@@ -14,6 +16,8 @@ export class TimetableInfoComponent implements OnInit {
   @Input()
   public groupNumber:number;
 
+public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+    private subscriptions: Subscription[] = [];
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
   public Wednesday: string = "Wednesday";
@@ -24,13 +28,20 @@ export class TimetableInfoComponent implements OnInit {
 
   public timetable: TimetableExample[];
 
-  constructor() {
+  constructor(private timetableService: TimetableService,
+              ) {
   }
 
   ngOnInit() {
+    this.loadTimetableNamed();
   }
-    log(event: boolean) {
-      console.log(`Accordion has been ${event ? 'opened' : 'closed'}`);
+    private loadTimetableNamed(): void {
+
+
+      this.subscriptions.push(this.timetableService.getTimetableNamedByGroupId(this.groupNumber).subscribe(timetable => {
+
+        this.timetable = timetable as TimetableExample[];
+      }));
     }
 
     }
