@@ -4,6 +4,8 @@ import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.repository.UniversityGroupRepository;
 import com.netcracker.edu.backend.service.UniversityGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -30,6 +32,8 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
         return repository.findById(id);
     }
     
+   
+    
     @Override
     public Iterable<UniversityGroup> getAllUniversityGroup() {
         return repository.findAll();
@@ -39,6 +43,12 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     public List<UniversityGroup> getAllOrderUniversityGroup() {
         return repository.findAllOrderByName();
     }
+    
+    @Override
+    public Page<UniversityGroup> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+    
     
     
     @Override

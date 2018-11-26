@@ -1,6 +1,7 @@
 package com.netcracker.edu.fapi.service;
 
 import com.netcracker.edu.fapi.models.NewUserViewModel;
+import com.netcracker.edu.fapi.models.PageTeacherViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface TeacherDataService {
     TeacherViewModel saveTeacher(NewUserViewModel teacher);
     
     void deleteTeacher(int id);
+    
+    PageTeacherViewModel getPageTeacher(int page);
 }

@@ -4,6 +4,8 @@ import com.netcracker.edu.backend.entity.Teacher;
 import com.netcracker.edu.backend.repository.TeacherRepository;
 import com.netcracker.edu.backend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -41,6 +43,11 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public void deleteTeacher(int id) {
         repository.deleteById(id);
+    }
+    
+    @Override
+    public Page<Teacher> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
     }
     
     @Override

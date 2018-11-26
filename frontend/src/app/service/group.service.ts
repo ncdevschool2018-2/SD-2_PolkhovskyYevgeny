@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Group} from "../model/group";
 import {HttpClient} from "@angular/common/http";
+import {PageGroup} from "../model/pageGroup";
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,8 @@ export class GroupService { //todo create interface
   deleteGroup(groupId: string): Observable<void> {
     return this.http.delete<void>('/api/universitygroup/' + groupId);
   }
-  /*getGroup(): Observable<Group[]> {
-    // TODO: send the message _after_ fetching the heroes
-    //this.messageService.add('HeroService: fetched heroes');
-    return of(GROUP);
-  }*/
+  getPageGroups(page:number): Observable<PageGroup> {
+    return this.http.post<PageGroup>('/api/universitygroup/page',page-1);
+  }
 
 }

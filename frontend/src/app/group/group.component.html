@@ -8,7 +8,7 @@
         (click)="_openModal(template)">
   Create group
 </button>
-<main class="container">
+<main class="container" *ngIf="page">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
     <table class="table table-bordered table-striped">
@@ -16,13 +16,13 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let content of returnedArray">
-        <td width="5%">{{content.id}}</td>
+      <tr *ngFor="let group of page.content">
+        <td width="5%">{{group.id}}</td>
         <td>
 
           <accordion *ngIf="!timetable">
-            <accordion-group heading="{{content.name}}">
-              <app-group-content [groupNumber]="content.id"></app-group-content>
+            <accordion-group heading="{{group.name}}">
+              <app-group-content [groupNumber]="group.id"></app-group-content>
             </accordion-group>
 
           </accordion>
@@ -30,8 +30,8 @@
 
 
           <accordion *ngIf="timetable">
-            <accordion-group heading="{{content.name}}">
-              <app-timetable-info [groupNumber]="content.id"></app-timetable-info>
+            <accordion-group heading="{{group.name}}">
+              <app-timetable-info [groupNumber]="group.id"></app-timetable-info>
             </accordion-group>
 
           </accordion>
@@ -44,7 +44,9 @@
 
       </tbody>
     </table>
-    <pagination [totalItems]="groups.length" (pageChanged)="pageChanged($event)"></pagination>
+    <pagination *ngIf="page" [totalItems]="page.totalElements"
+                [(ngModel)]="currentPage"
+                (pageChanged)="pageChanged(currentPage)"></pagination>
   </div>
   <!--<app-go-back></app-go-back>-->
 </main>

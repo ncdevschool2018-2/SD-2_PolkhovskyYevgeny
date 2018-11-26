@@ -69,7 +69,13 @@
         </select>
       </div>
 
-      <pre class="card card-block card-header">Model: {{myForm.value.state | json}}</pre>
+
+      <!--<pre class="card card-block card-header mb-3">Model: {{selected | json}}</pre>
+      <input [(ngModel)]="editableTimetable.groupId"
+             [typeahead]="states"
+             [value]="selected"
+             class="form-control">-->
+      <!--<pre class="card card-block card-header">Model: {{myForm.value.state | json}}</pre>
 
       <form [formGroup]="myForm">
         <input formControlName="state"
@@ -78,8 +84,7 @@
                [typeaheadMinLength]="0"
                placeholder="Typeahead inside a form"
                class="form-control">
-      </form>
-
+      </form>-->
 
       <label>SUBJECT</label>
 

@@ -16,6 +16,8 @@ import {UsersService} from "../service/users.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {GroupContent} from "../model/GroupContent";
+import {PageGroup} from "../model/pageGroup";
+import {PageTeacher} from "../model/pageTeacher";
 @Component({
   selector: 'app-teachers',
   templateUrl: './teachers.component.html',
@@ -37,6 +39,8 @@ export class TeachersComponent implements OnInit {
   public teachersAll: Teacher[];
   public subjects: SubjectTeacher[];
   public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
+  page: PageTeacher;
+  currentPage:number=1;
   constructor(private teacherService: TeacherService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -48,26 +52,27 @@ export class TeachersComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
-    this.loadTeachers();
-    this.returnedArray = this.teachers.slice(0, 10);
-  }
-  pageChanged(event: PageChangedEvent): void {
+    this.loadTeachers(1);
 
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
-    this.returnedArray = this.teachers.slice(startItem, endItem);
   }
-  private loadTeachers(): void {
-    this.loadingService.show();
+
+  private loadTeachers(page:number): void {
+
     // Get data from BillingAccountService
-    this.subscriptions.push(this.teacherService.getTeachers().subscribe(teachers => {
+    this.subscriptions.push(this.teacherService.getPageTeachers(page).subscribe(page => {
       // Parse json response into local array
-      this.teachers = teachers as Teacher[];
-      // Check data in console
-      //console.log(this.groups);// don't use console.log in angular :)
-      this.loadingService.hide();
+      this.page = page as PageTeacher;
+
+
+
     }));
+    /*this.contentArray = this.groups;*/
+
   }
+  public pageChanged(page:number):void{
+    this.loadTeachers(page);
+  }
+
 
   public _deleteTeacher(teacherId: string): void {
 
@@ -80,7 +85,7 @@ export class TeachersComponent implements OnInit {
   }
 
   public _updateTeachers(): void {
-    this.loadTeachers();
+    this.loadTeachers(this.currentPage);
   }
   public _openModalTeacher(template: TemplateRef<any>): void {
     this.refreshGroup();

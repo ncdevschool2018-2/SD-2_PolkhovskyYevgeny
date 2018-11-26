@@ -36,6 +36,10 @@ export class TimetableInfoTeacherComponent implements OnInit {
 this.loadTeacher();
   }
 
+  public test(): void {
+    alert("update");
+  }
+
   /*private loadTeacher(): void {
 
 

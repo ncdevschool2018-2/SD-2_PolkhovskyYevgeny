@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {GroupContent} from "../model/GroupContent";
 import {Teacher} from "../model/teacher";
+import {PageGroup} from "../model/pageGroup";
+import {PageTeacher} from "../model/pageTeacher";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +29,9 @@ export class TeacherService {
 
   deleteTeacher(teacherId: string): Observable<void> {
     return this.http.delete<void>('/api/teacher/' + teacherId);
+  }
+
+  getPageTeachers(page:number): Observable<PageTeacher> {
+    return this.http.post<PageTeacher>('/api/teacher/page',page-1);
   }
 }

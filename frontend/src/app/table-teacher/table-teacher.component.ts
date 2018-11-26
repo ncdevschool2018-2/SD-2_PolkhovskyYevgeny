@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {ActivatedRoute} from "@angular/router";
@@ -17,7 +17,8 @@ import {Subjects} from "../model/subjects";
 import {SubjectService} from "../service/subject.service";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
-import { FormControl, FormGroup } from '@angular/forms';
+/*import { FormControl, FormGroup } from '@angular/forms';*/
+
 @Component({
   selector: 'app-table-teacher',
   templateUrl: './table-teacher.component.html',
@@ -28,9 +29,14 @@ export class TableTeacherComponent implements OnInit {
   public day: string;
   @Input()
   public teacherNumber: number;
+
+  @Output()
+  formStateChanged = new EventEmitter<void>();
+
+
   public groups: Group[];
   public slots: Slots[];
-  public slotsDist: Slots[];
+  public slotsDist: Slots[] = [];
   public subjects: Subjects[];
   public subjectsTeacher: SubjectTeacher[];
   public daysOfWeek: DaysOfWeek[];
@@ -43,7 +49,7 @@ export class TableTeacherComponent implements OnInit {
   public chooseSubject: number;
   public modalRef: BsModalRef;
 
-  stateCtrl = new FormControl();
+  /*stateCtrl = new FormControl();
 
   myForm = new FormGroup({
     state: this.stateCtrl
@@ -101,7 +107,10 @@ export class TableTeacherComponent implements OnInit {
     'Wisconsin',
     'Wyoming'
   ];
+*/
 
+  selected: string;
+  states: Group[] = this.groups;
 
   constructor(private loadingService: Ng4LoadingSpinnerService,
               private route: ActivatedRoute,
@@ -119,6 +128,7 @@ export class TableTeacherComponent implements OnInit {
   ngOnInit() {
     this.chooseTeacher = this.teacherNumber;
     this.loadTimetableNamed();
+    this.loadSlot();
     /*this.getEmptySlots();*/
 
   }
@@ -158,6 +168,7 @@ export class TableTeacherComponent implements OnInit {
 
     this.subscriptions.push(this.timetableService.deleteTimetable(timetableId).subscribe(() => {
       this._updateTimetableExample();
+      this.formStateChanged.emit();
     }));
 
   }
@@ -176,6 +187,7 @@ export class TableTeacherComponent implements OnInit {
     this.loadGroups();
     this.loadSlot();
     this.loadDaysOfWeek();
+    /*this.getEmptySlots();*/
     this.modalRef = this.modalService.show(template);
 
   }
@@ -186,30 +198,31 @@ export class TableTeacherComponent implements OnInit {
 
       this.groups = groups as Group[];
 
+      this.states=this.groups
     }));
   }
 
-  /*private getEmptySlots(){
-    this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
-      // Parse json response into local array
-      this.timetable = timetable as TimetableExample[];
-      // Check data in console
+  private getEmptySlots(){
+    this.loadTimetableNamed();
+    this.loadSlot();
 
-
-    }));
-
+    debugger
     for (let named of this.timetable){
-      for (let slot of this.slots){
+    for (let slot of this.slots){
 
-        if(named.time.includes(slot.startTime+" - "+slot.endTime)){
-          break;
+
+
+        if(!named.time.includes(slot.startTime+" - "+slot.endTime)){
+          this.slotsDist.push(slot)
 
         }
-        this.slotsDist.push(slot);
+        break;
+
 
       }
     }
-  }*/
+
+  }
   private loadSlot(): void {
 
 
@@ -261,6 +274,7 @@ export class TableTeacherComponent implements OnInit {
       this.refreshTimetable();
       this.refreshTimetableExample();
       this._updateTimetableExample();
+      this.formStateChanged.emit();
       this.modalRef.hide();
     }));
   }

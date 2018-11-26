@@ -88,9 +88,20 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         
     }*/
     
+    
+    
     @Override
     public void deleteTeacher(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/teachers/" + id);
     }
+    
+    @Override
+    public PageTeacherViewModel getPageTeacher(int page) {
+        RestTemplate restTemplate = new RestTemplate();
+    
+        return restTemplate.postForEntity(backendServerUrl+"/api/teachers/list",page,PageTeacherViewModel.class).getBody();
+    
+    }
+    
 }

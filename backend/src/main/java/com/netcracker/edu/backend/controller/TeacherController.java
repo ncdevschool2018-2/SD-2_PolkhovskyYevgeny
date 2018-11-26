@@ -1,15 +1,22 @@
 package com.netcracker.edu.backend.controller;
 
+import com.netcracker.edu.backend.dto.PageGroup;
+import com.netcracker.edu.backend.dto.PageTeacher;
 import com.netcracker.edu.backend.dto.TeacherDto;
 import com.netcracker.edu.backend.entity.Teacher;
+import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.service.TeacherService;
 import com.netcracker.edu.backend.service.businesService.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+
+import static java.lang.Math.toIntExact;
 
 @RestController
 @RequestMapping("/api/teachers")
@@ -30,6 +37,13 @@ public class TeacherController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public PageTeacher showPage(@RequestBody int page){
+        Page<Teacher> pageFull= teacherService.findAll(new PageRequest(page,10));
+        PageTeacher pageNeeded = new PageTeacher(pageFull.getContent(),pageFull.getTotalPages(),toIntExact(pageFull.getTotalElements()));
+        return pageNeeded;
     }
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)

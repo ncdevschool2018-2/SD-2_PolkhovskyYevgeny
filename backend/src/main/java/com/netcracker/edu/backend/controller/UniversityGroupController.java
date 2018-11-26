@@ -1,5 +1,6 @@
 package com.netcracker.edu.backend.controller;
 
+import com.netcracker.edu.backend.dto.PageGroup;
 import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.service.UniversityGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+
+import static java.lang.Math.toIntExact;
 
 @RestController
 @RequestMapping("/api/universitygroups")
@@ -29,10 +32,18 @@ public class UniversityGroupController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    public PageGroup showPage(@RequestBody int page){
+        Page<UniversityGroup> pageFull= universityGroupService.findAll(new PageRequest(page,10));
+        PageGroup pageNeeded = new PageGroup(pageFull.getContent(),pageFull.getTotalPages(),toIntExact(pageFull.getTotalElements()));
+        return pageNeeded;
+    }
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<UniversityGroup> getAllOrderUniversityGroup() {
         return universityGroupService.getAllOrderUniversityGroup();
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public UniversityGroup saveUniversityGroup(@RequestBody UniversityGroup universityGroup) {

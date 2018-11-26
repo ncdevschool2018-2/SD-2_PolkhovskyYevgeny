@@ -16,4 +16,6 @@ public interface UniversityGroupRepository extends CrudRepository<UniversityGrou
     @Query(value = "select * from university_group order by name", nativeQuery = true)
     List<UniversityGroup> findAllOrderByName();
     Page<UniversityGroup> findAll(Pageable pageable);
+    
+  
 }

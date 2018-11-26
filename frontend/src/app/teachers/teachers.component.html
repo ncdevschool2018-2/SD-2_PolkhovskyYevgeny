@@ -28,7 +28,7 @@
   Add subject to teacher
 </button>
 
-<main class="container-fluid">
+<main class="container-fluid" *ngIf="page">
 
   <div class="my-1 p-1 bg-white rounded shadow-sm">
 
@@ -37,11 +37,11 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let content of returnedArray">
+      <tr *ngFor="let teacher of page.content">
         <td  width="95%">
           <accordion>
-            <accordion-group heading="{{content.name}} {{content.surname}}">
-              <app-timetable-info-teacher [teacherNumber]="content.id"></app-timetable-info-teacher>
+            <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
+              <app-timetable-info-teacher [teacherNumber]="teacher.id"></app-timetable-info-teacher>
             </accordion-group>
 
           </accordion>
@@ -50,7 +50,7 @@
           <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
         </td>-->
         <td>
-      <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,content)">Delete</button>
+      <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,teacher)">Delete</button>
       </span>
         </td>
 
@@ -60,7 +60,10 @@
 
       </tbody>
     </table>
-    <pagination [totalItems]="teachers.length" (pageChanged)="pageChanged($event)"></pagination>
+    <pagination *ngIf="page" [totalItems]="page.totalElements"
+                [(ngModel)]="currentPage"
+                (pageChanged)="pageChanged(currentPage)"></pagination>
+
 
   </div>
   <!--<app-go-back></app-go-back>-->

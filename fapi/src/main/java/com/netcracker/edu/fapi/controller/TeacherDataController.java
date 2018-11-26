@@ -1,6 +1,7 @@
 package com.netcracker.edu.fapi.controller;
 
 import com.netcracker.edu.fapi.models.NewUserViewModel;
+import com.netcracker.edu.fapi.models.PageTeacherViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,13 @@ public class TeacherDataController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<TeacherViewModel> getTeacherById(@PathVariable int id) {
         return ResponseEntity.ok(teacherDataService.getTeacherById(id));
+    }
+    
+    @RequestMapping(value = "/page",method = RequestMethod.POST)
+    public ResponseEntity<PageTeacherViewModel> getTeacherPage(@RequestBody int page){
+        
+        return ResponseEntity.ok(teacherDataService.getPageTeacher(page));
+        
     }
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")

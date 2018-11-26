@@ -14,6 +14,7 @@ public interface UniversityGroupService {
     
     Iterable<UniversityGroup> getAllUniversityGroup();
     List<UniversityGroup>  getAllOrderUniversityGroup();
+    Page<UniversityGroup> findAll(Pageable pageable);
     void deleteUniversityGroup(int id);
     
 }

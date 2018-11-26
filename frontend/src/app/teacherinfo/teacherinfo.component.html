@@ -1,27 +1,21 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
 
-<button type="button" class="btn btn-primary" (click)="isCollapsed = !isCollapsed"
-        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Toggle collapse
-</button>
-<button type="button" class="btn btn-primary" (click)="isCollapsed1 = !isCollapsed1"
-        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Toggle collapse
-</button>
-<button type="button" class="btn btn-primary" (click)="isCollapsed2 = !isCollapsed2"
-        [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1">Toggle collapse
-</button>
+  </tr>
+  </thead>
+  <tbody *ngIf="page">
+  <tr *ngFor="let group of page.content">
+    <th  scope="row">{{group.name}}</th>
+
+  </tr>
 
 
-<div id="collapseBasic" [collapse]="isCollapsed" class="card card-block card-header">
-  <div class="well well-lg">
-    <app-group ></app-group>
-  </div>
-</div>
-<div id="collapseBasic1" [collapse]="isCollapsed1" class="card card-block card-header">
-  <div class="well well-lg">
-    <app-teachers></app-teachers>
-  </div>
-</div>
-<div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
-  <div class="well well-lg">
-    <app-group [timetable]="true"></app-group>
-  </div>
-</div>
+  </tbody>
+</table>
+<pagination *ngIf="page" [totalItems]="page.totalElements"
+            [(ngModel)]="currentPage"
+            (pageChanged)="pageChanged(currentPage)"></pagination>
+
+<p>{{currentPage}}</p>
