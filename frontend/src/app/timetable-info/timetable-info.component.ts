@@ -3,6 +3,8 @@ import {TimetableExample} from "../model/timetableExample";
 import { AccordionConfig } from 'ngx-bootstrap/accordion';
 import {Subscription} from "rxjs";
 import {TimetableService} from "../service/timetable.service";
+import {Slots} from "../model/slots";
+import {SlotService} from "../service/slot.service";
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
 }
@@ -15,7 +17,8 @@ export function getAccordionConfig(): AccordionConfig {
 export class TimetableInfoComponent implements OnInit {
   @Input()
   public groupNumber:number;
-
+    @Input()
+    public slots: Slots[];
 public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
     private subscriptions: Subscription[] = [];
   public Monday: string = "Monday";
@@ -29,11 +32,13 @@ public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturd
   public timetable: TimetableExample[];
 
   constructor(private timetableService: TimetableService,
+
               ) {
   }
 
   ngOnInit() {
     this.loadTimetableNamed();
+
   }
     private loadTimetableNamed(): void {
 
@@ -43,5 +48,9 @@ public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturd
         this.timetable = timetable as TimetableExample[];
       }));
     }
+    public test(): void {
+      this.loadTimetableNamed();
+    }
+
 
     }

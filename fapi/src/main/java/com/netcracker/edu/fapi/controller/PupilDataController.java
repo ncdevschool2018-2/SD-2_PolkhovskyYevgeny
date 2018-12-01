@@ -5,6 +5,7 @@ import com.netcracker.edu.fapi.models.PupilViewModel;
 import com.netcracker.edu.fapi.service.PupilDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public class PupilDataController {
     
     @Autowired
     private PupilDataService pupilDataService;
+    
+    @Autowired
+    private BCryptPasswordEncoder bcryptEncoder;
     
     @RequestMapping
     public ResponseEntity<List<PupilViewModel>> getAllPupils() {
@@ -28,8 +32,9 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-        if (pupil != null) {
-            return ResponseEntity.ok(pupilDataService.savePupil(pupil));
+        NewUserViewModel newPupil= new NewUserViewModel(pupil.getName(),pupil.getSurname(),pupil.getSubjectId(),pupil.getGroupId(),pupil.getUserId(),pupil.getLogin(),bcryptEncoder.encode(pupil.getPassword()),pupil.getRoleId());
+        if (newPupil != null) {
+            return ResponseEntity.ok(pupilDataService.savePupil(newPupil));
         }
         return null;
     }

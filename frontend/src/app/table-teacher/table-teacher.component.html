@@ -53,7 +53,7 @@
       <div class="form-group">
 
         <select class="form-control" [(ngModel)]="editableTimetable.slotId">
-          <option *ngFor="let slot of slots" [value]="slot.id">{{slot.startTime}} - {{slot.endTime }}</option>
+          <option *ngFor="let slot of slotsDist" [value]="slot.id">{{slot.startTime}} - {{slot.endTime }}</option>
 
         </select>
       </div>

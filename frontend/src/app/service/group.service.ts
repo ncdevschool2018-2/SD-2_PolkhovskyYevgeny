@@ -21,8 +21,14 @@ export class GroupService { //todo create interface
   deleteGroup(groupId: string): Observable<void> {
     return this.http.delete<void>('/api/universitygroup/' + groupId);
   }
-  getPageGroups(page:number): Observable<PageGroup> {
+  /*getPageGroups(page:number): Observable<PageGroup> {
     return this.http.post<PageGroup>('/api/universitygroup/page',page-1);
+  }*/
+  getPageGroups(page:number): Observable<Group[]> {
+    return this.http.get<Group[]>('/api/universitygroup/page/'+(page-1));
+  }
+  getGroupsNumber():Observable<number>{
+    return this.http.get<number>('/api/universitygroup/totalPages');
   }
 
 }

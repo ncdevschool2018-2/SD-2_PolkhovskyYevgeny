@@ -8,7 +8,7 @@
         (click)="_openModal(template)">
   Create group
 </button>
-<main class="container" *ngIf="page">
+<main class="container" *ngIf="groups">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
     <table class="table table-bordered table-striped">
@@ -16,7 +16,7 @@
 
       </thead>
       <tbody>
-      <tr *ngFor="let group of page.content">
+      <tr *ngFor="let group of groups">
         <td width="5%">{{group.id}}</td>
         <td>
 
@@ -31,7 +31,7 @@
 
           <accordion *ngIf="timetable">
             <accordion-group heading="{{group.name}}">
-              <app-timetable-info [groupNumber]="group.id"></app-timetable-info>
+              <app-timetable-info [groupNumber]="group.id" [slots]="slots"></app-timetable-info>
             </accordion-group>
 
           </accordion>
@@ -44,7 +44,7 @@
 
       </tbody>
     </table>
-    <pagination *ngIf="page" [totalItems]="page.totalElements"
+    <pagination *ngIf="groups" [totalItems]="groupNumber"
                 [(ngModel)]="currentPage"
                 (pageChanged)="pageChanged(currentPage)"></pagination>
   </div>

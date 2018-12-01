@@ -7,6 +7,7 @@ import {AccordionConfig} from 'ngx-bootstrap/accordion';
 import {PageChangedEvent} from 'ngx-bootstrap/pagination';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {PageGroup} from "../model/pageGroup";
+import {Slots} from "../model/slots";
 
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
@@ -19,15 +20,17 @@ export function getAccordionConfig(): AccordionConfig {
   providers: [{provide: AccordionConfig, useFactory: getAccordionConfig}]
 })
 export class GroupComponent implements OnInit {
-
+  @Input()
+  public slots: Slots[];
   returnedArray: Group[];
   @Input()
   public timetable: boolean;
   public modalRef: BsModalRef;
-  groups: Group[];
+  public groups: Group[];
+  public groupNumber:number;
   public editableGroup: Group = new Group();
   private subscriptions: Subscription[] = [];
-  page: PageGroup;
+  /*page: PageGroup;*/
   currentPage:number=1;
   
   constructor(private groupService: GroupService,
@@ -40,51 +43,28 @@ export class GroupComponent implements OnInit {
   ngOnInit() {
 
     this.loadGroups(1);
-
+    this.getNumberOfGroups();
 
 
   }
 
-  /*getGroup():void{
-    this.groupService.getGroup()
-      .subscribe(Group =>this.groups = Group);
-  }*/
-
-
-  /*pageChanged(event: PageChangedEvent): void {
-
-    const startItem = (event.page - 1) * event.itemsPerPage;
-    const endItem = event.page * event.itemsPerPage;
-    this.returnedArray = this.groups.slice(startItem, endItem);
-  }*/
-
-  /*private loadGroups(): void {
-    this.loadingService.show();
-    // Get data from BillingAccountService
-    this.subscriptions.push(this.groupService.getGroups().subscribe(groups => {
-      // Parse json response into local array
-      this.groups = groups as Group[];
-      this.returnedArray = this.groups.slice(0, 10);
-      // Check data in console
-      //console.log(this.groups);// don't use console.log in angular :)
-      this.loadingService.hide();
-    }));
-    /!*this.contentArray = this.groups;*!/
-
-  }*/
   private loadGroups(page:number): void {
 
     // Get data from BillingAccountService
-    this.subscriptions.push(this.groupService.getPageGroups(page).subscribe(page => {
+    this.subscriptions.push(this.groupService.getPageGroups(page).subscribe(numb => {
       // Parse json response into local array
-      this.page = page as PageGroup;
-
+      this.groups = numb as Group[];
+debugger
 
 
     }));
-    /*this.contentArray = this.groups;*/
+      }
 
-  }
+      public getNumberOfGroups():void{
+    this.subscriptions.push(this.groupService.getGroupsNumber().subscribe(numOfGroups=>{
+      this.groupNumber=numOfGroups as number;
+    }))
+      }
   public _closeModal(): void {
     this.modalRef.hide();
   }
@@ -95,6 +75,7 @@ export class GroupComponent implements OnInit {
     this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
       this._updateGroups();
       this.refreshGroup();
+      this.getNumberOfGroups();
       this.modalRef.hide();
     }));
   }

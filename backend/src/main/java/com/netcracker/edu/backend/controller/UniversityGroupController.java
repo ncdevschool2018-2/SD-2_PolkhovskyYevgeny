@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 import static java.lang.Math.toIntExact;
@@ -33,12 +34,24 @@ public class UniversityGroupController {
         }
     }
     
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/list", method = RequestMethod.POST)
     public PageGroup showPage(@RequestBody int page){
         Page<UniversityGroup> pageFull= universityGroupService.findAll(new PageRequest(page,10));
         PageGroup pageNeeded = new PageGroup(pageFull.getContent(),pageFull.getTotalPages(),toIntExact(pageFull.getTotalElements()));
         return pageNeeded;
+    }*/
+    @RequestMapping(value = "/page/{page}", method = RequestMethod.GET)
+    public List<UniversityGroup> showPage(@PathVariable int page){
+        List<UniversityGroup> pageFull= universityGroupService.findGroupPage(page*10);
+        return pageFull;
     }
+    
+    @RequestMapping(value = "/totalPages",method = RequestMethod.GET)
+    public Integer getTotalPages(){
+        Integer totalPages=universityGroupService.getTotalPages();
+        return totalPages;
+    }
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<UniversityGroup> getAllOrderUniversityGroup() {
         return universityGroupService.getAllOrderUniversityGroup();

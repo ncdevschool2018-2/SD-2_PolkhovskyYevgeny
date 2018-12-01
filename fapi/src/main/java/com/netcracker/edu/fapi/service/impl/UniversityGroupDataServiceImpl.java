@@ -53,5 +53,20 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
         return restTemplate.postForEntity(backendServerUrl+"/api/universitygroups/list",page,PageGroupViewModel.class).getBody();
     }
     
+    @Override
+    public List<UniversityGroupViewModel> findGroupPage(int page) {
+        RestTemplate restTemplate = new RestTemplate();
+        UniversityGroupViewModel[] universityGroupViewModelsResponse =
+                restTemplate.getForObject(backendServerUrl+"/api/universitygroups/page/"+page,UniversityGroupViewModel[].class);
+        return universityGroupViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(universityGroupViewModelsResponse);
+    }
+    
+    @Override
+    public Integer getTotalPages() {
+        RestTemplate restTemplate = new RestTemplate();
+        Integer totalPages = restTemplate.getForObject(backendServerUrl+"/api/universitygroups/totalPages",Integer.class);
+        return totalPages;
+    }
+    
     
 }

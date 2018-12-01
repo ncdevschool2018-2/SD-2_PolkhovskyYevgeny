@@ -17,4 +17,6 @@ public interface UniversityGroupDataService {
     void deleteUniversityGroup(int id);
     
     PageGroupViewModel getPageGroup(int page);
+    List<UniversityGroupViewModel> findGroupPage(int page);
+    Integer getTotalPages();
 }

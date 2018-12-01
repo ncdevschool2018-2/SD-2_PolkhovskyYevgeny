@@ -1,6 +1,6 @@
 package com.netcracker.edu.fapi.models;
 
-import com.netcracker.edu.backend.entity.UniversityGroup;
+
 
 import java.util.List;
 

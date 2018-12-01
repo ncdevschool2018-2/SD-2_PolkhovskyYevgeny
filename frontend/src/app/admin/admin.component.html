@@ -14,6 +14,7 @@
        [attr.aria-expanded]="!isCollapsed3" aria-controls="collapseBasic1">Subjects</a>
     <!--<a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>-->
+    <a class="nav-link"  (click)="logout()">Logout</a>
   </div>
 </nav>
 <!--<button type="button" class="btn btn-primary py-2 d-none d-md-inline-block" (click)="isCollapsed = !isCollapsed"
@@ -55,14 +56,14 @@
       Add subject to teacher
     </button>-->
 
-    <app-teachers></app-teachers>
+    <app-teachers [slots]="slots"></app-teachers>
   </div>
 
 
 </div>
 <div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
   <div class="well well-lg">
-    <app-group [timetable]="true"></app-group>
+    <app-group [timetable]="true" [slots]="slots"></app-group>
   </div>
 </div>
 <div id="collapseBasic3" [collapse]="isCollapsed3" class="card card-block card-header">

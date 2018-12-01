@@ -23,33 +23,38 @@
 
       <accordion>
         <accordion-group heading="Line View" ><!--ngFor fill from array -->
-          <app-table-teacher (formStateChanged)="test()" [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher>
-          <app-table-teacher (formStateChanged)="test()"[day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher *ngFor="let day of days"
+                             (formStateChanged)="test()"
+                             [day]="day"
+                             [slots]="slots"
+                             [teacherNumber]="teacherNumber"
+                             [timetable]="timetable"></app-table-teacher>
+          <!--<app-table-teacher (formStateChanged)="test()"[day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher>
           <app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher>
           <app-table-teacher  [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher>
           <app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher>
           <app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher>
-          <app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher>
+          <app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher>-->
         </accordion-group>
         <accordion-group heading="Table View">
           <div class="row">
-            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Monday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
-            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Tuesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [slots]="slots" [day]="Monday" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [slots]="slots" [day]="Tuesday" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
 
           </div>
           <div class="row">
-            <div class="col-6"><app-table-teacher [day]="Wednesday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
-            <div class="col-6"> <app-table-teacher [day]="Thursday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Wednesday" [slots]="slots" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
+            <div class="col-6"> <app-table-teacher (formStateChanged)="test()" [day]="Thursday" [slots]="slots" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
 
           </div>
           <div class="row">
 
-            <div class="col-6"><app-table-teacher [day]="Friday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
-            <div class="col-6"><app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Friday" [slots]="slots" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Saturday" [slots]="slots" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
           </div>
           <div class="row">
 
-            <div class="col-6"><app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher></div>
+            <div class="col-6"><app-table-teacher (formStateChanged)="test()" [day]="Sunday" [slots]="slots" [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher></div>
           </div>
         </accordion-group>
 

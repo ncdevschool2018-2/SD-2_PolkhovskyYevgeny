@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+import static java.lang.Math.toIntExact;
+
 @Component
 public class UniversityGroupServiceImpl implements UniversityGroupService {
     
@@ -54,6 +56,16 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     @Override
     public void deleteUniversityGroup(int id) {
         repository.deleteById(id);
+    }
+    
+    @Override
+    public List<UniversityGroup> findGroupPage(int offset) {
+        return repository.findGroupPage(offset);
+    }
+    
+    @Override
+    public Integer getTotalPages() {
+        return toIntExact(repository.count());
     }
     
     

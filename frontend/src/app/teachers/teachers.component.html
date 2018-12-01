@@ -41,7 +41,7 @@
         <td  width="95%">
           <accordion>
             <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
-              <app-timetable-info-teacher [teacherNumber]="teacher.id"></app-timetable-info-teacher>
+              <app-timetable-info-teacher [slots]="slots" [teacherNumber]="teacher.id"></app-timetable-info-teacher>
             </accordion-group>
 
           </accordion>

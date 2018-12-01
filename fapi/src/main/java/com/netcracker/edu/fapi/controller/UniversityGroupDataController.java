@@ -1,11 +1,8 @@
 package com.netcracker.edu.fapi.controller;
 
-import com.netcracker.edu.fapi.models.PageGroupViewModel;
 import com.netcracker.edu.fapi.models.UniversityGroupViewModel;
 import com.netcracker.edu.fapi.service.UniversityGroupDataService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,12 +28,23 @@ public class UniversityGroupDataController {
         return null;
     }
     
-    @RequestMapping(value = "/page",method = RequestMethod.POST)
+    /*@RequestMapping(value = "/page",method = RequestMethod.POST)
     public ResponseEntity<PageGroupViewModel> getGroupPage(@RequestBody int page){
         
         return ResponseEntity.ok(universityGroupDataService.getPageGroup(page));
         
+    }*/
+    @RequestMapping(value = "/page/{page}", method = RequestMethod.GET)
+    public ResponseEntity<List<UniversityGroupViewModel>> getGroupPage(@PathVariable int page) {
+        
+        return ResponseEntity.ok(universityGroupDataService.findGroupPage(page));
+        
     }
+    @RequestMapping(value = "/totalPages",method = RequestMethod.GET)
+    public ResponseEntity<Integer> getTotalPages(){
+        return  ResponseEntity.ok(universityGroupDataService.getTotalPages());
+    }
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUniversityGroup(@PathVariable String id) {
         universityGroupDataService.deleteUniversityGroup(Integer.valueOf(id));

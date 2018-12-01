@@ -13,8 +13,14 @@ public interface UniversityGroupService {
     Optional<UniversityGroup> getUniversityGroupById(int id);
     
     Iterable<UniversityGroup> getAllUniversityGroup();
-    List<UniversityGroup>  getAllOrderUniversityGroup();
+    
+    List<UniversityGroup> getAllOrderUniversityGroup();
+    
     Page<UniversityGroup> findAll(Pageable pageable);
+    
     void deleteUniversityGroup(int id);
     
+    List<UniversityGroup> findGroupPage(int offset);
+    
+    Integer getTotalPages();
 }

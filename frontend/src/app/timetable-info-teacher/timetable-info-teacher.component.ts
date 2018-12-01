@@ -5,6 +5,8 @@ import {Subscription} from "rxjs";
 import {TeacherService} from "../service/teacher.service";
 import {Teacher} from "../model/teacher";
 import { AccordionConfig } from 'ngx-bootstrap/accordion';
+import {TimetableService} from "../service/timetable.service";
+import {Slots} from "../model/slots";
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), { closeOthers: true });
 }
@@ -17,6 +19,9 @@ export function getAccordionConfig(): AccordionConfig {
 export class TimetableInfoTeacherComponent implements OnInit {
   @Input()
   public teacherNumber:number;
+  @Input()
+  public slots: Slots[];
+  public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
   public Wednesday: string = "Wednesday";
@@ -27,19 +32,33 @@ export class TimetableInfoTeacherComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public timetable: TimetableExample[];
  public teacher:Teacher;
-  constructor(private route: ActivatedRoute,
-              private teacherService: TeacherService,
+
+  constructor(
+
+              private timetableService: TimetableService,
               ) {
   }
 
   ngOnInit() {
-this.loadTeacher();
+    this.loadTimetableNamed();
   }
 
   public test(): void {
-    alert("update");
+    this.loadTimetableNamed();
   }
+  private loadTimetableNamed(): void {
 
+
+    this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
+      // Parse json response into local array
+      this.timetable = timetable as TimetableExample[];
+      // Check data in console
+
+
+    }));
+
+
+  }
   /*private loadTeacher(): void {
 
 
@@ -54,18 +73,6 @@ this.loadTeacher();
     });
 
   }*/
-  private loadTeacher(): void {
 
-
-
-
-      this.subscriptions.push(this.teacherService.getTeacher(this.teacherNumber).subscribe(teacher => {
-
-        this.teacher = teacher as Teacher;
-
-      }));
-
-
-  }
 
 }

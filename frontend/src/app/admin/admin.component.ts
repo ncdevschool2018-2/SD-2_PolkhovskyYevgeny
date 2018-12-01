@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Group} from "../model/group";
-import {BsModalRef} from "ngx-bootstrap";
-import {Roles} from "../model/role";
-import {Timetable} from "../model/timetable";
-import {SubjectTeacher} from "../model/subjectTeacher";
+import {Slots} from "../model/slots";
+import {Subscription} from "rxjs";
+import {SlotService} from "../service/slot.service";
+import {Router} from "@angular/router";
+import {AuthService} from "../service/auth.service";
 
 
 @Component({
@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit {
 
   /*public groups: Group[];
   /!*public users: Users[];
-  public slots: Slots[];*!/
+  *!/
   /!*public subjects: SubjectTeacher[];*!/
   /!*public subjectTeacher: SubjectTeacher[];
   public subjectsAll: Subjects[];
@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
   public editableSubject: Subjects = new Subjects();
   public editableTimetable: Timetable = new Timetable();
   public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
-  private subscriptions: Subscription[] = [];*!/
+  *!/
   public modalRef: BsModalRef;
   public roles: Roles[];
   /!*public chooseSubject: number;
@@ -38,6 +38,8 @@ export class AdminComponent implements OnInit {
   public isCollapsed1 = true;
   public isCollapsed2 = true;
   public isCollapsed3 = true;
+  public slots: Slots[];
+  private subscriptions: Subscription[] = [];
 
   constructor(
     /*private groupService: GroupService,*/
@@ -47,11 +49,15 @@ export class AdminComponent implements OnInit {
     private userService: UsersService,
     /!*private pupilService: PupilService,*!/
     private teacherService: TeacherService,
-    private slotService: SlotService,
+
     private subjectService: SubjectService,
     private subjectTeacherService: SubjectTeacherService,
     private daysOfWeekService: DaysOfWeekService,
     private timeTableService: TimetableService,*/
+    private slotService: SlotService,
+    private router: Router,
+    private authService: AuthService,
+
   ) {
   }
 
@@ -61,9 +67,20 @@ export class AdminComponent implements OnInit {
     this.loadUsers();
     this.loadSubjectTeacher();
     this.loadAllSubjects();*/
-
+    this.loadSlot();
   }
 
+  private loadSlot(): void {
+
+    this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
+
+      this.slots = slots as Slots[];
+    }));
+  }
+  logout(){
+    this.authService.logout();
+    this.router.navigateByUrl('/');
+  }
   /*public _openModal(template: TemplateRef<any>): void {
     this.refreshGroup();
     this.modalRef = this.modalService.show(template);
@@ -86,7 +103,6 @@ export class AdminComponent implements OnInit {
   // public _closeModal(): void {
   //   this.modalRef.hide();
   // }
-
 
   /*public _addGroup(): void {
     this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
@@ -117,7 +133,6 @@ export class AdminComponent implements OnInit {
   /*public _updateGroups(): void {
     this.loadGroups();
   }*/
-
 
   /*public loadGroups(): void {
 
@@ -159,7 +174,6 @@ export class AdminComponent implements OnInit {
     this.loadUsers();
   }*/
 
-
   /*private loadUsers(): void {
 
 
@@ -177,7 +191,6 @@ export class AdminComponent implements OnInit {
       this.slots = slots as Slots[];
     }));
   }*/
-
 
   /*private loadSubjectTeacher(): void {
 

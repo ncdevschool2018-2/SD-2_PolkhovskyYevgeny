@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {AdminComponent} from './admin/admin.component';
 import {GroupComponent} from './group/group.component';
@@ -30,6 +30,8 @@ import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import {TokenStorage} from "./service/token.storage";
+import {InterceptorService} from "./service/interceptor.service";
 
 
 @NgModule({
@@ -71,7 +73,14 @@ import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 // Remove it when a real server is ready to receive requests.
 
   ],
-  providers: [],
+  providers: [InterceptorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    },
+
+    TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule {

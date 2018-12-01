@@ -20,4 +20,9 @@ export class UsersService {
   deleteUsers(userId: string): Observable<void> {
     return this.http.delete<void>('/api/user/' + userId);
   }
+
+  getUserByLogin(login: string): Observable<Users> {
+    return this.http.get<Users>("/api/user/auth?login=" + login);
+  }
+
 }

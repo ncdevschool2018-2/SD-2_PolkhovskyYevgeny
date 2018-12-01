@@ -22,22 +22,11 @@ currentPage:number=1;
   constructor(private groupService: GroupService,) { }
 
   ngOnInit() {
-    this.loadGroups(2);
+
   }
-  private loadGroups(page:number): void {
 
-    // Get data from BillingAccountService
-    this.subscriptions.push(this.groupService.getPageGroups(page).subscribe(page => {
-      // Parse json response into local array
-      this.page = page as PageGroup;
-
-
-
-    }));
     /*this.contentArray = this.groups;*/
 
-  }
-  public pageChanged(page:number):void{
-    this.loadGroups(page);
-  }
+
+
 }

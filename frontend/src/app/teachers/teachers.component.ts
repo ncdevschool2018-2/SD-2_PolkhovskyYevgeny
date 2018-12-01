@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {Teacher} from "../model/teacher";
 import {Subscription} from "rxjs";
 import {TeacherService} from "../service/teacher.service";
@@ -18,13 +18,15 @@ import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {GroupContent} from "../model/GroupContent";
 import {PageGroup} from "../model/pageGroup";
 import {PageTeacher} from "../model/pageTeacher";
+import {Slots} from "../model/slots";
 @Component({
   selector: 'app-teachers',
   templateUrl: './teachers.component.html',
   styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
-  returnedArray: Teacher[];
+  @Input()
+  public slots: Slots[];
   public teacherConfirmId: number;
   public teacherConfirmName: string;
   public teacherConfirmSurname: string;

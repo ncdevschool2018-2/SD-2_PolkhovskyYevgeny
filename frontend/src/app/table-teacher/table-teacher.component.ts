@@ -35,12 +35,15 @@ export class TableTeacherComponent implements OnInit {
 
 
   public groups: Group[];
+  @Input()
   public slots: Slots[];
   public slotsDist: Slots[] = [];
+  public slotsNot: string[] = [];
   public subjects: Subjects[];
   public subjectsTeacher: SubjectTeacher[];
   public daysOfWeek: DaysOfWeek[];
   private subscriptions: Subscription[] = [];
+  @Input()
   public timetable: TimetableExample[];
   public timetable1: Timetable[];
   public editableTimetable: Timetable = new Timetable();
@@ -127,8 +130,8 @@ export class TableTeacherComponent implements OnInit {
 
   ngOnInit() {
     this.chooseTeacher = this.teacherNumber;
-    this.loadTimetableNamed();
-    this.loadSlot();
+    /*this.loadTimetableNamed();*/
+
     /*this.getEmptySlots();*/
 
   }
@@ -149,7 +152,7 @@ export class TableTeacherComponent implements OnInit {
     });
 
   }*/
-  private loadTimetableNamed(): void {
+  /*private loadTimetableNamed(): void {
 
 
     this.subscriptions.push(this.timetableService.getTimetableNamedByTeacherId(this.teacherNumber).subscribe(timetable => {
@@ -161,31 +164,32 @@ export class TableTeacherComponent implements OnInit {
     }));
 
 
-  }
+  }*/
 
   public _deleteTimetable(timetableId: string): void {
 
 
     this.subscriptions.push(this.timetableService.deleteTimetable(timetableId).subscribe(() => {
-      this._updateTimetableExample();
+      /*this._updateTimetableExample();*/
       this.formStateChanged.emit();
     }));
 
   }
 
-  public _updateTimetableExample(): void {
+  /*public _updateTimetableExample(): void {
     this.loadTimetableNamed();
-  }
+  }*/
 
   public _closeModal(): void {
     this.modalRef.hide();
   }
 
   public _openModalTimetable(template: TemplateRef<any>): void {
+    this.slotsDist.splice(0, this.slotsDist.length);
     this.loadSubjectTeacherToGetId();
     this.loadTeacherSubjects(this.chooseTeacher);
     this.loadGroups();
-    this.loadSlot();
+this.getEmptySlots();
     this.loadDaysOfWeek();
     /*this.getEmptySlots();*/
     this.modalRef = this.modalService.show(template);
@@ -202,35 +206,32 @@ export class TableTeacherComponent implements OnInit {
     }));
   }
 
-  private getEmptySlots(){
-    this.loadTimetableNamed();
-    this.loadSlot();
+  private getEmptySlots(): void {
 
-    debugger
-    for (let named of this.timetable){
-    for (let slot of this.slots){
-
-
-
-        if(!named.time.includes(slot.startTime+" - "+slot.endTime)){
-          this.slotsDist.push(slot)
-
-        }
-        break;
-
-
+    let dayTimetable = this.timetable.filter(item => item.day === this.day);
+    if (dayTimetable && dayTimetable.length > 0) {
+      for (let timetable of dayTimetable) {
+        this.slotsNot.push(timetable.time)
       }
+      for (let slot of this.slots) {
+        if(this.slotsNot.length==0){
+          this.slotsDist.push(slot);
+        }
+        for (let not of this.slotsNot) {
+          if((slot.startTime + " - " + slot.endTime).includes(not)){
+            this.slotsNot.splice(0,1);
+            break;
+          }
+          this.slotsDist.push(slot);
+        }
+      }
+
+
+    } else {
+      this.slotsDist = this.slots;
     }
-
   }
-  private loadSlot(): void {
 
-
-    this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
-
-      this.slots = slots as Slots[];
-    }));
-  }
 
   private loadDaysOfWeek(): void {
 
@@ -273,7 +274,7 @@ export class TableTeacherComponent implements OnInit {
       this._updateTimetable();
       this.refreshTimetable();
       this.refreshTimetableExample();
-      this._updateTimetableExample();
+      /*this._updateTimetableExample();*/
       this.formStateChanged.emit();
       this.modalRef.hide();
     }));

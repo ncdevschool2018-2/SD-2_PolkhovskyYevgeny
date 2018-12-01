@@ -1,7 +1,9 @@
 package com.netcracker.edu.backend.service;
 
+import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.entity.Users;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UsersService {
@@ -14,5 +16,6 @@ public interface UsersService {
     void deleteUsers(int id);
     
     Users findUserByLogin(String login);
+    
     
 }
