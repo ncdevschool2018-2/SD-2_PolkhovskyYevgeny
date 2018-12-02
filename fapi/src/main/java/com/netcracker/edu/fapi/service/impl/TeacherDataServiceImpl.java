@@ -54,7 +54,8 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     @Override
     public TeacherViewModel saveTeacher(NewUserViewModel newTeacherViewModel) {
         RestTemplate restTemplate = new RestTemplate();
-        NewTeacherViewModel newTeacher=new NewTeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getSubjectId(),newTeacherViewModel.getUserId(),newTeacherViewModel.getLogin(),newTeacherViewModel.getPassword(),newTeacherViewModel.getRoleId());
+        NewTeacherViewModel newTeacher=
+                new NewTeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getSubjectId(),newTeacherViewModel.getUserId(),newTeacherViewModel.getLogin(),newTeacherViewModel.getPassword(),newTeacherViewModel.getRoleId());
         
         NewTeacherViewModel  teacher = restTemplate.postForEntity(backendServerUrl+"/api/teachers",newTeacher,NewTeacherViewModel.class).getBody();
          return null;

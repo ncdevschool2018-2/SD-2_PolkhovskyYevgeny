@@ -62,7 +62,7 @@
     </table>
     <pagination *ngIf="page" [totalItems]="page.totalElements"
                 [(ngModel)]="currentPage"
-                (pageChanged)="pageChanged(currentPage)"></pagination>
+                (pageChanged)="pageChanged($event)"></pagination>
 
 
   </div>

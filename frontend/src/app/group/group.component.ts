@@ -47,14 +47,17 @@ export class GroupComponent implements OnInit {
 
 
   }
-
+  pageChanged(event: any): void {
+    this.loadGroups(event.page);
+    //this.page = event.page;
+  }
   private loadGroups(page:number): void {
 
     // Get data from BillingAccountService
     this.subscriptions.push(this.groupService.getPageGroups(page).subscribe(numb => {
       // Parse json response into local array
       this.groups = numb as Group[];
-debugger
+
 
 
     }));
@@ -68,9 +71,9 @@ debugger
   public _closeModal(): void {
     this.modalRef.hide();
   }
-  public pageChanged(page:number):void{
-    this.loadGroups(page);
-  }
+  /*public pageChanged(page:number):void{
+
+  }*/
   public _addGroup(): void {
     this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
       this._updateGroups();

@@ -6,6 +6,7 @@ import com.netcracker.edu.fapi.models.TeacherViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.List;
 public class TeacherDataController {
     @Autowired
     private TeacherDataService teacherDataService;
+    
+    @Autowired
+    private BCryptPasswordEncoder bcryptEncoder;
     
     @RequestMapping
     public ResponseEntity<List<TeacherViewModel>> getAllTeacher() {
@@ -40,8 +44,11 @@ public class TeacherDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
     public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
-        if (teacher != null) {
-            return ResponseEntity.ok(teacherDataService.saveTeacher(teacher));
+        NewUserViewModel newTeacher=
+                new NewUserViewModel(teacher.getName(),teacher.getSurname(),teacher.getSubjectId(),teacher.getGroupId(),teacher.getUserId(),teacher.getLogin(),bcryptEncoder.encode(teacher.getPassword()),teacher.getRoleId());
+    
+        if (newTeacher != null) {
+            return ResponseEntity.ok(teacherDataService.saveTeacher(newTeacher));
         }
         return null;
     }

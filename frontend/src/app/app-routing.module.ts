@@ -11,11 +11,13 @@ import {TimetableInfoComponent} from "./timetable-info/timetable-info.component"
 import {SubjectsComponent} from "./subjects/subjects.component";
 import {TeachersComponent} from "./teachers/teachers.component";
 import {TimetableInfoTeacherComponent} from "./timetable-info-teacher/timetable-info-teacher.component";
+import {SignupComponent} from "./signup/signup.component";
 
 const routes: Routes = [
   {path:'',redirectTo:'/signin', pathMatch: 'full'},
   {path:'admin', component: AdminComponent},
   {path:'signin',component: SigninComponent},
+  {path:'signup',component: SignupComponent},
   {path:'group', component: GroupComponent},
   {path:'pupil', component: PupilComponent},
   {path:'groupContent/:id', component: GroupContentComponent},

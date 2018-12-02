@@ -32,7 +32,8 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-        NewUserViewModel newPupil= new NewUserViewModel(pupil.getName(),pupil.getSurname(),pupil.getSubjectId(),pupil.getGroupId(),pupil.getUserId(),pupil.getLogin(),bcryptEncoder.encode(pupil.getPassword()),pupil.getRoleId());
+        NewUserViewModel newPupil=
+                new NewUserViewModel(pupil.getName(),pupil.getSurname(),pupil.getSubjectId(),pupil.getGroupId(),pupil.getUserId(),pupil.getLogin(),bcryptEncoder.encode(pupil.getPassword()),pupil.getRoleId());
         if (newPupil != null) {
             return ResponseEntity.ok(pupilDataService.savePupil(newPupil));
         }

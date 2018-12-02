@@ -1,0 +1,215 @@
+<!--<div class="form-group">
+
+  <label>Email address: {{login}}</label>
+  <input class="form-control ng-pristine ng-invalid ng-touched" name="email" [(ngModel)]="login" #email="ngModel" required
+          placeholder="E-mail"/>
+</div>
+<div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+  Incorrect E-mail
+</div>
+
+<div class="form-group">
+  <label>Password: {{password}}</label>
+  <input type="password" class="form-control" name="password" [(ngModel)]="password" #pass="ngModel" required
+         pattern="[a-zA-Z0-9]{3,}" placeholder="Password"/>
+</div>
+<div [hidden]="pass.valid || pass.untouched" class="alert alert-danger">
+  Enter password
+</div>
+
+<div *ngIf="alertUserAboutError" class="alert alert-danger">
+  The username and password that you entered did not match our records. Please double-check and try again.
+</div>
+
+<button type="button" class="btn btn-default" (click)="authorization()"
+        [disabled]="email.invalid || pass.invalid">
+  LOG IN
+</button>-->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <!--Made with love by Mutiullah Samim -->
+
+  <!--Bootsrap 4 CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!--Custom styles-->
+
+</head>
+<body>
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign Up</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <form>
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input class="form-control ng-pristine ng-invalid ng-touched" name="name" [(ngModel)]="editableNewUser.name"
+                   #name="ngModel" required
+                   pattern="[a-zA-Z0-9]{3,}" placeholder="name"/>
+
+          </div>
+          <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+            Enter name
+          </div>
+
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input class="form-control ng-pristine ng-invalid ng-touched" name="surname"
+                   [(ngModel)]="editableNewUser.surname"
+                   #surname="ngModel" required
+                   pattern="[a-zA-Z0-9]{3,}" placeholder="surname"/>
+
+          </div>
+          <div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
+            Enter surname
+          </div>
+
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input class="form-control ng-pristine ng-invalid ng-touched" name="login"
+                   [(ngModel)]="editableNewUser.login"
+                   #login="ngModel" required
+                   pattern="[a-zA-Z0-9]{3,}" placeholder="login"/>
+
+          </div>
+          <div [hidden]="login.valid || login.untouched" class="alert alert-danger">
+            Enter username
+          </div>
+
+
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" [(ngModel)]="editableNewUser.password"
+                   #pass="ngModel" required
+                   pattern="[a-zA-Z0-9]{3,}" placeholder="Password"/>
+          </div>
+          <div [hidden]="pass.valid || pass.untouched" class="alert alert-danger">
+            Enter password
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="passwordConfirm" [(ngModel)]="confirmPassword"
+                   #passConf="ngModel" required
+                   pattern="[a-zA-Z0-9]{3,}" placeholder="Password Confirm"/>
+          </div>
+          <div [hidden]="passConf.valid || passConf.untouched" class="alert alert-danger">
+            Confirm password
+          </div>
+
+
+          <!--<div class="form-group">
+            <select class="form-control"
+                    [(ngModel)]="editableNewUser.roleId"
+                    (change)="checkForRole(editableNewUser.roleId)">
+              <option *ngFor="let role of roles"  [value]="role.id">{{role.name}}</option>
+
+            </select>
+          </div>-->
+          <!--<div *ngFor="let role of roles" class="form-check form-check-inline">
+            <input  [(ngModel)]="editableNewUser.roleId" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [value]="role.id">
+            <label class="form-check-label text-warning" for="inlineRadio2">{{role.name}}</label>
+          </div>-->
+          <div class="bg-warning">
+          <mat-form-field>
+            <mat-select [(value)]="editableNewUser.roleId">
+              <mat-option *ngFor="let role of roles" [value]="role.id">
+                {{role.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          </div>
+          <!--<div>
+            <mat-radio-group class="example-radio-group" [(ngModel)]="editableNewUser.roleId">
+              <mat-radio-button class="example-radio-button" *ngFor="let role of roles" [value]="role.id">
+                {{role.name}}
+              </mat-radio-button>
+            </mat-radio-group>
+            <p>{{editableNewUser.roleId}}</p>
+          </div>-->
+
+
+          <div class="bg-warning" [hidden]="editableNewUser.roleId!=3">
+            <mat-form-field>
+              <mat-select [(value)]="editableNewUser.groupId">
+                <mat-option *ngFor="let group of groups" [value]="group.id">
+                  {{group.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!--<div class="form-group" >
+
+            <select class="form-control" [(ngModel)]="">
+              <option *ngFor="let " [value]=""> {{}}</option>
+
+            </select>
+          </div>-->
+
+          <div class="bg-warning" [hidden]="editableNewUser.roleId!=2">
+            <mat-form-field>
+              <mat-select [(value)]="editableNewUser.subjectId">
+                <mat-option *ngFor="let subject of subjectsAll" [value]="subject.id">
+                  {{subject.subject}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div *ngIf="alertUserAboutError" class="alert alert-danger">
+            The username and password that you entered did not match our records. Please double-check and try again.
+          </div>
+
+          <button type="button" class="btn btn-default" (click)="register(editableNewUser.roleId)"
+                  [disabled]="login.invalid || pass.invalid || surname.invalid || name.invalid || !pass.value.endsWith(passConf.value)">
+            Register
+          </button>
+
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          have an account?<a routerLink="/signin">Sign in</a>
+        </div>
+        <div class="d-flex justify-content-center">
+          <a href="#">Forgot your password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

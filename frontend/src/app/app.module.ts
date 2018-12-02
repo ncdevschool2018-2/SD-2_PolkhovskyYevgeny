@@ -32,6 +32,7 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
 import {TokenStorage} from "./service/token.storage";
 import {InterceptorService} from "./service/interceptor.service";
+import { SignupComponent } from './signup/signup.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {InterceptorService} from "./service/interceptor.service";
     GoBackComponent,
     TeachersComponent,
     TimetableInfoTeacherComponent,
-    TableTeacherComponent
+    TableTeacherComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule,

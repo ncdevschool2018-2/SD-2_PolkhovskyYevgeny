@@ -68,4 +68,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       });
     }));
   }
+  public nav():void{
+    this.router.navigate(['signup']);
+  }
 }

@@ -46,7 +46,7 @@
     </table>
     <pagination *ngIf="groups" [totalItems]="groupNumber"
                 [(ngModel)]="currentPage"
-                (pageChanged)="pageChanged(currentPage)"></pagination>
+                (pageChanged)="pageChanged($event)"></pagination>
   </div>
   <!--<app-go-back></app-go-back>-->
 </main>
