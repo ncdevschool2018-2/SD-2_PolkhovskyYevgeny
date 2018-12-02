@@ -43,6 +43,7 @@ public  confirmPassword:string;
               private pupilService: PupilService,
               private teacherService: TeacherService,
               private subjectService: SubjectService,
+              private router: Router,
   ) { }
 
   ngOnInit() {
@@ -70,11 +71,11 @@ public  confirmPassword:string;
   public register(num:number):void{debugger
     if(num==3){
     this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
-
+      this.router.navigate(['signin']);
     }));}
     if(num==2){
       this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
-
+        this.router.navigate(['signin']);
       }));
     }
   }

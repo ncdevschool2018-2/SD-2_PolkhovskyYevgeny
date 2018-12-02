@@ -16,6 +16,7 @@ import {SubjectTeacher} from "../model/subjectTeacher";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {PageTeacher} from "../model/pageTeacher";
 import {Slots} from "../model/slots";
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -35,8 +36,10 @@ export class TeachersComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public editableGroup: Group = new Group();
   public subjectsAll: Subjects[];
+  public subjectsAvailable: Subjects[]=[];
   public editableNewUser: NewUser = new NewUser();
   public users: Users[];
+  public busySubjects:number[]=[];
   public teachersAll: Teacher[];
   public subjects: SubjectTeacher[];
   public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
@@ -136,6 +139,9 @@ export class TeachersComponent implements OnInit {
 
 
   public _openModalSubjectTeacher(template: TemplateRef<any>): void {
+    this.busySubjects.splice(0, this.busySubjects.length);
+    this.subjectsAvailable.splice(0, this.subjectsAvailable.length);
+
     this.loadAllTeachers();
     this.loadAllSubjects();
     this.modalRef = this.modalService.show(template);
@@ -172,4 +178,33 @@ export class TeachersComponent implements OnInit {
     this.teacherConfirmSurname = teacher.surname;
     this.modalRef = this.modalService.show(template);
   }
+  public checkForSubjects(num:number):void{
+    this.loadSubjectTeacher();
+    this.busySubjects.splice(0, this.busySubjects.length);
+    this.subjectsAvailable.splice(0, this.subjectsAvailable.length);
+    for(let subjTeach of this.subjects){
+      if(subjTeach.teacherId==num){
+        this.busySubjects.push(subjTeach.subjectId)
+      }
+    }
+
+
+    for (let subj of this.subjectsAll){
+      if(this.busySubjects.length==0){
+        this.subjectsAvailable.push(subj);
+      }
+      for(let busy of this.busySubjects){
+        if(subj.id==busy ){
+          this.busySubjects.splice(0,1);
+          break;
+        }
+        this.subjectsAvailable.push(subj);
+        break;
+
+      }
+
+    }
+
+}
+
 }

@@ -179,6 +179,8 @@ this.chooseGroup=id;
       for (let timetable of dayTimetable) {
         this.slotsNot.push(timetable.time)
       }
+
+
       for (let slot of this.slots) {
         if(this.slotsNot.length==0){
           this.slotsDist.push(slot);
@@ -189,6 +191,7 @@ this.chooseGroup=id;
             break;
           }
           this.slotsDist.push(slot);
+          break;
         }
       }
 
