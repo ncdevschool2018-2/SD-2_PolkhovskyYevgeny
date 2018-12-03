@@ -13,7 +13,11 @@
 
     <table class="table table-bordered table-striped">
       <thead>
+      <tr>
+        <th scope="col"><p class="text-info">Id</p></th>
+        <th scope="col"><p class="text-info">Group</p></th>
 
+      </tr>
       </thead>
       <tbody>
       <tr *ngFor="let group of groups">
@@ -69,11 +73,11 @@
   <div class="modal-body">
     <div class="form-group">
       <label>Group</label>
-      <input type="number" class="form-control" id="extra7" placeholder="8 character only"
+      <input type="text" class="form-control" id="extra7" placeholder="8 character only"
              [(ngModel)]="editableGroup.name" #name="ngModel"
-             required pattern="\d [0-9]{2,8}"/>
-      <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
-        8 numbers pls <!--Easy way to create client validation-->
+             required pattern="\d [0-9]{7,8}"/>
+      <div [hidden]="alertGroup" class="alert alert-danger">
+        7-8 numbers pls <!--Easy way to create client validation-->
       </div>
     </div>
 

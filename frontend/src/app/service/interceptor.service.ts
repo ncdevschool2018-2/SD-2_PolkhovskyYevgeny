@@ -29,9 +29,7 @@ export class InterceptorService implements HttpInterceptor {
               this.router.navigateByUrl('/');
             }
 
-            // if (err.status === 403){
-            //   this.router.navigateByUrl('/');
-            // }
+
 
             const error = err.error.message || err.statusText;
             return throwError(error);
@@ -45,9 +43,7 @@ export class InterceptorService implements HttpInterceptor {
             this.router.navigateByUrl('/');
           }
 
-          // if (err.status === 403){
-          //   this.router.navigateByUrl('/');
-          // }
+
 
           const error = err.error.message || err.statusText;
           return throwError(error);

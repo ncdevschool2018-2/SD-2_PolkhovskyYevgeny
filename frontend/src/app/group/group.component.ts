@@ -31,7 +31,7 @@ export class GroupComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   /*page: PageGroup;*/
   currentPage: number = 1;
-
+public alertGroup:boolean=true;
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -66,7 +66,12 @@ export class GroupComponent implements OnInit {
   public getNumberOfGroups(): void {
     this.subscriptions.push(this.groupService.getGroupsNumber().subscribe(numOfGroups => {
       this.groupNumber = numOfGroups as number;
-    }))
+    }/*,
+      (error => {
+        if(error   ){
+          alert("you have no any permissions")
+        }
+      })*/))
   }
 
   public _closeModal(): void {
@@ -77,12 +82,17 @@ export class GroupComponent implements OnInit {
 
   }*/
   public _addGroup(): void {
+    debugger
+    if(parseInt(this.editableGroup.name)>=1000000 &&parseInt(this.editableGroup.name)<=99999999){
     this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
       this._updateGroups();
       this.refreshGroup();
       this.getNumberOfGroups();
       this.modalRef.hide();
-    }));
+    }));}
+    else{
+      this.alertGroup=false;
+    }
   }
 
   public _updateGroups(): void {

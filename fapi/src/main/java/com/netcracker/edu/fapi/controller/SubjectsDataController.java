@@ -41,10 +41,16 @@ public class SubjectsDataController {
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectsViewModel> saveSubjects(@RequestBody SubjectsViewModel subjects /*todo server validation*/) {
+        if(subjects.getSubject().matches("[a-zA-Z]{2,30}")){
+        
+        
         if (subjects != null) {
             return ResponseEntity.ok(subjectsDataService.saveSubjects(subjects));
         }
-        return null;
+        return null;}
+        else{
+            return null;
+        }
     }
     
     

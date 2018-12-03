@@ -35,21 +35,33 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-        NewUserViewModel newPupil =
-                new NewUserViewModel(pupil.getName(), pupil.getSurname(), pupil.getSubjectId(), pupil.getGroupId(), pupil.getUserId(), pupil.getLogin(), bcryptEncoder.encode(pupil.getPassword()), pupil.getRoleId());
-        if (newPupil != null) {
-            return ResponseEntity.ok(pupilDataService.savePupil(newPupil));
+        if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
+                pupil.getSurname().matches("[a-zA-Z]{3,10}") &&
+                pupil.getLogin().matches("[a-zA-Z0-9]{3,10}") &&
+                pupil.getPassword().matches("[[a-zA-Z0-9]{3,10}]")) {
+            NewUserViewModel newPupil =
+                    new NewUserViewModel(pupil.getName(), pupil.getSurname(), pupil.getSubjectId(), pupil.getGroupId(), pupil.getUserId(), pupil.getLogin(), bcryptEncoder.encode(pupil.getPassword()), pupil.getRoleId());
+            if (newPupil != null) {
+                return ResponseEntity.ok(pupilDataService.savePupil(newPupil));
+            }
+            return null;
+        } else {
+            return null;
         }
-        return null;
     }
     
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/) {
-        if (pupil != null) {
-            return ResponseEntity.ok(pupilDataService.saveEditPupil(pupil));
+        if (pupil.getName().matches("[a-zA-Z]{3,10}")&&
+        pupil.getSurname().matches("[a-zA-Z]{3,10}")) {
+            if (pupil != null) {
+                return ResponseEntity.ok(pupilDataService.saveEditPupil(pupil));
+            }
+            return null;
+        } else {
+            return null;
         }
-        return null;
     }
     
     

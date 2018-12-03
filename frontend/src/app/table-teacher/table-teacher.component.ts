@@ -216,6 +216,8 @@ export class TableTeacherComponent implements OnInit {
       for (let timetable of dayTimetable) {
         this.slotsNot.push(timetable.time)
       }
+
+
       for (let slot of this.slots) {
         if (this.slotsNot.length == 0) {
           this.slotsDist.push(slot);
@@ -226,6 +228,7 @@ export class TableTeacherComponent implements OnInit {
             break;
           }
           this.slotsDist.push(slot);
+          break
         }
       }
 

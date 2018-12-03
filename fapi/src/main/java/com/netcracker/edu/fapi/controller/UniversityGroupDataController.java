@@ -24,7 +24,7 @@ public class UniversityGroupDataController {
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UniversityGroupViewModel> saveUniversityGroup(@RequestBody UniversityGroupViewModel group /*todo server validation*/) {
-        if (group != null) {
+        if (group != null && Integer.parseInt(group.getName())>=1000000 &&Integer.parseInt(group.getName())<=99999999) {
             return ResponseEntity.ok(universityGroupDataService.saveUniversityGroup(group));
         }
         return null;

@@ -25,10 +25,11 @@ import {TeacherService} from "../service/teacher.service";
 export class SignupComponent implements OnInit {
   public subjectsAll: Subjects[];
   public alertUserAboutError: boolean = false;
+  public wrongPassword:boolean=true;
   public editableNewUser: NewUser = new NewUser();
   public login: string;
   public password: string;
-  public confirmPassword: string;
+  public confirmPassword: string="";
   public roles: Roles[];
   private subscriptions: Subscription[] = [];
   public groups: Group[];
@@ -74,15 +75,20 @@ export class SignupComponent implements OnInit {
 
   public register(num: number): void {
     debugger
-    if (num == 3) {
-      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
-        this.router.navigate(['signin']);
-      }));
+    if (this.editableNewUser.password.includes(this.confirmPassword)) {
+      if (num == 3) {
+        this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+          this.router.navigate(['signin']);
+        }));
+      }
+      if (num == 2) {
+        this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
+          this.router.navigate(['signin']);
+        }));
+      }
     }
-    if (num == 2) {
-      this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
-        this.router.navigate(['signin']);
-      }));
+    else{
+      this.wrongPassword=true;
     }
   }
 

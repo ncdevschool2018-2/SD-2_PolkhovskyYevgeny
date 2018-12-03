@@ -123,14 +123,22 @@ export class GroupContentComponent implements OnInit {
   }
 
   public _addGroupContent(): void {
-    this.loadingService.show();
-    this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(() => {
-      this._updateGroupContent();
-      this.refreshGC();
-      this._closeModal();
+    if (!(this.editableGC.name.includes("1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "0" ||
+      "-" || "/" || "=" || "+" || "*" || "@" || "#" || "$" || "%" || "^" ||
+      "&" || "?" || "!" || "(" || ")" || "[" || "]" || "{" || "}" || " ") &&
+      this.editableGC.surname.includes("1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "0" ||
+        "-" || "/" || "=" || "+" || "*" || "@" || "#" || "$" || "%" || "^" ||
+        "&" || "?" || "!" || "(" || ")" || "[" || "]" || "{" || "}" || " "))
+    ) {
+      this.loadingService.show();
+      this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(() => {
+        this._updateGroupContent();
+        this.refreshGC();
+        this._closeModal();
 
-      this.loadingService.hide();
-    }));
+        this.loadingService.hide();
+      }));
+    }
   }
 
   private refreshGC(): void {
@@ -170,15 +178,24 @@ export class GroupContentComponent implements OnInit {
   }
 
   public _addNewPupil(): void {
-    this.editableNewUser.groupId = this.groupNumber;
-    this.editableNewUser.roleId = 3;
-    this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
-      this._updateUsers();
-      this.loadGroupsContent();
+    debugger
+    let expr=/a-zA-Z/;
+    let exprd=/a-zA-Z0-1/;
+
+    if ( (expr.test(this.editableNewUser.name)&&
+      expr.test(this.editableNewUser.surname)&&
+        exprd.test(this.editableNewUser.login)&&
+          exprd.test(this.editableNewUser.password))) {
+      this.editableNewUser.groupId = this.groupNumber;
+      this.editableNewUser.roleId = 3;
+      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+        this._updateUsers();
+        this.loadGroupsContent();
 
 
-      this._closeModal();
-    }));
+        this._closeModal();
+      }));
+    }
   }
 
   public _updateUsers(): void {

@@ -49,13 +49,20 @@ public class TeacherDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
     public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
+        if(teacher.getName().matches("[a-zA-Z]{3,10}")&&
+        teacher.getSurname().matches("[a-zA-Z]{3,10}")&&
+        teacher.getLogin().matches("[a-zA-Z0-9]{3,10}")&&
+        teacher.getPassword().matches("[a-zA-Z0-9]{3,10}")){
         NewUserViewModel newTeacher =
                 new NewUserViewModel(teacher.getName(), teacher.getSurname(), teacher.getSubjectId(), teacher.getGroupId(), teacher.getUserId(), teacher.getLogin(), bcryptEncoder.encode(teacher.getPassword()), teacher.getRoleId());
         
         if (newTeacher != null) {
             return ResponseEntity.ok(teacherDataService.saveTeacher(newTeacher));
         }
-        return null;
+        return null;}
+        else{
+            return null;
+        }
     }
     
     

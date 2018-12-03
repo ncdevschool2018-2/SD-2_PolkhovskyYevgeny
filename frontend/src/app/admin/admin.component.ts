@@ -74,7 +74,13 @@ export class AdminComponent implements OnInit {
     this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
 
       this.slots = slots as Slots[];
-    }));
+    }
+      /*,
+      (error => {
+        if(error==="Unauthorized"   ){
+          alert("you have no any permissions")
+        }
+      })*/));
   }
 
   logout() {
