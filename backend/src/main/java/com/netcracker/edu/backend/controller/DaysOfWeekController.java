@@ -13,10 +13,12 @@ import java.util.Optional;
 public class DaysOfWeekController {
     private DaysOfWeekService daysOfWeekService;
     
+    
     @Autowired
     public DaysOfWeekController(DaysOfWeekService daysOfWeekService) {
         this.daysOfWeekService = daysOfWeekService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<DaysOfWeek> getDaysOfWeekById(@PathVariable(name = "id") int id) {
@@ -28,15 +30,18 @@ public class DaysOfWeekController {
         }
     }
     
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<DaysOfWeek> getAllDaysOfWeek() {
         return daysOfWeekService.getAllDaysOfWeek();
     }
     
+    
     @RequestMapping(method = RequestMethod.POST)
     public DaysOfWeek saveDaysOfWeek(@RequestBody DaysOfWeek daysOfWeek) {
         return daysOfWeekService.saveDaysOfWeek(daysOfWeek);
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteDaysOfWeek(@PathVariable(name = "id") int id) {

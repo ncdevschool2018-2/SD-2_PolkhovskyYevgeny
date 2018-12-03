@@ -22,8 +22,10 @@ public class Users {
     @JsonIgnore
     private Set<Teacher> teachersById;*/
     
+    
     public Users() {
     }
+    
     
     public Users(String login, String password, int roleId) {
         this.login = login;
@@ -31,15 +33,18 @@ public class Users {
         this.roleId = roleId;
     }
     
+    
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "login", nullable = false, length = 45, unique = true)
@@ -47,15 +52,18 @@ public class Users {
         return login;
     }
     
+    
     public void setLogin(String login) {
         this.login = login;
     }
+    
     
     @Basic
     @Column(name = "password", nullable = false, length = 45)
     public String getPassword() {
         return password;
     }
+    
     
     public void setPassword(String password) {
         this.password = password;
@@ -78,9 +86,11 @@ public class Users {
         return roleId;
     }
     
+    
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
+    
     
     /*@OneToMany(mappedBy = "usersByUserId",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     
@@ -115,10 +125,12 @@ public class Users {
                 Objects.equals(teachersById, users.teachersById)*/;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, login, password, /*rolesByRoleId,*/ roleId/*, pupilsById, teachersById*/);
     }
+    
     
     @Override
     public String toString() {

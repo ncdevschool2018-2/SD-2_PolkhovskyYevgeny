@@ -15,10 +15,12 @@ public class UniversityGroupDataController {
     @Autowired
     private UniversityGroupDataService universityGroupDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<UniversityGroupViewModel>> getAllUniversityGroup() {
         return ResponseEntity.ok(universityGroupDataService.getAll());
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UniversityGroupViewModel> saveUniversityGroup(@RequestBody UniversityGroupViewModel group /*todo server validation*/) {
@@ -27,6 +29,7 @@ public class UniversityGroupDataController {
         }
         return null;
     }
+    
     
     /*@RequestMapping(value = "/page",method = RequestMethod.POST)
     public ResponseEntity<PageGroupViewModel> getGroupPage(@RequestBody int page){
@@ -40,10 +43,13 @@ public class UniversityGroupDataController {
         return ResponseEntity.ok(universityGroupDataService.findGroupPage(page));
         
     }
-    @RequestMapping(value = "/totalPages",method = RequestMethod.GET)
-    public ResponseEntity<Integer> getTotalPages(){
-        return  ResponseEntity.ok(universityGroupDataService.getTotalPages());
+    
+    
+    @RequestMapping(value = "/totalPages", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getTotalPages() {
+        return ResponseEntity.ok(universityGroupDataService.getTotalPages());
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUniversityGroup(@PathVariable String id) {

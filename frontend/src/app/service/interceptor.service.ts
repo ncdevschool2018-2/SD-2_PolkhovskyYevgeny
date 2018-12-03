@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable, throwError} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {TokenStorage} from "./token.storage";
 import {AuthService} from "./auth.service";
+
 const TOKEN_HEADER_KEY = 'Authorization';
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorService implements HttpInterceptor{
+export class InterceptorService implements HttpInterceptor {
 
 
-  constructor(private token: TokenStorage, private router: Router, private authService: AuthService) { }
+  constructor(private token: TokenStorage, private router: Router, private authService: AuthService) {
+  }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let authReq = req;

@@ -15,10 +15,12 @@ public class DaysOfWeekDataController {
     @Autowired
     private DaysOfWeekDataService daysOfWeekDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<DaysOfWeekViewModel>> getAllDaysOfWeek() {
         return ResponseEntity.ok(daysOfWeekDataService.getAll());
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<DaysOfWeekViewModel> saveDaysOfWeek(@RequestBody DaysOfWeekViewModel daysOfWeek /*todo server validation*/) {
@@ -27,6 +29,7 @@ public class DaysOfWeekDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteDaysOfWeek(@PathVariable String id) {

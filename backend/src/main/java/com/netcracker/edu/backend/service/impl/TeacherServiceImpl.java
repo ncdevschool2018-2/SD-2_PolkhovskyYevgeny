@@ -15,40 +15,48 @@ import java.util.Optional;
 public class TeacherServiceImpl implements TeacherService {
     private TeacherRepository repository;
     
+    
     @Autowired
     public TeacherServiceImpl(TeacherRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public Teacher saveTeacher(Teacher teacher) {
         return repository.save(teacher);
     }
     
+    
     @Override
     public Optional<Teacher> getTeacherById(int id) {
         return repository.findById(id);
     }
+    
     
     @Override
     public Iterable<Teacher> getAllTeacher() {
         return repository.findAll();
     }
     
+    
     @Override
     public List<Teacher> getAllByIdIsIn(Integer[] id) {
         return repository.findAllByIdIsIn(id);
     }
+    
     
     @Override
     public void deleteTeacher(int id) {
         repository.deleteById(id);
     }
     
+    
     @Override
     public Page<Teacher> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
+    
     
     @Override
     public Teacher findTeacherByUserId(int userId) {

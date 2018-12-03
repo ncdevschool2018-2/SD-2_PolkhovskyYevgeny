@@ -13,10 +13,12 @@ import java.util.Optional;
 public class UsersController {
     private UsersService usersService;
     
+    
     @Autowired
     public UsersController(UsersService usersService) {
         this.usersService = usersService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Users> getUsersById(@PathVariable(name = "id") int id) {
@@ -28,15 +30,18 @@ public class UsersController {
         }
     }
     
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Users> getAllUsers() {
         return usersService.getAllUsers();
     }
     
+    
     @RequestMapping(value = "/login/{userLogin}", method = RequestMethod.GET)
     public Users findUserByLogin(@PathVariable(name = "userLogin") String login) {
         return usersService.findUserByLogin(login);
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public Users saveUsers(@RequestBody Users users) {
@@ -45,6 +50,7 @@ public class UsersController {
         System.out.println(createdUser);
         return createdUser;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteUsers(@PathVariable(name = "id") int id) {

@@ -14,8 +14,10 @@ public class TimetableViewModel {
     private int dayOfWeekId;
     /*private UniversityGroup universityGroupByGroupId;*/
     
+    
     public TimetableViewModel() {
     }
+    
     
     public TimetableViewModel(int id, /*Subjects subjectsBySubjectId, Slots slotsBySlotId, DaysOfWeek daysOfWeekByDayOfWeekId,*/ int groupId, int subjectId, int slotId, int dayOfWeekId/*, UniversityGroup universityGroupByGroupId*/) {
         this.id = id;
@@ -29,9 +31,11 @@ public class TimetableViewModel {
         /*this.universityGroupByGroupId = universityGroupByGroupId;*/
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
@@ -61,33 +65,41 @@ public class TimetableViewModel {
         this.daysOfWeekByDayOfWeekId = daysOfWeekByDayOfWeekId;
     }*/
     
+    
     public int getGroupId() {
         return groupId;
     }
+    
     
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
     
+    
     public int getSubjectId() {
         return subjectId;
     }
+    
     
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }
     
+    
     public int getSlotId() {
         return slotId;
     }
+    
     
     public void setSlotId(int slotId) {
         this.slotId = slotId;
     }
     
+    
     public int getDayOfWeekId() {
         return dayOfWeekId;
     }
+    
     
     public void setDayOfWeekId(int dayOfWeekId) {
         this.dayOfWeekId = dayOfWeekId;

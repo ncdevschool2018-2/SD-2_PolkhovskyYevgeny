@@ -8,8 +8,10 @@ public class SubjectTeacherViewModel {
     private int subjectId;
     private int teacherId;
     
+    
     public SubjectTeacherViewModel() {
     }
+    
     
     public SubjectTeacherViewModel(int id, int subjectId, int teacherId) {
         this.id = id;
@@ -17,30 +19,37 @@ public class SubjectTeacherViewModel {
         this.teacherId = teacherId;
     }
     
+    
     public SubjectTeacherViewModel(int subjectId, int teacherId) {
         this.subjectId = subjectId;
         this.teacherId = teacherId;
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
     }
     
+    
     public int getSubjectId() {
         return subjectId;
     }
+    
     
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }
     
+    
     public int getTeacherId() {
         return teacherId;
     }
+    
     
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;

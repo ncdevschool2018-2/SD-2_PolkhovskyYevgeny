@@ -11,8 +11,10 @@ public class SubjectTeacher {
     private int subjectId;
     private int teacherId;
     
+    
     public SubjectTeacher() {
     }
+    
     
     public SubjectTeacher(int id, int subjectId, int teacherId) {
         this.id = id;
@@ -20,10 +22,12 @@ public class SubjectTeacher {
         this.teacherId = teacherId;
     }
     
+    
     public SubjectTeacher(int subjectId, int teacherId) {
         this.subjectId = subjectId;
         this.teacherId = teacherId;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -31,9 +35,11 @@ public class SubjectTeacher {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "subject_id", nullable = false)
@@ -41,9 +47,11 @@ public class SubjectTeacher {
         return subjectId;
     }
     
+    
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }
+    
     
     @Basic
     @Column(name = "teacher_id", nullable = false)
@@ -51,9 +59,11 @@ public class SubjectTeacher {
         return teacherId;
     }
     
+    
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
     }
+    
     
     @Override
     public boolean equals(Object o) {
@@ -68,6 +78,7 @@ public class SubjectTeacher {
         
         return true;
     }
+    
     
     @Override
     public int hashCode() {

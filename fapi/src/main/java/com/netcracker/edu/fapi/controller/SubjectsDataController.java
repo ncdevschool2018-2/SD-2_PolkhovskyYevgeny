@@ -14,25 +14,30 @@ public class SubjectsDataController {
     @Autowired
     private SubjectsDataService subjectsDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<SubjectsViewModel>> getAllSubjects() {
         return ResponseEntity.ok(subjectsDataService.getAll());
     }
+    
     
     @RequestMapping(value = "/dist", method = RequestMethod.GET)
     public ResponseEntity<List<SubjectsViewModel>> getDistinctSubject() {
         return ResponseEntity.ok(subjectsDataService.getDistinctSubject());
     }
     
+    
     @RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<SubjectsViewModel>> getSubjectsForTeacher(@PathVariable int id) {
         return ResponseEntity.ok(subjectsDataService.getSubjectsForTeacher(id));
     }
     
+    
     @RequestMapping(value = "/chooseIdfapi/{sub}", method = RequestMethod.GET)
     public ResponseEntity<List<Integer>> getIdChoosenSubject(@PathVariable String sub) {
         return ResponseEntity.ok(subjectsDataService.getIdChoosenSubject(sub));
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectsViewModel> saveSubjects(@RequestBody SubjectsViewModel subjects /*todo server validation*/) {
@@ -41,6 +46,7 @@ public class SubjectsDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubjects(@PathVariable String id) {

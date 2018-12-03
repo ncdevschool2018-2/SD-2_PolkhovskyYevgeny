@@ -8,8 +8,10 @@ public class PageGroupViewModel {
     private int totalPages;
     private int totalElements;
     
+    
     public PageGroupViewModel() {
     }
+    
     
     public PageGroupViewModel(List<UniversityGroupViewModel> content, int totalPages, int totalElements) {
         this.content = content;
@@ -17,25 +19,31 @@ public class PageGroupViewModel {
         this.totalElements = totalElements;
     }
     
+    
     public List<UniversityGroupViewModel> getContent() {
         return content;
     }
+    
     
     public void setContent(List<UniversityGroupViewModel> content) {
         this.content = content;
     }
     
+    
     public int getTotalPages() {
         return totalPages;
     }
+    
     
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
     
+    
     public int getTotalElements() {
         return totalElements;
     }
+    
     
     public void setTotalElements(int totalElements) {
         this.totalElements = totalElements;

@@ -15,6 +15,7 @@ public class SubjectTeacherDataServiceImpl implements SubjectTeacherDataService 
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<SubjectTeacherViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -24,10 +25,12 @@ public class SubjectTeacherDataServiceImpl implements SubjectTeacherDataService 
         
     }
     
+    
     @Override
     public SubjectTeacherViewModel getSSubjectTeacherById(int id) {
         return null;
     }
+    
     
     @Override
     public SubjectTeacherViewModel saveSubjectTeacher(SubjectTeacherViewModel subjectTeacherViewModel) {
@@ -35,6 +38,7 @@ public class SubjectTeacherDataServiceImpl implements SubjectTeacherDataService 
         return restTemplate.postForEntity(backendServerUrl + "/api/teacher-subject", subjectTeacherViewModel, SubjectTeacherViewModel.class).getBody();
         
     }
+    
     
     @Override
     public void deleteSubjectTeacher(int id) {

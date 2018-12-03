@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 
 import {PupilService} from "../service/pupil.service";
+
 
 @Component({
   selector: 'app-pupil',
@@ -10,7 +11,8 @@ import {PupilService} from "../service/pupil.service";
 })
 export class PupilComponent implements OnInit {
 
-  constructor(private pupilService: PupilService) { }
+  constructor(private pupilService: PupilService) {
+  }
 
   ngOnInit() {
 

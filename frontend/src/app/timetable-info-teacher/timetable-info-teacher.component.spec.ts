@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TimetableInfoTeacherComponent } from './timetable-info-teacher.component';
+import {TimetableInfoTeacherComponent} from './timetable-info-teacher.component';
 
 describe('TimetableInfoTeacherComponent', () => {
   let component: TimetableInfoTeacherComponent;
@@ -8,9 +8,9 @@ describe('TimetableInfoTeacherComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimetableInfoTeacherComponent ]
+      declarations: [TimetableInfoTeacherComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -15,10 +15,12 @@ public class SubjectTeacherDataController {
     @Autowired
     private SubjectTeacherDataService subjectTeacherDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<SubjectTeacherViewModel>> getAllSubjectTeacher() {
         return ResponseEntity.ok(subjectTeacherDataService.getAll());
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectTeacherViewModel> saveSubjectTeacher(@RequestBody SubjectTeacherViewModel subjectTeacherViewModel /*todo server validation*/) {
@@ -27,6 +29,7 @@ public class SubjectTeacherDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubjectTeacher(@PathVariable String id) {

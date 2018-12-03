@@ -38,7 +38,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let teacher of page.content">
-        <td  width="95%">
+        <td width="95%">
           <accordion>
             <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
               <app-timetable-info-teacher [slots]="slots" [teacherNumber]="teacher.id"></app-timetable-info-teacher>
@@ -50,7 +50,8 @@
           <p class="lead text-center" >{{teacher.name}} {{teacher.surname}}</p>
         </td>-->
         <td>
-      <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,teacher)">Delete</button>
+      <span><button type="button" class="btn btn-danger"
+                    (click)="_openModalConfirm(templateConfirm,teacher)">Delete</button>
       </span>
         </td>
 
@@ -145,12 +146,11 @@
       <select class="form-control"
               id="exampleFormControlSelect12"
               [(ngModel)]="editableSubjectTeacher.teacherId"
-              (change)="checkForSubjects(editableSubjectTeacher.teacherId)" >>
+              (change)="checkForSubjects(editableSubjectTeacher.teacherId)">>
         <option *ngFor="let Teach of teachersAll" [value]="Teach.id">{{Teach.name }}{{" "}}{{ Teach.surname}}</option>
 
       </select>
     </div>
-
 
 
     <label>Subject</label>
@@ -163,8 +163,6 @@
 
       </select>
     </div>
-
-
 
 
   </div>
@@ -186,11 +184,11 @@
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label>Do you really want to delete student </label><div>
-      <label>{{teacherConfirmName}}{{"  "}}{{teacherConfirmSurname}}</label>
+      <label>Do you really want to delete student </label>
+      <div>
+        <label>{{teacherConfirmName}}{{" "}}{{teacherConfirmSurname}}</label>
+      </div>
     </div>
-    </div>
-
 
 
   </div>

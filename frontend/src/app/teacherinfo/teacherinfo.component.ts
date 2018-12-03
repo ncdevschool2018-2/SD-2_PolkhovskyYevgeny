@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {Group} from "../model/group";
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {GroupService} from "../service/group.service";
 import {PageGroup} from "../model/pageGroup";
+
 
 @Component({
   selector: 'app-teacherinfo',
@@ -16,17 +16,17 @@ export class TeacherinfoComponent implements OnInit {
   isCollapsed2 = false;
   private subscriptions: Subscription[] = [];
   page: PageGroup;
-currentPage:number=1;
+  currentPage: number = 1;
 
 
-  constructor(private groupService: GroupService,) { }
+  constructor(private groupService: GroupService,) {
+  }
 
   ngOnInit() {
 
   }
 
-    /*this.contentArray = this.groups;*/
-
+  /*this.contentArray = this.groups;*/
 
 
 }

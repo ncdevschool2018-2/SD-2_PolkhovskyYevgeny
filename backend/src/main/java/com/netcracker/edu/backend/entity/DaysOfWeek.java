@@ -16,12 +16,15 @@ public class DaysOfWeek {
     private int id;
     private String name;
     
+    
     public DaysOfWeek() {
     }
+    
     
     public DaysOfWeek(String name) {
         this.name = name;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -30,15 +33,18 @@ public class DaysOfWeek {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;
@@ -54,10 +60,12 @@ public class DaysOfWeek {
                 Objects.equals(name, that.name);
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
     }
+    
     
     @Override
     public String toString() {

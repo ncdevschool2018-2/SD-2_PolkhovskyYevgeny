@@ -1,47 +1,68 @@
 <body class="bg-light">
 
-<main >
+<main>
   <div>
-  <!--<div class="my-3 p-3 bg-white rounded shadow-sm">-->
+    <!--<div class="my-3 p-3 bg-white rounded shadow-sm">-->
 
     <table class="table table-sm">
 
       <accordion>
-        <accordion-group heading="Line View"  >
-  <app-table *ngFor="let day of days"
-             (formStateChanged)="test()"
-             [day]="day" [timetable]="timetable"
-             [groupNumber]="groupNumber"
-             [slots]="slots"
-             ></app-table>
-  <!--<app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Friday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table>
-  <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>-->
+        <accordion-group heading="Line View">
+          <app-table *ngFor="let day of days"
+                     (formStateChanged)="test()"
+                     [day]="day" [timetable]="timetable"
+                     [groupNumber]="groupNumber"
+                     [slots]="slots"
+          ></app-table>
+          <!--<app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
+          <app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table>
+          <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table>
+          <app-table [day]="Friday" [groupNumber]="groupNumber"></app-table>
+          <app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table>
+          <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>-->
         </accordion-group>
-        <accordion-group heading="Table View" >
-      <div class="row">
-        <div class="col-6"><app-table [day]="Monday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"><app-table [day]="Tuesday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"></app-table></div>
+        <accordion-group heading="Table View">
+          <div class="row">
+            <div class="col-6">
+              <app-table [day]="Monday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+                         [groupNumber]="groupNumber"></app-table>
+            </div>
+            <div class="col-6">
+              <app-table [day]="Tuesday" (formStateChanged)="test()" [slots]="slots"
+                         [timetable]="timetable"></app-table>
+            </div>
 
-      </div>
-      <div class="row">
-        <div class="col-6"><app-table [day]="Wednesday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"> <app-table [day]="Thursday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"></app-table></div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <app-table [day]="Wednesday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+                         [groupNumber]="groupNumber"></app-table>
+            </div>
+            <div class="col-6">
+              <app-table [day]="Thursday" (formStateChanged)="test()" [slots]="slots"
+                         [timetable]="timetable"></app-table>
+            </div>
 
-      </div>
-      <div class="row">
+          </div>
+          <div class="row">
 
-        <div class="col-6"><app-table [day]="Friday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
-        <div class="col-6"><app-table [day]="Saturday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
-      </div>
+            <div class="col-6">
+              <app-table [day]="Friday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+                         [groupNumber]="groupNumber"></app-table>
+            </div>
+            <div class="col-6">
+              <app-table [day]="Saturday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+                         [groupNumber]="groupNumber"></app-table>
+            </div>
+          </div>
 
-      <div class="row">
+          <div class="row">
 
-        <div class="col-6"><app-table [day]="Sunday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable" [groupNumber]="groupNumber"></app-table></div>
-      </div>
+            <div class="col-6">
+              <app-table [day]="Sunday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+                         [groupNumber]="groupNumber"></app-table>
+            </div>
+          </div>
         </accordion-group>
 
       </accordion>
@@ -73,9 +94,9 @@
 
         <div class="col-6"><app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table></div>
       </div>-->
-</table>
+    </table>
   </div>
- <!-- <app-go-back></app-go-back>-->
+  <!-- <app-go-back></app-go-back>-->
 </main>
 
 </body>

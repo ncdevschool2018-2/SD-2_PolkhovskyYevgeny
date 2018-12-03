@@ -1,7 +1,9 @@
 <table class="table">
   <thead class="thead-dark">
   <tr>
-    <th colspan="4" scope="col"> <div><p class="text-warning text-center" >{{day}}</p></div></th>
+    <th colspan="4" scope="col">
+      <div><p class="text-warning text-center">{{day}}</p></div>
+    </th>
   </tr>
   <tr>
     <th scope="col"> Subject</th>
@@ -20,7 +22,8 @@
   <tr *ngFor="let mon of timetable">
     <!--<th *ngIf="mon.day.includes(day)" scope="row"></th>-->
     <td *ngIf="mon.day.includes(day)" scope="row">{{mon.subject}}</td>
-    <td *ngIf="mon.day.includes(day)" routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}} {{mon.teacherSurname}}
+    <td *ngIf="mon.day.includes(day)" routerLink="/teacherinfo/{{mon.teacherId}}">{{mon.teacherName}}
+      {{mon.teacherSurname}}
     </td>
     <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>
     <td *ngIf="mon.day.includes(day)">
@@ -32,7 +35,7 @@
 </table>
 
 
-<ng-template #templateTimeTable >
+<ng-template #templateTimeTable>
   <div class="modal-header">
     <h4 class="modal-title pull-left">Add new lesson</h4>
     <button type="button" class="close pull-right"
@@ -47,13 +50,11 @@
 
       <div class="form-group">
 
-        <select class="form-control"  [(ngModel)]="editableTimetable.slotId">
+        <select class="form-control" [(ngModel)]="editableTimetable.slotId">
           <option *ngFor="let slot of slotsDist" [value]="slot.id">{{slot.startTime}} - {{slot.endTime }}</option>
 
         </select>
       </div>
-
-
 
 
       <label>SUBJECT</label>
@@ -62,13 +63,11 @@
 
         <select class="form-control"
                 [(ngModel)]="chooseSubject"
-        (change)="_checkForTeachers(chooseSubject)" >
+                (change)="_checkForTeachers(chooseSubject)">
           <option *ngFor="let subj of subjectsAll" [value]="subj.id">{{subj.subject}}</option>
 
         </select>
       </div>
-
-
 
 
       <!--<div>
@@ -79,12 +78,13 @@
 
       <div class="form-group">
 
-        <select class="form-control"  [(ngModel)]="chooseTeachers">
-          <option *ngFor="let chooseTeach of chooseTeachersName" [value]="chooseTeach.id">{{chooseTeach.name }}{{" "}}{{ chooseTeach.surname}}</option>
+        <select class="form-control" [(ngModel)]="chooseTeachers">
+          <option *ngFor="let chooseTeach of chooseTeachersName" [value]="chooseTeach.id">{{chooseTeach.name }}{{" "}}{{
+            chooseTeach.surname}}
+          </option>
 
         </select>
       </div>
-
 
 
     </div>
@@ -108,16 +108,16 @@
   </div>
   <div class="modal-body">
     <div class="form-group">
-      <label>Do you really want to delete  </label><div>
+      <label>Do you really want to delete </label>
+      <div>
+      </div>
     </div>
-    </div>
-
 
 
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="_deleteTimetable(monConfirmId)"
-            >Yes
+    >Yes
     </button>
     <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">No</button>
 

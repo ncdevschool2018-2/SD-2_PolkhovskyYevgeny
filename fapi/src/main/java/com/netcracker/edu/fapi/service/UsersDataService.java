@@ -13,5 +13,6 @@ public interface UsersDataService {
     UsersViewModel saveUsers(UsersViewModel user);
     
     void deleteUsers(int id);
+    
     UsersViewModel findByLogin(String name);
 }

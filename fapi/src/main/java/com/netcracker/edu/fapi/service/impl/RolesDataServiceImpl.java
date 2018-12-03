@@ -24,10 +24,12 @@ public class RolesDataServiceImpl implements RolesDataService {
         return rolesViewModelResponse == null ? Collections.emptyList() : Arrays.asList(rolesViewModelResponse);
     }
     
+    
     @Override
     public RolesViewModel getRolesById(int id) {
         return null;
     }
+    
     
     @Override
     public RolesViewModel saveRoles(RolesViewModel role) {
@@ -35,6 +37,7 @@ public class RolesDataServiceImpl implements RolesDataService {
         return restTemplate.postForEntity(backendServerUrl + "/api/roles", role, RolesViewModel.class).getBody();
         
     }
+    
     
     @Override
     public void deleteRoles(int id) {

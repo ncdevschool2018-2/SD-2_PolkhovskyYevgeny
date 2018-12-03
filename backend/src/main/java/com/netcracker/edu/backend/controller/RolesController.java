@@ -13,10 +13,12 @@ import java.util.Optional;
 public class RolesController {
     private RolesService rolesService;
     
+    
     @Autowired
     public RolesController(RolesService rolesService) {
         this.rolesService = rolesService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Roles> getRolesById(@PathVariable(name = "id") int id) {
@@ -28,15 +30,18 @@ public class RolesController {
         }
     }
     
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Roles> getAllRoles() {
         return rolesService.getAllRoles();
     }
     
+    
     @RequestMapping(method = RequestMethod.POST)
     public Roles saveRoles(@RequestBody Roles role) {
         return rolesService.saveRoles(role);
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteRoles(@PathVariable(name = "id") int id) {

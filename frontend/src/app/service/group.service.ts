@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import {Observable, of} from "rxjs";
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
 import {Group} from "../model/group";
 import {HttpClient} from "@angular/common/http";
-import {PageGroup} from "../model/pageGroup";
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import {PageGroup} from "../model/pageGroup";
 export class GroupService { //todo create interface
   constructor(private http: HttpClient) {
   }
+
   getGroups(): Observable<Group[]> {
     return this.http.get<Group[]>('/api/universitygroup');
   }
@@ -21,13 +22,15 @@ export class GroupService { //todo create interface
   deleteGroup(groupId: string): Observable<void> {
     return this.http.delete<void>('/api/universitygroup/' + groupId);
   }
+
   /*getPageGroups(page:number): Observable<PageGroup> {
     return this.http.post<PageGroup>('/api/universitygroup/page',page-1);
   }*/
-  getPageGroups(page:number): Observable<Group[]> {
-    return this.http.get<Group[]>('/api/universitygroup/page/'+(page-1));
+  getPageGroups(page: number): Observable<Group[]> {
+    return this.http.get<Group[]>('/api/universitygroup/page/' + (page - 1));
   }
-  getGroupsNumber():Observable<number>{
+
+  getGroupsNumber(): Observable<number> {
     return this.http.get<number>('/api/universitygroup/totalPages');
   }
 

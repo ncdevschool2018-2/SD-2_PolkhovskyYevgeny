@@ -1,29 +1,32 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {NewUser} from "../model/newUser";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {GroupContent} from "../model/GroupContent";
 import {Teacher} from "../model/teacher";
-import {PageGroup} from "../model/pageGroup";
 import {PageTeacher} from "../model/pageTeacher";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TeacherService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   saveNewTeacher(newUser: NewUser): Observable<NewUser> {
     return this.http.post<NewUser>('/api/teacher/new-teacher', newUser);
   }
 
-  getTeachers(): Observable<Teacher[]>{
+  getTeachers(): Observable<Teacher[]> {
     return this.http.get<Teacher[]>('/api/teacher');
   }
-  getTeacher(id :Number): Observable<Teacher>{
+
+  getTeacher(id: Number): Observable<Teacher> {
     return this.http.get<Teacher>('/api/teacher/' + id);
   }
-  getTeacherName(sbj:number): Observable<Teacher[]>{
+
+  getTeacherName(sbj: number): Observable<Teacher[]> {
     return this.http.get<Teacher[]>('/api/teacher/chooseTchr/' + sbj);
   }
 
@@ -31,7 +34,7 @@ export class TeacherService {
     return this.http.delete<void>('/api/teacher/' + teacherId);
   }
 
-  getPageTeachers(page:number): Observable<PageTeacher> {
-    return this.http.post<PageTeacher>('/api/teacher/page',page-1);
+  getPageTeachers(page: number): Observable<PageTeacher> {
+    return this.http.post<PageTeacher>('/api/teacher/page', page - 1);
   }
 }

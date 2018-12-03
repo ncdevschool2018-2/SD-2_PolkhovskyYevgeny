@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Location} from "@angular/common";
+
 
 @Component({
   selector: 'app-go-back',
@@ -8,10 +9,12 @@ import {Location} from "@angular/common";
 })
 export class GoBackComponent implements OnInit {
 
-  constructor(private location: Location,) { }
+  constructor(private location: Location,) {
+  }
 
   ngOnInit() {
   }
+
   goBack(): void {
     this.location.back();
   }

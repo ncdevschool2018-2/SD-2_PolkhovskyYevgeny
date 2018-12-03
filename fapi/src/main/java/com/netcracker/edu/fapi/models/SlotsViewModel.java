@@ -9,8 +9,10 @@ public class SlotsViewModel {
     private String endTime;
     /*private Collection<Timetable> timetablesById;*/
     
+    
     public SlotsViewModel() {
     }
+    
     
     public SlotsViewModel(int id, String startTime, String endTime/*, Collection<Timetable> timetablesById*/) {
         this.id = id;
@@ -19,25 +21,31 @@ public class SlotsViewModel {
         /* this.timetablesById = timetablesById;*/
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
     }
     
+    
     public String getStartTime() {
         return startTime;
     }
+    
     
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
     
+    
     public String getEndTime() {
         return endTime;
     }
+    
     
     public void setEndTime(String endTime) {
         this.endTime = endTime;

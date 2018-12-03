@@ -1,6 +1,6 @@
-import { NgModule }             from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent} from "./admin/admin.component";
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {AdminComponent} from "./admin/admin.component";
 import {SigninComponent} from "./signin/signin.component";
 import {GroupComponent} from "./group/group.component";
 import {PupilComponent} from "./pupil/pupil.component";
@@ -14,24 +14,27 @@ import {TimetableInfoTeacherComponent} from "./timetable-info-teacher/timetable-
 import {SignupComponent} from "./signup/signup.component";
 
 const routes: Routes = [
-  {path:'',redirectTo:'/signin', pathMatch: 'full'},
-  {path:'admin', component: AdminComponent},
-  {path:'signin',component: SigninComponent},
-  {path:'signup',component: SignupComponent},
-  {path:'group', component: GroupComponent},
-  {path:'pupil', component: PupilComponent},
-  {path:'groupContent/:id', component: GroupContentComponent},
-  {path:'timetableinfo/:id', component: TimetableInfoComponent},
-  {path:'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},
-  {path:'timetable', component: TimetableComponent},
-  {path:'teacherinfo', component: TeacherinfoComponent},
-  {path:'subject', component: SubjectsComponent},
-  {path:'teachers', component: TeachersComponent},
-  {path:'teacherinfo/:id', component: TeacherinfoComponent},
+  {path: '', redirectTo: '/signin', pathMatch: 'full'},
+  {path: 'admin', component: AdminComponent},
+  {path: 'signin', component: SigninComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'group', component: GroupComponent},
+  {path: 'pupil', component: PupilComponent},
+  {path: 'groupContent/:id', component: GroupContentComponent},
+  {path: 'timetableinfo/:id', component: TimetableInfoComponent},
+  {path: 'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},
+  {path: 'timetable', component: TimetableComponent},
+  {path: 'teacherinfo', component: TeacherinfoComponent},
+  {path: 'subject', component: SubjectsComponent},
+  {path: 'teachers', component: TeachersComponent},
+  {path: 'teacherinfo/:id', component: TeacherinfoComponent},
 
 ]
+
+
 @NgModule({
-  exports: [ RouterModule ],
+  exports: [RouterModule],
   imports: [RouterModule.forRoot(routes)]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

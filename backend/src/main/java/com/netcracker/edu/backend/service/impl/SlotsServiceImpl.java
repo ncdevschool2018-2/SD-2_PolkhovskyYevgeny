@@ -13,25 +13,30 @@ public class SlotsServiceImpl implements SlotsService {
     
     private SlotsRepository repository;
     
+    
     @Autowired
     public SlotsServiceImpl(SlotsRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public Slots saveSlots(Slots slot) {
         return repository.save(slot);
     }
     
+    
     @Override
     public Optional<Slots> getSlotsById(int id) {
         return repository.findById(id);
     }
     
+    
     @Override
     public Iterable<Slots> getAllSlots() {
         return repository.findAll();
     }
+    
     
     @Override
     public void deleteSlots(int id) {

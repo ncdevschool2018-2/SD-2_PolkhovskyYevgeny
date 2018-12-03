@@ -9,8 +9,10 @@ public class PageGroup {
     private int totalPages;
     private int totalElements;
     
+    
     public PageGroup() {
     }
+    
     
     public PageGroup(List<UniversityGroup> content, int totalPages, int totalElements) {
         this.content = content;
@@ -18,25 +20,31 @@ public class PageGroup {
         this.totalElements = totalElements;
     }
     
+    
     public List<UniversityGroup> getContent() {
         return content;
     }
+    
     
     public void setContent(List<UniversityGroup> content) {
         this.content = content;
     }
     
+    
     public int getTotalPages() {
         return totalPages;
     }
+    
     
     public void setTotalPages(int totalPages) {
         this.totalPages = totalPages;
     }
     
+    
     public int getTotalElements() {
         return totalElements;
     }
+    
     
     public void setTotalElements(int totalElements) {
         this.totalElements = totalElements;

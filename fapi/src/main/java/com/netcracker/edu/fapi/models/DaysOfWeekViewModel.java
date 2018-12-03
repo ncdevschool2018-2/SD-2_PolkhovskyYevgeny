@@ -8,8 +8,10 @@ public class DaysOfWeekViewModel {
     private String name;
     /*private Collection<Timetable> timetablesById;*/
     
+    
     public DaysOfWeekViewModel() {
     }
+    
     
     public DaysOfWeekViewModel(int id, String name/*, Collection<Timetable> timetablesById*/) {
         this.id = id;
@@ -17,17 +19,21 @@ public class DaysOfWeekViewModel {
         /*this.timetablesById = timetablesById;*/
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
     }
     
+    
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;

@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {GroupContent} from "../model/GroupContent";
-import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
-import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs";
+import {Component, OnInit} from '@angular/core';
+
 
 @Component({
   selector: 'app-timetable',
@@ -11,7 +8,8 @@ import {Subscription} from "rxjs";
 })
 export class TimetableComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

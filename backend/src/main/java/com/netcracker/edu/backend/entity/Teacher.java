@@ -21,11 +21,13 @@ public class Teacher {
     public Teacher() {
     }
     
+    
     public Teacher(String name, String surname, int userId) {
         this.name = name;
         this.surname = surname;
         this.userId = userId;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -33,9 +35,11 @@ public class Teacher {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -43,15 +47,18 @@ public class Teacher {
         return name;
     }
     
+    
     public void setName(String name) {
         this.name = name;
     }
+    
     
     @Basic
     @Column(name = "surname", nullable = false, length = 45)
     public String getSurname() {
         return surname;
     }
+    
     
     public void setSurname(String surname) {
         this.surname = surname;
@@ -63,6 +70,7 @@ public class Teacher {
     public int getUserId() {
         return userId;
     }
+    
     
     public void setUserId(int userId) {
         this.userId = userId;
@@ -80,10 +88,12 @@ public class Teacher {
                 Objects.equals(surname, teacher.surname);
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, name, surname, userId/*, subjectsById*/);
     }
+    
     
     @Override
     public String toString() {

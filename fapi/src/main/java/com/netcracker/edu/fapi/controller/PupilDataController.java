@@ -20,25 +20,29 @@ public class PupilDataController {
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
     
+    
     @RequestMapping
     public ResponseEntity<List<PupilViewModel>> getAllPupils() {
         return ResponseEntity.ok(pupilDataService.getAll());
     }
+    
     
     @RequestMapping(value = "/group/{id}")
     public ResponseEntity<List<PupilViewModel>> getByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
     
+    
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-        NewUserViewModel newPupil=
-                new NewUserViewModel(pupil.getName(),pupil.getSurname(),pupil.getSubjectId(),pupil.getGroupId(),pupil.getUserId(),pupil.getLogin(),bcryptEncoder.encode(pupil.getPassword()),pupil.getRoleId());
+        NewUserViewModel newPupil =
+                new NewUserViewModel(pupil.getName(), pupil.getSurname(), pupil.getSubjectId(), pupil.getGroupId(), pupil.getUserId(), pupil.getLogin(), bcryptEncoder.encode(pupil.getPassword()), pupil.getRoleId());
         if (newPupil != null) {
             return ResponseEntity.ok(pupilDataService.savePupil(newPupil));
         }
         return null;
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/) {
@@ -47,6 +51,7 @@ public class PupilDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deletePupil(@PathVariable String id) {

@@ -17,6 +17,8 @@ import {Subjects} from "../model/subjects";
 import {SubjectService} from "../service/subject.service";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
+
+
 /*import { FormControl, FormGroup } from '@angular/forms';*/
 
 @Component({
@@ -152,6 +154,7 @@ export class TableTeacherComponent implements OnInit {
     });
 
   }*/
+
   /*private loadTimetableNamed(): void {
 
 
@@ -189,7 +192,7 @@ export class TableTeacherComponent implements OnInit {
     this.loadSubjectTeacherToGetId();
     this.loadTeacherSubjects(this.chooseTeacher);
     this.loadGroups();
-this.getEmptySlots();
+    this.getEmptySlots();
     this.loadDaysOfWeek();
     /*this.getEmptySlots();*/
     this.modalRef = this.modalService.show(template);
@@ -202,7 +205,7 @@ this.getEmptySlots();
 
       this.groups = groups as Group[];
 
-      this.states=this.groups
+      this.states = this.groups
     }));
   }
 
@@ -214,12 +217,12 @@ this.getEmptySlots();
         this.slotsNot.push(timetable.time)
       }
       for (let slot of this.slots) {
-        if(this.slotsNot.length==0){
+        if (this.slotsNot.length == 0) {
           this.slotsDist.push(slot);
         }
         for (let not of this.slotsNot) {
-          if((slot.startTime + " - " + slot.endTime).includes(not)){
-            this.slotsNot.splice(0,1);
+          if ((slot.startTime + " - " + slot.endTime).includes(not)) {
+            this.slotsNot.splice(0, 1);
             break;
           }
           this.slotsDist.push(slot);
@@ -300,12 +303,6 @@ this.getEmptySlots();
   private refreshTimetable(): void {
     this.editableTimetable = new Timetable();
   }
-
-
-
-
-
-
 
 
 }

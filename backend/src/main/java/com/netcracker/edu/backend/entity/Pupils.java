@@ -20,11 +20,13 @@ public class Pupils {
     private int userId;
     /*private UniversityGroup universityGroupByGroupId;*/
     
+    
     public Pupils(String name, String surname, Users usersByUserId) {
         this.name = name;
         this.surname = surname;
         //this.usersByUserId = usersByUserId;
     }
+    
     
     public Pupils(String name, String surname, int groupId, int userId) {
         this.name = name;
@@ -32,6 +34,7 @@ public class Pupils {
         this.groupId = groupId;
         this.userId = userId;
     }
+    
     
     public Pupils() {
     }
@@ -43,9 +46,11 @@ public class Pupils {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "name", nullable = false, length = 45)
@@ -53,9 +58,11 @@ public class Pupils {
         return name;
     }
     
+    
     public void setName(String name) {
         this.name = name;
     }
+    
     
     @Basic
     
@@ -63,6 +70,7 @@ public class Pupils {
     public String getSurname() {
         return surname;
     }
+    
     
     public void setSurname(String surname) {
         this.surname = surname;
@@ -80,6 +88,7 @@ public class Pupils {
         this.usersByUserId = usersByUserId;
     }*/
     
+    
     @Basic
     
     @Column(name = "group_id", nullable = false)
@@ -87,9 +96,11 @@ public class Pupils {
         return groupId;
     }
     
+    
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
+    
     
     @Basic
     
@@ -98,9 +109,11 @@ public class Pupils {
         return userId;
     }
     
+    
     public void setUserId(int userId) {
         this.userId = userId;
     }
+    
     
     /*@ManyToOne
     
@@ -127,10 +140,12 @@ public class Pupils {
                 Objects.equals(universityGroupByGroupId, pupils.universityGroupByGroupId)*/;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, name, surname, /*usersByUserId,*/ groupId, userId/*, universityGroupByGroupId*/);
     }
+    
     
     @Override
     public String toString() {

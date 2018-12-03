@@ -14,10 +14,12 @@ import java.util.Optional;
 public class SubjectsController {
     private SubjectsService subjectsService;
     
+    
     @Autowired
     public SubjectsController(SubjectsService subjectsService) {
         this.subjectsService = subjectsService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Subjects> getSubjectsById(@PathVariable(name = "id") int id) {
@@ -29,10 +31,12 @@ public class SubjectsController {
         }
     }
     
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Subjects> getAllSubjects() {
         return subjectsService.getAllSubjects();
     }
+    
     
     @RequestMapping(value = "/dist", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getDistinctSubject() {
@@ -45,6 +49,7 @@ public class SubjectsController {
         }
     }
     
+    
     @RequestMapping(value = "/teacher/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getSubjectsForTeacher(@PathVariable(name = "id") int id) {
         List<Subjects> subjects = subjectsService.getSubjectsForTeacher(id);
@@ -55,6 +60,7 @@ public class SubjectsController {
             
         }
     }
+    
     
     @RequestMapping(value = "/choose/{sub}", method = RequestMethod.GET)
     public ResponseEntity<List<Subjects>> getAllBySubject(@PathVariable(name = "sub") String sub) {
@@ -86,6 +92,7 @@ public class SubjectsController {
     public Subjects saveSubjects(@RequestBody Subjects subjects) {
         return subjectsService.saveSubjects(subjects);
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteSubjects(@PathVariable(name = "id") int id) {

@@ -14,10 +14,12 @@ public class RolesDataController {
     @Autowired
     private RolesDataService rolesDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<RolesViewModel>> getAllRoles() {
         return ResponseEntity.ok(rolesDataService.getAll());
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<RolesViewModel> saveRoles(@RequestBody RolesViewModel roles /*todo server validation*/) {
@@ -26,6 +28,7 @@ public class RolesDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteRoles(@PathVariable String id) {

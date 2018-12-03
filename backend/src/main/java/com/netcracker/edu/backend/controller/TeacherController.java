@@ -1,10 +1,8 @@
 package com.netcracker.edu.backend.controller;
 
-import com.netcracker.edu.backend.dto.PageGroup;
 import com.netcracker.edu.backend.dto.PageTeacher;
 import com.netcracker.edu.backend.dto.TeacherDto;
 import com.netcracker.edu.backend.entity.Teacher;
-import com.netcracker.edu.backend.entity.UniversityGroup;
 import com.netcracker.edu.backend.service.TeacherService;
 import com.netcracker.edu.backend.service.businesService.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +21,14 @@ import static java.lang.Math.toIntExact;
 public class TeacherController {
     private TeacherService teacherService;
     private RegistrationService registrationService;
+    
+    
     @Autowired
-    public TeacherController(TeacherService teacherService,RegistrationService registrationService) {
+    public TeacherController(TeacherService teacherService, RegistrationService registrationService) {
         this.teacherService = teacherService;
-        this.registrationService=registrationService;
+        this.registrationService = registrationService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Teacher> getTeacherById(@PathVariable(name = "id") int id) {
@@ -39,22 +40,26 @@ public class TeacherController {
         }
     }
     
+    
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    public PageTeacher showPage(@RequestBody int page){
-        Page<Teacher> pageFull= teacherService.findAll(new PageRequest(page,10));
-        PageTeacher pageNeeded = new PageTeacher(pageFull.getContent(),pageFull.getTotalPages(),toIntExact(pageFull.getTotalElements()));
+    public PageTeacher showPage(@RequestBody int page) {
+        Page<Teacher> pageFull = teacherService.findAll(new PageRequest(page, 10));
+        PageTeacher pageNeeded = new PageTeacher(pageFull.getContent(), pageFull.getTotalPages(), toIntExact(pageFull.getTotalElements()));
         return pageNeeded;
     }
+    
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Teacher> getAllTeacher() {
         return teacherService.getAllTeacher();
     }
     
+    
     @RequestMapping(value = "/user-id/{user-id}", method = RequestMethod.GET)
     public Teacher findTeacherByUserId(@PathVariable(name = "user-id") int userId) {
         return teacherService.findTeacherByUserId(userId);
     }
+    
     
     @RequestMapping(value = "/chooseTeacher/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Teacher>> getAllByIdIsIn(@PathVariable(name = "id") Integer[] id) {
@@ -69,10 +74,12 @@ public class TeacherController {
         }
     }
     
+    
     @RequestMapping(method = RequestMethod.POST)
     public Teacher registrateTeacher(@RequestBody TeacherDto teacherDto) {
         return registrationService.registrateTeacher(teacherDto);
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteTeacher(@PathVariable(name = "id") int id) {

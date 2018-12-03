@@ -1,27 +1,28 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TimetableExample} from "../model/timetableExample";
-import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
-import {TeacherService} from "../service/teacher.service";
 import {Teacher} from "../model/teacher";
-import { AccordionConfig } from 'ngx-bootstrap/accordion';
+import {AccordionConfig} from 'ngx-bootstrap/accordion';
 import {TimetableService} from "../service/timetable.service";
 import {Slots} from "../model/slots";
+
 export function getAccordionConfig(): AccordionConfig {
-  return Object.assign(new AccordionConfig(), { closeOthers: true });
+  return Object.assign(new AccordionConfig(), {closeOthers: true});
 }
+
+
 @Component({
   selector: 'app-timetable-info-teacher',
   templateUrl: './timetable-info-teacher.component.html',
   styleUrls: ['./timetable-info-teacher.component.css'],
-  providers: [{ provide: AccordionConfig, useFactory: getAccordionConfig }]
+  providers: [{provide: AccordionConfig, useFactory: getAccordionConfig}]
 })
 export class TimetableInfoTeacherComponent implements OnInit {
   @Input()
-  public teacherNumber:number;
+  public teacherNumber: number;
   @Input()
   public slots: Slots[];
-  public days:string[]=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+  public days: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";
   public Wednesday: string = "Wednesday";
@@ -31,12 +32,11 @@ export class TimetableInfoTeacherComponent implements OnInit {
   public Sunday: string = "Sunday";
   private subscriptions: Subscription[] = [];
   public timetable: TimetableExample[];
- public teacher:Teacher;
+  public teacher: Teacher;
 
   constructor(
-
-              private timetableService: TimetableService,
-              ) {
+    private timetableService: TimetableService,
+  ) {
   }
 
   ngOnInit() {
@@ -46,6 +46,7 @@ export class TimetableInfoTeacherComponent implements OnInit {
   public test(): void {
     this.loadTimetableNamed();
   }
+
   private loadTimetableNamed(): void {
 
 
@@ -59,6 +60,7 @@ export class TimetableInfoTeacherComponent implements OnInit {
 
 
   }
+
   /*private loadTeacher(): void {
 
 

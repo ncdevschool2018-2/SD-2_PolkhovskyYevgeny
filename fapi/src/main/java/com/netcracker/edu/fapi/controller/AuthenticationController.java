@@ -23,6 +23,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
     
+    
     @RequestMapping(value = "/generate-token", method = RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
         final Authentication authentication = authenticationManager.authenticate(
@@ -35,10 +36,11 @@ public class AuthenticationController {
         return ResponseEntity.ok(new AuthToken(token));
     }
     
+    
     @RequestMapping(value = "/expDate", method = RequestMethod.GET)
-    public ResponseEntity<?> GetExpDate(@RequestHeader(name = "authorization")String token){
+    public ResponseEntity<?> GetExpDate(@RequestHeader(name = "authorization") String token) {
         token = token.replace(TOKEN_PREFIX, "");
-
+        
         return ResponseEntity.ok(jwtTokenUtil.getExpirationDateFromToken(token));
     }
 }

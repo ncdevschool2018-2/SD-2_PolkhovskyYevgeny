@@ -13,10 +13,12 @@ import java.util.Optional;
 public class SlotsController {
     private SlotsService slotsService;
     
+    
     @Autowired
     public SlotsController(SlotsService slotsService) {
         this.slotsService = slotsService;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Slots> getSlotsById(@PathVariable(name = "id") int id) {
@@ -28,15 +30,18 @@ public class SlotsController {
         }
     }
     
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Slots> getAllSlots() {
         return slotsService.getAllSlots();
     }
     
+    
     @RequestMapping(method = RequestMethod.POST)
     public Slots saveSlots(@RequestBody Slots slots) {
         return slotsService.saveSlots(slots);
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity deleteSlots(@PathVariable(name = "id") int id) {

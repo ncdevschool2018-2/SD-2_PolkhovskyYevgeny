@@ -3,7 +3,7 @@
 <body class="bg-light">
 
 <div>
-<h1 align="center">Subjects </h1>
+  <h1 align="center">Subjects </h1>
 </div>
 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
         (click)="_openModalSubject(templateSubject)">
@@ -11,23 +11,23 @@
 </button>
 <main class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
-<table class="table table-bordered table-striped">
-  <thead>
+    <table class="table table-bordered table-striped">
+      <thead>
 
-  </thead>
-  <tbody>
-  <tr *ngFor="let sub of subject">
-    <td scope="row">{{sub.subject}}</td>
-    <td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sub of subject">
+        <td scope="row">{{sub.subject}}</td>
+        <td>
       <span><button type="button" class="btn btn-danger" (click)="_deleteSubject(sub.id)">Delete</button>
       </span></td>
 
 
-  </tr>
+      </tr>
 
 
-  </tbody>
-</table>
+      </tbody>
+    </table>
   </div>
   <!--<app-go-back></app-go-back>-->
 </main>

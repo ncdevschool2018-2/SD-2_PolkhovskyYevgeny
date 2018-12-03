@@ -41,6 +41,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 
+
 @NgModule({
   exports: [
     CdkTableModule,
@@ -84,7 +85,8 @@ import {
     ScrollingModule,
   ]
 })
-export class DemoMaterialModule {}
+export class DemoMaterialModule {
+}
 
 
 /**  Copyright 2018 Google Inc. All Rights Reserved.

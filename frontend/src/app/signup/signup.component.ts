@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {Users} from "../model/users";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
@@ -6,7 +6,6 @@ import {AuthService} from "../service/auth.service";
 import {TokenStorage} from "../service/token.storage";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
-import {Token} from "../model/token";
 import {NewUser} from "../model/newUser";
 import {Roles} from "../model/role";
 import {RolesService} from "../service/roles.service";
@@ -16,6 +15,7 @@ import {PupilService} from "../service/pupil.service";
 import {Subjects} from "../model/subjects";
 import {SubjectService} from "../service/subject.service";
 import {TeacherService} from "../service/teacher.service";
+
 
 @Component({
   selector: 'app-signup',
@@ -28,29 +28,32 @@ export class SignupComponent implements OnInit {
   public editableNewUser: NewUser = new NewUser();
   public login: string;
   public password: string;
-public  confirmPassword:string;
+  public confirmPassword: string;
   public roles: Roles[];
   private subscriptions: Subscription[] = [];
   public groups: Group[];
-  public chooseRole:number;
+  public chooseRole: number;
   private authorizationAccount: Users;
+
   constructor(private loadingService: Ng4LoadingSpinnerService,
-              private authService:AuthService,
+              private authService: AuthService,
               private tokeStorage: TokenStorage,
               private usersService: UsersService,
               private groupService: GroupService,
-              private rolesService:RolesService,
+              private rolesService: RolesService,
               private pupilService: PupilService,
               private teacherService: TeacherService,
               private subjectService: SubjectService,
               private router: Router,
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.loadRoles();
     this.loadGroups();
     this.loadAllSubjects();
   }
+
   private loadRoles(): void {
 
 
@@ -68,12 +71,15 @@ public  confirmPassword:string;
 
     }));
   }
-  public register(num:number):void{debugger
-    if(num==3){
-    this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
-      this.router.navigate(['signin']);
-    }));}
-    if(num==2){
+
+  public register(num: number): void {
+    debugger
+    if (num == 3) {
+      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+        this.router.navigate(['signin']);
+      }));
+    }
+    if (num == 2) {
       this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
         this.router.navigate(['signin']);
       }));

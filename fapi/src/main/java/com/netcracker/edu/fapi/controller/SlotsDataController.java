@@ -15,10 +15,12 @@ public class SlotsDataController {
     @Autowired
     private SlotsDataService slotsDataService;
     
+    
     @RequestMapping
     public ResponseEntity<List<SlotsViewModel>> getAllSlots() {
         return ResponseEntity.ok(slotsDataService.getAll());
     }
+    
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SlotsViewModel> saveSlots(@RequestBody SlotsViewModel slots /*todo server validation*/) {
@@ -27,6 +29,7 @@ public class SlotsDataController {
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSlots(@PathVariable String id) {

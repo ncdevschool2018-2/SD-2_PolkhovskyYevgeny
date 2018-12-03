@@ -15,25 +15,30 @@ public class TimetableServiceImpl implements TimetableService {
     
     private TimetableRepository repository;
     
+    
     @Autowired
     public TimetableServiceImpl(TimetableRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public Timetable saveTimetable(Timetable timetable) {
         return repository.save(timetable);
     }
     
+    
     @Override
     public Optional<Timetable> getTimetableById(int id) {
         return repository.findById(id);
     }
     
+    
     @Override
     public Iterable<Timetable> getAllTimetable() {
         return repository.findAll();
     }
+    
     
     @Override
     public List<Timetable> getAllByDayOfWeekIdAndGroupIdOrderBySlotId(int dayOfWeekId, int groupId) {
@@ -45,6 +50,7 @@ public class TimetableServiceImpl implements TimetableService {
         }
     }
     
+    
     @Override
     public List<Timetable> getAllByDayOfWeekIdAndTeacherIdOrderBySlotId(int dayOfWeekId, int teacherId) {
         if (repository.findAllByDayOfWeekIdAndTeacherIdOrderBySlotId(dayOfWeekId, teacherId) == null) {
@@ -55,10 +61,12 @@ public class TimetableServiceImpl implements TimetableService {
         }
     }
     
+    
     @Override
     public List<Timetable> getAllByGroupIdOrderByDayOfWeekId(int groupId) {
         return repository.findAllByGroupIdOrderByDayOfWeekId(groupId);
     }
+    
     
     @Override
     public void deleteTimetable(int id) {

@@ -18,6 +18,7 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     
     private UniversityGroupRepository repository;
     
+    
     @Autowired
     public UniversityGroupServiceImpl(UniversityGroupRepository repository) {
         this.repository = repository;
@@ -29,22 +30,24 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
         return repository.save(universityGroup);
     }
     
+    
     @Override
     public Optional<UniversityGroup> getUniversityGroupById(int id) {
         return repository.findById(id);
     }
     
-   
     
     @Override
     public Iterable<UniversityGroup> getAllUniversityGroup() {
         return repository.findAll();
     }
     
+    
     @Override
     public List<UniversityGroup> getAllOrderUniversityGroup() {
         return repository.findAllOrderByName();
     }
+    
     
     @Override
     public Page<UniversityGroup> findAll(Pageable pageable) {
@@ -52,16 +55,17 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     }
     
     
-    
     @Override
     public void deleteUniversityGroup(int id) {
         repository.deleteById(id);
     }
     
+    
     @Override
     public List<UniversityGroup> findGroupPage(int offset) {
         return repository.findGroupPage(offset);
     }
+    
     
     @Override
     public Integer getTotalPages() {

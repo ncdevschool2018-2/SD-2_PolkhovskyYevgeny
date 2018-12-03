@@ -14,30 +14,36 @@ public class PupilServiceImpl implements PupilsService {
     
     private PupilsRepository repository;
     
+    
     @Autowired
     public PupilServiceImpl(PupilsRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public Pupils savePupil(Pupils pupil) {
         return repository.save(pupil);
     }
     
+    
     @Override
     public Optional<Pupils> getPupilById(int id) {
         return repository.findById(id);
     }
+    
     
     @Override
     public Iterable<Pupils> getAllPupils() {
         return repository.findAll();
     }
     
+    
     @Override
     public List<Pupils> getByGroupId(int id) {
         return repository.findByGroupId(id);
     }
+    
     
     @Override
     public void deletePupil(int id) {

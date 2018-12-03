@@ -1,6 +1,7 @@
-span{
+span {
   float: right;
 }
+
 .example-form {
   min-width: 150px;
   max-width: 500px;
@@ -10,6 +11,7 @@ span{
 .example-full-width {
   width: 100%;
 }
+
 /*
 .mat-option{
 
@@ -20,4 +22,6 @@ span{
   z-index: 99999999999999999999999999 !important;
 }
 */
-.form-control { width: 300px; }
+.form-control {
+  width: 300px;
+}

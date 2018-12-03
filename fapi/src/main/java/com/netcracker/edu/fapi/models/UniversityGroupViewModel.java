@@ -9,8 +9,10 @@ public class UniversityGroupViewModel {
     /*private Collection<Pupils> pupilsById;
     private Collection<Timetable> timetablesById;*/
     
+    
     public UniversityGroupViewModel() {
     }
+    
     
     public UniversityGroupViewModel(int id, String name/*, Collection<Pupils> pupilsById, Collection<Timetable> timetablesById*/) {
         this.id = id;
@@ -19,17 +21,21 @@ public class UniversityGroupViewModel {
         this.timetablesById = timetablesById;*/
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
     }
     
+    
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;

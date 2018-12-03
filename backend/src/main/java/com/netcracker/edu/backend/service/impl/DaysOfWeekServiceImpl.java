@@ -13,25 +13,30 @@ public class DaysOfWeekServiceImpl implements DaysOfWeekService {
     
     private DaysOfWeekRepository repository;
     
+    
     @Autowired
     public DaysOfWeekServiceImpl(DaysOfWeekRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public DaysOfWeek saveDaysOfWeek(DaysOfWeek day) {
         return repository.save(day);
     }
     
+    
     @Override
     public Optional<DaysOfWeek> getDaysOfWeekById(int id) {
         return repository.findById(id);
     }
     
+    
     @Override
     public Iterable<DaysOfWeek> getAllDaysOfWeek() {
         return repository.findAll();
     }
+    
     
     @Override
     public void deleteDaysOfWeek(int id) {

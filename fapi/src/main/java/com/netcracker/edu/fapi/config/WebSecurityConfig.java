@@ -17,7 +17,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.session.SessionManagementFilter;
 
 import javax.annotation.Resource;
-import javax.servlet.Filter;
 
 @Configuration
 @EnableWebSecurity
@@ -30,11 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
     
+    
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
     
     @Bean
     CORSFilter corsFilter() {
@@ -42,20 +43,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return filter;
     }
     
+    
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(encode());
     }
+    
     
     @Bean
     public JwtAuthenticationFilter authenticationTokenFilterBean() {
         return new JwtAuthenticationFilter();
     }
     
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .addFilterBefore( corsFilter(), SessionManagementFilter.class) //adds my custom CORSFilter
+                .addFilterBefore(corsFilter(), SessionManagementFilter.class) //adds my custom CORSFilter
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/api/token/*",
@@ -73,6 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
     }
+    
     
     @Bean
     public BCryptPasswordEncoder encode() {

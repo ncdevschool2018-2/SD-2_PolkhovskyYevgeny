@@ -9,6 +9,7 @@ import {TokenStorage} from "../service/token.storage";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
 
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -23,15 +24,18 @@ export class SigninComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
   private authorizationAccount: Users;
+
   constructor(private loadingService: Ng4LoadingSpinnerService,
-              private authService:AuthService,
+              private authService: AuthService,
               private tokeStorage: TokenStorage,
               private usersService: UsersService,
               private router: Router,
-              ) { }
+  ) {
+  }
 
   ngOnInit() {
   }
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
@@ -68,7 +72,8 @@ export class SigninComponent implements OnInit, OnDestroy {
       });
     }));
   }
-  public nav():void{
+
+  public nav(): void {
     this.router.navigate(['signup']);
   }
 }

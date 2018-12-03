@@ -25,6 +25,7 @@ public class Timetable {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
@@ -36,9 +37,11 @@ public class Timetable {
         return groupId;
     }
     
+    
     public void setGroupId(int groupId) {
         this.groupId = groupId;
     }
+    
     
     @Basic
     @Column(name = "subject_id", nullable = false)
@@ -46,9 +49,11 @@ public class Timetable {
         return subjectId;
     }
     
+    
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
     }
+    
     
     @Basic
     @Column(name = "slot_id", nullable = false)
@@ -56,15 +61,18 @@ public class Timetable {
         return slotId;
     }
     
+    
     public void setSlotId(int slotId) {
         this.slotId = slotId;
     }
+    
     
     @Basic
     @Column(name = "day_of_week_id", nullable = false)
     public int getDayOfWeekId() {
         return dayOfWeekId;
     }
+    
     
     public void setDayOfWeekId(int dayOfWeekId) {
         this.dayOfWeekId = dayOfWeekId;
@@ -83,10 +91,12 @@ public class Timetable {
                 dayOfWeekId == timetable.dayOfWeekId;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, groupId, subjectId, slotId, dayOfWeekId);
     }
+    
     
     @Override
     public String toString() {

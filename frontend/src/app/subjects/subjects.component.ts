@@ -3,8 +3,8 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {SubjectService} from "../service/subject.service";
-import {Group} from "../model/group";
 import {Subjects} from "../model/subjects";
+
 
 @Component({
   selector: 'app-subjects',
@@ -18,13 +18,16 @@ export class SubjectsComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public editableSubject: Subjects = new Subjects();
   public subjectsAll: Subjects[];
+
   constructor(private loadingService: Ng4LoadingSpinnerService,
-              private subjectService:SubjectService,
-              private modalService: BsModalService,) { }
+              private subjectService: SubjectService,
+              private modalService: BsModalService,) {
+  }
 
   ngOnInit() {
     this.loadSubject();
   }
+
   public _deleteSubject(subjectId: string): void {
 
 
@@ -33,9 +36,11 @@ export class SubjectsComponent implements OnInit {
     }));
 
   }
+
   public _updateSubject(): void {
     this.loadSubject();
   }
+
   private loadSubject(): void {
     this.loadingService.show();
     // Get data from BillingAccountService
@@ -47,14 +52,17 @@ export class SubjectsComponent implements OnInit {
       this.loadingService.hide();
     }));
   }
+
   public _openModalSubject(template: TemplateRef<any>): void {
     //this.refreshSubject();
     this.modalRef = this.modalService.show(template);
     //this.loadGroups();
   }
+
   public _closeModal(): void {
     this.modalRef.hide();
   }
+
   public _addSubject(): void {
     this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(() => {
       this.loadAllSubjects();
@@ -62,6 +70,7 @@ export class SubjectsComponent implements OnInit {
       this.modalRef.hide();
     }));
   }
+
   private loadAllSubjects(): void {
 
 

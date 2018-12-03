@@ -20,38 +20,44 @@ public class TeacherDataController {
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
     
+    
     @RequestMapping
     public ResponseEntity<List<TeacherViewModel>> getAllTeacher() {
         return ResponseEntity.ok(teacherDataService.getAll());
     }
+    
     
     @RequestMapping(value = "/chooseTchr/{sbj}", method = RequestMethod.GET)
     public ResponseEntity<List<TeacherViewModel>> getTeachersSbj(@PathVariable int sbj) {
         return ResponseEntity.ok(teacherDataService.getTeachersSbj(sbj));
     }
     
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<TeacherViewModel> getTeacherById(@PathVariable int id) {
         return ResponseEntity.ok(teacherDataService.getTeacherById(id));
     }
     
-    @RequestMapping(value = "/page",method = RequestMethod.POST)
-    public ResponseEntity<PageTeacherViewModel> getTeacherPage(@RequestBody int page){
+    
+    @RequestMapping(value = "/page", method = RequestMethod.POST)
+    public ResponseEntity<PageTeacherViewModel> getTeacherPage(@RequestBody int page) {
         
         return ResponseEntity.ok(teacherDataService.getPageTeacher(page));
         
     }
     
+    
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
     public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
-        NewUserViewModel newTeacher=
-                new NewUserViewModel(teacher.getName(),teacher.getSurname(),teacher.getSubjectId(),teacher.getGroupId(),teacher.getUserId(),teacher.getLogin(),bcryptEncoder.encode(teacher.getPassword()),teacher.getRoleId());
-    
+        NewUserViewModel newTeacher =
+                new NewUserViewModel(teacher.getName(), teacher.getSurname(), teacher.getSubjectId(), teacher.getGroupId(), teacher.getUserId(), teacher.getLogin(), bcryptEncoder.encode(teacher.getPassword()), teacher.getRoleId());
+        
         if (newTeacher != null) {
             return ResponseEntity.ok(teacherDataService.saveTeacher(newTeacher));
         }
         return null;
     }
+    
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteTeacher(@PathVariable String id) {

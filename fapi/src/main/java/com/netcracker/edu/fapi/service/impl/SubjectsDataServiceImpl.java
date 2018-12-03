@@ -16,6 +16,7 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<SubjectsViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -24,10 +25,12 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
         return subjectsViewModelResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelResponse);
     }
     
+    
     @Override
     public SubjectsViewModel getSubjectsById(int id) {
         return null;
     }
+    
     
     @Override
     public List<SubjectsViewModel> getDistinctSubject() {
@@ -37,6 +40,7 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
         return subjectsViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelsResponse);
     }
     
+    
     @Override
     public List<SubjectsViewModel> getSubjectsForTeacher(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -44,6 +48,7 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
                 restTemplate.getForObject(backendServerUrl + "/api/subjects/teacher/" + id, SubjectsViewModel[].class);
         return subjectsViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(subjectsViewModelsResponse);
     }
+    
     
     @Override
     public List<Integer> getIdChoosenSubject(String subject) {
@@ -54,11 +59,13 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
         
     }
     
+    
     @Override
     public SubjectsViewModel saveSubjects(SubjectsViewModel subject) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/subjects", subject, SubjectsViewModel.class).getBody();
     }
+    
     
     @Override
     public void deleteSubjects(int id) {

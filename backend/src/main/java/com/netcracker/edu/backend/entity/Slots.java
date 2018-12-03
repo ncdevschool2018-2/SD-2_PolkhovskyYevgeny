@@ -18,13 +18,16 @@ public class Slots {
     /*@JsonIgnore
     private Set<Timetable> timetablesById;*/
     
+    
     public Slots() {
     }
+    
     
     public Slots(String startTime, String endTime) {
         this.startTime = startTime;
         this.endTime = endTime;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -32,9 +35,11 @@ public class Slots {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "start_time", nullable = false, length = 45)
@@ -42,15 +47,18 @@ public class Slots {
         return startTime;
     }
     
+    
     public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
+    
     
     @Basic
     @Column(name = "end_time", nullable = false, length = 45)
     public String getEndTime() {
         return endTime;
     }
+    
     
     public void setEndTime(String endTime) {
         this.endTime = endTime;
@@ -77,10 +85,12 @@ public class Slots {
                 Objects.equals(timetablesById, slots.timetablesById)*/;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, startTime, endTime/*, timetablesById*/);
     }
+    
     
     @Override
     public String toString() {

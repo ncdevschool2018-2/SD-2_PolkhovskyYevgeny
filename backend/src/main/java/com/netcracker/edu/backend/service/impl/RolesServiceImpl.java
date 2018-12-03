@@ -13,25 +13,30 @@ public class RolesServiceImpl implements RolesService {
     
     private RolesRepository repository;
     
+    
     @Autowired
     public RolesServiceImpl(RolesRepository repository) {
         this.repository = repository;
     }
+    
     
     @Override
     public Roles saveRoles(Roles role) {
         return repository.save(role);
     }
     
+    
     @Override
     public Optional<Roles> getRolesById(int id) {
         return repository.findById(id);
     }
     
+    
     @Override
     public Iterable<Roles> getAllRoles() {
         return repository.findAll();
     }
+    
     
     @Override
     public void deleteRoles(int id) {

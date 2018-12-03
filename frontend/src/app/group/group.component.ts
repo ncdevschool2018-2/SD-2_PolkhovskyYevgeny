@@ -4,14 +4,13 @@ import {GroupService} from "../service/group.service";
 import {Subscription} from "rxjs";
 import {Ng4LoadingSpinnerService} from "ng4-loading-spinner";
 import {AccordionConfig} from 'ngx-bootstrap/accordion';
-import {PageChangedEvent} from 'ngx-bootstrap/pagination';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
-import {PageGroup} from "../model/pageGroup";
 import {Slots} from "../model/slots";
 
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
 }
+
 
 @Component({
   selector: 'app-group',
@@ -27,12 +26,12 @@ export class GroupComponent implements OnInit {
   public timetable: boolean;
   public modalRef: BsModalRef;
   public groups: Group[];
-  public groupNumber:number;
+  public groupNumber: number;
   public editableGroup: Group = new Group();
   private subscriptions: Subscription[] = [];
   /*page: PageGroup;*/
-  currentPage:number=1;
-  
+  currentPage: number = 1;
+
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -47,11 +46,13 @@ export class GroupComponent implements OnInit {
 
 
   }
+
   pageChanged(event: any): void {
     this.loadGroups(event.page);
     //this.page = event.page;
   }
-  private loadGroups(page:number): void {
+
+  private loadGroups(page: number): void {
 
     // Get data from BillingAccountService
     this.subscriptions.push(this.groupService.getPageGroups(page).subscribe(numb => {
@@ -59,18 +60,19 @@ export class GroupComponent implements OnInit {
       this.groups = numb as Group[];
 
 
-
     }));
-      }
+  }
 
-      public getNumberOfGroups():void{
-    this.subscriptions.push(this.groupService.getGroupsNumber().subscribe(numOfGroups=>{
-      this.groupNumber=numOfGroups as number;
+  public getNumberOfGroups(): void {
+    this.subscriptions.push(this.groupService.getGroupsNumber().subscribe(numOfGroups => {
+      this.groupNumber = numOfGroups as number;
     }))
-      }
+  }
+
   public _closeModal(): void {
     this.modalRef.hide();
   }
+
   /*public pageChanged(page:number):void{
 
   }*/
@@ -82,9 +84,11 @@ export class GroupComponent implements OnInit {
       this.modalRef.hide();
     }));
   }
+
   public _updateGroups(): void {
     this.loadGroups(this.currentPage);
   }
+
   private refreshGroup(): void {
     this.editableGroup = new Group();
   }

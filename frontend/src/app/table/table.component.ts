@@ -21,6 +21,7 @@ import {TeacherService} from "../service/teacher.service";
 import {SubjectTeacher} from "../model/subjectTeacher";
 import {SubjectTeacherService} from "../service/subject-teacher.service";
 
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -182,12 +183,12 @@ this.chooseGroup=id;
 
 
       for (let slot of this.slots) {
-        if(this.slotsNot.length==0){
+        if (this.slotsNot.length == 0) {
           this.slotsDist.push(slot);
         }
         for (let not of this.slotsNot) {
-          if((slot.startTime + " - " + slot.endTime).includes(not)){
-            this.slotsNot.splice(0,1);
+          if ((slot.startTime + " - " + slot.endTime).includes(not)) {
+            this.slotsNot.splice(0, 1);
             break;
           }
           this.slotsDist.push(slot);

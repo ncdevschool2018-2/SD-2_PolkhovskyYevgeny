@@ -143,13 +143,13 @@
             <label class="form-check-label text-warning" for="inlineRadio2">{{role.name}}</label>
           </div>-->
           <div class="bg-warning">
-          <mat-form-field>
-            <mat-select [(value)]="editableNewUser.roleId">
-              <mat-option *ngFor="let role of roles" [value]="role.id">
-                {{role.name}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field>
+              <mat-select [(value)]="editableNewUser.roleId">
+                <mat-option *ngFor="let role of roles" [value]="role.id">
+                  {{role.name}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
           <!--<div>
             <mat-radio-group class="example-radio-group" [(ngModel)]="editableNewUser.roleId">

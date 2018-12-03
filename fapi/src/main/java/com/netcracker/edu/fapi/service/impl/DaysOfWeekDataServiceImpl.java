@@ -16,6 +16,7 @@ public class DaysOfWeekDataServiceImpl implements DaysOfWeekDataService {
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<DaysOfWeekViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -24,16 +25,19 @@ public class DaysOfWeekDataServiceImpl implements DaysOfWeekDataService {
         return daysOfWeekViewModelResponse == null ? Collections.emptyList() : Arrays.asList(daysOfWeekViewModelResponse);
     }
     
+    
     @Override
     public DaysOfWeekViewModel getDaysOfWeekById(int id) {
         return null;
     }
+    
     
     @Override
     public DaysOfWeekViewModel saveDaysOfWeek(DaysOfWeekViewModel day) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/days-of-week", day, DaysOfWeekViewModel.class).getBody();
     }
+    
     
     @Override
     public void deleteDaysOfWeek(int id) {

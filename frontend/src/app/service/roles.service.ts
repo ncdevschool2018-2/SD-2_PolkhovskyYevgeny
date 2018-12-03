@@ -1,14 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Roles} from "../model/role";
 import {HttpClient} from "@angular/common/http";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class RolesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   getRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>('/api/role');
   }

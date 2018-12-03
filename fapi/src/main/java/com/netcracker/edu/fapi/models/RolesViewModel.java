@@ -8,8 +8,10 @@ public class RolesViewModel {
     private String name;
     /*private Collection<Users> usersById;*/
     
+    
     public RolesViewModel() {
     }
+    
     
     public RolesViewModel(int id, String name/*, Collection<Users> usersById*/) {
         this.id = id;
@@ -17,17 +19,21 @@ public class RolesViewModel {
         /*this.usersById = usersById;*/
     }
     
+    
     public int getId() {
         return id;
     }
+    
     
     public void setId(int id) {
         this.id = id;
     }
     
+    
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;

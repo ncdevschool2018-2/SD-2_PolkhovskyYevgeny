@@ -57,7 +57,6 @@ export class AdminComponent implements OnInit {
     private slotService: SlotService,
     private router: Router,
     private authService: AuthService,
-
   ) {
   }
 
@@ -77,10 +76,12 @@ export class AdminComponent implements OnInit {
       this.slots = slots as Slots[];
     }));
   }
-  logout(){
+
+  logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
+
   /*public _openModal(template: TemplateRef<any>): void {
     this.refreshGroup();
     this.modalRef = this.modalService.show(template);

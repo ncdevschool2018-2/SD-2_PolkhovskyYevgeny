@@ -4,8 +4,6 @@ import com.netcracker.edu.fapi.models.PageGroupViewModel;
 import com.netcracker.edu.fapi.models.UniversityGroupViewModel;
 import com.netcracker.edu.fapi.service.UniversityGroupDataService;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -19,6 +17,7 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<UniversityGroupViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -27,10 +26,12 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
         return universityGroupViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(universityGroupViewModelsResponse);
     }
     
+    
     @Override
     public UniversityGroupViewModel getUniversityGroupById(int id) {
         return null;
     }
+    
     
     @Override
     public UniversityGroupViewModel saveUniversityGroup(UniversityGroupViewModel group) {
@@ -39,6 +40,7 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
         
     }
     
+    
     @Override
     public void deleteUniversityGroup(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -46,25 +48,28 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
         
     }
     
+    
     @Override
     public PageGroupViewModel getPageGroup(int page) {
         RestTemplate restTemplate = new RestTemplate();
         
-        return restTemplate.postForEntity(backendServerUrl+"/api/universitygroups/list",page,PageGroupViewModel.class).getBody();
+        return restTemplate.postForEntity(backendServerUrl + "/api/universitygroups/list", page, PageGroupViewModel.class).getBody();
     }
+    
     
     @Override
     public List<UniversityGroupViewModel> findGroupPage(int page) {
         RestTemplate restTemplate = new RestTemplate();
         UniversityGroupViewModel[] universityGroupViewModelsResponse =
-                restTemplate.getForObject(backendServerUrl+"/api/universitygroups/page/"+page,UniversityGroupViewModel[].class);
+                restTemplate.getForObject(backendServerUrl + "/api/universitygroups/page/" + page, UniversityGroupViewModel[].class);
         return universityGroupViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(universityGroupViewModelsResponse);
     }
+    
     
     @Override
     public Integer getTotalPages() {
         RestTemplate restTemplate = new RestTemplate();
-        Integer totalPages = restTemplate.getForObject(backendServerUrl+"/api/universitygroups/totalPages",Integer.class);
+        Integer totalPages = restTemplate.getForObject(backendServerUrl + "/api/universitygroups/totalPages", Integer.class);
         return totalPages;
     }
     

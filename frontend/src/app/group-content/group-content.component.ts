@@ -15,6 +15,7 @@ import {PupilService} from "../service/pupil.service";
 import {Users} from "../model/users";
 import {UsersService} from "../service/users.service";
 
+
 @Component({
   selector: 'app-group-content',
   templateUrl: './group-content.component.html',
@@ -163,11 +164,13 @@ export class GroupContentComponent implements OnInit {
     }));
 
   }
+
   private refreshGroup(): void {
     this.editableGroup = new Group();
   }
+
   public _addNewPupil(): void {
-    this.editableNewUser.groupId=this.groupNumber;
+    this.editableNewUser.groupId = this.groupNumber;
     this.editableNewUser.roleId = 3;
     this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
       this._updateUsers();
@@ -177,9 +180,11 @@ export class GroupContentComponent implements OnInit {
       this._closeModal();
     }));
   }
+
   public _updateUsers(): void {
     this.loadUsers();
   }
+
   private loadUsers(): void {
 
 

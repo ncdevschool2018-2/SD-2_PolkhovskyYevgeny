@@ -15,10 +15,13 @@ public interface UniversityGroupRepository extends CrudRepository<UniversityGrou
     @Modifying
     @Query(value = "select * from university_group order by name", nativeQuery = true)
     List<UniversityGroup> findAllOrderByName();
+    
     Page<UniversityGroup> findAll(Pageable pageable);
+    
     @Modifying
     @Query(value = "SELECT * FROM university_group ORDER BY name LIMIT 10 OFFSET ?1", nativeQuery = true)
     List<UniversityGroup> findGroupPage(int offset);
+    
     @Modifying
     @Query(value = "SELECT COUNT (*) FROM university_group", nativeQuery = true)
     Integer getTotalPages();

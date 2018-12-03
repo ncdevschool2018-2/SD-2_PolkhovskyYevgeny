@@ -22,44 +22,49 @@ public class RegistrationServiceImpl implements RegistrationService {
     private TeacherService teacherService;
     private SubjectTeacherService subjectTeacherService;
     
+    
     @Autowired
-    public  RegistrationServiceImpl(PupilsService pupilsService,UsersService usersService,TeacherService teacherService,SubjectTeacherService subjectTeacherService){
+    public RegistrationServiceImpl(PupilsService pupilsService, UsersService usersService, TeacherService teacherService, SubjectTeacherService subjectTeacherService) {
         this.pupilsService = pupilsService;
-        this.usersService=usersService;
-        this.teacherService=teacherService;
-        this.subjectTeacherService =subjectTeacherService;
+        this.usersService = usersService;
+        this.teacherService = teacherService;
+        this.subjectTeacherService = subjectTeacherService;
     }
+    
+    
     @Override
     @Transactional
     public Pupils registratePupil(PupilDto pupilDto) {
-        Users newUser = new Users(pupilDto.getLogin(),pupilDto.getPassword(),pupilDto.getRoleId());
+        Users newUser = new Users(pupilDto.getLogin(), pupilDto.getPassword(), pupilDto.getRoleId());
         
         
         usersService.saveUsers(newUser);
-        Users getUser=usersService.findUserByLogin(pupilDto.getLogin());
-        Pupils newPupil= new Pupils(pupilDto.getName(),pupilDto.getSurname(),pupilDto.getGroupId(),getUser.getId());
+        Users getUser = usersService.findUserByLogin(pupilDto.getLogin());
+        Pupils newPupil = new Pupils(pupilDto.getName(), pupilDto.getSurname(), pupilDto.getGroupId(), getUser.getId());
         
         pupilsService.savePupil(newPupil);
         
         return newPupil;
     }
     
+    
     @Override
     @Transactional
     public Teacher registrateTeacher(TeacherDto teacherDto) {
-        Users newUser = new Users(teacherDto.getLogin(),teacherDto.getPassword(),teacherDto.getRoleId());
+        Users newUser = new Users(teacherDto.getLogin(), teacherDto.getPassword(), teacherDto.getRoleId());
         usersService.saveUsers(newUser);
         Users getUser = usersService.findUserByLogin(teacherDto.getLogin());
-        Teacher newTeacher = new Teacher(teacherDto.getName(),teacherDto.getSurname(),getUser.getId());
+        Teacher newTeacher = new Teacher(teacherDto.getName(), teacherDto.getSurname(), getUser.getId());
         teacherService.saveTeacher(newTeacher);
         
-        Teacher teacherId= teacherService.findTeacherByUserId(newTeacher.getUserId());
-        SubjectTeacher newSubjectTeacher= new SubjectTeacher(teacherDto.getSubjectId(),teacherId.getId());
+        Teacher teacherId = teacherService.findTeacherByUserId(newTeacher.getUserId());
+        SubjectTeacher newSubjectTeacher = new SubjectTeacher(teacherDto.getSubjectId(), teacherId.getId());
         subjectTeacherService.saveSubjectTeacher(newSubjectTeacher);
         
         
         return newTeacher;
     }
+    
     
     @Override
     public Pupils editPupil(Pupils pupils) {

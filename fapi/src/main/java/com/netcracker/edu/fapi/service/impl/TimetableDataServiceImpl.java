@@ -18,6 +18,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<TimetableViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -26,10 +27,12 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         return timetableViewModelResponse == null ? Collections.emptyList() : Arrays.asList(timetableViewModelResponse);
     }
     
+    
     @Override
     public TimetableViewModel getTimetableById(int id) {
         return null;
     }
+    
     
     @Override
     public List<TimetableViewModel> getTimetableByGroupId(int id) {
@@ -67,6 +70,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         return timetable == null ? Collections.emptyList() : Arrays.asList(timetable);
     }
     
+    
     @Override
     public List<TimetableViewModel> getTimetableByTeacherId(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -103,6 +107,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         return timetable == null ? Collections.emptyList() : Arrays.asList(timetable);
     }
     
+    
     @Override
     public List<TimetableExampleViewModel> getTimetableNamedByGroupId(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -114,6 +119,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         return timetableExampleResponse;
     }
     
+    
     @Override
     public List<TimetableExampleViewModel> getTimetableNamedByTeacherId(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -123,6 +129,7 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         
         return timetableExampleResponse;
     }
+    
     
     private void helpGetTimetable(RestTemplate restTemplate, List<TimetableExampleViewModel> timetableExampleResponse, List<TimetableViewModel> startTimetable) {
         for (TimetableViewModel timetable : startTimetable) {
@@ -145,11 +152,13 @@ public class TimetableDataServiceImpl implements TimetableDataService {
         }
     }
     
+    
     @Override
     public TimetableViewModel saveTimetable(TimetableViewModel timetable) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/timetables", timetable, TimetableViewModel.class).getBody();
     }
+    
     
     @Override
     public void deleteTimetable(int id) {

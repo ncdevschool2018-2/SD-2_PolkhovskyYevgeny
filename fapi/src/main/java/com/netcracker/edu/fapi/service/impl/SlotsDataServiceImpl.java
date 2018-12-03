@@ -24,16 +24,19 @@ public class SlotsDataServiceImpl implements SlotsDataService {
         return slotsViewModelResponse == null ? Collections.emptyList() : Arrays.asList(slotsViewModelResponse);
     }
     
+    
     @Override
     public SlotsViewModel getSlotsById(int id) {
         return null;
     }
+    
     
     @Override
     public SlotsViewModel saveSlots(SlotsViewModel slot) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.postForEntity(backendServerUrl + "/api/slots", slot, SlotsViewModel.class).getBody();
     }
+    
     
     @Override
     public void deleteSlots(int id) {

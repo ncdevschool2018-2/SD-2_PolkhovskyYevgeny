@@ -1,6 +1,9 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.*;
+import com.netcracker.edu.fapi.models.NewTeacherViewModel;
+import com.netcracker.edu.fapi.models.NewUserViewModel;
+import com.netcracker.edu.fapi.models.PageTeacherViewModel;
+import com.netcracker.edu.fapi.models.TeacherViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    
     @Override
     public List<TeacherViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -23,6 +27,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
                 restTemplate.getForObject(backendServerUrl + "/api/teachers/all", TeacherViewModel[].class);
         return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
     }
+    
     
     @Override
     public List<TeacherViewModel> getTeachersSbj(int sbj) {
@@ -43,6 +48,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
     }
     
+    
     @Override
     public TeacherViewModel getTeacherById(int id) {
         RestTemplate restTemplate = new RestTemplate();
@@ -51,14 +57,15 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         return teacherViewModelResp;
     }
     
+    
     @Override
     public TeacherViewModel saveTeacher(NewUserViewModel newTeacherViewModel) {
         RestTemplate restTemplate = new RestTemplate();
-        NewTeacherViewModel newTeacher=
-                new NewTeacherViewModel(newTeacherViewModel.getName(),newTeacherViewModel.getSurname(),newTeacherViewModel.getSubjectId(),newTeacherViewModel.getUserId(),newTeacherViewModel.getLogin(),newTeacherViewModel.getPassword(),newTeacherViewModel.getRoleId());
+        NewTeacherViewModel newTeacher =
+                new NewTeacherViewModel(newTeacherViewModel.getName(), newTeacherViewModel.getSurname(), newTeacherViewModel.getSubjectId(), newTeacherViewModel.getUserId(), newTeacherViewModel.getLogin(), newTeacherViewModel.getPassword(), newTeacherViewModel.getRoleId());
         
-        NewTeacherViewModel  teacher = restTemplate.postForEntity(backendServerUrl+"/api/teachers",newTeacher,NewTeacherViewModel.class).getBody();
-         return null;
+        NewTeacherViewModel teacher = restTemplate.postForEntity(backendServerUrl + "/api/teachers", newTeacher, NewTeacherViewModel.class).getBody();
+        return null;
         
     }
     
@@ -90,19 +97,19 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     }*/
     
     
-    
     @Override
     public void deleteTeacher(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/teachers/" + id);
     }
     
+    
     @Override
     public PageTeacherViewModel getPageTeacher(int page) {
         RestTemplate restTemplate = new RestTemplate();
-    
-        return restTemplate.postForEntity(backendServerUrl+"/api/teachers/list",page,PageTeacherViewModel.class).getBody();
-    
+        
+        return restTemplate.postForEntity(backendServerUrl + "/api/teachers/list", page, PageTeacherViewModel.class).getBody();
+        
     }
     
 }

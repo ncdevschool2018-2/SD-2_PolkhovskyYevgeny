@@ -22,9 +22,11 @@ public class Roles {
     public Roles() {
     }
     
+    
     public Roles(String name) {
         this.name = name;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -32,15 +34,18 @@ public class Roles {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;
@@ -56,6 +61,7 @@ public class Roles {
     //    this.usersById = usersById;
     //}
     
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,6 +74,7 @@ public class Roles {
                 ;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, name
@@ -75,6 +82,7 @@ public class Roles {
                 //usersById
         );
     }
+    
     
     @Override
     public String toString() {

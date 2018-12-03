@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Timetable} from "../model/timetable";
 import {TimetableExample} from "../model/timetableExample";
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,15 +20,19 @@ export class TimetableService {
   saveTimetable(timetable: Timetable): Observable<Timetable> {
     return this.http.post<Timetable>('/api/timetable', timetable);
   }
-  getTimetableByGroupId(id:number):Observable<Timetable[]>{
-    return this.http.get<Timetable[]>('api/timetable/group/'+id);
+
+  getTimetableByGroupId(id: number): Observable<Timetable[]> {
+    return this.http.get<Timetable[]>('api/timetable/group/' + id);
   }
-  getTimetableNamedByGroupId(id:number):Observable<TimetableExample[]>{
-    return this.http.get<TimetableExample[]>('api/timetable/group/named/'+id);
+
+  getTimetableNamedByGroupId(id: number): Observable<TimetableExample[]> {
+    return this.http.get<TimetableExample[]>('api/timetable/group/named/' + id);
   }
-  getTimetableNamedByTeacherId(id:number):Observable<TimetableExample[]>{
-    return this.http.get<TimetableExample[]>('api/timetable/teacher/named/'+id);
+
+  getTimetableNamedByTeacherId(id: number): Observable<TimetableExample[]> {
+    return this.http.get<TimetableExample[]>('api/timetable/teacher/named/' + id);
   }
+
   deleteTimetable(timetableId: string): Observable<void> {
     return this.http.delete<void>('/api/timetable/' + timetableId);
   }

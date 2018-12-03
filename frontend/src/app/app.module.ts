@@ -10,29 +10,29 @@ import {PupilComponent} from './pupil/pupil.component';
 import {TeacherinfoComponent} from './teacherinfo/teacherinfo.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {GroupContentComponent} from './group-content/group-content.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {ModalModule} from "ngx-bootstrap";
 import {Ng4LoadingSpinnerModule} from "ng4-loading-spinner";
-import { FooterComponent } from './footer/footer.component';
+import {FooterComponent} from './footer/footer.component';
 import {MatNativeDateModule} from '@angular/material';
 import {DemoMaterialModule} from './material-module';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { TimetableComponent } from './timetable/timetable.component';
-import { TimetableInfoComponent } from './timetable-info/timetable-info.component';
-import { TableComponent } from './table/table.component';
-import { SubjectsComponent } from './subjects/subjects.component';
-import { GoBackComponent } from './go-back/go-back.component';
-import { TeachersComponent } from './teachers/teachers.component';
-import { TimetableInfoTeacherComponent } from './timetable-info-teacher/timetable-info-teacher.component';
-import { TableTeacherComponent } from './table-teacher/table-teacher.component';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
-import { CollapseModule } from 'ngx-bootstrap/collapse';
-import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { TypeaheadModule } from 'ngx-bootstrap/typeahead';
+import {TimetableComponent} from './timetable/timetable.component';
+import {TimetableInfoComponent} from './timetable-info/timetable-info.component';
+import {TableComponent} from './table/table.component';
+import {SubjectsComponent} from './subjects/subjects.component';
+import {GoBackComponent} from './go-back/go-back.component';
+import {TeachersComponent} from './teachers/teachers.component';
+import {TimetableInfoTeacherComponent} from './timetable-info-teacher/timetable-info-teacher.component';
+import {TableTeacherComponent} from './table-teacher/table-teacher.component';
+import {AccordionModule} from 'ngx-bootstrap/accordion';
+import {CollapseModule} from 'ngx-bootstrap/collapse';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
+import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {TokenStorage} from "./service/token.storage";
 import {InterceptorService} from "./service/interceptor.service";
-import { SignupComponent } from './signup/signup.component';
+import {SignupComponent} from './signup/signup.component';
 
 
 @NgModule({
@@ -87,4 +87,6 @@ import { SignupComponent } from './signup/signup.component';
 })
 export class AppModule {
 }
+
+
 platformBrowserDynamic().bootstrapModule(AppModule);

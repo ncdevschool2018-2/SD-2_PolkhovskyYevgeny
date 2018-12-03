@@ -20,12 +20,15 @@ public class UniversityGroup {
     @JsonIgnore
     private Set<Timetable> timetablesById;*/
     
+    
     public UniversityGroup() {
     }
+    
     
     public UniversityGroup(String name) {
         this.name = name;
     }
+    
     
     @Id
     @Column(name = "id", nullable = false)
@@ -33,15 +36,18 @@ public class UniversityGroup {
         return id;
     }
     
+    
     public void setId(int id) {
         this.id = id;
     }
+    
     
     @Basic
     @Column(name = "name", nullable = true, length = 45)
     public String getName() {
         return name;
     }
+    
     
     public void setName(String name) {
         this.name = name;
@@ -78,10 +84,12 @@ public class UniversityGroup {
                 Objects.equals(timetablesById, that.timetablesById)*/;
     }
     
+    
     @Override
     public int hashCode() {
         return Objects.hash(id, name/*, pupilsById, timetablesById*/);
     }
+    
     
     @Override
     public String toString() {
