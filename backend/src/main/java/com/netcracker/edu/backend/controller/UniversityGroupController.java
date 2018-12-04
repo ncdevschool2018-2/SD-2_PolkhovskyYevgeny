@@ -43,6 +43,12 @@ public class UniversityGroupController {
         List<UniversityGroup> pageFull = universityGroupService.findGroupPage(page * 10);
         return pageFull;
     }
+    @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
+    public List<UniversityGroup> showPage(@PathVariable String word) {
+        
+        List<UniversityGroup> page = universityGroupService.findGroup(word);
+        return page;
+    }
     
     
     @RequestMapping(value = "/totalPages", method = RequestMethod.GET)

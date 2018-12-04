@@ -8,6 +8,7 @@ import {Token} from "../model/token";
 import {TokenStorage} from "../service/token.storage";
 import {UsersService} from "../service/users.service";
 import {Router} from "@angular/router";
+import {AuthGuardService} from "../service/auth-guard.service";
 
 
 @Component({
@@ -30,6 +31,7 @@ export class SigninComponent implements OnInit, OnDestroy {
               private tokeStorage: TokenStorage,
               private usersService: UsersService,
               private router: Router,
+              private authGuardService:AuthGuardService,
   ) {
   }
 
@@ -58,14 +60,18 @@ export class SigninComponent implements OnInit, OnDestroy {
 
         console.log(this.authorizationAccount);
 
-        if (!this.authorizationAccount) {
-          this.alertUserAboutError = true;
-        } else {
-          this.alertUserAboutError = false;
-
+        if (this.authorizationAccount.roleId==1) {
           this.authService.transmitAuthorizedUser(this.authorizationAccount);
 
           this.router.navigate(['admin']);
+        } else if (this.authorizationAccount.roleId==2) {
+          this.authService.transmitAuthorizedUser(this.authorizationAccount);
+
+          this.router.navigate(['admin']);
+        }else if (this.authorizationAccount.roleId==3) {
+          this.authService.transmitAuthorizedUser(this.authorizationAccount);
+
+          this.router.navigate(['pupil']);
         }
 
         this.loadingService.hide();

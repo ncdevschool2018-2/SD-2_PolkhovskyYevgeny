@@ -6,29 +6,23 @@
 
     <table class="table table-sm">
 
-      <accordion>
-        <accordion-group heading="Line View">
+      <accordion >
+        <accordion-group heading="Line View"  [hidden]="tChange" [isOpen]="!tChange">
           <app-table *ngFor="let day of days"
                      (formStateChanged)="test()"
                      [day]="day" [timetable]="timetable"
                      [groupNumber]="groupNumber"
                      [slots]="slots"
           ></app-table>
-          <!--<app-table [day]="Tuesday" [groupNumber]="groupNumber"></app-table>
-          <app-table [day]="Wednesday" [groupNumber]="groupNumber"></app-table>
-          <app-table [day]="Thursday" [groupNumber]="groupNumber"></app-table>
-          <app-table [day]="Friday" [groupNumber]="groupNumber"></app-table>
-          <app-table [day]="Saturday" [groupNumber]="groupNumber"></app-table>
-          <app-table [day]="Sunday" [groupNumber]="groupNumber"></app-table>-->
         </accordion-group>
-        <accordion-group heading="Table View">
+        <accordion-group heading="Table View"  [hidden]="!tChange" [isOpen]="tChange" >
           <div class="row">
             <div class="col-6">
               <app-table [day]="Monday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
             <div class="col-6">
-              <app-table [day]="Tuesday" (formStateChanged)="test()" [slots]="slots"
+              <app-table [day]="Tuesday" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
                          [timetable]="timetable"></app-table>
             </div>
 
@@ -39,7 +33,7 @@
                          [groupNumber]="groupNumber"></app-table>
             </div>
             <div class="col-6">
-              <app-table [day]="Thursday" (formStateChanged)="test()" [slots]="slots"
+              <app-table [day]="Thursday" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
                          [timetable]="timetable"></app-table>
             </div>
 

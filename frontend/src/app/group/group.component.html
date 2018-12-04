@@ -4,10 +4,26 @@
 <div>
   <h1 align="center">Groups </h1>
 </div>
-<button *ngIf="!timetable" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
-        (click)="_openModal(template)">
-  Create group
-</button>
+<div>
+  <button *ngIf="!timetable" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+          (click)="_openModal(template)">
+    Create group
+  </button>
+  <mat-radio-group *ngIf="timetable" class="example-radio-group" [(ngModel)]="tChange">
+    <mat-radio-button class="example-radio-button"  [value]="false">
+
+      <a> <img src="https://image.flaticon.com/icons/svg/1142/1142015.svg"></a>
+    </mat-radio-button>
+    <mat-radio-button class="example-radio-button"   [value]="true">
+      <a> <img src="https://image.flaticon.com/icons/svg/25/25617.svg"></a>
+
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <span><input type="text" [(ngModel)]="search" (keyup)="k()"   class="form-control" id="formGroupExampleInput" placeholder="Example input"></span>
+
+
+</div>
 <main class="container" *ngIf="groups">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
 
@@ -19,7 +35,7 @@
 
       </tr>
       </thead>
-      <tbody>
+      <tbody *ngIf="groups">
       <tr *ngFor="let group of groups">
         <td width="5%">{{group.id}}</td>
         <td>
@@ -31,22 +47,18 @@
 
           </accordion>
 
-
           <accordion *ngIf="timetable">
             <accordion-group heading="{{group.name}}">
-              <app-timetable-info [groupNumber]="group.id" [slots]="slots"></app-timetable-info>
+              <app-timetable-info  [groupNumber]="group.id" [tChange]="tChange" [slots]="slots"></app-timetable-info>
             </accordion-group>
 
           </accordion>
-          <!--<p class="lead text-center"   *ngIf="!timetable" routerLink="/groupContent/{{group.id}}">{{group.name}}</p>-->
-          <!--<p class="lead text-center" *ngIf="timetable" routerLink="/timetableinfo/{{group.id}}">{{group.name}}</p>-->
-        </td>
+          </td>
       </tr>
-
-
       </tbody>
+
     </table>
-    <pagination *ngIf="groups" [totalItems]="groupNumber"
+    <pagination [hidden]="paghide" *ngIf="groups " [totalItems]="groupNumber"
                 [(ngModel)]="currentPage"
                 (pageChanged)="pageChanged($event)"></pagination>
   </div>

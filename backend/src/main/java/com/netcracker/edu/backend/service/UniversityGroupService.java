@@ -22,5 +22,7 @@ public interface UniversityGroupService {
     
     List<UniversityGroup> findGroupPage(int offset);
     
+    List<UniversityGroup> findGroup(String  word);
+    
     Integer getTotalPages();
 }

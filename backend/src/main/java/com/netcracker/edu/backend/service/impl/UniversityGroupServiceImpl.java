@@ -68,6 +68,13 @@ public class UniversityGroupServiceImpl implements UniversityGroupService {
     
     
     @Override
+    public List<UniversityGroup> findGroup(String word) {
+        //word='%'+word+'%';
+        return repository.findGroup(word);
+    }
+    
+    
+    @Override
     public Integer getTotalPages() {
         return toIntExact(repository.count());
     }

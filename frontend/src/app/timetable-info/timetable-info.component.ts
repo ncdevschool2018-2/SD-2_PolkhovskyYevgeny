@@ -21,6 +21,8 @@ export class TimetableInfoComponent implements OnInit {
   public groupNumber: number;
   @Input()
   public slots: Slots[];
+  @Input()
+  public tChange: boolean;
   public days: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   private subscriptions: Subscription[] = [];
   public Monday: string = "Monday";

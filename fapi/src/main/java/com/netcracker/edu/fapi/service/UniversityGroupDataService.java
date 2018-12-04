@@ -18,5 +18,7 @@ public interface UniversityGroupDataService {
     
     List<UniversityGroupViewModel> findGroupPage(int page);
     
+    List<UniversityGroupViewModel> findGroup(String  word);
+    
     Integer getTotalPages();
 }

@@ -67,6 +67,17 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
     
     
     @Override
+    public List<UniversityGroupViewModel> findGroup(String word) {
+        RestTemplate restTemplate = new RestTemplate();
+    
+        UniversityGroupViewModel[] universityGroupViewModelsResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/universitygroups/search/" + word, UniversityGroupViewModel[].class);
+        return universityGroupViewModelsResponse == null ? Collections.emptyList() : Arrays.asList(universityGroupViewModelsResponse);
+    
+    }
+    
+    
+    @Override
     public Integer getTotalPages() {
         RestTemplate restTemplate = new RestTemplate();
         Integer totalPages = restTemplate.getForObject(backendServerUrl + "/api/universitygroups/totalPages", Integer.class);

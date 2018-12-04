@@ -7,7 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./timetable.component.css']
 })
 export class TimetableComponent implements OnInit {
-
+  favoriteSeason: string;
+  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   constructor() {
   }
 

@@ -8,3 +8,10 @@ th {
   text-align: inherit;
 }
 
+span {
+  float: right;
+}
+img{
+  height: 50px;
+  width: 50px;
+}

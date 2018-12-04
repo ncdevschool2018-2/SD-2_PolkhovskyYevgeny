@@ -38,7 +38,7 @@ public class PupilDataController {
         if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
                 pupil.getSurname().matches("[a-zA-Z]{3,10}") &&
                 pupil.getLogin().matches("[a-zA-Z0-9]{3,10}") &&
-                pupil.getPassword().matches("[[a-zA-Z0-9]{3,10}]")) {
+                pupil.getPassword().matches("[a-zA-Z0-9]{3,10}")) {
             NewUserViewModel newPupil =
                     new NewUserViewModel(pupil.getName(), pupil.getSurname(), pupil.getSubjectId(), pupil.getGroupId(), pupil.getUserId(), pupil.getLogin(), bcryptEncoder.encode(pupil.getPassword()), pupil.getRoleId());
             if (newPupil != null) {

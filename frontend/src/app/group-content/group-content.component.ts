@@ -179,10 +179,13 @@ export class GroupContentComponent implements OnInit {
 
   public _addNewPupil(): void {
     debugger
-    let expr=/a-zA-Z/;
-    let exprd=/a-zA-Z0-1/;
-
-    if ( (expr.test(this.editableNewUser.name)&&
+    let expr=/[ -/:-?[-`{-~]/;
+    let exprd=/[ -?[-`{-~]/;
+    let g=expr.test(this.editableNewUser.name);
+    let k=expr.test(this.editableNewUser.surname);
+    let m=exprd.test(this.editableNewUser.login);
+    let t=exprd.test(this.editableNewUser.password);
+    if ( !(expr.test(this.editableNewUser.name)&&
       expr.test(this.editableNewUser.surname)&&
         exprd.test(this.editableNewUser.login)&&
           exprd.test(this.editableNewUser.password))) {

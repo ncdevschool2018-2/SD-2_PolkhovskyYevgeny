@@ -29,7 +29,9 @@ export class GroupService { //todo create interface
   getPageGroups(page: number): Observable<Group[]> {
     return this.http.get<Group[]>('/api/universitygroup/page/' + (page - 1));
   }
-
+  findGroup(word: string): Observable<Group[]> {
+    return this.http.get<Group[]>('/api/universitygroup/search/' + word);
+  }
   getGroupsNumber(): Observable<number> {
     return this.http.get<number>('/api/universitygroup/totalPages');
   }

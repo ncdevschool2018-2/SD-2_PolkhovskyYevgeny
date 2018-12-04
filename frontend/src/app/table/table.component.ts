@@ -56,7 +56,7 @@ export class TableComponent implements OnInit {
   public chooseSubject: number;
   public chooseTeachers: number;
   public chooseTeachersName: Teacher[];
-  public chooseGroup: number = this.groupNumber;
+
   public monConfirmId: number;
 
   constructor(private loadingService: Ng4LoadingSpinnerService,

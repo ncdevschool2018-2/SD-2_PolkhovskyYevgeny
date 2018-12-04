@@ -26,12 +26,18 @@ export class GroupComponent implements OnInit {
   public timetable: boolean;
   public modalRef: BsModalRef;
   public groups: Group[];
+  public groupsf: Group[];
   public groupNumber: number;
   public editableGroup: Group = new Group();
   private subscriptions: Subscription[] = [];
   /*page: PageGroup;*/
   currentPage: number = 1;
-public alertGroup:boolean=true;
+  public alertGroup: boolean = true;
+  public paghide: boolean = false;
+  public search: string = "";
+  public kj: string = "";
+  tChange: boolean=false;
+  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
   constructor(private groupService: GroupService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -50,6 +56,27 @@ public alertGroup:boolean=true;
   pageChanged(event: any): void {
     this.loadGroups(event.page);
     //this.page = event.page;
+  }
+
+
+
+
+  public k(): void {
+    if (this.search.length == 0) {
+      this.loadGroups(1);
+      this.paghide=false;
+
+    }
+    else {
+
+    this.kj = this.search;
+    this.subscriptions.push(this.groupService.findGroup(this.kj).subscribe(numb => {
+      // Parse json response into local array
+      this.groups = numb as Group[];
+      this.paghide=true;
+
+    }));
+  }
   }
 
   private loadGroups(page: number): void {
@@ -83,15 +110,16 @@ public alertGroup:boolean=true;
   }*/
   public _addGroup(): void {
     debugger
-    if(parseInt(this.editableGroup.name)>=1000000 &&parseInt(this.editableGroup.name)<=99999999){
-    this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
-      this._updateGroups();
-      this.refreshGroup();
-      this.getNumberOfGroups();
-      this.modalRef.hide();
-    }));}
-    else{
-      this.alertGroup=false;
+    if (parseInt(this.editableGroup.name) >= 1000000 && parseInt(this.editableGroup.name) <= 99999999) {
+      this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
+        this._updateGroups();
+        this.refreshGroup();
+        this.getNumberOfGroups();
+        this.modalRef.hide();
+      }));
+    }
+    else {
+      this.alertGroup = false;
     }
   }
 
