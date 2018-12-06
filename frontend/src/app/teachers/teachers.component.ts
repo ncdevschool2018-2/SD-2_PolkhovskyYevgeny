@@ -44,7 +44,7 @@ export class TeachersComponent implements OnInit {
   public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
   page: PageTeacher;
   currentPage: number = 1;
-
+  tChange: boolean=false;
   constructor(private teacherService: TeacherService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,

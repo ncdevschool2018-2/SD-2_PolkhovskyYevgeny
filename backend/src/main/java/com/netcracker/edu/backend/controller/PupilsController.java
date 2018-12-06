@@ -35,6 +35,11 @@ public class PupilsController {
             return ResponseEntity.notFound().build();
         }
     }
+    @RequestMapping(value = "/userId/{id}", method = RequestMethod.GET)
+    public Pupils getPupilByUserId(@PathVariable(name = "id") int id) {
+        Pupils pupils = pupilsService.findByUserId(id);
+        return pupils;
+    }
     
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)

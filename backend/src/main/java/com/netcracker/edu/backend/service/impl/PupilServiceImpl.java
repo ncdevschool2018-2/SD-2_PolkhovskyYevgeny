@@ -49,4 +49,10 @@ public class PupilServiceImpl implements PupilsService {
     public void deletePupil(int id) {
         repository.deleteById(id);
     }
+    
+    
+    @Override
+    public Pupils findByUserId(int userId) {
+        return repository.findByUserId(userId);
+    }
 }

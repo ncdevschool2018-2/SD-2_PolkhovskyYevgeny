@@ -22,6 +22,8 @@ export class TimetableInfoTeacherComponent implements OnInit {
   public teacherNumber: number;
   @Input()
   public slots: Slots[];
+  @Input()
+  public tChange: boolean;
   public days: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   public Monday: string = "Monday";
   public Tuesday: string = "Tuesday";

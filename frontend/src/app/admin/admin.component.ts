@@ -301,7 +301,7 @@ export class AdminComponent implements OnInit {
   }*/
 
   public first(): void {
-    this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed = false;
     this.isCollapsed1 = true;
     this.isCollapsed2 = true;
     this.isCollapsed3 = true;
@@ -309,7 +309,7 @@ export class AdminComponent implements OnInit {
 
   public second(): void {
     this.isCollapsed = true;
-    this.isCollapsed1 = !this.isCollapsed1;
+    this.isCollapsed1 = false;
     this.isCollapsed2 = true;
     this.isCollapsed3 = true;
   }
@@ -317,7 +317,7 @@ export class AdminComponent implements OnInit {
   public third(): void {
     this.isCollapsed = true;
     this.isCollapsed1 = true;
-    this.isCollapsed2 = !this.isCollapsed2;
+   this.isCollapsed2 = false;
     this.isCollapsed3 = true;
   }
 
@@ -325,6 +325,6 @@ export class AdminComponent implements OnInit {
     this.isCollapsed = true;
     this.isCollapsed1 = true;
     this.isCollapsed2 = true;
-    this.isCollapsed3 = !this.isCollapsed3;
+    this.isCollapsed3 = false;
   }
 }

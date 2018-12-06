@@ -31,11 +31,15 @@ public class PupilDataController {
     public ResponseEntity<List<PupilViewModel>> getByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
+    @RequestMapping(value = "/userId/{id}")
+    public ResponseEntity<PupilViewModel> findByUserId(@PathVariable int id) {
+        return ResponseEntity.ok(pupilDataService.findByUserId(id));
+    }
     
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-        if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
+         if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
                 pupil.getSurname().matches("[a-zA-Z]{3,10}") &&
                 pupil.getLogin().matches("[a-zA-Z0-9]{3,10}") &&
                 pupil.getPassword().matches("[a-zA-Z0-9]{3,10}")) {

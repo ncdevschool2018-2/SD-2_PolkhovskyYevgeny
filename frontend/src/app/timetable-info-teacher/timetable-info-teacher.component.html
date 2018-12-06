@@ -22,7 +22,7 @@
     <table class="table table-sm">
 
       <accordion>
-        <accordion-group heading="Line View"><!--ngFor fill from array -->
+        <accordion-group heading="Line View" [hidden]="tChange" [isOpen]="!tChange"><!--ngFor fill from array -->
           <app-table-teacher *ngFor="let day of days"
                              (formStateChanged)="test()"
                              [day]="day"
@@ -36,7 +36,7 @@
           <app-table-teacher [day]="Saturday" [teacherNumber]="teacherNumber"></app-table-teacher>
           <app-table-teacher [day]="Sunday" [teacherNumber]="teacherNumber"></app-table-teacher>-->
         </accordion-group>
-        <accordion-group heading="Table View">
+        <accordion-group heading="Table View" [hidden]="!tChange" [isOpen]="tChange">
           <div class="row">
             <div class="col-6">
               <app-table-teacher (formStateChanged)="test()" [slots]="slots" [day]="Monday"

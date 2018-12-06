@@ -16,4 +16,5 @@ public interface PupilsService {
     
     void deletePupil(int id);
     
+    Pupils findByUserId(int userId);
 }

@@ -20,6 +20,8 @@ export class TimetableInfoComponent implements OnInit {
   @Input()
   public groupNumber: number;
   @Input()
+  public roleIdCheck: number=1;
+  @Input()
   public slots: Slots[];
   @Input()
   public tChange: boolean;
@@ -32,7 +34,7 @@ export class TimetableInfoComponent implements OnInit {
   public Friday: string = "Friday";
   public Saturday: string = "Saturday";
   public Sunday: string = "Sunday";
-
+  public buttonHide: boolean=false;
   public timetable: TimetableExample[];
 
   constructor(private timetableService: TimetableService,
@@ -40,6 +42,7 @@ export class TimetableInfoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getButtonHide();
     this.loadTimetableNamed();
 
   }
@@ -56,6 +59,10 @@ export class TimetableInfoComponent implements OnInit {
   public test(): void {
     this.loadTimetableNamed();
   }
-
+  public getButtonHide(): void {
+    if(this.roleIdCheck==3){
+      this.buttonHide=true;
+    }
+  }
 
 }

@@ -88,4 +88,14 @@ public class PupilDataServiceImpl implements PupilDataService {
         restTemplate.delete(backendServerUrl + "/api/pupils/" + id);
         
     }
+    
+    
+    @Override
+    public PupilViewModel findByUserId(int userId) {
+        RestTemplate restTemplate = new RestTemplate();
+        PupilViewModel pupilViewModelResponse =
+                restTemplate.getForObject(backendServerUrl+"/api/pupils/userId/"+userId,PupilViewModel.class);
+        
+        return pupilViewModelResponse;
+    }
 }

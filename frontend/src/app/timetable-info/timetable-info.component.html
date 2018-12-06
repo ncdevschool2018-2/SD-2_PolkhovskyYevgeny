@@ -9,6 +9,7 @@
       <accordion >
         <accordion-group heading="Line View"  [hidden]="tChange" [isOpen]="!tChange">
           <app-table *ngFor="let day of days"
+                     [roleIdCheck]="roleIdCheck"
                      (formStateChanged)="test()"
                      [day]="day" [timetable]="timetable"
                      [groupNumber]="groupNumber"
@@ -18,22 +19,22 @@
         <accordion-group heading="Table View"  [hidden]="!tChange" [isOpen]="tChange" >
           <div class="row">
             <div class="col-6">
-              <app-table [day]="Monday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+              <app-table [day]="Monday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
             <div class="col-6">
-              <app-table [day]="Tuesday" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
+              <app-table [day]="Tuesday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
                          [timetable]="timetable"></app-table>
             </div>
 
           </div>
           <div class="row">
             <div class="col-6">
-              <app-table [day]="Wednesday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+              <app-table [day]="Wednesday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
             <div class="col-6">
-              <app-table [day]="Thursday" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
+              <app-table [day]="Thursday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [groupNumber]="groupNumber"
                          [timetable]="timetable"></app-table>
             </div>
 
@@ -41,11 +42,11 @@
           <div class="row">
 
             <div class="col-6">
-              <app-table [day]="Friday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+              <app-table [day]="Friday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
             <div class="col-6">
-              <app-table [day]="Saturday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+              <app-table [day]="Saturday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
           </div>
@@ -53,7 +54,7 @@
           <div class="row">
 
             <div class="col-6">
-              <app-table [day]="Sunday" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
+              <app-table [day]="Sunday" [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [timetable]="timetable"
                          [groupNumber]="groupNumber"></app-table>
             </div>
           </div>

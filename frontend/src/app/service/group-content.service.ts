@@ -27,4 +27,7 @@ export class GroupContentService {
   getGroupContentByGroup(id: number): Observable<GroupContent[]> {
     return this.http.get<GroupContent[]>('/api/pupil/group/' + id);
   }
+  getStudentByUserId(id:number):Observable<GroupContent>{
+    return this.http.get<GroupContent>('/api/pupil/userId/'+id);
+  }
 }

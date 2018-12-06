@@ -24,6 +24,8 @@ import {UsersService} from "../service/users.service";
 export class GroupContentComponent implements OnInit {
   @Input()
   public groupNumber: number;
+  @Input()
+  public roleIdCheck: number=1;
 
   public GroupContent: GroupContent[];
   public editableGC: GroupContent = new GroupContent();
@@ -39,7 +41,7 @@ export class GroupContentComponent implements OnInit {
   public group: string;
   public roles: Roles[];
   public users: Users[];
-
+public buttonHide: boolean=false;
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -52,7 +54,7 @@ export class GroupContentComponent implements OnInit {
   }
 
   ngOnInit() {
-
+  this.getButtonHide();
     this.loadGroups();
 
     /*this.loadGroupContent();*/
@@ -91,6 +93,12 @@ export class GroupContentComponent implements OnInit {
 
   public _closeModal(): void {
     this.modalRef.hide();
+  }
+
+  public getButtonHide(): void {
+    if(this.roleIdCheck==3){
+      this.buttonHide=true;
+    }
   }
 
 
@@ -179,13 +187,13 @@ export class GroupContentComponent implements OnInit {
 
   public _addNewPupil(): void {
     debugger
-    let expr=/[ -/:-?[-`{-~]/;
-    let exprd=/[ -?[-`{-~]/;
+    let expr=/^[a-zA-Z]{3,15}$/;
+    let exprd=/^[a-zA-Z0-9]{3,15}$/;
     let g=expr.test(this.editableNewUser.name);
     let k=expr.test(this.editableNewUser.surname);
     let m=exprd.test(this.editableNewUser.login);
     let t=exprd.test(this.editableNewUser.password);
-    if ( !(expr.test(this.editableNewUser.name)&&
+    if ( (expr.test(this.editableNewUser.name)&&
       expr.test(this.editableNewUser.surname)&&
         exprd.test(this.editableNewUser.login)&&
           exprd.test(this.editableNewUser.password))) {

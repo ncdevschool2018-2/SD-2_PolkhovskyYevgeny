@@ -18,7 +18,7 @@
 <!--<div>
   <h1 align="center">Group number : {{group}} </h1>
 </div>-->
-<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+<button [hidden]="buttonHide"  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
         (click)="_openModalPupil(templatePupil)">
   Create pupil
 </button>
@@ -31,8 +31,8 @@
         <th scope="col"><p class="text-info">Id</p></th>
         <th scope="col"><p class="text-info">Name</p></th>
         <th scope="col"><p class="text-info">Surname</p></th>
-        <th scope="col"><p class="text-info">Delete</p></th>
-        <th scope="col"><p class="text-info">Edit</p></th>
+        <th scope="col" [hidden]="buttonHide"><p class="text-info">Delete</p></th>
+        <th scope="col" [hidden]="buttonHide"><p class="text-info">Edit</p></th>
 
       </tr>
       </thead>
@@ -41,13 +41,13 @@
         <td scope="row">{{groupContent.id}}</td>
         <td>{{groupContent.name}}</td>
         <td>{{groupContent.surname}}</td>
-        <td>
+        <td [hidden]="buttonHide">
           <!--<span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
          </span>-->
-          <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,groupContent)">Delete</button>
+          <span><button  type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,groupContent)">Delete</button>
          </span></td>
-        <td>
-          <span><button type="button" class="btn btn-secondary"
+        <td [hidden]="buttonHide">
+          <span><button  type="button" class="btn btn-secondary"
                         (click)="_openModal(template, groupContent)">Edit</button>
         </span></td>
 

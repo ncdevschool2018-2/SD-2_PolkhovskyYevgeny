@@ -71,7 +71,7 @@ export class SigninComponent implements OnInit, OnDestroy {
         }else if (this.authorizationAccount.roleId==3) {
           this.authService.transmitAuthorizedUser(this.authorizationAccount);
 
-          this.router.navigate(['pupil']);
+          this.router.navigate(['pupil/'+this.authorizationAccount.id]);
         }
 
         this.loadingService.hide();

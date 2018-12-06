@@ -17,4 +17,6 @@ public interface PupilDataService {
     List<PupilViewModel> getByGroupId(int id);
     
     void deletePupil(int id);
+    
+    PupilViewModel findByUserId(int userId);
 }

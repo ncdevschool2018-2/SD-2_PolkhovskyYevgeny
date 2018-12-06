@@ -39,7 +39,8 @@ export class TableComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   @Input()
   public timetable: TimetableExample[];
-
+  @Input()
+  public roleIdCheck: number
   @Input()
   public slots: Slots[];
   public slotsDist: Slots[] = [];
@@ -56,7 +57,7 @@ export class TableComponent implements OnInit {
   public chooseSubject: number;
   public chooseTeachers: number;
   public chooseTeachersName: Teacher[];
-
+  public buttonHide: boolean=false;
   public monConfirmId: number;
 
   constructor(private loadingService: Ng4LoadingSpinnerService,
@@ -75,10 +76,14 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.getButtonHide();
     /*this.loadTimetable()*/
   }
-
+  public getButtonHide(): void {
+    if(this.roleIdCheck==3){
+      this.buttonHide=true;
+    }
+  }
   /*private loadTimetable(): void {
 
 

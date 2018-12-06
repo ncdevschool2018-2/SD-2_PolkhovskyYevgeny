@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'group', component: GroupComponent},
-  {path: 'pupil', component: PupilComponent},
+  {path: 'pupil/:id', component: PupilComponent},
   {path: 'groupContent/:id', component: GroupContentComponent},
   {path: 'timetableinfo/:id', component: TimetableInfoComponent},
   {path: 'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},

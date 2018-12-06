@@ -3,10 +3,12 @@ import {Component, OnInit} from '@angular/core';
 
 import {PupilService} from "../service/pupil.service";
 import {AuthService} from "../service/auth.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Slots} from "../model/slots";
 import {Subscription} from "rxjs";
 import {SlotService} from "../service/slot.service";
+import {GroupContent} from "../model/GroupContent";
+import {GroupContentService} from "../service/group-content.service";
 
 
 @Component({
@@ -20,21 +22,26 @@ export class PupilComponent implements OnInit {
   public isCollapsed2 = true;
   private subscriptions: Subscription[] = [];
   public slots: Slots[];
+  public student:GroupContent;
+  tChange: boolean=false;
   constructor(private pupilService: PupilService,
               private authService: AuthService,
               private router: Router,
-              private slotService: SlotService,) {
+              private slotService: SlotService,
+              private route: ActivatedRoute,
+              private groupContentService: GroupContentService,) {
   }
 
   ngOnInit() {
 this.loadSlot();
+this.loadUser();
   }
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
   public first(): void {
-    this.isCollapsed = !this.isCollapsed;
+    this.isCollapsed = false;
     this.isCollapsed1 = true;
     this.isCollapsed2 = true;
 
@@ -42,7 +49,7 @@ this.loadSlot();
 
   public second(): void {
     this.isCollapsed = true;
-    this.isCollapsed1 = !this.isCollapsed1;
+    this.isCollapsed1 = false;
     this.isCollapsed2 = true;
 
   }
@@ -50,7 +57,7 @@ this.loadSlot();
   public third(): void {
     this.isCollapsed = true;
     this.isCollapsed1 = true;
-    this.isCollapsed2 = !this.isCollapsed2;
+    this.isCollapsed2 = false;
 
   }
   private loadSlot(): void {
@@ -65,5 +72,21 @@ this.loadSlot();
           alert("you have no any permissions")
         }
       })*/));
+  }
+  private loadUser(): void {
+
+    // Get data from BillingAccountService
+    this.route.params.subscribe(params => {
+      let id: number = +params['id'];
+
+      this.subscriptions.push(this.groupContentService.getStudentByUserId(id).subscribe(accounts => {
+        // Parse json response into local array
+        this.student = accounts as GroupContent;
+        // Check data in console
+
+
+      }));
+    });
+
   }
 }

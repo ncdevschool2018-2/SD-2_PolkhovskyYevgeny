@@ -18,21 +18,22 @@
        [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Your Group</a>
     <a class="py-2 d-none d-md-inline-block" (click)="second()"
        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Your Timetable</a>
-    <!--<a class="py-2 d-none d-md-inline-block" (click)="third()"
-       [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1"></a>
--->
+    <a class="py-2 d-none d-md-inline-block" (click)="third()"
+       [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1"> {{student.name}}{{" "}}{{student.surname}}</a>
+
     <!--<a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
     <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>-->
     <a class="nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
-<div id="collapseBasic" [collapse]="isCollapsed" class="card card-block card-header">
+
+<div id="collapseBasic" *ngIf="student" [collapse]="isCollapsed" class="card card-block card-header">
   <div class="well well-lg">
 
-    <app-group-content [groupNumber]=""></app-group-content>
+    <app-group-content [roleIdCheck]="3" [groupNumber]="student.groupId"></app-group-content>
   </div>
 </div>
-<div id="collapseBasic1" [collapse]="isCollapsed1" class="card card-block card-header">
+<div id="collapseBasic1" *ngIf="student" [collapse]="isCollapsed1" class="card card-block card-header">
   <div class="well well-lg">
     <!--<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
             data-target="#exampleModal"
@@ -43,15 +44,24 @@
             (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
       Add subject to teacher
     </button>-->
+    <mat-radio-group  class="example-radio-group" [(ngModel)]="tChange">
+      <mat-radio-button class="example-radio-button"  [value]="false">
 
-    <app-timetable-info  [groupNumber]="group.id" [tChange]="tChange" [slots]="slots"></app-timetable-info>
+        <a> <img src="https://image.flaticon.com/icons/svg/1142/1142015.svg"></a>
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button"   [value]="true">
+        <a> <img src="https://image.flaticon.com/icons/svg/25/25617.svg"></a>
+
+      </mat-radio-button>
+    </mat-radio-group>
+    <app-timetable-info [roleIdCheck]="3"  [groupNumber]="student.groupId" [tChange]="tChange" [slots]="slots"></app-timetable-info>
   </div>
 
 
 </div>
-<!--
+
 <div id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
-  <div class="well well-lg">
-    <app-group [timetable]="true" [slots]="slots"></app-group>
+  <div class="text-center">
+    {{student.name}}{{" "}}{{student.surname}}
   </div>
-</div>-->
+</div>
