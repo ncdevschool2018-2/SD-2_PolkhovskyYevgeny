@@ -14,6 +14,7 @@ import {NewUser} from "../model/newUser";
 import {PupilService} from "../service/pupil.service";
 import {Users} from "../model/users";
 import {UsersService} from "../service/users.service";
+import {Teacher} from "../model/teacher";
 
 
 @Component({
@@ -25,7 +26,7 @@ export class GroupContentComponent implements OnInit {
   @Input()
   public groupNumber: number;
   @Input()
-  public roleIdCheck: number=1;
+  public roleIdCheck: number = 1;
 
   public GroupContent: GroupContent[];
   public editableGC: GroupContent = new GroupContent();
@@ -41,7 +42,11 @@ export class GroupContentComponent implements OnInit {
   public group: string;
   public roles: Roles[];
   public users: Users[];
-public buttonHide: boolean=false;
+  public buttonHide: boolean = false;
+  public searchSur: string = "";
+  public searchName: string = "";
+  public ss: string = "";
+  public sn: string = "";
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -54,13 +59,32 @@ public buttonHide: boolean=false;
   }
 
   ngOnInit() {
-  this.getButtonHide();
+    this.getButtonHide();
     this.loadGroups();
 
     /*this.loadGroupContent();*/
     this.loadGroupsContent();
 
 
+  }
+
+  public k(): void {
+    if (this.searchSur.length == 0 && this.searchName.length ==0) {
+      this.loadGroupsContent();
+      //this.paghide = false;
+
+    }
+    else {
+
+      this.ss = this.searchSur;
+      this.sn = this.searchName;
+      this.subscriptions.push(this.groupContentService.findPupilBySurnameAndName(this.ss,this.sn,this.groupNumber).subscribe(numb => {
+        // Parse json response into local array
+        this.GroupContent = numb as GroupContent[];
+        //this.paghide = true;
+
+      }));
+    }
   }
 
   /*private loadGroupContent(): void {
@@ -96,8 +120,8 @@ public buttonHide: boolean=false;
   }
 
   public getButtonHide(): void {
-    if(this.roleIdCheck==3){
-      this.buttonHide=true;
+    if (this.roleIdCheck == 3) {
+      this.buttonHide = true;
     }
   }
 
@@ -187,16 +211,16 @@ public buttonHide: boolean=false;
 
   public _addNewPupil(): void {
     debugger
-    let expr=/^[a-zA-Z]{3,15}$/;
-    let exprd=/^[a-zA-Z0-9]{3,15}$/;
-    let g=expr.test(this.editableNewUser.name);
-    let k=expr.test(this.editableNewUser.surname);
-    let m=exprd.test(this.editableNewUser.login);
-    let t=exprd.test(this.editableNewUser.password);
-    if ( (expr.test(this.editableNewUser.name)&&
-      expr.test(this.editableNewUser.surname)&&
-        exprd.test(this.editableNewUser.login)&&
-          exprd.test(this.editableNewUser.password))) {
+    let expr = /^[a-zA-Z]{3,15}$/;
+    let exprd = /^[a-zA-Z0-9]{3,15}$/;
+    let g = expr.test(this.editableNewUser.name);
+    let k = expr.test(this.editableNewUser.surname);
+    let m = exprd.test(this.editableNewUser.login);
+    let t = exprd.test(this.editableNewUser.password);
+    if ((expr.test(this.editableNewUser.name) &&
+      expr.test(this.editableNewUser.surname) &&
+      exprd.test(this.editableNewUser.login) &&
+      exprd.test(this.editableNewUser.password))) {
       this.editableNewUser.groupId = this.groupNumber;
       this.editableNewUser.roleId = 3;
       this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {

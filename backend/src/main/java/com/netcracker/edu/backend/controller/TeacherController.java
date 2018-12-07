@@ -47,7 +47,12 @@ public class TeacherController {
         PageTeacher pageNeeded = new PageTeacher(pageFull.getContent(), pageFull.getTotalPages(), toIntExact(pageFull.getTotalElements()));
         return pageNeeded;
     }
-    
+    @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
+    public List<Teacher> findTeacher(@PathVariable String word) {
+        
+        List<Teacher> page = teacherService.findTeacher(word);
+        return page;
+    }
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Teacher> getAllTeacher() {

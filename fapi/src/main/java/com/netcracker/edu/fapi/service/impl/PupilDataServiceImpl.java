@@ -83,6 +83,15 @@ public class PupilDataServiceImpl implements PupilDataService {
     
     
     @Override
+    public List<PupilViewModel> findPupilBySurnameAndName(String surname, String name, int groupId) {
+        RestTemplate restTemplate = new RestTemplate();
+        PupilViewModel[] pupilViewModelResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/pupils/surname/"+surname+"/name/"+name+"/group/"+groupId, PupilViewModel[].class);
+        return pupilViewModelResponse == null ? Collections.emptyList() : Arrays.asList(pupilViewModelResponse);
+    }
+    
+    
+    @Override
     public void deletePupil(int id) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/pupils/" + id);

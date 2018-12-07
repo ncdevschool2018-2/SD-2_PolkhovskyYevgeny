@@ -1,6 +1,7 @@
 package com.netcracker.edu.backend.service;
 
 import com.netcracker.edu.backend.entity.Teacher;
+import com.netcracker.edu.backend.entity.UniversityGroup;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,4 +22,6 @@ public interface TeacherService {
     Page<Teacher> findAll(Pageable pageable);
     
     Teacher findTeacherByUserId(int userId);
+    
+    List<Teacher> findTeacher(String  word);
 }

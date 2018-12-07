@@ -41,6 +41,13 @@ public class PupilsController {
         return pupils;
     }
     
+    @RequestMapping(value = "/surname/{surname}/name/{name}/group/{group}", method = RequestMethod.GET)
+    public List<Pupils> findPupilByNameAndSurname(@PathVariable(name = "surname") String surname,@PathVariable(name = "name") String name,@PathVariable(name = "group") int group) {
+        
+        List<Pupils> pupils = pupilsService.findPupilBySurnameAndName(surname, name, group);
+        return pupils;
+    }
+    
     
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Pupils> getAllPupils() {
@@ -50,7 +57,7 @@ public class PupilsController {
     
     @RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
     public ResponseEntity<List<Pupils>> getAllPupils(@PathVariable(name = "id") int id) {
-        List<Pupils> pupils = pupilsService.getByGroupId(id);
+        List<Pupils> pupils = pupilsService.getByGroupIdOrderBySurname(id);
         if (pupils != null) {
             return ResponseEntity.ok(pupils);
         } else {

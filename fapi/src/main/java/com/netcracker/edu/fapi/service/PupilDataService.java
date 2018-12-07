@@ -16,6 +16,8 @@ public interface PupilDataService {
     
     List<PupilViewModel> getByGroupId(int id);
     
+    List<PupilViewModel> findPupilBySurnameAndName( String surname,String name,int groupId  );
+    
     void deletePupil(int id);
     
     PupilViewModel findByUserId(int userId);

@@ -30,4 +30,12 @@ export class GroupContentService {
   getStudentByUserId(id:number):Observable<GroupContent>{
     return this.http.get<GroupContent>('/api/pupil/userId/'+id);
   }
+  findPupilBySurnameAndName(surname:string,name:string,group:number):Observable<GroupContent[]>{
+    if(surname.length==0){
+      surname='""';
+    }if(name.length==0){
+      name='""';
+    }
+    return this.http.get<GroupContent[]>('/api/pupil/surname/'+surname+'/name/'+name+'/group/'+group);
+  }
 }

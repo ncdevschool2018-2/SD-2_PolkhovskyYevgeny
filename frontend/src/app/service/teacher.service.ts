@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Teacher} from "../model/teacher";
 import {PageTeacher} from "../model/pageTeacher";
+import {Group} from "../model/group";
 
 
 @Injectable({
@@ -33,7 +34,9 @@ export class TeacherService {
   deleteTeacher(teacherId: string): Observable<void> {
     return this.http.delete<void>('/api/teacher/' + teacherId);
   }
-
+  findTeacher(word: string): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>('/api/teacher/search/' + word);
+  }
   getPageTeachers(page: number): Observable<PageTeacher> {
     return this.http.post<PageTeacher>('/api/teacher/page', page - 1);
   }

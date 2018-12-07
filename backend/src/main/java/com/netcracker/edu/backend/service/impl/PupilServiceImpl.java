@@ -40,8 +40,14 @@ public class PupilServiceImpl implements PupilsService {
     
     
     @Override
-    public List<Pupils> getByGroupId(int id) {
-        return repository.findByGroupId(id);
+    public List<Pupils> getByGroupIdOrderBySurname(int id) {
+        return repository.findByGroupIdOrderBySurname(id);
+    }
+    
+    
+    @Override
+    public List<Pupils> findPupilBySurnameAndName(String surname, String name, int groupId) {
+        return repository.findPupilBySurnameAndName(surname, name, groupId);
     }
     
     

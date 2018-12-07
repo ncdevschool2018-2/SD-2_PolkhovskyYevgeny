@@ -19,26 +19,29 @@
   <h1 align="center">Teachers </h1>
 </div>
 <div>
-<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
-        data-target="#exampleModal"
-        (click)="_openModalTeacher(templateTeacher)">
-  Create Teacher
-</button>
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
-        (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
-  Add subject to teacher
-</button>
+  <button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+          data-target="#exampleModal"
+          (click)="_openModalTeacher(templateTeacher)">
+    Create Teacher
+  </button>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+          (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
+    Add subject to teacher
+  </button>
   <div>
-  <mat-radio-group  class="example-radio-group" [(ngModel)]="tChange">
-    <mat-radio-button class="example-radio-button"  [value]="false">
+    <mat-radio-group class="example-radio-group" [(ngModel)]="tChange">
+      <mat-radio-button class="example-radio-button" [value]="false">
 
-      <a> <img src="https://image.flaticon.com/icons/svg/1142/1142015.svg"></a>
-    </mat-radio-button>
-    <mat-radio-button class="example-radio-button"   [value]="true">
-      <a> <img src="https://image.flaticon.com/icons/svg/25/25617.svg"></a>
+        <a> <img src="https://image.flaticon.com/icons/svg/1142/1142015.svg"></a>
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button" [value]="true">
+        <a> <img src="https://image.flaticon.com/icons/svg/25/25617.svg"></a>
 
-    </mat-radio-button>
-  </mat-radio-group></div>
+      </mat-radio-button>
+    </mat-radio-group>
+    <span><input type="text" [(ngModel)]="search" (keyup)="k()"   class="form-control" id="formGroupExampleInput" placeholder="Example input"></span>
+
+  </div>
 </div>
 <main class="container-fluid" *ngIf="page">
 
@@ -54,12 +57,13 @@
 
       </tr>
       </thead>
-      <tbody>
-      <tr *ngFor="let teacher of page.content">
+      <tbody *ngIf="teachers">
+      <tr *ngFor="let teacher of teachers">
         <td width="95%">
           <accordion>
             <accordion-group heading="{{teacher.name}} {{teacher.surname}}">
-              <app-timetable-info-teacher [slots]="slots" [tChange]="tChange" [teacherNumber]="teacher.id"></app-timetable-info-teacher>
+              <app-timetable-info-teacher [slots]="slots" [tChange]="tChange"
+                                          [teacherNumber]="teacher.id"></app-timetable-info-teacher>
             </accordion-group>
 
           </accordion>
@@ -79,7 +83,7 @@
 
       </tbody>
     </table>
-    <pagination *ngIf="page" [totalItems]="page.totalElements"
+    <pagination [hidden]="paghide" *ngIf="page" [totalItems]="page.totalElements"
                 [(ngModel)]="currentPage"
                 (pageChanged)="pageChanged($event)"></pagination>
 

@@ -62,4 +62,10 @@ public class TeacherServiceImpl implements TeacherService {
     public Teacher findTeacherByUserId(int userId) {
         return repository.findTeacherByUserId(userId);
     }
+    
+    
+    @Override
+    public List<Teacher> findTeacher(String word) {
+        return repository.findTeacher(word);
+    }
 }

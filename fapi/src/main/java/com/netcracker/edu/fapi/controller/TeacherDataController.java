@@ -45,6 +45,12 @@ public class TeacherDataController {
         return ResponseEntity.ok(teacherDataService.getPageTeacher(page));
         
     }
+    @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
+    public ResponseEntity<List<TeacherViewModel>> findTeacher(@PathVariable String word) {
+        
+        return ResponseEntity.ok(teacherDataService.findTeacher(word));
+        
+    }
     
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")

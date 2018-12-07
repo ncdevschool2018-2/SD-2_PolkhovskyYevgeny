@@ -12,7 +12,9 @@ public interface PupilsService {
     
     Iterable<Pupils> getAllPupils();
     
-    List<Pupils> getByGroupId(int id);
+    List<Pupils> getByGroupIdOrderBySurname(int id);
+    
+    List<Pupils> findPupilBySurnameAndName( String surname,String name,int groupId  );
     
     void deletePupil(int id);
     

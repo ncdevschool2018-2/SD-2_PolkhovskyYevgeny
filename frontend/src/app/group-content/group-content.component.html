@@ -29,8 +29,10 @@
       <thead>
       <tr>
         <th scope="col"><p class="text-info">Id</p></th>
-        <th scope="col"><p class="text-info">Name</p></th>
-        <th scope="col"><p class="text-info">Surname</p></th>
+        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchSur" (keyup)="k()"   class="form-control"  placeholder="Example input"></span>
+          Surname</p></th>
+        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchName" (keyup)="k()"   class="form-control"  placeholder="Example input"></span>
+          Name</p></th>
         <th scope="col" [hidden]="buttonHide"><p class="text-info">Delete</p></th>
         <th scope="col" [hidden]="buttonHide"><p class="text-info">Edit</p></th>
 
@@ -39,8 +41,8 @@
       <tbody>
       <tr *ngFor="let groupContent of GroupContent">
         <td scope="row">{{groupContent.id}}</td>
-        <td>{{groupContent.name}}</td>
         <td>{{groupContent.surname}}</td>
+        <td>{{groupContent.name}}</td>
         <td [hidden]="buttonHide">
           <!--<span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
          </span>-->

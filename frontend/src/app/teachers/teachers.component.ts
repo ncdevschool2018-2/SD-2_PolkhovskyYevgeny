@@ -45,6 +45,9 @@ export class TeachersComponent implements OnInit {
   page: PageTeacher;
   currentPage: number = 1;
   tChange: boolean=false;
+  public search: string = "";
+  public paghide: boolean = false;
+  public kj: string = "";
   constructor(private teacherService: TeacherService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -65,6 +68,7 @@ export class TeachersComponent implements OnInit {
     this.subscriptions.push(this.teacherService.getPageTeachers(page).subscribe(page => {
       // Parse json response into local array
       this.page = page as PageTeacher;
+      this.teachers=this.page.content;
     }));
     /*this.contentArray = this.groups;*/
   }
@@ -73,7 +77,23 @@ export class TeachersComponent implements OnInit {
   pageChanged(event: any): void {
     this.loadTeachers(event.page);
   }
+  public k(): void {
+    if (this.search.length == 0) {
+      this.loadTeachers(1);
+      this.paghide=false;
 
+    }
+    else {
+
+      this.kj = this.search;
+      this.subscriptions.push(this.teacherService.findTeacher(this.kj).subscribe(numb => {
+        // Parse json response into local array
+        this.teachers = numb as Teacher[];
+        this.paghide=true;
+
+      }));
+    }
+  }
 
   public _deleteTeacher(teacherId: string): void {
     this.subscriptions.push(this.userService.deleteUsers(teacherId).subscribe(() => {

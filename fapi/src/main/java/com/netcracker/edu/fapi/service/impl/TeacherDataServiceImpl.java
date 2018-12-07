@@ -112,4 +112,15 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         
     }
     
+    
+    @Override
+    public List<TeacherViewModel> findTeacher(String word) {
+        RestTemplate restTemplate = new RestTemplate();
+    
+        TeacherViewModel[] teacherViewModelResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/teachers/search/" + word, TeacherViewModel[].class);
+        return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
+    
+    }
+    
 }

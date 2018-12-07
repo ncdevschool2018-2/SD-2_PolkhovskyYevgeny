@@ -31,6 +31,12 @@ public class PupilDataController {
     public ResponseEntity<List<PupilViewModel>> getByGroupId(@PathVariable int id) {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
+    
+    @RequestMapping(value = "/surname/{surname}/name/{name}/group/{group}")
+    public ResponseEntity<List<PupilViewModel>> findPupilBySurnameAndName(@PathVariable String surname,@PathVariable String name,@PathVariable int group) {
+        return ResponseEntity.ok(pupilDataService.findPupilBySurnameAndName(surname, name, group));
+    }
+    
     @RequestMapping(value = "/userId/{id}")
     public ResponseEntity<PupilViewModel> findByUserId(@PathVariable int id) {
         return ResponseEntity.ok(pupilDataService.findByUserId(id));
