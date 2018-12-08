@@ -17,6 +17,8 @@ public interface TeacherDataService {
     
     void deleteTeacher(int id);
     
+    TeacherViewModel findTeacherByUserId(int userId);
+    
     PageTeacherViewModel getPageTeacher(int page);
     
     List<TeacherViewModel> findTeacher(String  word);

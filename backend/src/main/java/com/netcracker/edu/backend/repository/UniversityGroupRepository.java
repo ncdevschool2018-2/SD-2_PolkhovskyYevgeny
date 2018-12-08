@@ -19,6 +19,8 @@ public interface UniversityGroupRepository extends CrudRepository<UniversityGrou
     
     Page<UniversityGroup> findAll(Pageable pageable);
     
+    
+    
     @Modifying
     @Query(value = "SELECT * FROM university_group ORDER BY name LIMIT 10 OFFSET ?1", nativeQuery = true)
     List<UniversityGroup> findGroupPage(int offset);

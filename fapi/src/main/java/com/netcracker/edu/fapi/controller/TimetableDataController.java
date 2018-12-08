@@ -5,6 +5,7 @@ import com.netcracker.edu.fapi.models.TimetableViewModel;
 import com.netcracker.edu.fapi.service.TimetableDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public class TimetableDataController {
         return ResponseEntity.ok(timetableDataService.getTimetableNamedByTeacherId(id));
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<TimetableViewModel> saveTimetable(@RequestBody TimetableViewModel timetable /*todo server validation*/) {
         if (timetable != null) {
@@ -56,7 +57,7 @@ public class TimetableDataController {
         return null;
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteTimetable(@PathVariable String id) {
         timetableDataService.deleteTimetable(Integer.valueOf(id));

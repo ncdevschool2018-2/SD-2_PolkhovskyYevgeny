@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit {
     this.subscriptions.push(this.rolesService.getRoles().subscribe(role => {
 
       this.roles = role as Roles[];
+      this.roles.splice(0, 1);
     }));
   }
 

@@ -4,6 +4,7 @@ import com.netcracker.edu.fapi.models.SubjectTeacherViewModel;
 import com.netcracker.edu.fapi.service.SubjectTeacherDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SubjectTeacherDataController {
         return ResponseEntity.ok(subjectTeacherDataService.getAll());
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectTeacherViewModel> saveSubjectTeacher(@RequestBody SubjectTeacherViewModel subjectTeacherViewModel /*todo server validation*/) {
         if (subjectTeacherViewModel != null) {
@@ -30,7 +31,7 @@ public class SubjectTeacherDataController {
         return null;
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubjectTeacher(@PathVariable String id) {
         subjectTeacherDataService.deleteSubjectTeacher(Integer.valueOf(id));

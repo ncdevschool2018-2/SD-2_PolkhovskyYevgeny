@@ -23,9 +23,10 @@ export class GroupService { //todo create interface
     return this.http.delete<void>('/api/universitygroup/' + groupId);
   }
 
-  /*getPageGroups(page:number): Observable<PageGroup> {
-    return this.http.post<PageGroup>('/api/universitygroup/page',page-1);
-  }*/
+  getGroupById(id:number):Observable<Group>{
+    return this.http.get<Group>('/api/universitygroup/' + id)
+  }
+
   getPageGroups(page: number): Observable<Group[]> {
     return this.http.get<Group[]>('/api/universitygroup/page/' + (page - 1));
   }

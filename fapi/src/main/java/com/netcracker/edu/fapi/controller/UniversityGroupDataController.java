@@ -4,8 +4,10 @@ import com.netcracker.edu.fapi.models.UniversityGroupViewModel;
 import com.netcracker.edu.fapi.service.UniversityGroupDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,9 +24,19 @@ public class UniversityGroupDataController {
     }
     
     
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<UniversityGroupViewModel> saveUniversityGroup(@RequestBody UniversityGroupViewModel group /*todo server validation*/) {
-        if (group != null && Integer.parseInt(group.getName())>=1000000 &&Integer.parseInt(group.getName())<=99999999) {
+        if (group != null && Integer.parseInt(group.getName()) >= 1000000 && Integer.parseInt(group.getName()) <= 99999999) {
+            List<UniversityGroupViewModel> groups;
+            groups = universityGroupDataService.getAll();
+            for (UniversityGroupViewModel groupn : groups
+            ) {
+                if(groupn.getName().equals(group.getName())){
+                    return null;
+                }
+                
+            }
             return ResponseEntity.ok(universityGroupDataService.saveUniversityGroup(group));
         }
         return null;
@@ -43,6 +55,8 @@ public class UniversityGroupDataController {
         return ResponseEntity.ok(universityGroupDataService.findGroupPage(page));
         
     }
+    
+    
     @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
     public ResponseEntity<List<UniversityGroupViewModel>> findGroup(@PathVariable String word) {
         
@@ -57,6 +71,7 @@ public class UniversityGroupDataController {
     }
     
     
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteUniversityGroup(@PathVariable String id) {
         universityGroupDataService.deleteUniversityGroup(Integer.valueOf(id));

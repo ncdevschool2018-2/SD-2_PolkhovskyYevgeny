@@ -1,21 +1,69 @@
-<table class="table">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
+<nav class="site-header sticky-top py-1" *ngIf="teacher">
+  <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2" href="#">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           class="d-block mx-auto">
+        <circle cx="12" cy="12" r="10"></circle>
+        <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+        <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+        <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+        <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+        <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+        <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+      </svg>
+    </a>
 
-  </tr>
-  </thead>
-  <tbody *ngIf="page">
-  <tr *ngFor="let group of page.content">
-    <th scope="row">{{group.name}}</th>
+    <a class=" py-2 d-none d-md-inline-block" (click)="first()"
+       [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Your Group</a>
+    <a class="py-2 d-none d-md-inline-block" (click)="second()"
+       [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Your Timetable</a>
+    <a class="py-2 d-none d-md-inline-block" (click)="third()"
+       [attr.aria-expanded]="!isCollapsed2" aria-controls="collapseBasic1"> {{teacher.name}}{{" "}}{{teacher.surname}}</a>
 
-  </tr>
+    <!--<a class="py-2 d-none d-md-inline-block" href="#">Pricing</a>
+    <a class="py-2 d-none d-md-inline-block" href="#">Cart</a>-->
+    <a class="nav-link" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<div id="collapseBasic" *ngIf="subjectsOfTeacher" [collapse]="isCollapsed" class="card card-block card-header">
+  <div class="well well-lg">
+
+    <div *ngFor="let s of subjectsOfTeacher ">
+      <h1>{{s.subject}}</h1>
+    </div>
+  </div>
+</div>
+<div id="collapseBasic1" *ngIf="teacher" [collapse]="isCollapsed1" class="card card-block card-header">
+  <div class="well well-lg">
+    <!--<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
+            data-target="#exampleModal"
+            (click)="_openModalTeacher(templateTeacher)">
+      Create Teacher
+    </button>
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"
+            (click)="_openModalSubjectTeacher(templateSubjectTeacher)">
+      Add subject to teacher
+    </button>-->
+    <mat-radio-group  class="example-radio-group" [(ngModel)]="tChange">
+      <mat-radio-button class="example-radio-button"  [value]="false">
+
+        <a> <img src="https://image.flaticon.com/icons/svg/1142/1142015.svg"></a>
+      </mat-radio-button>
+      <mat-radio-button class="example-radio-button"   [value]="true">
+        <a> <img src="https://image.flaticon.com/icons/svg/25/25617.svg"></a>
+
+      </mat-radio-button>
+    </mat-radio-group>
+    <app-timetable-info-teacher [roleIdCheck]="2" [slots]="slots" [tChange]="tChange"
+                                [teacherNumber]="teacher.id"></app-timetable-info-teacher></div>
 
 
-  </tbody>
-</table>
-<pagination *ngIf="page" [totalItems]="page.totalElements"
-            [(ngModel)]="currentPage"
-            (pageChanged)="pageChanged(currentPage)"></pagination>
+</div>
 
-<p>{{currentPage}}</p>
+<div *ngIf="teacher" id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
+  <div class="text-center">
+    {{teacher.name}}{{" "}}{{teacher.surname}}
+  </div>
+</div>

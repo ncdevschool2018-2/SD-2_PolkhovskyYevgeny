@@ -53,11 +53,7 @@
     <div class="card">
       <div class="card-header">
         <h3>Sign Up</h3>
-        <div class="d-flex justify-content-end social_icon">
-          <span><i class="fab fa-facebook-square"></i></span>
-          <span><i class="fab fa-google-plus-square"></i></span>
-          <span><i class="fab fa-twitter-square"></i></span>
-        </div>
+
       </div>
       <div class="card-body">
         <form>
@@ -145,7 +141,7 @@
             <input  [(ngModel)]="editableNewUser.roleId" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" [value]="role.id">
             <label class="form-check-label text-warning" for="inlineRadio2">{{role.name}}</label>
           </div>-->
-          <div class="bg-warning">
+          <div *ngIf="roles">
             <mat-form-field>
               <mat-select [(value)]="editableNewUser.roleId" style="color: white;">
                 <mat-option *ngFor="let role of roles" [value]="role.id">
@@ -164,7 +160,7 @@
           </div>-->
 
 
-          <div class="bg-warning" [hidden]="editableNewUser.roleId!=3">
+          <div  [hidden]="editableNewUser.roleId!=3">
             <mat-form-field>
               <mat-select [(value)]="editableNewUser.groupId">
                 <mat-option *ngFor="let group of groups" [value]="group.id">
@@ -182,7 +178,7 @@
             </select>
           </div>-->
 
-          <div class="bg-warning" [hidden]="editableNewUser.roleId!=2">
+          <div  [hidden]="editableNewUser.roleId!=2">
             <mat-form-field>
               <mat-select [(value)]="editableNewUser.subjectId">
                 <mat-option *ngFor="let subject of subjectsAll" [value]="subject.id">
@@ -196,8 +192,8 @@
             The username and password that you entered did not match our records. Please double-check and try again.
           </div>
 
-          <button type="button" class="btn btn-default" (click)="register(editableNewUser.roleId)"
-                  [disabled]="login.invalid || pass.invalid || surname.invalid || name.invalid || !pass.value.endsWith(passConf.value)">
+          <button type="button" class="btn btn-secondary" (click)="register(editableNewUser.roleId)"
+                  >
             Register
           </button>
 
@@ -207,9 +203,7 @@
         <div class="d-flex justify-content-center links">
           have an account?<a routerLink="/signin">Sign in</a>
         </div>
-        <div class="d-flex justify-content-center">
-          <a href="#">Forgot your password?</a>
-        </div>
+
       </div>
     </div>
   </div>

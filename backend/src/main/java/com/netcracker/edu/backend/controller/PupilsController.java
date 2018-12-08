@@ -35,16 +35,35 @@ public class PupilsController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    
     @RequestMapping(value = "/userId/{id}", method = RequestMethod.GET)
     public Pupils getPupilByUserId(@PathVariable(name = "id") int id) {
         Pupils pupils = pupilsService.findByUserId(id);
         return pupils;
     }
     
+    
     @RequestMapping(value = "/surname/{surname}/name/{name}/group/{group}", method = RequestMethod.GET)
-    public List<Pupils> findPupilByNameAndSurname(@PathVariable(name = "surname") String surname,@PathVariable(name = "name") String name,@PathVariable(name = "group") int group) {
+    public List<Pupils> findPupilByNameAndSurname(@PathVariable(name = "surname") String surname, @PathVariable(name = "name") String name, @PathVariable(name = "group") int group) {
         
         List<Pupils> pupils = pupilsService.findPupilBySurnameAndName(surname, name, group);
+        return pupils;
+    }
+    
+    
+    @RequestMapping(value = "/surname/{surname}/group/{group}", method = RequestMethod.GET)
+    public List<Pupils> findPupilBySurname(@PathVariable(name = "surname") String surname, @PathVariable(name = "group") int group) {
+        
+        List<Pupils> pupils = pupilsService.findPupilBySurname(surname,  group);
+        return pupils;
+    }
+    
+    
+    @RequestMapping(value = "/name/{name}/group/{group}", method = RequestMethod.GET)
+    public List<Pupils> findPupilByName( @PathVariable(name = "name") String name, @PathVariable(name = "group") int group) {
+        
+        List<Pupils> pupils = pupilsService.findPupilByName( name, group);
         return pupils;
     }
     

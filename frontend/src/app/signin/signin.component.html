@@ -53,11 +53,7 @@
     <div class="card">
       <div class="card-header">
         <h3>Sign In</h3>
-        <div class="d-flex justify-content-end social_icon">
-          <span><i class="fab fa-facebook-square"></i></span>
-          <span><i class="fab fa-google-plus-square"></i></span>
-          <span><i class="fab fa-twitter-square"></i></span>
-        </div>
+
       </div>
       <div class="card-body">
         <form>
@@ -88,8 +84,8 @@
             The username and password that you entered did not match our records. Please double-check and try again.
           </div>
 
-          <button type="button" class="btn btn-default" (click)="authorization()"
-                  [disabled]="email.invalid || pass.invalid">
+          <button type="button" class="btn btn-secondary" (click)="authorization()"
+                  >
             LOG IN
           </button>
 
@@ -99,9 +95,7 @@
         <div class="d-flex justify-content-center links">
           Don't have an account?<a routerLink="/signup">Sign Up</a>
         </div>
-        <div class="d-flex justify-content-center">
-          <a href="#">Forgot your password?</a>
-        </div>
+
       </div>
     </div>
   </div>

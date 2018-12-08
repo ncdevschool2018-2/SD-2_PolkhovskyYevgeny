@@ -60,8 +60,9 @@
 
 </div>
 
-<div *ngIf="student" id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
+<div *ngIf="student && group" id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
   <div class="text-center">
-    {{student.name}}{{" "}}{{student.surname}}
+    <h1>{{student.name}}{{" "}}{{student.surname}}</h1>
+    <h1>{{group.name}}</h1>
   </div>
 </div>

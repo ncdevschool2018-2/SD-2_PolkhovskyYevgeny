@@ -25,4 +25,5 @@ public interface UniversityGroupService {
     List<UniversityGroup> findGroup(String  word);
     
     Integer getTotalPages();
+    
 }

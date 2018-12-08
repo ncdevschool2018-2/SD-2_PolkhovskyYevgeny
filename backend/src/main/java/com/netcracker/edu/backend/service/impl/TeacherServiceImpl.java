@@ -68,4 +68,6 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Teacher> findTeacher(String word) {
         return repository.findTeacher(word);
     }
+    
+    
 }

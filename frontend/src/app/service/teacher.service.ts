@@ -37,6 +37,9 @@ export class TeacherService {
   findTeacher(word: string): Observable<Teacher[]> {
     return this.http.get<Teacher[]>('/api/teacher/search/' + word);
   }
+  getTeacherByUserId(userId:number): Observable<Teacher> {
+    return this.http.get<Teacher>('/api/teacher/user-id/' + userId);
+  }
   getPageTeachers(page: number): Observable<PageTeacher> {
     return this.http.post<PageTeacher>('/api/teacher/page', page - 1);
   }

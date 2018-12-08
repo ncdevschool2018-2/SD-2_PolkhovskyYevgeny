@@ -4,6 +4,7 @@ import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,7 @@ public class UsersDataController {
     }
     
     
-    // @PreAuthorize("hasAnyAuthority('1')")
+     @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<UsersViewModel> getUserById(@PathVariable(name = "id") int id) {
         Optional<UsersViewModel> user = usersDataService.getUsersById(id);

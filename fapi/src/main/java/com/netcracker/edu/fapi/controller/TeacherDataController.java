@@ -37,6 +37,10 @@ public class TeacherDataController {
     public ResponseEntity<TeacherViewModel> getTeacherById(@PathVariable int id) {
         return ResponseEntity.ok(teacherDataService.getTeacherById(id));
     }
+    @RequestMapping(value = "/user-id/{user-id}", method = RequestMethod.GET)
+    public ResponseEntity<TeacherViewModel> getTeacherByUserId( @PathVariable("user-id") int userId) {
+        return ResponseEntity.ok(teacherDataService.findTeacherByUserId(userId));
+    }
     
     
     @RequestMapping(value = "/page", method = RequestMethod.POST)

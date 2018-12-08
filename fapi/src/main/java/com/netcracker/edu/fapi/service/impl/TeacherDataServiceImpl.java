@@ -105,6 +105,14 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     
     
     @Override
+    public TeacherViewModel findTeacherByUserId(int userId) {
+        RestTemplate restTemplate =new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl+"/api/teachers/user-id/"+userId,TeacherViewModel.class);
+        
+    }
+    
+    
+    @Override
     public PageTeacherViewModel getPageTeacher(int page) {
         RestTemplate restTemplate = new RestTemplate();
         

@@ -74,6 +74,26 @@ export class GroupContentComponent implements OnInit {
       //this.paghide = false;
 
     }
+    else if(this.searchSur.length == 0){
+
+      this.sn = this.searchName;
+      this.subscriptions.push(this.groupContentService.findPupilByName(this.sn,this.groupNumber).subscribe(numb => {
+        // Parse json response into local array
+        this.GroupContent = numb as GroupContent[];
+        //this.paghide = true;
+
+      }));
+    }
+    else if(this.searchName.length ==0){
+      this.ss = this.searchSur;
+
+      this.subscriptions.push(this.groupContentService.findPupilBySurname(this.ss,this.groupNumber).subscribe(numb => {
+        // Parse json response into local array
+        this.GroupContent = numb as GroupContent[];
+        //this.paghide = true;
+
+      }));
+    }
     else {
 
       this.ss = this.searchSur;
@@ -155,12 +175,9 @@ export class GroupContentComponent implements OnInit {
   }
 
   public _addGroupContent(): void {
-    if (!(this.editableGC.name.includes("1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "0" ||
-      "-" || "/" || "=" || "+" || "*" || "@" || "#" || "$" || "%" || "^" ||
-      "&" || "?" || "!" || "(" || ")" || "[" || "]" || "{" || "}" || " ") &&
-      this.editableGC.surname.includes("1" || "2" || "3" || "4" || "5" || "6" || "7" || "8" || "9" || "0" ||
-        "-" || "/" || "=" || "+" || "*" || "@" || "#" || "$" || "%" || "^" ||
-        "&" || "?" || "!" || "(" || ")" || "[" || "]" || "{" || "}" || " "))
+    let expr = /^[a-zA-Z]{3,15}$/;
+    if (expr.test(this.editableGC.name) &&
+      expr.test(this.editableGC.surname)
     ) {
       this.loadingService.show();
       this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(() => {

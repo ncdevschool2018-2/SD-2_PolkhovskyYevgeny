@@ -9,6 +9,8 @@ import {Subscription} from "rxjs";
 import {SlotService} from "../service/slot.service";
 import {GroupContent} from "../model/GroupContent";
 import {GroupContentService} from "../service/group-content.service";
+import {Group} from "../model/group";
+import {GroupService} from "../service/group.service";
 
 
 @Component({
@@ -23,18 +25,22 @@ export class PupilComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public slots: Slots[];
   public student:GroupContent;
+  public group:Group;
+  public groupId:number;
   tChange: boolean=false;
   constructor(private pupilService: PupilService,
               private authService: AuthService,
               private router: Router,
               private slotService: SlotService,
               private route: ActivatedRoute,
+              private groupService:GroupService,
               private groupContentService: GroupContentService,) {
   }
 
-  ngOnInit() {
-this.loadSlot();
-this.loadUser();
+  ngOnInit() {this.loadSlot();
+    this.loadUser();
+    this.getGroupName();
+
   }
   logout() {
     this.authService.logout();
@@ -59,6 +65,18 @@ this.loadUser();
     this.isCollapsed1 = true;
     this.isCollapsed2 = false;
 
+  }
+  private getGroupName():void{
+    this.subscriptions.push(this.groupService.getGroupById(this.student.groupId).subscribe(slots => {
+
+        this.group = slots as Group;
+      }
+      /*,
+      (error => {
+        if(error==="Unauthorized"   ){
+          alert("you have no any permissions")
+        }
+      })*/));
   }
   private loadSlot(): void {
 

@@ -52,6 +52,18 @@ public class PupilServiceImpl implements PupilsService {
     
     
     @Override
+    public List<Pupils> findPupilBySurname(String surname, int groupId) {
+        return repository.findPupilBySurname(surname, groupId);
+    }
+    
+    
+    @Override
+    public List<Pupils> findPupilByName(String name, int groupId) {
+        return repository.findPupilByName(name, groupId);
+    }
+    
+    
+    @Override
     public void deletePupil(int id) {
         repository.deleteById(id);
     }

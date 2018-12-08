@@ -23,4 +23,6 @@ public interface TeacherRepository extends CrudRepository<Teacher, Integer> {
     
     @Query("SELECT t FROM Teacher t where t.name like  %:word% or t.surname like  %:word% ORDER BY t.name asc  " )
     List<Teacher> findTeacher(@Param("word") String  word);
+    
+    Teacher findByUserId(int userId);
 }

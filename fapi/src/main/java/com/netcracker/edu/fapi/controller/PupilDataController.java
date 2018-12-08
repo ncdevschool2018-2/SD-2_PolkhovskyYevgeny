@@ -32,10 +32,24 @@ public class PupilDataController {
         return ResponseEntity.ok(pupilDataService.getByGroupId(id));
     }
     
+    
     @RequestMapping(value = "/surname/{surname}/name/{name}/group/{group}")
-    public ResponseEntity<List<PupilViewModel>> findPupilBySurnameAndName(@PathVariable String surname,@PathVariable String name,@PathVariable int group) {
+    public ResponseEntity<List<PupilViewModel>> findPupilBySurnameAndName(@PathVariable String surname, @PathVariable String name, @PathVariable int group) {
         return ResponseEntity.ok(pupilDataService.findPupilBySurnameAndName(surname, name, group));
     }
+    
+    
+    @RequestMapping(value = "/surname/{surname}/group/{group}")
+    public ResponseEntity<List<PupilViewModel>> findPupilBySurname(@PathVariable String surname,  @PathVariable int group) {
+        return ResponseEntity.ok(pupilDataService.findPupilBySurname(surname,  group));
+    }
+    
+    
+    @RequestMapping(value = "/name/{name}/group/{group}")
+    public ResponseEntity<List<PupilViewModel>> findPupilByName( @PathVariable String name, @PathVariable int group) {
+        return ResponseEntity.ok(pupilDataService.findPupilByName( name, group));
+    }
+    
     
     @RequestMapping(value = "/userId/{id}")
     public ResponseEntity<PupilViewModel> findByUserId(@PathVariable int id) {
@@ -45,7 +59,7 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
-         if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
+        if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
                 pupil.getSurname().matches("[a-zA-Z]{3,10}") &&
                 pupil.getLogin().matches("[a-zA-Z0-9]{3,10}") &&
                 pupil.getPassword().matches("[a-zA-Z0-9]{3,10}")) {
@@ -63,8 +77,8 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<PupilViewModel> saveEditPupil(@RequestBody PupilViewModel pupil /*todo server validation*/) {
-        if (pupil.getName().matches("[a-zA-Z]{3,10}")&&
-        pupil.getSurname().matches("[a-zA-Z]{3,10}")) {
+        if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
+                pupil.getSurname().matches("[a-zA-Z]{3,10}")) {
             if (pupil != null) {
                 return ResponseEntity.ok(pupilDataService.saveEditPupil(pupil));
             }

@@ -34,7 +34,8 @@ export class TableTeacherComponent implements OnInit {
 
   @Output()
   formStateChanged = new EventEmitter<void>();
-
+  @Input()
+  public roleIdCheck: number
 
   public groups: Group[];
   @Input()
@@ -53,7 +54,7 @@ export class TableTeacherComponent implements OnInit {
   public chooseTeacher: number = this.teacherNumber;
   public chooseSubject: number;
   public modalRef: BsModalRef;
-
+  public buttonHide: boolean=false;
   /*stateCtrl = new FormControl();
 
   myForm = new FormGroup({
@@ -132,12 +133,17 @@ export class TableTeacherComponent implements OnInit {
 
   ngOnInit() {
     this.chooseTeacher = this.teacherNumber;
+    this.getButtonHide();
     /*this.loadTimetableNamed();*/
 
     /*this.getEmptySlots();*/
 
   }
-
+  public getButtonHide(): void {
+    if(this.roleIdCheck==2){
+      this.buttonHide=true;
+    }
+  }
   /*private loadTimetableNamed(): void {
     this.loadingService.show();
 

@@ -23,6 +23,8 @@ export class TimetableInfoTeacherComponent implements OnInit {
   @Input()
   public slots: Slots[];
   @Input()
+  public roleIdCheck: number=1;
+  @Input()
   public tChange: boolean;
   public days: string[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   public Monday: string = "Monday";

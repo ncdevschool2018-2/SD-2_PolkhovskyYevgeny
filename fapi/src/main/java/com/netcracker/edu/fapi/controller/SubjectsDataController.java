@@ -4,6 +4,7 @@ import com.netcracker.edu.fapi.models.SubjectsViewModel;
 import com.netcracker.edu.fapi.service.SubjectsDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,21 +40,28 @@ public class SubjectsDataController {
     }
     
     
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SubjectsViewModel> saveSubjects(@RequestBody SubjectsViewModel subjects /*todo server validation*/) {
-        if(subjects.getSubject().matches("[a-zA-Z]{2,30}")){
-        
-        
-        if (subjects != null) {
+        if (subjects.getSubject().matches("[a-zA-Z]{2,30}")) {
+            List<SubjectsViewModel> subjectsmass;
+            subjectsmass = subjectsDataService.getAll();
+            for (SubjectsViewModel sub : subjectsmass
+            ) {
+                if(sub.getSubject().equals(subjects.getSubject())){
+                    return null;
+                }
+                
+            }
             return ResponseEntity.ok(subjectsDataService.saveSubjects(subjects));
-        }
-        return null;}
-        else{
+            
+        } else {
             return null;
         }
     }
     
     
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSubjects(@PathVariable String id) {
         subjectsDataService.deleteSubjects(Integer.valueOf(id));

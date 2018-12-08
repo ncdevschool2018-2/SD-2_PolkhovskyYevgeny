@@ -14,7 +14,11 @@ public interface PupilsService {
     
     List<Pupils> getByGroupIdOrderBySurname(int id);
     
-    List<Pupils> findPupilBySurnameAndName( String surname,String name,int groupId  );
+    List<Pupils> findPupilBySurnameAndName(String surname, String name, int groupId);
+    
+    List<Pupils> findPupilBySurname( String surname,  int groupId);
+    
+    List<Pupils> findPupilByName( String name,  int groupId);
     
     void deletePupil(int id);
     

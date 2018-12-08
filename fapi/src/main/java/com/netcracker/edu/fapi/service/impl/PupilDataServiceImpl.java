@@ -46,23 +46,7 @@ public class PupilDataServiceImpl implements PupilDataService {
         
         return null;
     }
-    /*@Override
-    public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
-        RestTemplate restTemplate = new RestTemplate();
-        UsersViewModel newUser = new UsersViewModel(newPupilViewModel.getLogin(), newPupilViewModel.getPassword(), newPupilViewModel.getRoleId());
-        UsersViewModel user = restTemplate.postForEntity(backendServerUrl + "/api/users", newUser, UsersViewModel.class).getBody();
-        
-        if (user == null) {
-            return null;
-        }
-        UsersViewModel userLogin = restTemplate.getForObject(backendServerUrl + "/api/users/login/" + user.getLogin(), UsersViewModel.class);
-        if (userLogin == null) {
-            return null;
-        }
-        PupilViewModel newPupil = new PupilViewModel(newPupilViewModel.getName(), newPupilViewModel.getSurname(), newPupilViewModel.getGroupId(), userLogin.getId());
-        PupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, PupilViewModel.class).getBody();
-        return pupil;
-    }*/
+    
     
     
     @Override
@@ -88,6 +72,26 @@ public class PupilDataServiceImpl implements PupilDataService {
         PupilViewModel[] pupilViewModelResponse =
                 restTemplate.getForObject(backendServerUrl + "/api/pupils/surname/"+surname+"/name/"+name+"/group/"+groupId, PupilViewModel[].class);
         return pupilViewModelResponse == null ? Collections.emptyList() : Arrays.asList(pupilViewModelResponse);
+    }
+    
+    
+    @Override
+    public List<PupilViewModel> findPupilBySurname(String surname, int groupId) {
+        RestTemplate restTemplate = new RestTemplate();
+        PupilViewModel[] pupilViewModelResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/pupils/surname/"+surname+"/group/"+groupId, PupilViewModel[].class);
+        return pupilViewModelResponse == null ? Collections.emptyList() : Arrays.asList(pupilViewModelResponse);
+    
+    }
+    
+    
+    @Override
+    public List<PupilViewModel> findPupilByName(String name, int groupId) {
+        RestTemplate restTemplate = new RestTemplate();
+        PupilViewModel[] pupilViewModelResponse =
+                restTemplate.getForObject(backendServerUrl + "/api/pupils/name/"+name+"/group/"+groupId, PupilViewModel[].class);
+        return pupilViewModelResponse == null ? Collections.emptyList() : Arrays.asList(pupilViewModelResponse);
+    
     }
     
     

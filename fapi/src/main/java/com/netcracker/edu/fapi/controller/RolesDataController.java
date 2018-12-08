@@ -4,6 +4,7 @@ import com.netcracker.edu.fapi.models.RolesViewModel;
 import com.netcracker.edu.fapi.service.RolesDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class RolesDataController {
         return ResponseEntity.ok(rolesDataService.getAll());
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<RolesViewModel> saveRoles(@RequestBody RolesViewModel roles /*todo server validation*/) {
         if (roles != null) {
@@ -29,7 +30,7 @@ public class RolesDataController {
         return null;
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteRoles(@PathVariable String id) {
         rolesDataService.deleteRoles(Integer.valueOf(id));

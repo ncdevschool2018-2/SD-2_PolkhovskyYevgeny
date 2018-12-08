@@ -22,7 +22,7 @@ public class SlotsDataController {
         return ResponseEntity.ok(slotsDataService.getAll());
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<SlotsViewModel> saveSlots(@RequestBody SlotsViewModel slots /*todo server validation*/) {
         if (slots != null) {
@@ -31,7 +31,7 @@ public class SlotsDataController {
         return null;
     }
     
-    
+    @PreAuthorize("hasAnyAuthority('1')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void deleteSlots(@PathVariable String id) {
         slotsDataService.deleteSlots(Integer.valueOf(id));

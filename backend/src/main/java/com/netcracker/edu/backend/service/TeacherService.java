@@ -24,4 +24,6 @@ public interface TeacherService {
     Teacher findTeacherByUserId(int userId);
     
     List<Teacher> findTeacher(String  word);
+    
+    
 }

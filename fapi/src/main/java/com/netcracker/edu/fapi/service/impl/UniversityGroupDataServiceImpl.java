@@ -29,7 +29,9 @@ public class UniversityGroupDataServiceImpl implements UniversityGroupDataServic
     
     @Override
     public UniversityGroupViewModel getUniversityGroupById(int id) {
-        return null;
+        RestTemplate restTemplate = new RestTemplate();
+        
+        return restTemplate.getForObject(backendServerUrl+"/api/universitygroups/"+id,UniversityGroupViewModel.class);
     }
     
     

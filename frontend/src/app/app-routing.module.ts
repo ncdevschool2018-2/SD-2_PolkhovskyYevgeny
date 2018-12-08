@@ -24,10 +24,10 @@ const routes: Routes = [
   {path: 'timetableinfo/:id', component: TimetableInfoComponent},
   {path: 'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},
   {path: 'timetable', component: TimetableComponent},
-  {path: 'teacherinfo', component: TeacherinfoComponent},
+  {path: 'teacherinfo/:id', component: TeacherinfoComponent},
   {path: 'subject', component: SubjectsComponent},
   {path: 'teachers', component: TeachersComponent},
-  {path: 'teacherinfo/:id', component: TeacherinfoComponent},
+
 
 ]
 

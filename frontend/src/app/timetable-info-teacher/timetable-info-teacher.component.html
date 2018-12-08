@@ -24,6 +24,7 @@
       <accordion>
         <accordion-group heading="Line View" [hidden]="tChange" [isOpen]="!tChange"><!--ngFor fill from array -->
           <app-table-teacher *ngFor="let day of days"
+                             [roleIdCheck]="roleIdCheck"
                              (formStateChanged)="test()"
                              [day]="day"
                              [slots]="slots"
@@ -39,41 +40,41 @@
         <accordion-group heading="Table View" [hidden]="!tChange" [isOpen]="tChange">
           <div class="row">
             <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [slots]="slots" [day]="Monday"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [day]="Monday"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
             <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [slots]="slots" [day]="Tuesday"
-                                 [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
-            </div>
-
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [day]="Wednesday" [slots]="slots"
-                                 [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
-            </div>
-            <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [day]="Thursday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [slots]="slots" [day]="Tuesday"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
 
           </div>
           <div class="row">
-
             <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [day]="Friday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Wednesday" [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
             <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [day]="Saturday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Thursday" [slots]="slots"
+                                 [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
+            </div>
+
+          </div>
+          <div class="row">
+
+            <div class="col-6">
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Friday" [slots]="slots"
+                                 [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
+            </div>
+            <div class="col-6">
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Saturday" [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
           </div>
           <div class="row">
 
             <div class="col-6">
-              <app-table-teacher (formStateChanged)="test()" [day]="Sunday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Sunday" [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
           </div>

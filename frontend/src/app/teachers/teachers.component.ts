@@ -136,12 +136,20 @@ export class TeachersComponent implements OnInit {
 
 
   public _addNewTeacher(): void {
+    let expr = /^[a-zA-Z]{3,15}$/;
+    let exprd = /^[a-zA-Z0-9]{3,15}$/;
+    if((expr.test(this.editableNewUser.name) &&
+      expr.test(this.editableNewUser.surname) &&
+      exprd.test(this.editableNewUser.login) &&
+      exprd.test(this.editableNewUser.password))){
+
+
     this.editableNewUser.roleId = 2;
     this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
       this._updateUsers();
       this._updateTeachers();
       this._closeModal();
-    }));
+    }));}
   }
 
 

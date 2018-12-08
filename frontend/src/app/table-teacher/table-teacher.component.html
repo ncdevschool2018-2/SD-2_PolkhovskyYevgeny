@@ -7,7 +7,7 @@
     <th scope="col"> Subject</th>
     <th scope="col">Group</th>
     <th scope="col">Time</th>
-    <th scope="col"><span><button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal"
+    <th scope="col" [hidden]="buttonHide"><span><button type="button" class="btn btn-lg btn-outline-primary" data-toggle="modal"
                                   data-target="#exampleModal"
                                   (click)="_openModalTimetable(templateTimeTable)">
       Add
@@ -28,7 +28,7 @@
 
     <td *ngIf="mon.day.includes(day)"> {{mon.time}}</td>
 
-    <td *ngIf="mon.day.includes(day)">
+    <td *ngIf="mon.day.includes(day)" [hidden]="buttonHide">
       <span><button type="button" class="btn btn-danger"
                     (click)="_deleteTimetable(mon.timetableId)">Delete</button></span>
     </td>
