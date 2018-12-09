@@ -1,10 +1,8 @@
 package com.netcracker.edu.fapi.service.impl;
 
-import com.netcracker.edu.fapi.models.NewTeacherViewModel;
-import com.netcracker.edu.fapi.models.NewUserViewModel;
-import com.netcracker.edu.fapi.models.PageTeacherViewModel;
-import com.netcracker.edu.fapi.models.TeacherViewModel;
+import com.netcracker.edu.fapi.models.*;
 import com.netcracker.edu.fapi.service.TeacherDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +14,15 @@ import java.util.List;
 @Service
 public class TeacherDataServiceImpl implements TeacherDataService {
     
+    UsersDataServiceImpl usersDataService;
     @Value("${backend.server.url}")
     private String backendServerUrl;
+    
+    
+    @Autowired
+    public TeacherDataServiceImpl(UsersDataServiceImpl usersDataService) {
+        this.usersDataService = usersDataService;
+    }
     
     
     @Override
@@ -64,6 +69,13 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         NewTeacherViewModel newTeacher =
                 new NewTeacherViewModel(newTeacherViewModel.getName(), newTeacherViewModel.getSurname(), newTeacherViewModel.getSubjectId(), newTeacherViewModel.getUserId(), newTeacherViewModel.getLogin(), newTeacherViewModel.getPassword(), newTeacherViewModel.getRoleId());
         
+        List<UsersViewModel> usersViewModels = usersDataService.getAll();
+        for (UsersViewModel user : usersViewModels
+        ) {if(user.getLogin().equals(newTeacherViewModel.getLogin())){
+            return null;
+        }
+        
+        }
         NewTeacherViewModel teacher = restTemplate.postForEntity(backendServerUrl + "/api/teachers", newTeacher, NewTeacherViewModel.class).getBody();
         return null;
         
@@ -106,8 +118,8 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     
     @Override
     public TeacherViewModel findTeacherByUserId(int userId) {
-        RestTemplate restTemplate =new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl+"/api/teachers/user-id/"+userId,TeacherViewModel.class);
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject(backendServerUrl + "/api/teachers/user-id/" + userId, TeacherViewModel.class);
         
     }
     
@@ -124,11 +136,11 @@ public class TeacherDataServiceImpl implements TeacherDataService {
     @Override
     public List<TeacherViewModel> findTeacher(String word) {
         RestTemplate restTemplate = new RestTemplate();
-    
+        
         TeacherViewModel[] teacherViewModelResponse =
                 restTemplate.getForObject(backendServerUrl + "/api/teachers/search/" + word, TeacherViewModel[].class);
         return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
-    
+        
     }
     
 }

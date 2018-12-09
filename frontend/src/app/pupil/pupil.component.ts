@@ -24,28 +24,33 @@ export class PupilComponent implements OnInit {
   public isCollapsed2 = true;
   private subscriptions: Subscription[] = [];
   public slots: Slots[];
-  public student:GroupContent;
-  public group:Group;
-  public groupId:number;
-  tChange: boolean=false;
+  public student: GroupContent;
+  public group: Group;
+  public groupId: number;
+  tChange: boolean = false;
+
   constructor(private pupilService: PupilService,
               private authService: AuthService,
               private router: Router,
               private slotService: SlotService,
               private route: ActivatedRoute,
-              private groupService:GroupService,
+              private groupService: GroupService,
               private groupContentService: GroupContentService,) {
   }
 
-  ngOnInit() {this.loadSlot();
+  ngOnInit() {
     this.loadUser();
+    this.loadSlot();
     this.getGroupName();
 
+
   }
+
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
   }
+
   public first(): void {
     this.isCollapsed = false;
     this.isCollapsed1 = true;
@@ -66,18 +71,7 @@ export class PupilComponent implements OnInit {
     this.isCollapsed2 = false;
 
   }
-  private getGroupName():void{
-    this.subscriptions.push(this.groupService.getGroupById(this.student.groupId).subscribe(slots => {
 
-        this.group = slots as Group;
-      }
-      /*,
-      (error => {
-        if(error==="Unauthorized"   ){
-          alert("you have no any permissions")
-        }
-      })*/));
-  }
   private loadSlot(): void {
 
     this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
@@ -91,6 +85,7 @@ export class PupilComponent implements OnInit {
         }
       })*/));
   }
+
   private loadUser(): void {
 
     // Get data from BillingAccountService
@@ -106,5 +101,19 @@ export class PupilComponent implements OnInit {
       }));
     });
 
+  }
+
+  private getGroupName(): void {
+
+    this.subscriptions.push(this.groupService.getGroupById(this.student.groupId).subscribe(slots => {
+
+        this.group = slots as Group;
+      }
+      /*,
+      (error => {
+        if(error==="Unauthorized"   ){
+          alert("you have no any permissions")
+        }
+      })*/));
   }
 }

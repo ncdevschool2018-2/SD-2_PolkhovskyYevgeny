@@ -3,7 +3,9 @@ package com.netcracker.edu.fapi.service.impl;
 import com.netcracker.edu.fapi.models.NewPupilViewModel;
 import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PupilViewModel;
+import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.PupilDataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -15,10 +17,14 @@ import java.util.List;
 @Service
 public class PupilDataServiceImpl implements PupilDataService {
     
-    
+    UsersDataServiceImpl usersDataService;
     @Value("${backend.server.url}")
     private String backendServerUrl;
     
+    @Autowired
+    public PupilDataServiceImpl(UsersDataServiceImpl usersDataService) {
+        this.usersDataService = usersDataService;
+    }
     
     @Override
     public List<PupilViewModel> getAll() {
@@ -40,7 +46,11 @@ public class PupilDataServiceImpl implements PupilDataService {
     public PupilViewModel savePupil(NewUserViewModel newPupilViewModel) {
         RestTemplate restTemplate = new RestTemplate();
         NewPupilViewModel newPupil = new NewPupilViewModel(newPupilViewModel.getName(), newPupilViewModel.getSurname(), newPupilViewModel.getGroupId(), newPupilViewModel.getUserId(), newPupilViewModel.getLogin(), newPupilViewModel.getPassword(), newPupilViewModel.getRoleId());
-        
+        List<UsersViewModel> usersViewModels = usersDataService.getAll();
+        for (UsersViewModel user : usersViewModels
+        ) {if(user.getLogin().equals(newPupilViewModel.getLogin())){
+            return null;
+        }}
         NewPupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, NewPupilViewModel.class).getBody();
         
         

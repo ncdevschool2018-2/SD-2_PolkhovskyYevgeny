@@ -12,19 +12,22 @@ import {SubjectsComponent} from "./subjects/subjects.component";
 import {TeachersComponent} from "./teachers/teachers.component";
 import {TimetableInfoTeacherComponent} from "./timetable-info-teacher/timetable-info-teacher.component";
 import {SignupComponent} from "./signup/signup.component";
+import {AuthGuardService} from "./service/auth-guard.service";
+import {AuthGuardPupilService} from "./service/auth-guard-pupil.service";
+import {AuthGuardTeacherService} from "./service/auth-guard-teacher.service";
 
 const routes: Routes = [
   {path: '', redirectTo: '/signin', pathMatch: 'full'},
-  {path: 'admin', component: AdminComponent},
+  {path: 'admin', component: AdminComponent,canActivate: [AuthGuardService]},
   {path: 'signin', component: SigninComponent},
   {path: 'signup', component: SignupComponent},
   {path: 'group', component: GroupComponent},
-  {path: 'pupil/:id', component: PupilComponent},
+  {path: 'pupil/:id', component: PupilComponent,canActivate: [AuthGuardPupilService]},
   {path: 'groupContent/:id', component: GroupContentComponent},
   {path: 'timetableinfo/:id', component: TimetableInfoComponent},
   {path: 'timetable-info-teacher/:id', component: TimetableInfoTeacherComponent},
   {path: 'timetable', component: TimetableComponent},
-  {path: 'teacherinfo/:id', component: TeacherinfoComponent},
+  {path: 'teacherinfo/:id', component: TeacherinfoComponent,canActivate: [AuthGuardTeacherService]},
   {path: 'subject', component: SubjectsComponent},
   {path: 'teachers', component: TeachersComponent},
 
