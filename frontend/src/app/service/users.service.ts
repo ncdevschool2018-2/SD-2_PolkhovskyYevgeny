@@ -15,7 +15,9 @@ export class UsersService {
   getUsers(): Observable<Users[]> {
     return this.http.get<Users[]>('/api/user');
   }
-
+  getUserById(id: number): Observable<Users> {
+    return this.http.get<Users>("/api/user/" + id);
+  }
   saveUsers(user: Users): Observable<Users> {
     return this.http.post<Users>('/api/user', user);
   }

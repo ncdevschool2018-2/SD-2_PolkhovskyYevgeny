@@ -2,8 +2,11 @@ package com.netcracker.edu.fapi.controller;
 
 import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PupilViewModel;
+import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.PupilDataService;
+import com.netcracker.edu.fapi.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +19,8 @@ public class PupilDataController {
     
     @Autowired
     private PupilDataService pupilDataService;
+    @Autowired
+    private UsersDataService usersDataService;
     
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
@@ -59,6 +64,12 @@ public class PupilDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-pupil")
     public ResponseEntity<PupilViewModel> savePupil(@RequestBody NewUserViewModel pupil /*todo server validation*/) {
+        List<UsersViewModel> usersViewModels = usersDataService.getAll();
+        for (UsersViewModel user : usersViewModels
+        ) {if(user.getLogin().equals(pupil.getLogin())){
+            //return new ResponseEntity("bad",HttpStatus.BAD_REQUEST);
+            return  null;
+        }}
         if (pupil.getName().matches("[a-zA-Z]{3,10}") &&
                 pupil.getSurname().matches("[a-zA-Z]{3,10}") &&
                 pupil.getLogin().matches("[a-zA-Z0-9]{3,10}") &&

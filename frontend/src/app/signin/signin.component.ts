@@ -59,7 +59,7 @@ export class SigninComponent implements OnInit, OnDestroy {
         this.authorizationAccount = user as Users;
 
         console.log(this.authorizationAccount);
-
+sessionStorage.setItem('user',this.authorizationAccount.id.toString())
         if (this.authorizationAccount.roleId==1) {
           this.authService.transmitAuthorizedUser(this.authorizationAccount);
 
@@ -76,7 +76,12 @@ export class SigninComponent implements OnInit, OnDestroy {
 
         this.loadingService.hide();
       });
-    }));
+    },
+      (error => {
+        if(error==="Unauthorized"   ){
+          alert("Please check your login or passrord")
+        }
+      })));
   }
 
   public nav(): void {

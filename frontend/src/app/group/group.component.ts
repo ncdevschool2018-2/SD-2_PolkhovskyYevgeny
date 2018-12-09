@@ -111,7 +111,11 @@ export class GroupComponent implements OnInit {
   public _addGroup(): void {
     debugger
     if (parseInt(this.editableGroup.name) >= 1000000 && parseInt(this.editableGroup.name) <= 99999999) {
-      this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(() => {
+      this.subscriptions.push(this.groupService.saveGroup(this.editableGroup).subscribe(n => {
+        if(n== null){
+          alert("group  already exist");
+          return
+        }
         this._updateGroups();
         this.refreshGroup();
         this.getNumberOfGroups();

@@ -54,7 +54,7 @@ public class PupilDataServiceImpl implements PupilDataService {
         NewPupilViewModel pupil = restTemplate.postForEntity(backendServerUrl + "/api/pupils", newPupil, NewPupilViewModel.class).getBody();
         
         
-        return null;
+        return new PupilViewModel();
     }
     
     

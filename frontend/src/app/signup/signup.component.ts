@@ -78,12 +78,20 @@ export class SignupComponent implements OnInit {
     debugger
     if (this.editableNewUser.password.includes(this.confirmPassword)) {
       if (num == 3) {
-        this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+        this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
+          if(n== null){
+            alert("user with this login already exist");
+            return
+          }
           this.router.navigate(['signin']);
         }));
       }
       if (num == 2) {
-        this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
+        this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
+            if(n== null){
+              alert("user with this login already exist");
+              return
+            }
           this.router.navigate(['signin']);
         }));
       }

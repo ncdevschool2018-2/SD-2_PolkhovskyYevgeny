@@ -77,7 +77,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         
         }
         NewTeacherViewModel teacher = restTemplate.postForEntity(backendServerUrl + "/api/teachers", newTeacher, NewTeacherViewModel.class).getBody();
-        return null;
+        return new TeacherViewModel();
         
     }
     

@@ -46,7 +46,7 @@ public class UsersDataController {
     }
     
     
-     @PreAuthorize("hasAnyAuthority('1')")
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<UsersViewModel> getUserById(@PathVariable(name = "id") int id) {
         Optional<UsersViewModel> user = usersDataService.getUsersById(id);

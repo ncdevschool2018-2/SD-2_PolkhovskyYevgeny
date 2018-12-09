@@ -180,7 +180,11 @@ export class GroupContentComponent implements OnInit {
       expr.test(this.editableGC.surname)
     ) {
       this.loadingService.show();
-      this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(() => {
+      this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(n => {
+        if(n== null){
+          alert("user with this login already exist");
+          return
+        }
         this._updateGroupContent();
         this.refreshGC();
         this._closeModal();
@@ -240,7 +244,11 @@ export class GroupContentComponent implements OnInit {
       exprd.test(this.editableNewUser.password))) {
       this.editableNewUser.groupId = this.groupNumber;
       this.editableNewUser.roleId = 3;
-      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(() => {
+      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
+        if(n== null){
+          alert("user with this login already exist");
+          return
+        }
         this._updateUsers();
         this.loadGroupsContent();
 

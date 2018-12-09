@@ -64,7 +64,11 @@ export class SubjectsComponent implements OnInit {
   }
 
   public _addSubject(): void {
-    this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(() => {
+    this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(n => {
+      if(n== null){
+        alert("Subject already exist");
+        return
+      }
       this.loadAllSubjects();
       this._updateSubject();
       this.modalRef.hide();

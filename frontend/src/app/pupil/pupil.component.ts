@@ -39,6 +39,7 @@ export class PupilComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loadUser();
     this.loadSlot();
     this.getGroupName();

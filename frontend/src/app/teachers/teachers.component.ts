@@ -145,7 +145,11 @@ export class TeachersComponent implements OnInit {
 
 
     this.editableNewUser.roleId = 2;
-    this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(() => {
+    this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
+      if(n== null){
+        alert("user with this login already exist");
+        return
+      }
       this._updateUsers();
       this._updateTeachers();
       this._closeModal();

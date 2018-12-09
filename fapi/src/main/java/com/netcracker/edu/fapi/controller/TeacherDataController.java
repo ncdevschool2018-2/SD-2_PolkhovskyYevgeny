@@ -3,7 +3,9 @@ package com.netcracker.edu.fapi.controller;
 import com.netcracker.edu.fapi.models.NewUserViewModel;
 import com.netcracker.edu.fapi.models.PageTeacherViewModel;
 import com.netcracker.edu.fapi.models.TeacherViewModel;
+import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.TeacherDataService;
+import com.netcracker.edu.fapi.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,7 +18,8 @@ import java.util.List;
 public class TeacherDataController {
     @Autowired
     private TeacherDataService teacherDataService;
-    
+    @Autowired
+    private UsersDataService usersDataService;
     @Autowired
     private BCryptPasswordEncoder bcryptEncoder;
     
@@ -37,8 +40,10 @@ public class TeacherDataController {
     public ResponseEntity<TeacherViewModel> getTeacherById(@PathVariable int id) {
         return ResponseEntity.ok(teacherDataService.getTeacherById(id));
     }
+    
+    
     @RequestMapping(value = "/user-id/{user-id}", method = RequestMethod.GET)
-    public ResponseEntity<TeacherViewModel> getTeacherByUserId( @PathVariable("user-id") int userId) {
+    public ResponseEntity<TeacherViewModel> getTeacherByUserId(@PathVariable("user-id") int userId) {
         return ResponseEntity.ok(teacherDataService.findTeacherByUserId(userId));
     }
     
@@ -49,6 +54,8 @@ public class TeacherDataController {
         return ResponseEntity.ok(teacherDataService.getPageTeacher(page));
         
     }
+    
+    
     @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
     public ResponseEntity<List<TeacherViewModel>> findTeacher(@PathVariable String word) {
         
@@ -59,18 +66,25 @@ public class TeacherDataController {
     
     @RequestMapping(method = RequestMethod.POST, value = "/new-teacher")
     public ResponseEntity<TeacherViewModel> saveTeacher(@RequestBody NewUserViewModel teacher /*todo server validation*/) {
-        if(teacher.getName().matches("[a-zA-Z]{3,10}")&&
-        teacher.getSurname().matches("[a-zA-Z]{3,10}")&&
-        teacher.getLogin().matches("[a-zA-Z0-9]{3,10}")&&
-        teacher.getPassword().matches("[a-zA-Z0-9]{3,10}")){
-        NewUserViewModel newTeacher =
-                new NewUserViewModel(teacher.getName(), teacher.getSurname(), teacher.getSubjectId(), teacher.getGroupId(), teacher.getUserId(), teacher.getLogin(), bcryptEncoder.encode(teacher.getPassword()), teacher.getRoleId());
-        
-        if (newTeacher != null) {
-            return ResponseEntity.ok(teacherDataService.saveTeacher(newTeacher));
+        List<UsersViewModel> usersViewModels = usersDataService.getAll();
+        for (UsersViewModel user : usersViewModels
+        ) {
+            if (user.getLogin().equals(teacher.getLogin())) {
+                return null;
+            }
         }
-        return null;}
-        else{
+        if (teacher.getName().matches("[a-zA-Z]{3,10}") &&
+                teacher.getSurname().matches("[a-zA-Z]{3,10}") &&
+                teacher.getLogin().matches("[a-zA-Z0-9]{3,10}") &&
+                teacher.getPassword().matches("[a-zA-Z0-9]{3,10}")) {
+            NewUserViewModel newTeacher =
+                    new NewUserViewModel(teacher.getName(), teacher.getSurname(), teacher.getSubjectId(), teacher.getGroupId(), teacher.getUserId(), teacher.getLogin(), bcryptEncoder.encode(teacher.getPassword()), teacher.getRoleId());
+            
+            if (newTeacher != null) {
+                return ResponseEntity.ok(teacherDataService.saveTeacher(newTeacher));
+            }
+            return null;
+        } else {
             return null;
         }
     }
