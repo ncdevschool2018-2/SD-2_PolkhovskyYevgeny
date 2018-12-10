@@ -24,11 +24,11 @@ export class AuthGuardPupilService implements CanActivate{
     let jwtData = token.split('.')[1];
     let decodedJwtJsonData = window.atob(jwtData);
     let tr = decodedJwtJsonData.split('"')[7];
-    let decodedJwtData = JSON.parse(decodedJwtJsonData);debugger
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
 
-      debugger
+
       if (tr.includes("3" )&& sessionStorage.getItem('user').toString().includes(to)) {
-        debugger
+
         return true;
       } else {
         this.location.back();

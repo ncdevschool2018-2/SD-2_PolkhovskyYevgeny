@@ -57,7 +57,7 @@ export class TableComponent implements OnInit {
   public chooseSubject: number;
   public chooseTeachers: number;
   public chooseTeachersName: Teacher[];
-  public buttonHide: boolean=false;
+  public buttonHide: boolean = false;
   public monConfirmId: number;
 
   constructor(private loadingService: Ng4LoadingSpinnerService,
@@ -79,11 +79,13 @@ export class TableComponent implements OnInit {
     this.getButtonHide();
     /*this.loadTimetable()*/
   }
+
   public getButtonHide(): void {
-    if(this.roleIdCheck==3){
-      this.buttonHide=true;
+    if (this.roleIdCheck == 3) {
+      this.buttonHide = true;
     }
   }
+
   /*private loadTimetable(): void {
 
 
@@ -179,32 +181,35 @@ this.chooseGroup=id;
     }
   }*/
   private getEmptySlots(): void {
+    this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
 
-    let dayTimetable = this.timetable.filter(item => item.day === this.day);
-    if (dayTimetable && dayTimetable.length > 0) {
-      for (let timetable of dayTimetable) {
-        this.slotsNot.push(timetable.time)
-      }
-
-
-      for (let slot of this.slots) {
-        if (this.slotsNot.length == 0) {
-          this.slotsDist.push(slot);
+      this.slots = slots as Slots[];
+      let dayTimetable = this.timetable.filter(item => item.day === this.day);
+      if (dayTimetable && dayTimetable.length > 0) {
+        for (let timetable of dayTimetable) {
+          this.slotsNot.push(timetable.time)
         }
-        for (let not of this.slotsNot) {
-          if ((slot.startTime + " - " + slot.endTime).includes(not)) {
-            this.slotsNot.splice(0, 1);
+
+
+        for (let slot of this.slots) {
+          if (this.slotsNot.length == 0) {
+            this.slotsDist.push(slot);
+          }
+          for (let not of this.slotsNot) {
+            if ((slot.startTime + " - " + slot.endTime).includes(not)) {
+              this.slotsNot.splice(0, 1);
+              break;
+            }
+            this.slotsDist.push(slot);
             break;
           }
-          this.slotsDist.push(slot);
-          break;
         }
+
+
+      } else {
+        this.slotsDist = this.slots;
       }
-
-
-    } else {
-      this.slotsDist = this.slots;
-    }
+    }));
   }
 
   /*private loadGroups(): void {
@@ -243,28 +248,29 @@ this.chooseGroup=id;
   }
 
   public _addTimeTable(): void {
-
-    for (let subj of this.subjects) {
-      if (subj.teacherId == this.chooseTeachers) {
-        this.editableTimetable.subjectId = subj.id;
+    if (this.editableTimetable.slotId && this.chooseSubject && this.chooseTeachers) {
+      for (let subj of this.subjects) {
+        if (subj.teacherId == this.chooseTeachers) {
+          this.editableTimetable.subjectId = subj.id;
+        }
       }
-    }
-    this.editableTimetable.groupId = this.groupNumber;
+      this.editableTimetable.groupId = this.groupNumber;
 
-    for (let days of this.daysOfWeek) {
-      if (days.name.includes(this.day)) {
-        this.editableTimetable.dayOfWeekId = days.id;
+      for (let days of this.daysOfWeek) {
+        if (days.name.includes(this.day)) {
+          this.editableTimetable.dayOfWeekId = days.id;
+        }
       }
-    }
 
-    this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
-      /*this._updateTimetable();*/
-      this.refreshTimetable();
-      this.refreshTimetableExample();
-      // this._updateTimetableExample();
-      this.formStateChanged.emit();
-      this.modalRef.hide();
-    }));
+      this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
+        /*this._updateTimetable();*/
+        this.refreshTimetable();
+        this.refreshTimetableExample();
+        // this._updateTimetableExample();
+        this.formStateChanged.emit();
+        this.modalRef.hide();
+      }));
+    }
   }
 
   private loadSubjectTeacher(): void {

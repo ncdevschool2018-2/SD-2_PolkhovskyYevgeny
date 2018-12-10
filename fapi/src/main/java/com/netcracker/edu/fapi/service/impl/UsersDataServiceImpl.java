@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.service.impl;
 
+import com.netcracker.edu.fapi.models.UsersChangeViewModel;
 import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -24,6 +26,7 @@ public class UsersDataServiceImpl implements UsersDataService, UserDetailsServic
     private BCryptPasswordEncoder bcryptEncoder;
     
     
+    
     @Override
     public List<UsersViewModel> getAll() {
         RestTemplate restTemplate = new RestTemplate();
@@ -34,18 +37,39 @@ public class UsersDataServiceImpl implements UsersDataService, UserDetailsServic
     
     
     @Override
-    public Optional<UsersViewModel> getUsersById(int id) {
+    public UsersViewModel getUsersById(int id) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(backendServerUrl + "/api/users/" + id, Optional.class);
+        return restTemplate.getForObject(backendServerUrl + "/api/users/" + id, UsersViewModel.class);
     }
     
     
     @Override
     public UsersViewModel saveUsers(UsersViewModel user) {
         RestTemplate restTemplate = new RestTemplate();
-        UsersViewModel newUser = new UsersViewModel(user.getLogin(), bcryptEncoder.encode(user.getPassword()), user.getRoleId());
-        return restTemplate.postForEntity(backendServerUrl + "/api/users", newUser,
-                UsersViewModel.class).getBody();
+        
+        
+            UsersViewModel newUser = new UsersViewModel(user.getLogin(), bcryptEncoder.encode(user.getPassword()), user.getRoleId());
+            return restTemplate.postForEntity(backendServerUrl + "/api/users", newUser,
+                    UsersViewModel.class).getBody();
+        
+        
+    }
+    
+    
+    @Override
+    public UsersViewModel saveChangeUsers(UsersChangeViewModel user) {
+        RestTemplate restTemplate = new RestTemplate();
+        UsersViewModel checkUser=getUsersById(user.getId());
+        String s =user.getPasswordOld();
+        String b =checkUser.getPassword();
+        if(bcryptEncoder.matches(user.getPasswordOld(),checkUser.getPassword())){
+            UsersViewModel newUser = new UsersViewModel(user.getId(),user.getLogin(), bcryptEncoder.encode(user.getPasswordNew()), user.getRoleId());
+            return restTemplate.postForEntity(backendServerUrl + "/api/users", newUser,
+                    UsersViewModel.class).getBody();
+        
+        }
+        
+        return null;
     }
     
     

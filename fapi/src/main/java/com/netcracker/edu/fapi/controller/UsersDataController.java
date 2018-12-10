@@ -1,5 +1,6 @@
 package com.netcracker.edu.fapi.controller;
 
+import com.netcracker.edu.fapi.models.UsersChangeViewModel;
 import com.netcracker.edu.fapi.models.UsersViewModel;
 import com.netcracker.edu.fapi.service.UsersDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,13 @@ public class UsersDataController {
         }
         return null;
     }
+    @RequestMapping(value = "/edit",method = RequestMethod.POST)
+    public ResponseEntity<UsersViewModel> saveChangeUsers(@RequestBody UsersChangeViewModel users /*todo server validation*/) {
+        if (users != null) {
+            return ResponseEntity.ok(usersDataService.saveChangeUsers(users));
+        }
+        return null;
+    }
     
     
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
@@ -49,9 +57,9 @@ public class UsersDataController {
     
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<UsersViewModel> getUserById(@PathVariable(name = "id") int id) {
-        Optional<UsersViewModel> user = usersDataService.getUsersById(id);
-        if (user.isPresent()) {
-            return ResponseEntity.ok(user.get());
+        UsersViewModel user = usersDataService.getUsersById(id);
+        if (!(user==null)) {
+            return ResponseEntity.ok(user);
         } else {
             return ResponseEntity.notFound().build();
         }

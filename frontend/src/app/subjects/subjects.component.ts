@@ -66,7 +66,7 @@ export class SubjectsComponent implements OnInit {
   public _addSubject(): void {
     this.subscriptions.push(this.subjectService.saveSubject(this.editableSubject).subscribe(n => {
       if(n== null){
-        alert("Subject already exist");
+        alert("Subject already exist or you enter invalid data");
         return
       }
       this.loadAllSubjects();

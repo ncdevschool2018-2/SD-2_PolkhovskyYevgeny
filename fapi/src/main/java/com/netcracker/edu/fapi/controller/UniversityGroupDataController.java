@@ -63,6 +63,12 @@ public class UniversityGroupDataController {
         return ResponseEntity.ok(universityGroupDataService.findGroup(word));
         
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UniversityGroupViewModel> getUniversityGroupById(@PathVariable int id) {
+        
+        return ResponseEntity.ok(universityGroupDataService.getUniversityGroupById(id));
+        
+    }
     
     
     @RequestMapping(value = "/totalPages", method = RequestMethod.GET)

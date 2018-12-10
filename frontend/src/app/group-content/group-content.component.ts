@@ -14,7 +14,6 @@ import {NewUser} from "../model/newUser";
 import {PupilService} from "../service/pupil.service";
 import {Users} from "../model/users";
 import {UsersService} from "../service/users.service";
-import {Teacher} from "../model/teacher";
 
 
 @Component({
@@ -47,6 +46,7 @@ export class GroupContentComponent implements OnInit {
   public searchName: string = "";
   public ss: string = "";
   public sn: string = "";
+
   constructor(private groupContentService: GroupContentService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -69,25 +69,25 @@ export class GroupContentComponent implements OnInit {
   }
 
   public k(): void {
-    if (this.searchSur.length == 0 && this.searchName.length ==0) {
+    if (this.searchSur.length == 0 && this.searchName.length == 0) {
       this.loadGroupsContent();
       //this.paghide = false;
 
     }
-    else if(this.searchSur.length == 0){
+    else if (this.searchSur.length == 0) {
 
       this.sn = this.searchName;
-      this.subscriptions.push(this.groupContentService.findPupilByName(this.sn,this.groupNumber).subscribe(numb => {
+      this.subscriptions.push(this.groupContentService.findPupilByName(this.sn, this.groupNumber).subscribe(numb => {
         // Parse json response into local array
         this.GroupContent = numb as GroupContent[];
         //this.paghide = true;
 
       }));
     }
-    else if(this.searchName.length ==0){
+    else if (this.searchName.length == 0) {
       this.ss = this.searchSur;
 
-      this.subscriptions.push(this.groupContentService.findPupilBySurname(this.ss,this.groupNumber).subscribe(numb => {
+      this.subscriptions.push(this.groupContentService.findPupilBySurname(this.ss, this.groupNumber).subscribe(numb => {
         // Parse json response into local array
         this.GroupContent = numb as GroupContent[];
         //this.paghide = true;
@@ -98,7 +98,7 @@ export class GroupContentComponent implements OnInit {
 
       this.ss = this.searchSur;
       this.sn = this.searchName;
-      this.subscriptions.push(this.groupContentService.findPupilBySurnameAndName(this.ss,this.sn,this.groupNumber).subscribe(numb => {
+      this.subscriptions.push(this.groupContentService.findPupilBySurnameAndName(this.ss, this.sn, this.groupNumber).subscribe(numb => {
         // Parse json response into local array
         this.GroupContent = numb as GroupContent[];
         //this.paghide = true;
@@ -181,7 +181,7 @@ export class GroupContentComponent implements OnInit {
     ) {
       this.loadingService.show();
       this.subscriptions.push(this.groupContentService.saveGroupContent(this.editableGC).subscribe(n => {
-        if(n== null){
+        if (n == null) {
           alert("user with this login already exist");
           return
         }
@@ -219,6 +219,7 @@ export class GroupContentComponent implements OnInit {
 
   public _openModalPupil(template: TemplateRef<any>): void {
     this.refreshGroup();
+  this.editableNewUser = new NewUser();
     this.modalRef = this.modalService.show(template);
     this.subscriptions.push(this.rolesService.getRoles().subscribe(roles => {
       this.roles = roles as Roles[];
@@ -231,30 +232,32 @@ export class GroupContentComponent implements OnInit {
   }
 
   public _addNewPupil(): void {
-    debugger
-    let expr = /^[a-zA-Z]{3,15}$/;
-    let exprd = /^[a-zA-Z0-9]{3,15}$/;
-    let g = expr.test(this.editableNewUser.name);
-    let k = expr.test(this.editableNewUser.surname);
-    let m = exprd.test(this.editableNewUser.login);
-    let t = exprd.test(this.editableNewUser.password);
-    if ((expr.test(this.editableNewUser.name) &&
-      expr.test(this.editableNewUser.surname) &&
-      exprd.test(this.editableNewUser.login) &&
-      exprd.test(this.editableNewUser.password))) {
-      this.editableNewUser.groupId = this.groupNumber;
-      this.editableNewUser.roleId = 3;
-      this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
-        if(n== null){
-          alert("user with this login already exist");
-          return
-        }
-        this._updateUsers();
-        this.loadGroupsContent();
+    if (this.editableNewUser.name && this.editableNewUser.surname &&
+      this.editableNewUser.login && this.editableNewUser.password) {
+      let expr = /^[a-zA-Z]{3,15}$/;
+      let exprd = /^[a-zA-Z0-9]{3,15}$/;
+      let g = expr.test(this.editableNewUser.name);
+      let k = expr.test(this.editableNewUser.surname);
+      let m = exprd.test(this.editableNewUser.login);
+      let t = exprd.test(this.editableNewUser.password);
+      if ((expr.test(this.editableNewUser.name) &&
+        expr.test(this.editableNewUser.surname) &&
+        exprd.test(this.editableNewUser.login) &&
+        exprd.test(this.editableNewUser.password))) {
+        this.editableNewUser.groupId = this.groupNumber;
+        this.editableNewUser.roleId = 3;
+        this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
+          if (n == null) {
+            alert("user with this login already exist or you enter invalid data");
+            return
+          }
+          this._updateUsers();
+          this.loadGroupsContent();
 
 
-        this._closeModal();
-      }));
+          this._closeModal();
+        }));
+      }
     }
   }
 

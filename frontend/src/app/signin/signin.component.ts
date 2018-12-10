@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit, OnDestroy {
 
     this.loadingService.show();
 
-    debugger;
+
     this.subscriptions.push(this.authService.attemptAuth(this.login, this.password).subscribe(authToken => {
       let token: Token = authToken as Token;
       this.tokeStorage.saveToken(token.token);
@@ -79,7 +79,7 @@ sessionStorage.setItem('user',this.authorizationAccount.id.toString())
     },
       (error => {
         if(error==="Unauthorized"   ){
-          alert("Please check your login or passrord")
+          alert("Please check your login or password")
         }
       })));
   }

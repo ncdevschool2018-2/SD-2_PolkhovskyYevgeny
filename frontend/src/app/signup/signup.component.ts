@@ -25,11 +25,11 @@ import {TeacherService} from "../service/teacher.service";
 export class SignupComponent implements OnInit {
   public subjectsAll: Subjects[];
   public alertUserAboutError: boolean = false;
-  public wrongPassword:boolean=true;
+  public wrongPassword: boolean = false;
   public editableNewUser: NewUser = new NewUser();
   public login: string;
   public password: string;
-  public confirmPassword: string="";
+  public confirmPassword: string = "";
   public roles: Roles[];
   private subscriptions: Subscription[] = [];
   public groups: Group[];
@@ -75,30 +75,33 @@ export class SignupComponent implements OnInit {
   }
 
   public register(num: number): void {
-    debugger
-    if (this.editableNewUser.password.includes(this.confirmPassword)) {
-      if (num == 3) {
-        this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
-          if(n== null){
-            alert("user with this login already exist");
-            return
-          }
-          this.router.navigate(['signin']);
-        }));
-      }
-      if (num == 2) {
-        this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
-            if(n== null){
-              alert("user with this login already exist");
+    if (this.confirmPassword && this.editableNewUser.password && this.editableNewUser.subjectId) {
+      if (this.editableNewUser.password.includes(this.confirmPassword)) {
+        if (num == 3) {
+          this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
+            if (n == null) {
+              alert("user with this login already exist or you enter invalid data");
+              this.wrongPassword = false;
               return
             }
-          this.router.navigate(['signin']);
-        }));
+            this.router.navigate(['signin']);
+          }));
+        }
+        if (num == 2) {
+          this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
+            if (n == null) {
+              alert("user with this login already exist or you enter invalid data");
+              this.wrongPassword = false;
+              return
+            }
+            this.router.navigate(['signin']);
+          }));
+        }
+      }else {
+        this.wrongPassword = true;
       }
     }
-    else{
-      this.wrongPassword=true;
-    }
+
   }
 
   private loadAllSubjects(): void {

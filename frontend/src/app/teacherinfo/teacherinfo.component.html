@@ -15,7 +15,7 @@
     </a>
 
     <a class=" py-2 d-none d-md-inline-block" (click)="first()"
-       [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Your Group</a>
+       [attr.aria-expanded]="!isCollapsed" aria-controls="collapseBasic">Your Subjects</a>
     <a class="py-2 d-none d-md-inline-block" (click)="second()"
        [attr.aria-expanded]="!isCollapsed1" aria-controls="collapseBasic1">Your Timetable</a>
     <a class="py-2 d-none d-md-inline-block" (click)="third()"
@@ -35,7 +35,8 @@
     </div>
   </div>
 </div>
-<div id="collapseBasic1" *ngIf="teacher" [collapse]="isCollapsed1" class="card card-block card-header">
+<div style="width: 80%; margin-left: auto;
+    margin-right: auto;"id="collapseBasic1" *ngIf="teacher" [collapse]="isCollapsed1" class="card card-block card-header">
   <div class="well well-lg">
     <!--<button type="button" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Tooltip on top"
             data-target="#exampleModal"
@@ -64,6 +65,19 @@
 
 <div *ngIf="teacher" id="collapseBasic2" [collapse]="isCollapsed2" class="card card-block card-header">
   <div class="text-center">
-    {{teacher.name}}{{" "}}{{teacher.surname}}
+    <h1>Name: {{teacher.name}}</h1>
+    <h1>Surname :{{teacher.surname}}</h1>
+    <div style="width: 400px; margin-left: auto;
+    margin-right: auto;">
+      <input type="password" class="form-control" name="password" [(ngModel)]="oldPassword" #pass="ngModel" required
+             pattern="[a-zA-Z0-9]{3,}" placeholder="Password Old"/>
+      <input type="password" class="form-control" name="password" [(ngModel)]="newPassword" #pass="ngModel" required
+             pattern="[a-zA-Z0-9]{3,}" placeholder="Password New"/>
+      <input type="password" class="form-control" name="password" [(ngModel)]="confirmPassword" #pass="ngModel" required
+             pattern="[a-zA-Z0-9]{3,}" placeholder="Password Confirm"/>
+      <button type="button" class="btn btn-success" (click)="changePassword()"
+      >{{"Save"}}
+      </button>
+    </div>
   </div>
 </div>

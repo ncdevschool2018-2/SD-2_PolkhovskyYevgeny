@@ -44,10 +44,11 @@ export class TeachersComponent implements OnInit {
   public editableSubjectTeacher: SubjectTeacher = new SubjectTeacher();
   page: PageTeacher;
   currentPage: number = 1;
-  tChange: boolean=false;
+  tChange: boolean = false;
   public search: string = "";
   public paghide: boolean = false;
   public kj: string = "";
+
   constructor(private teacherService: TeacherService,
               private loadingService: Ng4LoadingSpinnerService,
               private modalService: BsModalService,
@@ -68,7 +69,7 @@ export class TeachersComponent implements OnInit {
     this.subscriptions.push(this.teacherService.getPageTeachers(page).subscribe(page => {
       // Parse json response into local array
       this.page = page as PageTeacher;
-      this.teachers=this.page.content;
+      this.teachers = this.page.content;
     }));
     /*this.contentArray = this.groups;*/
   }
@@ -77,10 +78,11 @@ export class TeachersComponent implements OnInit {
   pageChanged(event: any): void {
     this.loadTeachers(event.page);
   }
+
   public k(): void {
     if (this.search.length == 0) {
       this.loadTeachers(1);
-      this.paghide=false;
+      this.paghide = false;
 
     }
     else {
@@ -89,7 +91,7 @@ export class TeachersComponent implements OnInit {
       this.subscriptions.push(this.teacherService.findTeacher(this.kj).subscribe(numb => {
         // Parse json response into local array
         this.teachers = numb as Teacher[];
-        this.paghide=true;
+        this.paghide = true;
 
       }));
     }
@@ -109,6 +111,7 @@ export class TeachersComponent implements OnInit {
 
 
   public _openModalTeacher(template: TemplateRef<any>): void {
+  this.editableNewUser = new NewUser();
     this.refreshGroup();
     this.loadAllSubjects();
     this.modalRef = this.modalService.show(template);
@@ -136,24 +139,28 @@ export class TeachersComponent implements OnInit {
 
 
   public _addNewTeacher(): void {
-    let expr = /^[a-zA-Z]{3,15}$/;
-    let exprd = /^[a-zA-Z0-9]{3,15}$/;
-    if((expr.test(this.editableNewUser.name) &&
-      expr.test(this.editableNewUser.surname) &&
-      exprd.test(this.editableNewUser.login) &&
-      exprd.test(this.editableNewUser.password))){
+    if (this.editableNewUser.name && this.editableNewUser.surname &&
+      this.editableNewUser.login && this.editableNewUser.password && this.editableNewUser.subjectId) {
+      let expr = /^[a-zA-Z]{3,15}$/;
+      let exprd = /^[a-zA-Z0-9]{3,15}$/;
+      if ((expr.test(this.editableNewUser.name) &&
+        expr.test(this.editableNewUser.surname) &&
+        exprd.test(this.editableNewUser.login) &&
+        exprd.test(this.editableNewUser.password))) {
 
 
-    this.editableNewUser.roleId = 2;
-    this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
-      if(n== null){
-        alert("user with this login already exist");
-        return
+        this.editableNewUser.roleId = 2;
+        this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
+          if (n == null) {
+            alert("user with this login already exist or you enter invalid data");
+            return
+          }
+          this._updateUsers();
+          this._updateTeachers();
+          this._closeModal();
+        }));
       }
-      this._updateUsers();
-      this._updateTeachers();
-      this._closeModal();
-    }));}
+    }
   }
 
 
@@ -203,7 +210,7 @@ export class TeachersComponent implements OnInit {
 
 
   public _openModalConfirm(template: TemplateRef<any>, teacher: Teacher): void {
-    debugger;
+
     this.teacherConfirmId = teacher.userId;
     this.teacherConfirmName = teacher.name;
     this.teacherConfirmSurname = teacher.surname;

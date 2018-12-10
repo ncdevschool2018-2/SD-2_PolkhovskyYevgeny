@@ -11,6 +11,9 @@ import {GroupContent} from "../model/GroupContent";
 import {GroupContentService} from "../service/group-content.service";
 import {Group} from "../model/group";
 import {GroupService} from "../service/group.service";
+import {Users} from "../model/users";
+import {UsersService} from "../service/users.service";
+import {UsersChange} from "../model/userChange";
 
 
 @Component({
@@ -24,10 +27,16 @@ export class PupilComponent implements OnInit {
   public isCollapsed2 = true;
   private subscriptions: Subscription[] = [];
   public slots: Slots[];
+  public user: Users;
   public student: GroupContent;
   public group: Group;
   public groupId: number;
   tChange: boolean = false;
+  public editableUsers: Users = new Users();
+  public oldPassword: string;
+  public newPassword: string;
+  public confirmPassword: string;
+  public editableUsersChange: UsersChange = new UsersChange();
 
   constructor(private pupilService: PupilService,
               private authService: AuthService,
@@ -35,14 +44,15 @@ export class PupilComponent implements OnInit {
               private slotService: SlotService,
               private route: ActivatedRoute,
               private groupService: GroupService,
-              private groupContentService: GroupContentService,) {
+              private groupContentService: GroupContentService,
+              private usersService: UsersService) {
   }
 
   ngOnInit() {
 
     this.loadUser();
     this.loadSlot();
-    this.getGroupName();
+    //this.getGroupName();
 
 
   }
@@ -50,6 +60,30 @@ export class PupilComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  public changePassword(): void {
+    if (this.confirmPassword && this.newPassword) {
+      if (this.confirmPassword.includes(this.newPassword)) {
+        this.editableUsersChange.id = this.editableUsers.id;
+        this.editableUsersChange.login = this.editableUsers.login;
+        this.editableUsersChange.roleId = this.editableUsers.roleId;
+        this.editableUsersChange.passwordOld = this.oldPassword;
+        this.editableUsersChange.passwordNew = this.newPassword;
+        this.subscriptions.push(this.usersService.saveEditUsers(this.editableUsersChange).subscribe(n => {
+          if (n == null) {
+            alert("check passwords");
+            return
+          }
+          else if (!(n == null)) {
+            alert("Success");
+            window.location.reload();
+          }
+        }))
+      } else {
+        alert("check passwords");
+      }
+    }
   }
 
   public first(): void {
@@ -79,12 +113,7 @@ export class PupilComponent implements OnInit {
 
         this.slots = slots as Slots[];
       }
-      /*,
-      (error => {
-        if(error==="Unauthorized"   ){
-          alert("you have no any permissions")
-        }
-      })*/));
+    ));
   }
 
   private loadUser(): void {
@@ -97,7 +126,18 @@ export class PupilComponent implements OnInit {
         // Parse json response into local array
         this.student = accounts as GroupContent;
         // Check data in console
+        this.subscriptions.push(this.groupService.getGroupById(this.student.groupId).subscribe(slots => {
 
+            this.group = slots as Group;
+
+            this.subscriptions.push(this.usersService.getUserById(this.student.userId).subscribe(user => {
+
+                this.user = user as Users;
+                this.editableUsers = Users.cloneBase(this.user);
+              }
+            ));
+          }
+        ));
 
       }));
     });
@@ -110,11 +150,6 @@ export class PupilComponent implements OnInit {
 
         this.group = slots as Group;
       }
-      /*,
-      (error => {
-        if(error==="Unauthorized"   ){
-          alert("you have no any permissions")
-        }
-      })*/));
+    ));
   }
 }

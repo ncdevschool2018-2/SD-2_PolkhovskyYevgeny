@@ -69,6 +69,6 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public Pupils editPupil(Pupils pupils) {
         pupilsService.savePupil(pupils);
-        return null;
+        return pupils;
     }
 }

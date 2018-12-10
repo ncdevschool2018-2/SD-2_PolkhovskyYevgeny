@@ -54,7 +54,7 @@ export class TableTeacherComponent implements OnInit {
   public chooseTeacher: number = this.teacherNumber;
   public chooseSubject: number;
   public modalRef: BsModalRef;
-  public buttonHide: boolean=false;
+  public buttonHide: boolean = false;
   /*stateCtrl = new FormControl();
 
   myForm = new FormGroup({
@@ -139,11 +139,13 @@ export class TableTeacherComponent implements OnInit {
     /*this.getEmptySlots();*/
 
   }
+
   public getButtonHide(): void {
-    if(this.roleIdCheck==2){
-      this.buttonHide=true;
+    if (this.roleIdCheck == 2) {
+      this.buttonHide = true;
     }
   }
+
   /*private loadTimetableNamed(): void {
     this.loadingService.show();
 
@@ -216,32 +218,38 @@ export class TableTeacherComponent implements OnInit {
   }
 
   private getEmptySlots(): void {
+    this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
 
-    let dayTimetable = this.timetable.filter(item => item.day === this.day);
-    if (dayTimetable && dayTimetable.length > 0) {
-      for (let timetable of dayTimetable) {
-        this.slotsNot.push(timetable.time)
-      }
-
-
-      for (let slot of this.slots) {
-        if (this.slotsNot.length == 0) {
-          this.slotsDist.push(slot);
-        }
-        for (let not of this.slotsNot) {
-          if ((slot.startTime + " - " + slot.endTime).includes(not)) {
-            this.slotsNot.splice(0, 1);
-            break;
+        this.slots = slots as Slots[];
+        debugger
+        let dayTimetable = this.timetable.filter(item => item.day === this.day);
+        if (dayTimetable && dayTimetable.length > 0) {
+          for (let timetable of dayTimetable) {
+            this.slotsNot.push(timetable.time)
           }
-          this.slotsDist.push(slot);
-          break
+
+
+          for (let slot of this.slots) {
+            if (this.slotsNot.length == 0) {
+              this.slotsDist.push(slot);
+            }
+            for (let not of this.slotsNot) {
+              if ((slot.startTime + " - " + slot.endTime).includes(not)) {
+                this.slotsNot.splice(0, 1);
+                break;
+              }
+              this.slotsDist.push(slot);
+              break
+            }
+          }
+
+
+        } else {
+          this.slotsDist = this.slots;
         }
       }
+    ));
 
-
-    } else {
-      this.slotsDist = this.slots;
-    }
   }
 
 
@@ -271,25 +279,26 @@ export class TableTeacherComponent implements OnInit {
   }
 
   public _addTimeTable(): void {
-
-    for (let subjTeach of this.subjectsTeacher) {
-      if (subjTeach.teacherId == this.chooseTeacher && subjTeach.subjectId == this.chooseSubject) {
-        this.editableTimetable.subjectId = subjTeach.id;
+    if (this.editableTimetable.slotId && this.editableTimetable.groupId && this.chooseSubject) {
+      for (let subjTeach of this.subjectsTeacher) {
+        if (subjTeach.teacherId == this.chooseTeacher && subjTeach.subjectId == this.chooseSubject) {
+          this.editableTimetable.subjectId = subjTeach.id;
+        }
       }
-    }
-    for (let days of this.daysOfWeek) {
-      if (days.name.includes(this.day)) {
-        this.editableTimetable.dayOfWeekId = days.id;
+      for (let days of this.daysOfWeek) {
+        if (days.name.includes(this.day)) {
+          this.editableTimetable.dayOfWeekId = days.id;
+        }
       }
+      this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
+        this._updateTimetable();
+        this.refreshTimetable();
+        this.refreshTimetableExample();
+        /*this._updateTimetableExample();*/
+        this.formStateChanged.emit();
+        this.modalRef.hide();
+      }));
     }
-    this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
-      this._updateTimetable();
-      this.refreshTimetable();
-      this.refreshTimetableExample();
-      /*this._updateTimetableExample();*/
-      this.formStateChanged.emit();
-      this.modalRef.hide();
-    }));
   }
 
   public _updateTimetable(): void {

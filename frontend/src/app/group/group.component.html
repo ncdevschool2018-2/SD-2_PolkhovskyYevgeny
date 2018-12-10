@@ -20,7 +20,7 @@
     </mat-radio-button>
   </mat-radio-group>
 
-  <span><input type="text" [(ngModel)]="search" (keyup)="k()"   class="form-control" id="formGroupExampleInput" placeholder="Example input"></span>
+  <span><input type="text" [(ngModel)]="search" (keyup)="k()"   class="form-control"  placeholder="Search group"></span>
 
 
 </div>
@@ -85,11 +85,11 @@
   <div class="modal-body">
     <div class="form-group">
       <label>Group</label>
-      <input type="text" class="form-control" id="extra7" placeholder="8 character only"
+      <input type="text" class="form-control" id="extra7" placeholder="7-8 character only"
              [(ngModel)]="editableGroup.name" #name="ngModel"
              required pattern="\d [0-9]{7,8}"/>
       <div [hidden]="alertGroup" class="alert alert-danger">
-        7-8 numbers pls <!--Easy way to create client validation-->
+        7-8 numbers please <!--Easy way to create client validation-->
       </div>
     </div>
 
