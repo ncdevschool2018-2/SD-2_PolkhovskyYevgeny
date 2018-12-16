@@ -72,4 +72,33 @@ public class SubjectsDataServiceImpl implements SubjectsDataService {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.delete(backendServerUrl + "/api/subjects/" + id);
     }
+    
+    
+    @Override
+    public List<SubjectsViewModel> findSubjectsPage(int page) {
+        RestTemplate restTemplate = new RestTemplate();
+        SubjectsViewModel[] subjectsViewModels =
+                restTemplate.getForObject(backendServerUrl + "/api/subjects/page/" + page, SubjectsViewModel[].class);
+        return subjectsViewModels == null ? Collections.emptyList() : Arrays.asList(subjectsViewModels);
+    }
+    
+    
+    @Override
+    public List<SubjectsViewModel> findSubjects(String word) {
+        RestTemplate restTemplate = new RestTemplate();
+        
+        SubjectsViewModel[] subjectsViewModels =
+                restTemplate.getForObject(backendServerUrl + "/api/subjects/search/" + word, SubjectsViewModel[].class);
+        return subjectsViewModels == null ? Collections.emptyList() : Arrays.asList(subjectsViewModels);
+        
+        
+    }
+    
+    
+    @Override
+    public Integer getTotalPages() {
+        RestTemplate restTemplate = new RestTemplate();
+        Integer totalPages = restTemplate.getForObject(backendServerUrl + "/api/subjects/totalPages", Integer.class);
+        return totalPages;
+    }
 }

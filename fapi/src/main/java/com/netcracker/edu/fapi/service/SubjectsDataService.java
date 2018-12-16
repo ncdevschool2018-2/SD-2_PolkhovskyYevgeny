@@ -18,4 +18,10 @@ public interface SubjectsDataService {
     SubjectsViewModel saveSubjects(SubjectsViewModel subject);
     
     void deleteSubjects(int id);
+    
+    List<SubjectsViewModel> findSubjectsPage(int page);
+    
+    List<SubjectsViewModel> findSubjects(String word);
+    
+    Integer getTotalPages();
 }

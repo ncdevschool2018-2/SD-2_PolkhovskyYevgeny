@@ -39,4 +39,16 @@ export class SubjectService {
   getSubjectsForTeacher(teacherId: number): Observable<Subjects[]> {
     return this.http.get<Subjects[]>('/api/subject/teacher/' + teacherId);
   }
+
+  getPageSubjects(page: number): Observable<Subjects[]> {
+    return this.http.get<Subjects[]>('/api/subject/page/' + (page - 1));
+  }
+
+  getSubjectsNumber(): Observable<number> {
+    return this.http.get<number>('/api/subject/totalPages');
+  }
+
+  findSubject(word: string): Observable<Subjects[]> {
+    return this.http.get<Subjects[]>('/api/subject/search/' + word);
+  }
 }

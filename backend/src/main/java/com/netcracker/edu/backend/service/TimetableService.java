@@ -19,4 +19,6 @@ public interface TimetableService {
     List<Timetable> getAllByGroupIdOrderByDayOfWeekId(int groupId);
     
     void deleteTimetable(int id);
+    
+    Timetable getByDayOfWeekIdAndGroupIdAndSlotId(int dayOfWeekId, int groupId, int slotId);
 }

@@ -18,7 +18,7 @@
 <!--<div>
   <h1 align="center">Group number : {{group}} </h1>
 </div>-->
-<button [hidden]="buttonHide"  type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+<button [hidden]="buttonHide" type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
         (click)="_openModalPupil(templatePupil)">
   Create pupil
 </button>
@@ -29,9 +29,11 @@
       <thead>
       <tr>
         <th scope="col"><p class="text-info">Id</p></th>
-        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchSur" (keyup)="k()"   class="form-control"  placeholder="Example input"></span>
+        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchSur" (keyup)="k()"
+                                                          class="form-control" placeholder="Example input"></span>
           Surname</p></th>
-        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchName" (keyup)="k()"   class="form-control"  placeholder="Example input"></span>
+        <th scope="col"><p class="text-info"><span><input type="text" [(ngModel)]="searchName" (keyup)="k()"
+                                                          class="form-control" placeholder="Example input"></span>
           Name</p></th>
         <th scope="col" [hidden]="buttonHide"><p class="text-info">Delete</p></th>
         <th scope="col" [hidden]="buttonHide"><p class="text-info">Edit</p></th>
@@ -46,10 +48,10 @@
         <td [hidden]="buttonHide">
           <!--<span><button type="button" class="btn btn-danger" (click)="_deletePupil(groupContent.id)">Delete</button>
          </span>-->
-          <span><button  type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,groupContent)">Delete</button>
+          <span><button type="button" class="btn btn-danger" (click)="_openModalConfirm(templateConfirm,groupContent)">Delete</button>
          </span></td>
         <td [hidden]="buttonHide">
-          <span><button  type="button" class="btn btn-secondary"
+          <span><button type="button" class="btn btn-secondary"
                         (click)="_openModal(template, groupContent)">Edit</button>
         </span></td>
 
@@ -126,7 +128,7 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-success" (click)="_deletePupil(studentConfirmId)"
-            >Yes
+    >Yes
     </button>
     <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="_closeModal()">No</button>
 
@@ -144,7 +146,7 @@
     <div class="form-group">
       <label>Name</label>
       <input class="form-control" name="name" [(ngModel)]="editableNewUser.name" #name="ngModel" required
-             pattern="[a-zA-Z]{3,}"/>
+             pattern="[a-zA-Z]{3,15}"/>
       <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
         Pls set username <!--Easy way to create client validation-->
       </div>
@@ -152,7 +154,7 @@
     <div class="form-group">
       <label>Surname</label>
       <input class="form-control" name="surname" [(ngModel)]="editableNewUser.surname" #surname="ngModel" required
-             pattern="[a-zA-Z]{3,}"/>
+             pattern="[a-zA-Z]{3,15}"/>
       <div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
         Pls set surname <!--Easy way to create client validation-->
       </div>
@@ -162,15 +164,16 @@
     <div class="form-group">
       <label>login</label>
       <input class="form-control" name="login" [(ngModel)]="editableNewUser.login" #login="ngModel" required
-             pattern="[a-zA-Z0-9]{3,}"/>
+             pattern="[a-zA-Z0-9]{3,15}"/>
       <div [hidden]="login.valid || login.untouched" class="alert alert-danger">
         Pls set login <!--Easy way to create client validation-->
       </div>
     </div>
     <div class="form-group">
       <label>password</label>
-      <input class="form-control" type="password" name="password" [(ngModel)]="editableNewUser.password" #password="ngModel" required
-             pattern="[a-zA-Z0-9]{3,}"/>
+      <input class="form-control" type="password" name="password" [(ngModel)]="editableNewUser.password"
+             #password="ngModel" required
+             pattern="[a-zA-Z0-9]{3,15}"/>
       <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
         Pls set password <!--Easy way to create client validation-->
       </div>

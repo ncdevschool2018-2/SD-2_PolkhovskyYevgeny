@@ -48,7 +48,7 @@ public class SubjectsDataController {
             subjectsmass = subjectsDataService.getAll();
             for (SubjectsViewModel sub : subjectsmass
             ) {
-                if(sub.getSubject().equals(subjects.getSubject())){
+                if (sub.getSubject().equals(subjects.getSubject())) {
                     return null;
                 }
                 
@@ -58,6 +58,28 @@ public class SubjectsDataController {
         } else {
             return null;
         }
+    }
+    
+    
+    @RequestMapping(value = "/page/{page}", method = RequestMethod.GET)
+    public ResponseEntity<List<SubjectsViewModel>> getSubjectsPage(@PathVariable int page) {
+        
+        return ResponseEntity.ok(subjectsDataService.findSubjectsPage(page));
+        
+    }
+    
+    
+    @RequestMapping(value = "/totalPages", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getTotalPages() {
+        return ResponseEntity.ok(subjectsDataService.getTotalPages());
+    }
+    
+    
+    @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
+    public ResponseEntity<List<SubjectsViewModel>> findSubjects(@PathVariable String word) {
+        
+        return ResponseEntity.ok(subjectsDataService.findSubjects(word));
+        
     }
     
     

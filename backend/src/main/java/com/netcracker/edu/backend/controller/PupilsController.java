@@ -55,15 +55,15 @@ public class PupilsController {
     @RequestMapping(value = "/surname/{surname}/group/{group}", method = RequestMethod.GET)
     public List<Pupils> findPupilBySurname(@PathVariable(name = "surname") String surname, @PathVariable(name = "group") int group) {
         
-        List<Pupils> pupils = pupilsService.findPupilBySurname(surname,  group);
+        List<Pupils> pupils = pupilsService.findPupilBySurname(surname, group);
         return pupils;
     }
     
     
     @RequestMapping(value = "/name/{name}/group/{group}", method = RequestMethod.GET)
-    public List<Pupils> findPupilByName( @PathVariable(name = "name") String name, @PathVariable(name = "group") int group) {
+    public List<Pupils> findPupilByName(@PathVariable(name = "name") String name, @PathVariable(name = "group") int group) {
         
-        List<Pupils> pupils = pupilsService.findPupilByName( name, group);
+        List<Pupils> pupils = pupilsService.findPupilByName(name, group);
         return pupils;
     }
     

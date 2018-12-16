@@ -221,7 +221,7 @@ export class TableTeacherComponent implements OnInit {
     this.subscriptions.push(this.slotService.getSlot().subscribe(slots => {
 
         this.slots = slots as Slots[];
-        debugger
+
         let dayTimetable = this.timetable.filter(item => item.day === this.day);
         if (dayTimetable && dayTimetable.length > 0) {
           for (let timetable of dayTimetable) {
@@ -290,7 +290,11 @@ export class TableTeacherComponent implements OnInit {
           this.editableTimetable.dayOfWeekId = days.id;
         }
       }
-      this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(() => {
+      this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(n => {
+        if (n == null) {
+          alert("Subject already exist or you enter invalid data");
+          return
+        }
         this._updateTimetable();
         this.refreshTimetable();
         this.refreshTimetableExample();

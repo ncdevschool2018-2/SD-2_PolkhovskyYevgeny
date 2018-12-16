@@ -13,8 +13,10 @@ public interface TimetableRepository extends CrudRepository<Timetable, Integer> 
     List<Timetable> findAllByDayOfWeekIdAndGroupIdOrderBySlotId(int dayOfWeekId, int groupId);
     
     @Modifying
-    @Query(value = "select * from timetable inner join subject_teacher on timetable.subject_id=subject_teacher.id where timetable.day_of_week_id=?1 and subject_teacher.teacher_id=?2", nativeQuery = true)
+    @Query(value = "select * from timetable inner join subject_teacher on timetable.subject_id=subject_teacher.id where timetable.day_of_week_id=?1 and subject_teacher.teacher_id=?2 order by timetable.slot_id", nativeQuery = true)
     List<Timetable> findAllByDayOfWeekIdAndTeacherIdOrderBySlotId(int dayOfWeekId, int teacherId);
     
     List<Timetable> findAllByGroupIdOrderByDayOfWeekId(int groupId);
+    
+    Timetable getByDayOfWeekIdAndGroupIdAndSlotId(int dayOfWeekId, int groupId, int slotId);
 }

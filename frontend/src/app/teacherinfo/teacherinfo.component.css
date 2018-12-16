@@ -3,17 +3,23 @@
   color: #999;
   transition: ease-in-out color .15s;
 }
+
 .site-header {
   background-color: rgba(0, 0, 0, .85);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
+
 span {
   float: right;
 }
 
 mat-select {
   z-index: 999;
+}
+
+a {
+  cursor: pointer;
 }
 
 .blog-header {
@@ -164,7 +170,8 @@ h1, h2, h3, h4, h5, h6 {
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
-img{
+
+img {
   height: 50px;
   width: 50px;
 }

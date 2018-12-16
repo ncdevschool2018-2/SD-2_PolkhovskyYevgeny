@@ -18,7 +18,9 @@
 </div>-->
 <main class="container-fluid">
   <div class="my-3 p-3 bg-white rounded shadow-sm">
-
+    <button type="button" class="btn btn-info"
+            (click)="loadTimetableNamed()">Update
+    </button>
     <table class="table table-sm">
 
       <accordion>
@@ -51,11 +53,13 @@
           </div>
           <div class="row">
             <div class="col-6">
-              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Wednesday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Wednesday"
+                                 [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
             <div class="col-6">
-              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Thursday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Thursday"
+                                 [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
 
@@ -67,7 +71,8 @@
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
             <div class="col-6">
-              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Saturday" [slots]="slots"
+              <app-table-teacher [roleIdCheck]="roleIdCheck" (formStateChanged)="test()" [day]="Saturday"
+                                 [slots]="slots"
                                  [teacherNumber]="teacherNumber" [timetable]="timetable"></app-table-teacher>
             </div>
           </div>

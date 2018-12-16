@@ -32,6 +32,28 @@ public class SubjectsController {
     }
     
     
+    @RequestMapping(value = "/page/{page}", method = RequestMethod.GET)
+    public List<Subjects> showPage(@PathVariable int page) {
+        List<Subjects> pageFull = subjectsService.findGSubjectsPage(page * 10);
+        return pageFull;
+    }
+    
+    
+    @RequestMapping(value = "/totalPages", method = RequestMethod.GET)
+    public Integer getTotalPages() {
+        Integer totalPages = subjectsService.getTotalPages();
+        return totalPages;
+    }
+    
+    
+    @RequestMapping(value = "/search/{word}", method = RequestMethod.GET)
+    public List<Subjects> showSearchPage(@PathVariable String word) {
+        
+        List<Subjects> page = subjectsService.findSubjects(word);
+        return page;
+    }
+    
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public Iterable<Subjects> getAllSubjects() {
         return subjectsService.getAllSubjects();

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Optional;
 
+import static java.lang.Math.toIntExact;
+
 @Component
 public class SubjectsServiceImpl implements SubjectsService {
     
@@ -54,6 +56,24 @@ public class SubjectsServiceImpl implements SubjectsService {
     @Override
     public List<Subjects> getAllBySubject(String subject) {
         return repository.findAllBySubject(subject);
+    }
+    
+    
+    @Override
+    public List<Subjects> findGSubjectsPage(int offset) {
+        return repository.findSubjectsPage(offset);
+    }
+    
+    
+    @Override
+    public Integer getTotalPages() {
+        return toIntExact(repository.count());
+    }
+    
+    
+    @Override
+    public List<Subjects> findSubjects(String word) {
+        return repository.findSubjects(word);
     }
     
    /* @Override

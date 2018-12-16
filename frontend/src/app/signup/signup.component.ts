@@ -75,9 +75,11 @@ export class SignupComponent implements OnInit {
   }
 
   public register(num: number): void {
-    if (this.confirmPassword && this.editableNewUser.password && this.editableNewUser.subjectId) {
+
+    if (this.confirmPassword && this.editableNewUser.password
+      && this.editableNewUser.name && this.editableNewUser.surname && this.editableNewUser.login) {
       if (this.editableNewUser.password.includes(this.confirmPassword)) {
-        if (num == 3) {
+        if (num == 3 && this.editableNewUser.groupId) {
           this.subscriptions.push(this.pupilService.saveNewPupil(this.editableNewUser).subscribe(n => {
             if (n == null) {
               alert("user with this login already exist or you enter invalid data");
@@ -86,8 +88,7 @@ export class SignupComponent implements OnInit {
             }
             this.router.navigate(['signin']);
           }));
-        }
-        if (num == 2) {
+        } else if (num == 2 && this.editableNewUser.subjectId) {
           this.subscriptions.push(this.teacherService.saveNewTeacher(this.editableNewUser).subscribe(n => {
             if (n == null) {
               alert("user with this login already exist or you enter invalid data");
@@ -97,7 +98,11 @@ export class SignupComponent implements OnInit {
             this.router.navigate(['signin']);
           }));
         }
-      }else {
+        else {
+          alert("enter subject or group");
+          return
+        }
+      } else {
         this.wrongPassword = true;
       }
     }

@@ -156,6 +156,10 @@ public class TimetableDataServiceImpl implements TimetableDataService {
     @Override
     public TimetableViewModel saveTimetable(TimetableViewModel timetable) {
         RestTemplate restTemplate = new RestTemplate();
+        //TimetableViewModel checkTimetable = restTemplate.getForObject(backendServerUrl+"api/timetables/day/"+timetable.getDayOfWeekId()+"/group/"+timetable.getGroupId()+"/slot/"+timetable.getSlotId(),TimetableViewModel.class);
+        if (!(restTemplate.getForObject(backendServerUrl + "api/timetables/day/" + timetable.getDayOfWeekId() + "/group/" + timetable.getGroupId() + "/slot/" + timetable.getSlotId(), TimetableViewModel.class) == null)) {
+            return null;
+        }
         return restTemplate.postForEntity(backendServerUrl + "/api/timetables", timetable, TimetableViewModel.class).getBody();
     }
     

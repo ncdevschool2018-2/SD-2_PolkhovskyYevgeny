@@ -54,6 +54,17 @@ public class TimetableController {
     }
     
     
+    @RequestMapping(value = "/day/{day}/group/{group}/slot/{slot}", method = RequestMethod.GET)
+    public ResponseEntity<Timetable> getByDayOfWeekIdAndGroupIdAndSlotId(@PathVariable(name = "day") int dayOfWeekId, @PathVariable(name = "group") int groupId, @PathVariable(name = "slot") int slotId) {
+        Timetable timetable = timetableService.getByDayOfWeekIdAndGroupIdAndSlotId(dayOfWeekId, groupId, slotId);
+        if (timetable != null) {
+            return ResponseEntity.ok(timetable);
+        } else {
+            return ResponseEntity.ok(timetable);
+        }
+    }
+    
+    
     @RequestMapping(value = "/pupil/{group}", method = RequestMethod.GET)
     public ResponseEntity<List<Timetable>> getAllByGroupIdOrderByDayOfWeekId(@PathVariable(name = "group") int group) {
         List<Timetable> timetable = timetableService.getAllByGroupIdOrderByDayOfWeekId(group);

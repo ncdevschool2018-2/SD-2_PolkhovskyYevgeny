@@ -72,4 +72,10 @@ public class TimetableServiceImpl implements TimetableService {
     public void deleteTimetable(int id) {
         repository.deleteById(id);
     }
+    
+    
+    @Override
+    public Timetable getByDayOfWeekIdAndGroupIdAndSlotId(int dayOfWeekId, int groupId, int slotId) {
+        return repository.getByDayOfWeekIdAndGroupIdAndSlotId(dayOfWeekId, groupId, slotId);
+    }
 }

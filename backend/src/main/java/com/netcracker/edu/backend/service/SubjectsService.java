@@ -18,6 +18,12 @@ public interface SubjectsService {
     
     List<Subjects> getAllBySubject(String subject);
     
+    List<Subjects> findGSubjectsPage(int offset);
+    
+    Integer getTotalPages();
+    
+    List<Subjects> findSubjects(String word);
+    
     //Integer[] getIdChoosenSubject(String subject);
     void deleteSubjects(int id);
 }
