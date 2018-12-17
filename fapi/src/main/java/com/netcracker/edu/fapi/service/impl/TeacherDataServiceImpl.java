@@ -39,7 +39,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         RestTemplate restTemplate = new RestTemplate();
         Integer[] chooseSbjId =
                 restTemplate.getForObject(backendServerUrl + "/api/teacher-subject/chooseId/" + sbj, Integer[].class);
-        if (chooseSbjId == null) {
+        if (chooseSbjId.length==0) {
             return null;
         }
         Arrays.asList(chooseSbjId);
@@ -50,7 +50,7 @@ public class TeacherDataServiceImpl implements TeacherDataService {
         System.out.println(s);
         TeacherViewModel[] teacherViewModelResponse =
                 restTemplate.getForObject(backendServerUrl + "/api/teachers/chooseTeacher/" + s, TeacherViewModel[].class);
-        return teacherViewModelResponse == null ? Collections.emptyList() : Arrays.asList(teacherViewModelResponse);
+        return teacherViewModelResponse == null ? null : Arrays.asList(teacherViewModelResponse);
     }
     
     

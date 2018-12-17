@@ -35,6 +35,7 @@ export class TeachersComponent implements OnInit {
   private subscriptions: Subscription[] = [];
   public editableGroup: Group = new Group();
   public subjectsAll: Subjects[];
+  public subjectsAllh: Subjects[];
   public subjectsAvailable: Subjects[] = [];
   public editableNewUser: NewUser = new NewUser();
   public users: Users[];
@@ -179,7 +180,7 @@ export class TeachersComponent implements OnInit {
   public _openModalSubjectTeacher(template: TemplateRef<any>): void {
     this.busySubjects.splice(0, this.busySubjects.length);
     this.subjectsAvailable.splice(0, this.subjectsAvailable.length);
-
+    this.editableSubjectTeacher=new SubjectTeacher();
     this.loadAllTeachers();
     this.loadAllSubjects();
     this.modalRef = this.modalService.show(template);
@@ -219,6 +220,8 @@ export class TeachersComponent implements OnInit {
 
   public checkForSubjects(num: number): void {
     this.loadSubjectTeacher();
+    this.loadAllSubjects();
+    this.subjectsAllh=this.subjectsAll;
     this.busySubjects.splice(0, this.busySubjects.length);
     this.subjectsAvailable.splice(0, this.subjectsAvailable.length);
     for (let subjTeach of this.subjects) {
@@ -227,20 +230,20 @@ export class TeachersComponent implements OnInit {
       }
     }
 
-
+debugger
     for (let subj of this.subjectsAll) {
       if (this.busySubjects.length == 0) {
         this.subjectsAvailable.push(subj);
       }
       for (let busy of this.busySubjects) {
         if (subj.id == busy) {
-          this.busySubjects.splice(0, 1);
+
+          this.busySubjects.splice(this.busySubjects.indexOf(busy), 1);
+          this.subjectsAllh.splice(this.subjectsAllh.indexOf(subj),1);
           break;
         }
-        this.subjectsAvailable.push(subj);
-        break;
-
       }
+
 
     }
 

@@ -292,7 +292,7 @@ export class TableTeacherComponent implements OnInit {
       }
       this.subscriptions.push(this.timeTableService.saveTimetable(this.editableTimetable).subscribe(n => {
         if (n == null) {
-          alert("Subject already exist or you enter invalid data");
+          alert("this slot already busy");
           return
         }
         this._updateTimetable();

@@ -39,7 +39,7 @@ public class SubjectTeacherController {
         if (subjects != null) {
             return ResponseEntity.ok(subjects);
         } else {
-            return ResponseEntity.notFound().build();
+            return null;
             
         }
     }

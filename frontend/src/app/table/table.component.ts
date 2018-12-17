@@ -236,7 +236,10 @@ this.chooseGroup=id;
   private loadChooseTeachers(choose: number): void {
     //this.chooseId=new Number();
     this.subscriptions.push(this.teacherService.getTeacherName(choose).subscribe(chooseTeachersName => {
-
+if(chooseTeachersName==null){
+  alert("no teachers for this subject");
+  return
+}
       this.chooseTeachersName = chooseTeachersName as Teacher[];
     }));
 

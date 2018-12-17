@@ -32,6 +32,9 @@ public class TeacherDataController {
     
     @RequestMapping(value = "/chooseTchr/{sbj}", method = RequestMethod.GET)
     public ResponseEntity<List<TeacherViewModel>> getTeachersSbj(@PathVariable int sbj) {
+        if(teacherDataService.getTeachersSbj(sbj)==null){
+            return null;
+        }
         return ResponseEntity.ok(teacherDataService.getTeachersSbj(sbj));
     }
     
